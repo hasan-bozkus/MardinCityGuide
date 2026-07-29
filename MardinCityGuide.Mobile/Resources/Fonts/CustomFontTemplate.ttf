@@ -1,0 +1,21 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Renk Paleti (Tailwind Config'den) -->
+            <Color x:Key="MardinSand">#C5A880</Color>
+            <Color x:Key="SurfaceIvory">#FDFCFB</Color>
+
+            <!-- Font Family Tanımlamaları -->
+            <OnPlatform x:Key="FontManropeBold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Manrope-Bold.ttf#Manrope" />
+                <On Platform="iOS" Value="Manrope-Bold" />
+            </OnPlatform>
+            <OnPlatform x:Key="FontBeVietnam" x:TypeArguments="x:String">
+                <On Platform="Android" Value="BeVietnamPro-Regular.ttf#BeVietnamPro" />
+                <On Platform="iOS" Value="BeVietnamPro-Regular" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

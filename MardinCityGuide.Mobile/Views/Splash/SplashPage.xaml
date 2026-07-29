@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Splash.SplashPage"
+             Title="SplashPage"
+             BackgroundColor="{StaticResource SurfaceIvory}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid IsClippedToBounds="True">
+        <!-- 1. Arka Plan Görseli (Zoom Animasyonu Yapılacak) -->
+        <Image x:Name="BackgroundImage"
+               Source="mardin_bg.jpg"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+
+        <!-- 2. Gradient Overlay (Yazıların Okunabilirliği İçin Karartma) -->
+        <BoxView HorizontalOptions="Fill" VerticalOptions="Fill">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Transparent" Offset="0.0" />
+                    <GradientStop Color="#33000000" Offset="0.5" />
+                    <GradientStop Color="#CC000000" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <!-- 3. İçerik Alanı (Top, Middle, Bottom Layout) -->
+        <Grid RowDefinitions="*, Auto, *"
+              Padding="20, 60"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill">
+
+            <!-- ÜST BÖLÜM: Logo / Arch Icon -->
+            <VerticalStackLayout Grid.Row="0"
+                                 x:Name="TopBranding"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Start"
+                                 Opacity="0">
+                <Border WidthRequest="80"
+        HeightRequest="80"
+        Stroke="#40FFFFFF" 
+        StrokeThickness="1"
+        BackgroundColor="#20FFFFFF"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40" />
+                    </Border.StrokeShape>
+
+                    <!-- Label ile İkon Gösterimi -->
+                    <Label Text="&#xe123;"  
+                        FontFamily="MaterialSymbols"
+                        FontSize="36" 
+           TextColor="White"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- ORTA BÖLÜM: Başlık ve Alt Başlık -->
+            <VerticalStackLayout Grid.Row="1"
+                                 x:Name="MiddleContent"
+                                 HorizontalOptions="Center"
+                                 Spacing="8"
+                                 Opacity="0">
+                
+                <Label Text="MARDIN"
+                       TextColor="White"
+                       FontSize="32"
+                       CharacterSpacing="6"
+                       HorizontalTextAlignment="Center">
+                    <Label.Shadow>
+                        <Shadow Brush="Black" Offset="0,4" Radius="12" Opacity="0.3" />
+                    </Label.Shadow>
+                </Label>
+
+                <Label Text="ŞEHİR REHBERİ"
+                       TextColor="#E6FFFFFF"
+                       FontSize="14"
+                       CharacterSpacing="4"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Taş Oyma Stili Ayırıcı Çizgi -->
+                <BoxView WidthRequest="48"
+                         HeightRequest="1"
+                         Color="{StaticResource MardinSand}"
+                         Margin="0,24,0,0"
+                         HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- ALT BÖLÜM: Yükleme Barı ve Slogan -->
+            <VerticalStackLayout Grid.Row="2"
+                                 x:Name="BottomContent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="End"
+                                 Spacing="16"
+                                 Opacity="0">
+
+                <!-- Loading Bar Container -->
+                <Grid WidthRequest="140"
+                      HeightRequest="2"
+                      BackgroundColor="#33FFFFFF"
+                      HorizontalOptions="Center"
+                      IsClippedToBounds="True">
+                    
+                    <!-- Kayan Beyaz Çizgi (Shimmer) -->
+                    <BoxView x:Name="ProgressBar"
+                             WidthRequest="140"
+                             HeightRequest="2"
+                             Color="#FDFCFB"
+                             HorizontalOptions="Start" />
+                </Grid>
+
+                <Label Text="ZAMANDA TARİHİ YOLCULUK"
+                       TextColor="#99FFFFFF"
+                       FontSize="12"
+                       CharacterSpacing="3"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+    
+</ContentPage>

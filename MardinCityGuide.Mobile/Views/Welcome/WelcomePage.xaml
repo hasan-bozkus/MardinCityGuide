@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Welcome.WelcomePage"
+             Title="WelcomePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- Ana Kapsayıcı (Taşmaları Engellemek İçin IsClippedToBounds="True") -->
+    <Grid IsClippedToBounds="True">
+
+        <!-- 1. Arka Plan Görseli (Zoom Efekti İçin x:Name Tanımlı) -->
+        <Image x:Name="BackgroundImage"
+               Source="mardin_welcome_bg.jpg"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+
+        <!-- 2. Gradient Scrim Overlay (Yazıların Okunması İçin Karartma) -->
+        <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Transparent" Offset="0.0" />
+                    <GradientStop Color="#60000000" Offset="0.5" />
+                    <GradientStop Color="#D9000000" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <!-- 3. Ana İçerik Katmanı (Responsive Grid) -->
+        <Grid RowDefinitions="Auto, *, Auto"
+              Padding="24, 48, 24, 24">
+
+            <!-- Üst Header: MARDIN GUIDE -->
+            <StackLayout Grid.Row="0"
+                         HorizontalOptions="Center"
+                         Spacing="4"
+                         Margin="0,20,0,0">
+                <Label Text="MARDIN"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#FDFCFB"
+                       CharacterSpacing="4"
+                       HorizontalTextAlignment="Center" />
+
+                <BoxView HeightRequest="1"
+                         WidthRequest="32"
+                         Color="#99FDFCFB"
+                         HorizontalOptions="Center" />
+
+                <Label Text="GUIDE"
+                       FontSize="12"
+                       TextColor="#CCFDFCFB"
+                       CharacterSpacing="3"
+                       HorizontalTextAlignment="Center" />
+            </StackLayout>
+
+            <!-- Alt İçerik Alanı (Başlık, Açıklama, Butonlar) -->
+            <StackLayout Grid.Row="2"
+                         Spacing="20"
+                         VerticalOptions="End">
+
+                <!-- Metin Alanı -->
+                <StackLayout Spacing="8">
+                    <Label Text="Taşa kazınmış bir masal diyarına adım atın."
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#FDFCFB"
+                           LineBreakMode="WordWrap" />
+
+                    <Label Text="Mezopotamya'nın kadim tepelerini özel rotalarla keşfedin."
+                           FontSize="16"
+                           TextColor="#E0FDFCFB"
+                           Opacity="0.9" />
+                </StackLayout>
+
+                <!-- Buton Grubu -->
+                <StackLayout Spacing="12" Margin="0,10,0,0">
+
+                    <!-- Hesap Oluştur Butonu (Mardin Sand Rengi) -->
+                    <Button Text="Hesap Oluştur"
+                            BackgroundColor="#C5A880"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            CornerRadius="25"
+                            HeightRequest="52"
+                            Clicked="OnCreateAccountClicked" />
+
+                    <!-- Giriş Yap Butonu (Transparent & Bordered) -->
+                    <Border Stroke="#66FFFFFF"
+        StrokeThickness="1"
+        HeightRequest="52">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="25" />
+                        </Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#50000000" Offset="0.0" />
+                                <GradientStop Color="#80000000" Offset="0.5" />
+                                <GradientStop Color="#50000000" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Button Text="Giriş Yap"
+            BackgroundColor="Transparent"
+            TextColor="#FDFCFB"
+            FontAttributes="Bold"
+            FontSize="16" />
+                    </Border>
+
+                    <!-- Misafir Olarak Devam Et -->
+                    <Button Text="Misafir Olarak Devam Et  ➔"
+                            BackgroundColor="Transparent"
+                            TextColor="#CCFDFCFB"
+                            FontSize="14"
+                            HeightRequest="40"
+                            Clicked="OnContinueAsGuestClicked" />
+                </StackLayout>
+
+                <!-- Slider Göstergeleri (Dots) -->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="8"
+                                       Margin="0,8,0,0">
+                    <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4" Color="#FDFCFB" />
+                    <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4" Color="#4DFDFCFB" />
+                    <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4" Color="#4DFDFCFB" />
+                </HorizontalStackLayout>
+
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>

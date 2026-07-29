@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="MardinCityGuide.BusinessLayer/MardinCityGuide.BusinessLayer.csproj" />
+  <Project Path="MardinCityGuide.DataAccessLayer/MardinCityGuide.DataAccessLayer.csproj" />
+  <Project Path="MardinCityGuide.EntityLayer/MardinCityGuide.EntityLayer.csproj" />
+  <Project Path="MardinCityGuide.Mobile/MardinCityGuide.Mobile.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
