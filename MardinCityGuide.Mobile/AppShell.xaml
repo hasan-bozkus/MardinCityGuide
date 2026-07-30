@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:MardinCityGuide.Mobile"
     xmlns:splash="clr-namespace:MardinCityGuide.Mobile.Views.Splash"
     xmlns:welcome="clr-namespace:MardinCityGuide.Mobile.Views.Welcome"
+    xmlns:register="clr-namespace:MardinCityGuide.Mobile.Views.Register"
     Title="MardinCityGuide.Mobile">
 
     <!--<ShellContent
@@ -19,6 +20,10 @@
 
     <ShellContent Route="welcome"
                   ContentTemplate="{DataTemplate welcome:WelcomePage}"
+                  Shell.NavBarIsVisible="False" />
+
+    <ShellContent Route="register"
+                  ContentTemplate="{DataTemplate register:RegisterPage}"
                   Shell.NavBarIsVisible="False" />
 
 </Shell>

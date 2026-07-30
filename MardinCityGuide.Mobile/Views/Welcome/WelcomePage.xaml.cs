@@ -1,16 +1,30 @@
+using MardinCityGuide.BusinessLayer.Abstract;
+using MardinCityGuide.EntityLayer.Concrete;
+
 namespace MardinCityGuide.Mobile.Views.Welcome;
 
 public partial class WelcomePage : ContentPage
 {
+    private readonly ICategoryService _categoryService;
+
+   
+
     private bool _isAnimating = false;
     public WelcomePage()
 	{
 		InitializeComponent();
 	}
 
-    protected override void OnAppearing()
+    public WelcomePage(ICategoryService categoryService)
+    {
+        InitializeComponent();
+        _categoryService = categoryService;
+    }
+
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+
         _isAnimating = true;
         StartSubtleZoomAnimation();
     }
@@ -47,7 +61,7 @@ public partial class WelcomePage : ContentPage
     private async void OnCreateAccountClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("HasSeenWelcome", true);
-        // Register sayfasına yönlendirme yapılabilir
+        await Shell.Current.GoToAsync("//register");
     }
 
     private async void OnSignInClicked(object sender, EventArgs e)

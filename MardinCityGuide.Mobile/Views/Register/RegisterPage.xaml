@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Register.RegisterPage"
+             Title="RegisterPage"
+             BackgroundColor="#FBF9F6"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <!-- 1. TOP APP BAR -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="Auto, *, Auto"
+              HeightRequest="56"
+              Padding="16,0"
+              BackgroundColor="#CCFDFCFB"
+              ZIndex="50">
+
+            <!-- Back Button (İkonlu) -->
+            <ImageButton Grid.Column="0"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Clicked="OnBackClicked">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="←" FontFamily="OpenSansRegular" Color="#725B38" Size="20" />
+                </ImageButton.Source>
+            </ImageButton>
+
+            <Label Grid.Column="1"
+                   Text="Mardin Guide"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#725B38"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <!--<BoxView Grid.Column="2" WidthRequest="24" />-->
+        </Grid>
+
+        <!-- 2. SCROLLABLE CONTENT -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- Hero Görseli & Gradient Katmanı -->
+                <Grid HeightRequest="260" HorizontalOptions="Fill">
+                    <Image Source="mardin_welcome_bg.jpg"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Fill" />
+
+                    <BoxView HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#00FBF9F6" Offset="0.0" />
+                                <GradientStop Color="#70FBF9F6" Offset="0.6" />
+                                <GradientStop Color="#FFFBF9F6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                </Grid>
+
+                <!-- Kayıt Form Kartı -->
+                <Border Margin="20, -70, 20, 24"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        Padding="24">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- Başlık & Alt Metin -->
+                        <VerticalStackLayout Spacing="4" Margin="0,0,0,8">
+                            <Label Text="Create Account"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   TextColor="#1B1C1A" />
+                            <Label Text="Join our community to discover the hidden gems of the ancient city."
+                                   FontSize="14"
+                                   TextColor="#4D463C" />
+                        </VerticalStackLayout>
+
+                        <!-- Full Name -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Full Name" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *">
+                                    <!-- Sol İkon (Person / Ad Soyad) -->
+                                    <Label Grid.Column="0" Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Entry Grid.Column="1" Placeholder="John Doe" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Email Address -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Email Address" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *">
+                                    <Label Grid.Column="0" Text="&#xe0be;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Entry Grid.Column="1" Placeholder="email@example.com" Keyboard="Email" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Password -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Password" FontSize="13" FontFamily="MaterialSymbols" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *, 48">
+                                    <Label Grid.Column="0" 
+           Text="&#xe897;" 
+           FontFamily="MaterialSymbols" 
+           FontSize="18" 
+           TextColor="#7F766A" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Center" />
+
+                                    <Entry x:Name="PasswordEntry" 
+           Grid.Column="1" 
+           IsPassword="True" 
+           Placeholder="••••••••" 
+           PlaceholderColor="#D1C5B8" 
+           TextColor="#1B1C1A" 
+           VerticalOptions="Center" />
+
+                                    <!-- Göz Butonu (Text Unicode) -->
+                                    <Button x:Name="TogglePasswordBtn"
+            Grid.Column="2"
+            Text="&#xe8f4;"
+            FontFamily="MaterialSymbols"
+            FontSize="20"
+            TextColor="#7F766A"
+            BackgroundColor="Transparent"
+            Padding="0"
+            HeightRequest="40"
+            WidthRequest="40"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Clicked="OnTogglePasswordClicked" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Confirm Password -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Confirm Password" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *, 48">
+                                    <!-- Sol İkon (Lock Reset) -->
+                                    <Label Grid.Column="0"
+                   Text="&#xe889;"
+                   FontFamily="MaterialSymbols"
+                   FontSize="18"
+                   TextColor="#7F766A"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+                                    <!-- Giriş Alanı -->
+                                    <Entry x:Name="ConfirmPasswordEntry"
+                   Grid.Column="1"
+                   IsPassword="True"
+                   Placeholder="••••••••"
+                   PlaceholderColor="#D1C5B8"
+                   TextColor="#1B1C1A"
+                   VerticalOptions="Center" />
+
+                                    <!-- Göz Butonu (Sağ İkon - 1. Yöntem) -->
+                                    <Button x:Name="ToggleConfirmPasswordBtn"
+                    Grid.Column="2"
+                    Text="&#xe8f4;"
+                    FontFamily="MaterialSymbols"
+                    FontSize="20"
+                    TextColor="#7F766A"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="OnToggleConfirmPasswordClicked" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Terms & Conditions Checkbox -->
+                        <HorizontalStackLayout Spacing="10" Margin="0,4,0,0" VerticalOptions="Center">
+                            <CheckBox Color="#C5A880" VerticalOptions="Center" />
+                            <Label FontSize="13" TextColor="#4D463C" VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="I agree to the " />
+                                        <Span Text="Terms &amp; Conditions" FontAttributes="Bold" TextColor="#725B38" />
+                                        <Span Text=" and " />
+                                        <Span Text="Privacy Policy" FontAttributes="Bold" TextColor="#725B38" />
+                                        <Span Text="." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <!-- Primary Action Button -->
+                        <Button Text="Create Account"
+                                BackgroundColor="#C5A880"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                CornerRadius="26"
+                                HeightRequest="52"
+                                Margin="0,12,0,0"
+                                Clicked="OnCreateAccountClicked" />
+
+                        <!-- Or Sign Up With Divider -->
+                        <Grid ColumnDefinitions="*, Auto, *" Margin="0,16,0,8" VerticalOptions="Center">
+                            <BoxView Grid.Column="0" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="OR SIGN UP WITH" FontSize="11" TextColor="#7F766A" FontAttributes="Bold" CharacterSpacing="1.5" Margin="12,0" VerticalOptions="Center" />
+                            <BoxView Grid.Column="2" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
+                        </Grid>
+
+                        <!-- Social Register Buttons -->
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="12">
+                            <!-- Google Button -->
+                            <Border Grid.Column="0" Stroke="#C5A880" StrokeThickness="1.5" HeightRequest="46" BackgroundColor="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="23" />
+                                </Border.StrokeShape>
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8" VerticalOptions="Center">
+                                    <Image VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="G" Size="16" Color="#725B38" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Google" TextColor="#725B38" FontAttributes="Bold" FontSize="14" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Border>
+
+                            <!-- Apple Button -->
+                            <Border Grid.Column="1" Stroke="#C5A880" StrokeThickness="1.5" HeightRequest="46" BackgroundColor="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="23" />
+                                </Border.StrokeShape>
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8" VerticalOptions="Center">
+                                    <Image VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" Size="18" Color="#725B38" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Apple" TextColor="#725B38" FontAttributes="Bold" FontSize="14" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <!-- Log In Redirect Link -->
+                        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,16,0,0">
+                            <Label Text="Already have an account? " TextColor="#4D463C" FontSize="14" />
+                            <Label Text="Log In" TextColor="#725B38" FontAttributes="Bold" FontSize="14">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnLoginTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Footer Component -->
+                <VerticalStackLayout Spacing="8" Margin="0,8,0,32" HorizontalOptions="Center">
+                    <BoxView WidthRequest="40" HeightRequest="3" CornerRadius="1.5" Color="#C5A880" Opacity="0.4" HorizontalOptions="Center" />
+                    <Label Text="MARDIN CULTURAL HERITAGE GUIDE" FontSize="11" TextColor="#7F766A" CharacterSpacing="1.5" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,8,0,0" />
+                    <Label Text="© 2024 Mardin Metropolitan Authority" FontSize="13" TextColor="#4D463C" Opacity="0.6" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

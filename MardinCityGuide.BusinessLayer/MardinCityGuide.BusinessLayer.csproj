@@ -30,7 +30,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Abstract\" />
+	  <ProjectReference Include="..\MardinCityGuide.DataAccessLayer\MardinCityGuide.DataAccessLayer.csproj" />
+	  <ProjectReference Include="..\MardinCityGuide.EntityLayer\MardinCityGuide.EntityLayer.csproj" />
 	</ItemGroup>
 
 </Project>

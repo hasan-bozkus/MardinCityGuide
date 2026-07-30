@@ -27,10 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Concrete\" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.11.285" />
 	</ItemGroup>
 
 </Project>

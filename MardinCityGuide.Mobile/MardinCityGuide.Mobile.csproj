@@ -71,6 +71,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\MardinCityGuide.BusinessLayer\MardinCityGuide.BusinessLayer.csproj" />
+	  <ProjectReference Include="..\MardinCityGuide.DataAccessLayer\MardinCityGuide.DataAccessLayer.csproj" />
+	  <ProjectReference Include="..\MardinCityGuide.EntityLayer\MardinCityGuide.EntityLayer.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Register\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Splash\SplashPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
