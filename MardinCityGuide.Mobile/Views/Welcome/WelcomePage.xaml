@@ -88,8 +88,8 @@
 
                     <!-- Giriş Yap Butonu (Transparent & Bordered) -->
                     <Border Stroke="#66FFFFFF"
-        StrokeThickness="1"
-        HeightRequest="52">
+                    StrokeThickness="1"
+                    HeightRequest="52">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="25" />
                         </Border.StrokeShape>
@@ -102,10 +102,11 @@
                         </Border.Background>
 
                         <Button Text="Giriş Yap"
-            BackgroundColor="Transparent"
-            TextColor="#FDFCFB"
-            FontAttributes="Bold"
-            FontSize="16" />
+                        BackgroundColor="Transparent"
+                        TextColor="#FDFCFB"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Clicked="OnSignInClicked"/>
                     </Border>
 
                     <!-- Misafir Olarak Devam Et -->

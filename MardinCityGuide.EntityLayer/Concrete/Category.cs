@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using MardinCityGuide.EntityLayer.Enums;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,10 @@ namespace MardinCityGuide.EntityLayer.Concrete
 
         [NotNull]
         public string CategoryName { get; set; } = string.Empty;
+        public SectionType SectionType { get; set; }
+        public int SortOrder { get; set; }
+
+        public ICollection<Bazaar>? Bazaars { get; set; }
+        public ICollection<Place>? Places { get; set; }
     }
 }

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Home.HomePage"
+             Title="HomePage"
+             BackgroundColor="#FBF9F6"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- ================= 1. TOP APP BAR (SABİT ÜST BAR) ================= -->
+        <Border Grid.Row="0" 
+                BackgroundColor="#CCFDFCFB" 
+                StrokeThickness="0" 
+                HeightRequest="64" 
+                Padding="20,0">
+            <Grid ColumnDefinitions="*, Auto">
+                <!-- Logo / Başlık -->
+                <Label Grid.Column="0" 
+                       Text="Mardin Guide" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="#725B38" 
+                       VerticalOptions="Center" />
+
+                <!-- Sağ İkonlar (Arama & Bildirim) -->
+                <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
+                    <Label Text="&#xe8b6;" 
+                           FontFamily="MaterialSymbols" 
+                           FontSize="24" 
+                           TextColor="#725B38" 
+                           VerticalOptions="Center" />
+                    <Label Text="&#xe7f4;" 
+                           FontFamily="MaterialSymbols" 
+                           FontSize="24" 
+                           TextColor="#725B38" 
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ================= 2. ANA İÇERİK (SCROLLABLE AREA) ================= -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="32" Padding="20,16,20,32" MaximumWidthRequest="900" HorizontalOptions="Center">
+
+                <!-- HERO & CAROUSEL HEADER -->
+                <VerticalStackLayout Spacing="16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="WELCOME" 
+                               FontSize="12" 
+                               FontAttributes="Bold" 
+                               TextColor="#725B38" 
+                               CharacterSpacing="2" />
+                        <Label Text="Hello, Traveler" 
+                               FontSize="32" 
+                               FontAttributes="Bold" 
+                               TextColor="#1B1C1A" />
+                        <Label Text="The golden city of Mesopotamia awaits your discovery." 
+                               FontSize="15" 
+                               TextColor="#4D463C" />
+                    </VerticalStackLayout>
+
+                    <!-- SEARCH BAR -->
+                    <Border BackgroundColor="#F5F3F0" 
+                            StrokeThickness="0" 
+                            HeightRequest="56" 
+                            Margin="0,8,0,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="48, *, 48">
+                            <Label Grid.Column="0" 
+                                   Text="&#xe2db;" 
+                                   FontFamily="MaterialSymbols" 
+                                   FontSize="22" 
+                                   TextColor="#7F766A" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" />
+
+                            <Entry Grid.Column="1"
+                                   Placeholder="Search historic places, bazaars..." 
+                                   PlaceholderColor="#7F766A" 
+                                   TextColor="#1B1C1A" 
+                                   FontSize="14" 
+                                   VerticalOptions="Center" />
+
+                            <Button Grid.Column="2" 
+                                    Text="&#xe429;" 
+                                    FontFamily="MaterialSymbols" 
+                                    FontSize="20" 
+                                    TextColor="White" 
+                                    BackgroundColor="#008080" 
+                                    CornerRadius="20" 
+                                    WidthRequest="40" 
+                                    HeightRequest="40" 
+                                    Padding="0" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- FEATURED CAROUSEL SECTION -->
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0" Text="Featured" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                        <Label Grid.Column="1" Text="See All" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
+                    </Grid>
+
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <HorizontalStackLayout Spacing="16">
+
+                            <!-- Card 1: Deyrulzafaran -->
+                            <VerticalStackLayout Spacing="8" WidthRequest="260">
+                                <Grid HeightRequest="320">
+                                    <Border StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="16" />
+                                        </Border.StrokeShape>
+                                        <Image Source="deyrulzafaran.jpg" Aspect="AspectFill" />
+                                    </Border>
+
+                                    <!-- Tag -->
+                                    <Border BackgroundColor="#33FFFFFF" 
+                                            Stroke="#33FFFFFF" 
+                                            StrokeThickness="1" 
+                                            HorizontalOptions="End" 
+                                            VerticalOptions="Start" 
+                                            Margin="12" 
+                                            Padding="10,4">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="12" />
+                                        </Border.StrokeShape>
+                                        <Label Text="Must Visit" FontSize="11" FontAttributes="Bold" TextColor="White" />
+                                    </Border>
+                                </Grid>
+                                <Label Text="Deyrulzafaran" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="&#xe56f;" FontFamily="MaterialSymbols" FontSize="16" TextColor="#C5A880" VerticalOptions="Center" />
+                                    <Label Text="Ancient Saffron Monastery" FontSize="14" TextColor="#4D463C" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- Card 2: Zinciriye Medresesi -->
+                            <VerticalStackLayout Spacing="8" WidthRequest="260">
+                                <Grid HeightRequest="320">
+                                    <Border StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="16" />
+                                        </Border.StrokeShape>
+                                        <Image Source="zinciriye_medrese.jpg" Aspect="AspectFill" />
+                                    </Border>
+
+                                    <!-- Tag -->
+                                    <Border BackgroundColor="#33FFFFFF" 
+                                            Stroke="#33FFFFFF" 
+                                            StrokeThickness="1" 
+                                            HorizontalOptions="End" 
+                                            VerticalOptions="Start" 
+                                            Margin="12" 
+                                            Padding="10,4">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="12" />
+                                        </Border.StrokeShape>
+                                        <Label Text="Historic" FontSize="11" FontAttributes="Bold" TextColor="White" />
+                                    </Border>
+                                </Grid>
+                                <Label Text="Zinciriye Medresesi" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="&#xe56f;" FontFamily="MaterialSymbols" FontSize="16" TextColor="#C5A880" VerticalOptions="Center" />
+                                    <Label Text="14th Century Artistry" FontSize="14" TextColor="#4D463C" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+
+                <!-- BENTO GRID: EXPLORE BY SOUL -->
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Explore by Soul" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" />
+
+                    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                        <!-- Gastronomy -->
+                        <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto, *">
+                                <Label Grid.Row="0" Text="&#xe56c;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
+                                <Label Grid.Row="1" Text="Gastronomy" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Spirituality -->
+                        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto, *">
+                                <Label Grid.Row="0" Text="&#xeab2;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
+                                <Label Grid.Row="1" Text="Spirituality" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Bazaars -->
+                        <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto, *">
+                                <Label Grid.Row="0" Text="&#xe569;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
+                                <Label Grid.Row="1" Text="Bazaars" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Events -->
+                        <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto, *">
+                                <Label Grid.Row="0" Text="&#xe878;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
+                                <Label Grid.Row="1" Text="Events" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Curated Itineraries (Full Width Banner) -->
+                        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#1A008080" Stroke="#33008080" StrokeThickness="1" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                    <Label Text="Curated Itineraries" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
+                                    <Label Text="Hand-picked routes by locals" FontSize="12" TextColor="#4D463C" />
+                                </VerticalStackLayout>
+                                <Label Grid.Column="1" Text="&#xe55b;" FontFamily="MaterialSymbols" FontSize="28" TextColor="#008080" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- POPULAR NOW SECTION -->
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0" Text="Popular Now" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                        <Label Grid.Column="1" Text="See All" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="16">
+                        <!-- Entry 1 -->
+                        <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" HeightRequest="80" WidthRequest="80" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Image Source="cercis_murat.jpg" Aspect="AspectFill" />
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="14" TextColor="#D35400" VerticalOptions="Center" />
+                                    <Label Text="4.9 (1.2k reviews)" FontSize="12" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <Label Text="Cercis Murat Paşa" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                <Label Text="Traditional Gastronomy" FontSize="12" TextColor="#4D463C" />
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="2" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#7F766A" VerticalOptions="Center" />
+                        </Grid>
+
+                        <!-- Entry 2 -->
+                        <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" HeightRequest="80" WidthRequest="80" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Image Source="bakircilar_carsisi.jpg" Aspect="AspectFill" />
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="14" TextColor="#D35400" VerticalOptions="Center" />
+                                    <Label Text="4.7 (850 reviews)" FontSize="12" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <Label Text="Bakırcılar Çarşısı" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                <Label Text="Coppersmiths Bazaar" FontSize="12" TextColor="#4D463C" />
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="2" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#7F766A" VerticalOptions="Center" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- RECOMMENDED BANNER -->
+                <Border BackgroundColor="#33C5A880" StrokeThickness="0" Padding="24" Margin="0,8,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="24" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="10" VerticalOptions="Center">
+                            <Border BackgroundColor="#725B38" StrokeThickness="0" HorizontalOptions="Start" Padding="8,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label Text="AUTHENTIC CHOICE" FontSize="10" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                            </Border>
+
+                            <Label Text="Sunset Tea at the Great Mosque" FontSize="18" FontAttributes="Bold" TextColor="#584323" />
+                            <Label Text="Experience the call to prayer as the sun dips below the Mesopotamian horizon." FontSize="13" TextColor="#584323" Opacity="0.9" />
+
+                            <Button Text="Explore Details &#xe5c8;" 
+                                    FontFamily="MaterialSymbols" 
+                                    BackgroundColor="#725B38" 
+                                    TextColor="White" 
+                                    FontSize="13" 
+                                    FontAttributes="Bold" 
+                                    CornerRadius="20" 
+                                    HeightRequest="42" 
+                                    Padding="20,0" 
+                                    HorizontalOptions="Start" 
+                                    Margin="0,8,0,0" />
+                        </VerticalStackLayout>
+
+                        <!-- Decorative Icon -->
+                        <Label Grid.Column="1" 
+                               Text="&#xea40;" 
+                               FontFamily="MaterialSymbols" 
+                               FontSize="140" 
+                               TextColor="#725B38" 
+                               Opacity="0.15" 
+                               HorizontalOptions="End" 
+                               VerticalOptions="End" 
+                               Margin="0,0,-20,-20" />
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ================= 3. BOTTOM NAVIGATION BAR (ALT BAR) ================= -->
+        <Border Grid.Row="2" 
+                BackgroundColor="#E6FDFCFB" 
+                StrokeThickness="0" 
+                HeightRequest="70" 
+                Padding="8,4">
+            <Border.Shadow>
+                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
+            </Border.Shadow>
+            <Grid ColumnDefinitions="*, *, *, *">
+
+                <!-- Tab 1: Home (Active) -->
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                    <Border BackgroundColor="#4DFF8E58" StrokeThickness="0" Padding="16,4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+                        <Label Text="&#xe88a;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#725B38" />
+                    </Border>
+                    <Label Text="Home" FontSize="11" FontAttributes="Bold" TextColor="#725B38" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Tab 2: Discover -->
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                    <Label Text="&#xe87a;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                    <Label Text="Discover" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Tab 3: Favorites -->
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                    <Label Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                    <Label Text="Favorites" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <!-- Tab 4: Profile -->
+                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                    <Label Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                    <Label Text="Profile" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

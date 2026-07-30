@@ -1,3 +1,5 @@
+using MardinCityGuide.Mobile.Views.Login;
+
 namespace MardinCityGuide.Mobile.Views.Register;
 
 public partial class RegisterPage : ContentPage
@@ -45,6 +47,6 @@ public partial class RegisterPage : ContentPage
     private async void OnLoginTapped(object sender, EventArgs e)
     {
         // Login Sayfasına Yönlendir
-        //await Navigation.PushAsync(new LoginPage());
+        await Navigation.PushAsync(new LoginPage());
     }
 }

@@ -67,6 +67,6 @@ public partial class WelcomePage : ContentPage
     private async void OnSignInClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("HasSeenWelcome", true);
-        // Login sayfasına yönlendirme yapılabilir
+        await Shell.Current.GoToAsync("//login");
     }
 }
