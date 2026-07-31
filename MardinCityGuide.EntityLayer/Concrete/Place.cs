@@ -28,6 +28,9 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [NotNull]
         public string TastingMenuUrl { get; set; } = string.Empty;      // "View Tasting Menu"
 
+        public int? ReviewCount { get; set; }        // YENİ: 1.2k / 850
+        public string? Tag { get; set; }              // YENİ: "FINE DINING", "AUTHENTIC", "TERRACE VIEW", "LOCAL FAVORITE"
+
         public Location Location { get; set; } = default!;
 
         public int CategoryId { get; set; }              // All Places/Traditional/Terraced...

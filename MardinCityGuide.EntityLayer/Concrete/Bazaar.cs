@@ -24,6 +24,9 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public string CoverImageUrl { get; set; } = default!;
         public bool IsFeatured { get; set; }          // "Iconic Bazaars" bölümünde büyük kart
 
+        public decimal? Rating { get; set; }        // YENİ: 4.7
+        public int? ReviewCount { get; set; }        // YENİ: 850
+
         public Location? Location { get; set; }
 
         public int CategoryId { get; set; }
