@@ -1,0 +1,61 @@
+﻿INSERT INTO Places
+(
+    Name,
+    CoverImageUrl,
+    TypeLabel,
+    PlaceType,
+    PriceLevel,
+    Rating,
+    IsFeatured,
+    TastingMenuUrl,
+    ReviewCount,
+    Tag,
+    LocationId,
+    CategoryId
+)
+VALUES
+('Cercis Murat Konağı','https://test.com','Geleneksel Mardin Mutfağı',1,3,4.9,1,'https://test.com',2841,'EN ÇOK TERCİH EDİLEN',1,17),
+('Bağdadi Restaurant','https://test.com','Geleneksel Mardin Mutfağı',1,3,4.8,1,'https://test.com',1964,'OTANTİK',2,17),
+('Rıdo Kebap Salonu','https://test.com','Kebap Salonu',1,2,4.7,0,'https://test.com',1523,'YEREL HALKIN GÖZDESİ',3,19),
+('Kebapçı Yusuf Usta','https://test.com','Ocakbaşı',1,2,4.6,0,'https://test.com',864,'LEZZET DURAĞI',4,19),
+('Sadık Künefe','https://test.com','Tatlı Salonu',1,2,4.8,0,'https://test.com',1182,'MEŞHUR',5,18),
+('Şehzade Konukevi Restaurant','https://test.com','Tarihi Konak Restaurant',1,3,4.8,1,'https://test.com',1338,'MANZARALI',6,17),
+('Antik Sur Cafe','https://test.com','Teraslı Kafe',2,2,4.6,0,'https://test.com',714,'TERAS MANZARASI',7,17),
+('Revak Cafe','https://test.com','Kafe',2,2,4.5,0,'https://test.com',468,'ŞEHİR MERKEZİ',8,17),
+('Seyr-i Merdin Cafe','https://test.com','Teraslı Kafe',2,3,4.8,1,'https://test.com',2217,'TERAS MANZARASI',9,17),
+('Merdin Cafe','https://test.com','Kafe',2,2,4.5,0,'https://test.com',533,'OTANTİK',10,17),
+
+('Zinciriye Medresesi','https://test.com','Tarihi Yapı',4,1,4.9,1,'test',6248,'TARİHİ',11,13),
+('Kasımiye Medresesi','https://test.com','Tarihi Yapı',4,1,4.9,1,'test',7035,'UNESCO ADAYI',12,13),
+('Mardin Ulu Camii','https://test.com','Tarihi Cami',4,1,4.9,1,'test',5812,'TARİHİ',13,11),
+('Şehidiye Camii','https://test.com','Tarihi Cami',4,1,4.8,0,'test',3422,'OTANTİK',14,11),
+('Latifiye Camii','https://test.com','Tarihi Cami',4,1,4.8,0,'test',2481,'TARİHİ',15,11),
+('Hatuniye Medresesi','https://test.com','Tarihi Medrese',4,1,4.7,0,'test',1765,'KÜLTÜREL MİRAS',16,13),
+('Deyrulzafaran Manastırı','https://test.com','Manastır',4,1,5.0,1,'test',8421,'MUTLAKA GÖRÜLMELİ',17,10),
+('Mor Gabriel Manastırı','https://test.com','Manastır',4,1,4.9,1,'test',6150,'TARİHİ',18,10),
+('Kırklar Kilisesi','https://test.com','Tarihi Kilise',4,1,4.8,0,'test',2410,'İNANÇ TURİZMİ',19,12),
+('Mor Yakup Kilisesi','https://test.com','Tarihi Kilise',4,1,4.7,0,'test',1632,'SÜRYANİ MİRASI',20,12),
+
+('Dara Antik Kenti','https://test.com','Antik Kent',4,1,4.9,1,'test',5118,'MUTLAKA GÖRÜN',21,9),
+('Mardin Müzesi','https://test.com','Müze',4,1,4.8,0,'test',2964,'KÜLTÜR',22,14),
+('Sakıp Sabancı Kent Müzesi','https://test.com','Müze',4,1,4.8,0,'test',2247,'KÜLTÜR',23,14),
+('Cumhuriyet Meydanı','https://test.com','Tarihi Meydan',4,1,4.6,0,'test',985,'ŞEHİR MERKEZİ',24,9),
+('Revaklı Çarşı','https://test.com','Tarihi Çarşı',4,1,4.8,0,'test',1843,'ALIŞVERİŞ',25,1),
+('Bakırcılar Çarşısı','https://test.com','Tarihi Çarşı',4,1,4.8,0,'test',2042,'EL SANATLARI',26,3),
+('Tellallar Çarşısı','https://test.com','Tarihi Çarşı',4,1,4.7,0,'test',1011,'OTANTİK',27,1),
+('Kayseriye Bedesteni','https://test.com','Bedesten',4,1,4.7,0,'test',1458,'TARİHİ',28,1),
+('Mardin Kalesi','https://test.com','Tarihi Kale',4,1,4.9,1,'test',6548,'PANORAMİK MANZARA',29,8),
+('Mardin Evleri','https://test.com','Tarihi Yapılar',4,1,4.9,1,'test',9132,'FOTOĞRAF NOKTASI',30,8),
+
+('Delmar Cafe','https://test.com','Kafe',2,2,4.5,0,'https://test.com',624,'GENÇLERİN TERCİHİ',31,17),
+('No42 Coffee','https://test.com','Üçüncü Nesil Kahve',2,2,4.7,0,'https://test.com',538,'KAHVE',32,17),
+('Mardin Coffee Roastery','https://test.com','Coffee House',2,2,4.8,0,'https://test.com',492,'KAHVE TUTKUNLARI',33,17),
+('Artuklu Kahve Evi','https://test.com','Kafe',2,1,4.4,0,'https://test.com',361,'SAMİMİ ORTAM',34,17),
+('Kasr-ı Nehroz','https://test.com','Restaurant',1,3,4.8,1,'https://test.com',1725,'LÜKS',35,17),
+('Maridin Restaurant','https://test.com','Geleneksel Mutfak',1,3,4.8,0,'https://test.com',1424,'OTANTİK',36,17),
+('Leyli Muse Restaurant','https://test.com','Fine Dining',1,3,4.9,1,'https://test.com',2544,'ÜST DÜZEY YEMEK DENEYİMİ',37,17),
+('Mardin Antik Cafe','https://test.com','Kafe',2,2,4.6,0,'https://test.com',441,'MANZARALI',38,17),
+('Kasr-ı Abbas Cafe','https://test.com','Teraslı Kafe',2,2,4.7,0,'https://test.com',702,'TERAS MANZARASI',39,17),
+('Midyat Konuk Evi Restaurant','https://test.com','Geleneksel Midyat Mutfağı',1,3,4.8,1,'https://test.com',1948,'MİDYAT\'IN GÖZDESİ',40,17);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------

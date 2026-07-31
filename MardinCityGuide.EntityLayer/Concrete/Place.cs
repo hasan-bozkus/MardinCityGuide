@@ -19,24 +19,24 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public string CoverImageUrl { get; set; } = default!;
 
         [NotNull]
-        public string TypeLabel { get; set; } = string.Empty;          // "Traditional Mardin Cuisine", "Terraced Cafe"
+        public string TypeLabel { get; set; } = string.Empty;          // "Geleneksel Mardin Mutfağı", "Teraslı Kafe"
         public PlaceType PlaceType { get; set; }
         public PriceLevel PriceLevel { get; set; }
         public decimal? Rating { get; set; }             // 4.9 / 4.7 ...
         public bool IsFeatured { get; set; }             // en üstteki büyük kart
 
         [NotNull]
-        public string TastingMenuUrl { get; set; } = string.Empty;      // "View Tasting Menu"
+        public string TastingMenuUrl { get; set; } = string.Empty;      // "Tadım Menüsünü Görüntüle"
 
         public int? ReviewCount { get; set; }        // YENİ: 1.2k / 850
-        public string? Tag { get; set; }              // YENİ: "FINE DINING", "AUTHENTIC", "TERRACE VIEW", "LOCAL FAVORITE"
+        public string? Tag { get; set; }              // YENİ: "ÜST DÜZEY YEMEK DENEYİMİ", "OTANTİK", "TERAS MANZARASI", "YEREL HALKIN GÖZDESİ"
 
         public int LocationId { get; set; }
 
         [Ignore]
         public Location Location { get; set; } = default!;
 
-        public int CategoryId { get; set; }              // All Places/Traditional/Terraced...
+        public int CategoryId { get; set; }              // Tüm Mekanlar/Geleneksel/Teraslı...
 
         [Ignore]
         public Category Category { get; set; } = default!;

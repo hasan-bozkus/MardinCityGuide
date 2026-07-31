@@ -17,8 +17,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public string AddressText { get; set; } = string.Empty;   // "Old Town Main St."
 
         [NotNull]
-        public string District { get; set; } = string.Empty;       // "Artuklu", "Old City Center"
-        public double? DistanceKmFromUser { get; set; } // "0.2 km", "30km from City"
+        public string District { get; set; } = string.Empty;       // "Artuklu", "Eski Şehir Merkezi"
+        public double? DistanceKmFromUser { get; set; } // "0.2 km", "Şehirden 30km Uzakta"
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }

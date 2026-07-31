@@ -1,0 +1,31 @@
+﻿INSERT INTO Categories (CategoryName, SortOrder, SectionType) VALUES
+-- BazaarsAndCrafts (1)
+('Tarihi Çarşılar', 1, 1),
+('Telkari Sanatı', 2, 1),
+('Bakırcılık', 3, 1),
+('Taş İşçiliği', 4, 1),
+('Ahşap Oymacılığı', 5, 1),
+('Dokumacılık', 6, 1),
+('Yöresel Hediyelikler', 7, 1),
+('Baharatçılar', 8, 1),
+
+-- CultureAndHistory (2)
+('Antik Kentler', 9, 2),
+('Manastırlar', 10, 2),
+('Camiler', 11, 2),
+('Kiliseler', 12, 2),
+('Medreseler', 13, 2),
+('Müzeler', 14, 2),
+('Konaklar', 15, 2),
+('Kaleler', 16, 2),
+('Kültürel Miras', 17, 2),
+
+-- Gastronomy (3)
+('Yöresel Yemekler', 18, 3),
+('Tatlılar', 19, 3),
+('Kebaplar', 20, 3),
+('Hamur İşleri', 21, 3),
+('Çorbalar', 22, 3),
+('Kahvaltılık Lezzetler', 23, 3),
+('Baharatlar', 24, 3),
+('İçecekler', 25, 3);

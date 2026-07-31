@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Home.HomePage"
-             Title="HomePage"
+             Title="Ana Sayfa"
              BackgroundColor="#FBF9F6"
              NavigationPage.HasNavigationBar="False">
 
@@ -17,7 +17,7 @@
             <Grid ColumnDefinitions="*, Auto">
                 <!-- Logo / Başlık -->
                 <Label Grid.Column="0" 
-                       Text="Mardin Guide" 
+                       Text="Mardin Şehir Rehberi" 
                        FontSize="22" 
                        FontAttributes="Bold" 
                        TextColor="#725B38" 
@@ -46,16 +46,17 @@
                 <!-- HERO & CAROUSEL HEADER -->
                 <VerticalStackLayout Spacing="16">
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="WELCOME" 
+                        <Label Text="HOŞGELDİN" 
                                FontSize="12" 
                                FontAttributes="Bold" 
                                TextColor="#725B38" 
                                CharacterSpacing="2" />
-                        <Label Text="Hello, Traveler" 
+                        <Label Text="Merhaba, Gezgin" 
                                FontSize="32" 
                                FontAttributes="Bold" 
                                TextColor="#1B1C1A" />
-                        <Label Text="The golden city of Mesopotamia awaits your discovery." 
+                        <Label Text="Mezopotamya'nın altın şehri keşfinizi bekliyor.
+" 
                                FontSize="15" 
                                TextColor="#4D463C" />
                     </VerticalStackLayout>
@@ -78,7 +79,7 @@
                                    VerticalOptions="Center" />
 
                             <Entry Grid.Column="1"
-                                   Placeholder="Search historic places, bazaars..." 
+                                   Placeholder="Tarihi yerleri, çarşıları arayın..." 
                                    PlaceholderColor="#7F766A" 
                                    TextColor="#1B1C1A" 
                                    FontSize="14" 
@@ -103,8 +104,8 @@
                 <!-- FEATURED CAROUSEL SECTION -->
                 <VerticalStackLayout Spacing="16">
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" Text="Featured" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                        <Label Grid.Column="1" Text="See All" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
+                        <Label Grid.Column="0" Text="Öne Çıkanlar" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                        <Label Grid.Column="1" Text="Tümünü Gör" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
                     </Grid>
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
