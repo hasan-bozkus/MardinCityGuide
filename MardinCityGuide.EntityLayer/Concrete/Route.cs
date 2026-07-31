@@ -38,6 +38,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
 
+        [Ignore]
         public ICollection<RouteStop>? Stops { get; set; }
     }
 }

@@ -10,6 +10,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public int RouteStopId { get; set; }
 
         public int RouteId { get; set; }
+
+        [Ignore]
         public Route Route { get; set; } = default!;
 
         public int SortOrder { get; set; }

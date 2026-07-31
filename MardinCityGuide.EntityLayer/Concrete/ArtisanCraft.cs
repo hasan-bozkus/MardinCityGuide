@@ -20,6 +20,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
 
         [NotNull]
         public string ImageUrl { get; set; } = default!;
+
         public CraftActionType ActionType { get; set; }
 
         [NotNull]

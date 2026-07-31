@@ -19,9 +19,14 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public decimal? Rating { get; set; }           // 4.9
         public bool IsRecommended { get; set; }        // "4 RECOMMENDED"
 
+        public int LocationId { get; set; }
+
+        [Ignore]
         public Location Location { get; set; } = default!;
 
         public int? BazaarId { get; set; }             // hangi çarşıya bağlı
+
+        [Ignore]
         public Bazaar? Bazaar { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

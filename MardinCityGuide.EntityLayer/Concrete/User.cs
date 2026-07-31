@@ -36,7 +36,10 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
 
+        [Ignore]
         public ICollection<Favorite>? Favorites { get; set; }
+
+        [Ignore]
         public ICollection<Route>? SavedRoutes { get; set; }                 // YENİ: "12 ROUTES" sayacı için ilişki
 
         // Not: "24 FAVORITES" / "12 ROUTES" ekranda gösterilen sayaçlar,

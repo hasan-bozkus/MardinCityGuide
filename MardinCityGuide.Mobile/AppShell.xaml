@@ -8,6 +8,7 @@
     xmlns:welcome="clr-namespace:MardinCityGuide.Mobile.Views.Welcome"
     xmlns:register="clr-namespace:MardinCityGuide.Mobile.Views.Register"
     xmlns:login="clr-namespace:MardinCityGuide.Mobile.Views.Login"
+    xmlns:home="clr-namespace:MardinCityGuide.Mobile.Views.Home"
     Title="MardinCityGuide.Mobile">
 
     <!--<ShellContent
@@ -29,6 +30,10 @@
 
     <ShellContent Route="login"
                   ContentTemplate="{DataTemplate login:LoginPage}"
+                  Shell.NavBarIsVisible="False" />
+
+    <ShellContent Route="home"
+                  ContentTemplate="{DataTemplate home:HomePage}"
                   Shell.NavBarIsVisible="False" />
 
 </Shell>

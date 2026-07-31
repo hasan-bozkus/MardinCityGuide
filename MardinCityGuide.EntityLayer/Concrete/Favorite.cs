@@ -13,6 +13,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public int FavoriteId { get; set; }
 
         public int UserId { get; set; }
+
+        [Ignore]
         public User User { get; set; } = default!;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

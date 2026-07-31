@@ -27,11 +27,17 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public decimal? Rating { get; set; }        // YENİ: 4.7
         public int? ReviewCount { get; set; }        // YENİ: 850
 
+        public int LocaitonId { get; set; }
+
+        [Ignore]
         public Location? Location { get; set; }
 
         public int CategoryId { get; set; }
+
+        [Ignore]
         public Category Category { get; set; } = default!;
 
+        [Ignore]
         public ICollection<GalleryImage>? Images { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

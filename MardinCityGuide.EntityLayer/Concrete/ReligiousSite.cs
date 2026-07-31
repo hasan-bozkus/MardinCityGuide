@@ -39,6 +39,9 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public string? EntryFeeCurrency { get; set; } = "TRY";
         public bool IsFreeEntry { get; set; }                   // Grand Mosque: "Free"
 
+        public int LocationId { get; set; }
+
+        [Ignore]
         public Location? Location { get; set; }
 
         // Favorilere eklenebilir (kalp ikonu)
@@ -49,6 +52,10 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public bool IsActive { get; set; } = true;
 
         public string? FullDescription { get; set; }     // YENİ: "About" metni (ShortDescription zaten vardı, uzun açıklama eksikti)
+
+        public int VisitInfoId { get; set; }
+
+        [Ignore]
         public VisitInfo? VisitInfo { get; set; }          // YENİ: owned type
         public int? ReviewCount { get; set; }               // YENİ: "(124)"
     }

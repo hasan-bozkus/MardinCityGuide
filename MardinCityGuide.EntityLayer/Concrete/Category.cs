@@ -14,10 +14,14 @@ namespace MardinCityGuide.EntityLayer.Concrete
 
         [NotNull]
         public string CategoryName { get; set; } = string.Empty;
-        public SectionType SectionType { get; set; }
+
+        public SectionType? SectionType { get; set; }
         public int SortOrder { get; set; }
 
+        [Ignore]
         public ICollection<Bazaar>? Bazaars { get; set; }
+
+        [Ignore]
         public ICollection<Place>? Places { get; set; }
     }
 }

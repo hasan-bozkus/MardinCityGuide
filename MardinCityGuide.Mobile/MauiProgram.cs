@@ -1,13 +1,15 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MardinCityGuide.BusinessLayer.Abstract;
+using MardinCityGuide.BusinessLayer.Concrete;
 using MardinCityGuide.DataAccessLayer.Abstract;
+using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.DataAccessLayer.Repositories;
+using MardinCityGuide.Mobile.Helpers;
+using MardinCityGuide.Mobile.Views.Home;
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Storage;
 using SQLite;
 using System;
 using System.IO;
-using Microsoft.Maui.Storage;
-using MardinCityGuide.DataAccessLayer.Concrete;
-using MardinCityGuide.BusinessLayer.Abstract;
-using MardinCityGuide.BusinessLayer.Concrete;
 namespace MardinCityGuide.Mobile
 {
     public static class MauiProgram
@@ -27,7 +29,7 @@ namespace MardinCityGuide.Mobile
                 });
 
             // 1. Veritabanı Yolu Belirleme (Geliştirme Ortamı ve Canlı Ayrımı)
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "MardinCityGuide.db");  
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "MardinCityGuide.db");
 
             //// Android / iOS cihazlarda ve canlı ortamda (Release) cihazın güvenli klasörüne yazar
             //dbPath = Path.Combine(FileSystem.AppDataDirectory, "MardinCityGuide.db");
@@ -46,7 +48,11 @@ namespace MardinCityGuide.Mobile
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+
+            ServiceHelper.Initialize(app.Services);
+
+            return app;
         }
     }
 }

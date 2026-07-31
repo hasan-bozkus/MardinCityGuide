@@ -21,7 +21,11 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public bool IsFeatured { get; set; }
 
         public int? LocationId { get; set; }
+
+        [Ignore]
         public Location? Location { get; set; } = default!;
+
+        [Ignore]
         public ICollection<GalleryImage>? Images { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

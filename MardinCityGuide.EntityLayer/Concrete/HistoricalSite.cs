@@ -29,9 +29,12 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
 
+        public int LocationId { get; set; }
+
+        [Ignore]
         public Location Location { get; set; } = default!;
+
+        [Ignore]
         public ICollection<GalleryImage>? Images { get; set; }
-
-
     }
 }
