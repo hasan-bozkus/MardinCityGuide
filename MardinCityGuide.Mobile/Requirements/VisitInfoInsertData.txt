@@ -1,0 +1,179 @@
+﻿INSERT INTO VisitInfos
+(
+    DurationLabel,
+    PriceLabel,
+    EraLabel,
+    IconKey,
+    Title,
+    Description,
+    SortOrder,
+    TargetType,
+    TargetId
+)
+VALUES
+
+('1.5 - 2 Saat','Ücretsiz','14. Yüzyıl',
+'schedule',
+'Ziyaret Süresi',
+'Ortalama gezi süresi 1.5 ile 2 saat arasındadır.',
+1,1,1),
+
+('1.5 - 2 Saat','Ücretsiz','14. Yüzyıl',
+'payments',
+'Giriş Ücreti',
+'Ziyaret ücretsizdir.',
+2,1,1),
+
+('1.5 - 2 Saat','Ücretsiz','14. Yüzyıl',
+'history',
+'Yapım Dönemi',
+'Artuklu döneminin önemli eserlerinden biridir.',
+3,1,1),
+
+('1.5 - 2 Saat','Ücretsiz','14. Yüzyıl',
+'camera',
+'Fotoğraf',
+'Fotoğraf çekimine uygundur.',
+4,1,1),
+
+('2 Saat','150 ₺','15. Yüzyıl',
+'schedule',
+'Ziyaret Süresi',
+'Ortalama ziyaret süresi yaklaşık 2 saattir.',
+1,1,2),
+
+('2 Saat','150 ₺','15. Yüzyıl',
+'payments',
+'Giriş Ücreti',
+'Giriş bileti gişeden temin edilir.',
+2,1,2),
+
+('2 Saat','150 ₺','15. Yüzyıl',
+'history',
+'Yapım Dönemi',
+'Yapı Akkoyunlu dönemine tarihlenmektedir.',
+3,1,2),
+
+('2 Saat','150 ₺','15. Yüzyıl',
+'camera',
+'Fotoğraf',
+'Avluda ve bahçede fotoğraf çekebilirsiniz.',
+4,1,2),
+
+('45 Dakika','Ücretsiz','12. Yüzyıl',
+'schedule',
+'Ziyaret Süresi',
+'Kısa sürede gezilebilir.',
+1,1,3),
+
+('45 Dakika','Ücretsiz','12. Yüzyıl',
+'payments',
+'Giriş Ücreti',
+'İbadet saatlerine dikkat edilmelidir.',
+2,1,3),
+
+('45 Dakika','Ücretsiz','12. Yüzyıl',
+'history',
+'Yapım Dönemi',
+'Mardin''in en eski camilerinden biridir.',
+3,1,3),
+
+('45 Dakika','Ücretsiz','12. Yüzyıl',
+'camera',
+'Fotoğraf',
+'İç mekanda flaş kullanılmaması önerilir.',
+4,1,3),
+
+('2 - 3 Saat','250 ₺','5. Yüzyıl',
+'schedule',
+'Ziyaret Süresi',
+'Manastırın tamamını gezmek yaklaşık 3 saat sürer.',
+1,1,4),
+
+('2 - 3 Saat','250 ₺','5. Yüzyıl',
+'payments',
+'Giriş Ücreti',
+'Yabancı ziyaretçiler için farklı ücret uygulanabilir.',
+2,1,4),
+
+('2 - 3 Saat','250 ₺','5. Yüzyıl',
+'history',
+'Yapım Dönemi',
+'Süryani Ortodoks dünyasının en önemli merkezlerinden biridir.',
+3,1,4);
+
+----------------------------------------------------------------------------------------------------------
+
+INSERT INTO VisitInfos
+(
+    DurationLabel,
+    PriceLabel,
+    EraLabel,
+    IconKey,
+    Title,
+    Description,
+    SortOrder,
+    TargetType,
+    TargetId
+)
+VALUES
+
+-- TargetId = 5
+('30 - 45 Dakika','Ücretsiz','13. Yüzyıl','schedule','Ziyaret Süresi','Ortalama ziyaret süresi 30 ile 45 dakika arasındadır.',1,1,5),
+('30 - 45 Dakika','Ücretsiz','13. Yüzyıl','payments','Giriş Ücreti','Giriş ücretsizdir.',2,1,5),
+('30 - 45 Dakika','Ücretsiz','13. Yüzyıl','history','Tarihi','Artuklu döneminden günümüze ulaşan önemli yapılardandır.',3,1,5),
+('30 - 45 Dakika','Ücretsiz','13. Yüzyıl','camera','Fotoğraf','Fotoğraf çekimine uygundur.',4,1,5),
+
+-- TargetId = 6
+('1 Saat','Ücretsiz','15. Yüzyıl','schedule','Ziyaret Süresi','Yaklaşık 1 saat ayırmanız tavsiye edilir.',1,1,6),
+('1 Saat','Ücretsiz','15. Yüzyıl','payments','Giriş Ücreti','Giriş ücretsizdir.',2,1,6),
+('1 Saat','Ücretsiz','15. Yüzyıl','history','Yapım Dönemi','Akkoyunlu dönemine ait önemli eserlerden biridir.',3,1,6),
+('1 Saat','Ücretsiz','15. Yüzyıl','tips','Gezi Tavsiyesi','Sabah saatlerinde ziyaret daha sakindir.',4,1,6),
+
+-- TargetId = 7
+('45 Dakika','Ücretsiz','19. Yüzyıl','schedule','Ziyaret Süresi','Kısa bir mola için idealdir.',1,1,7),
+('45 Dakika','Ücretsiz','19. Yüzyıl','payments','Ortalama Harcama','Kişi başı ortalama harcama 250-350 ₺ arasındadır.',2,1,7),
+('45 Dakika','Ücretsiz','19. Yüzyıl','coffee','Öne Çıkan Lezzet','Mırra ve Süryani kahvesini deneyebilirsiniz.',3,1,7),
+('45 Dakika','Ücretsiz','19. Yüzyıl','camera','Manzara','Teras kısmı fotoğraf çekimi için uygundur.',4,1,7),
+
+-- TargetId = 8
+('1 Saat','Ücretsiz','20. Yüzyıl','schedule','Ziyaret Süresi','Ortalama 1 saat vakit geçirilebilir.',1,1,8),
+('1 Saat','Ücretsiz','20. Yüzyıl','payments','Ortalama Harcama','İçecek fiyatları orta seviyededir.',2,1,8),
+('1 Saat','Ücretsiz','20. Yüzyıl','coffee','Kahve','Yöresel kahveler tavsiye edilir.',3,1,8),
+('1 Saat','Ücretsiz','20. Yüzyıl','wifi','İnternet','Kablosuz internet hizmeti bulunmaktadır.',4,1,8),
+
+-- TargetId = 9
+('1 - 2 Saat','Ücretsiz','Modern','schedule','Ziyaret Süresi','Manzaranın keyfini çıkarmak için 1-2 saat yeterlidir.',1,1,9),
+('1 - 2 Saat','Ücretsiz','Modern','camera','Fotoğraf Noktası','Gün batımında eşsiz kareler yakalayabilirsiniz.',2,1,9),
+('1 - 2 Saat','Ücretsiz','Modern','restaurant','Lezzet','Yöresel yemekler servis edilmektedir.',3,1,9),
+('1 - 2 Saat','Ücretsiz','Modern','tips','Öneri','Rezervasyon yaptırmanız tavsiye edilir.',4,1,9),
+
+-- TargetId = 10
+('45 Dakika','Ücretsiz','Modern','schedule','Ziyaret Süresi','Ortalama ziyaret süresi 45 dakikadır.',1,1,10),
+('45 Dakika','Ücretsiz','Modern','coffee','Kahve Çeşitleri','Filtre kahve ve espresso çeşitleri sunulmaktadır.',2,1,10),
+('45 Dakika','Ücretsiz','Modern','wifi','İnternet','Ücretsiz Wi-Fi hizmeti vardır.',3,1,10),
+('45 Dakika','Ücretsiz','Modern','tips','Atmosfer','Sessiz çalışma ortamı sunmaktadır.',4,1,10),
+
+-- TargetId = 11
+('1.5 Saat','150 ₺','14. Yüzyıl','schedule','Ziyaret Süresi','Tüm bölümleri gezmek yaklaşık 1.5 saat sürmektedir.',1,1,11),
+('1.5 Saat','150 ₺','14. Yüzyıl','payments','Giriş Ücreti','Müze kart geçerli değildir.',2,1,11),
+('1.5 Saat','150 ₺','14. Yüzyıl','history','Mimari','Kesme taş mimarisiyle dikkat çeker.',3,1,11),
+('1.5 Saat','150 ₺','14. Yüzyıl','camera','Fotoğraf','Avlu kısmında fotoğraf çekimine izin verilmektedir.',4,1,11),
+
+-- TargetId = 12
+('2 Saat','150 ₺','15. Yüzyıl','schedule','Ziyaret Süresi','Yaklaşık 2 saat ayırmanız önerilir.',1,1,12),
+('2 Saat','150 ₺','15. Yüzyıl','payments','Giriş Ücreti','Bilet gişeden satın alınabilir.',2,1,12),
+('2 Saat','150 ₺','15. Yüzyıl','history','Tarihçe','Mardin''in simge yapılarından biridir.',3,1,12),
+('2 Saat','150 ₺','15. Yüzyıl','tips','Öneri','İlkbahar aylarında ziyaret edilmesi tavsiye edilir.',4,1,12),
+
+-- TargetId = 13
+('30 Dakika','Ücretsiz','12. Yüzyıl','schedule','Ziyaret Süresi','İbadet saatleri dışında gezilebilir.',1,1,13),
+('30 Dakika','Ücretsiz','12. Yüzyıl','payments','Giriş','Giriş ücretsizdir.',2,1,13),
+('30 Dakika','Ücretsiz','12. Yüzyıl','history','Tarihçe','Yüzyıllardır ibadete açık tarihi camidir.',3,1,13),
+('30 Dakika','Ücretsiz','12. Yüzyıl','tips','Kıyafet','Ziyaret sırasında uygun kıyafet tercih edilmelidir.',4,1,13),
+
+-- TargetId = 14
+('45 Dakika','Ücretsiz','13. Yüzyıl','schedule','Ziyaret Süresi','Yaklaşık 45 dakikada gezilebilir.',1,1,14),
+('45 Dakika','Ücretsiz','13. Yüzyıl','payments','Giriş','Ücretsiz ziyaret edilebilir.',2,1,14),
+('45 Dakika','Ücretsiz','13. Yüzyıl','history','Mimari','Taş işçiliğiyle öne çıkan tarihi yapılardandır.',3,1,14),
+('45 Dakika','Ücretsiz','13. Yüzyıl','camera','Fotoğraf','Flaş kullanmadan fotoğraf çekebilirsiniz.',4,1,14);

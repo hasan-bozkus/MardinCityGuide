@@ -1,0 +1,453 @@
+﻿INSERT INTO Routes
+(
+    Name,
+    Description,
+    CoverImageUrl,
+    RouteType,
+    EstimatedDurationMinutes,
+    Category,
+    DurationLabel,
+    DistanceKm,
+    MapUrl,
+    Rating,
+    StopCountLabelOverride
+)
+VALUES
+
+(
+'Eski Mardin Yürüyüş Rotası',
+'Dar sokaklar, tarihi konaklar ve taş mimarinin arasında unutulmaz bir yürüyüş.',
+'https://test.com',
+1,
+180,
+1,
+'3 SAAT',
+3.2,
+'https://test.com',
+4.9,
+12
+),
+
+(
+'Artuklu Tarih Rotası',
+'Artuklu döneminden kalan önemli eserleri kapsayan kültür rotası.',
+'https://test.com',
+1,
+240,
+1,
+'4 SAAT',
+4.8,
+'https://test.com',
+4.9,
+9
+),
+
+(
+'Mardin Gastronomi Rotası',
+'Kaburga dolması, sembusek ve Süryani şarabı gibi yöresel lezzetleri keşfedin.',
+'https://test.com',
+2,
+300,
+2,
+'5 SAAT',
+5.6,
+'https://test.com',
+4.9,
+10
+),
+
+(
+'Gün Batımı Fotoğraf Rotası',
+'Mardin''in en güzel gün batımı noktalarını kapsayan rota.',
+'https://test.com',
+3,
+120,
+3,
+'2 SAAT',
+2.1,
+'https://test.com',
+4.8,
+6
+),
+
+(
+'Mardin Medreseleri Rotası',
+'Şehrin en önemli medreselerini tek bir geziyle keşfedin.',
+'https://test.com',
+1,
+210,
+1,
+'3.5 SAAT',
+3.8,
+'https://test.com',
+4.8,
+5
+),
+
+(
+'Tarihi Camiler Rotası',
+'Mardin''in simge camilerini kapsayan kültür gezisi.',
+'https://test.com',
+1,
+180,
+1,
+'3 SAAT',
+2.9,
+'https://test.com',
+4.9,
+8
+),
+
+(
+'Süryani Mirası Rotası',
+'Manastırlar ve Süryani kültürünü tanıtan özel rota.',
+'https://test.com',
+1,
+420,
+1,
+'7 SAAT',
+35.0,
+'https://test.com',
+5.0,
+6
+),
+
+(
+'Midyat Kültür Rotası',
+'Midyat konuk evleri, taş evler ve tarihi sokakları keşfedin.',
+'https://test.com',
+1,
+240,
+1,
+'4 SAAT',
+4.5,
+'https://test.com',
+4.8,
+10
+),
+
+(
+'Taş Konaklar Rotası',
+'Mardin''in tarihi taş konaklarını gezerken mimariyi yakından inceleyin.',
+'https://test.com',
+3,
+150,
+3,
+'2.5 SAAT',
+2.6,
+'https://test.com',
+4.8,
+7
+),
+
+(
+'Lezzet Durakları Rotası',
+'Şehrin en sevilen restoran ve kafelerini bir araya getiren rota.',
+'https://test.com',
+2,
+360,
+2,
+'6 SAAT',
+6.3,
+'https://test.com',
+4.9,
+14
+),
+
+(
+'Mardin Aile Gezisi',
+'Çocuklu aileler için rahat tempolu gezi planı.',
+'https://test.com',
+1,
+300,
+1,
+'5 SAAT',
+5.0,
+'https://test.com',
+4.7,
+8
+),
+
+(
+'Hafta Sonu Mardin Turu',
+'Bir hafta sonunda Mardin''in öne çıkan noktalarını keşfetmek isteyenler için.',
+'https://test.com',
+1,
+480,
+1,
+'8 SAAT',
+8.7,
+'https://test.com',
+4.9,
+15
+),
+
+(
+'Mardin Kahve Molaları',
+'Üçüncü nesil kahveciler ve geleneksel kahvehaneleri kapsayan rota.',
+'https://test.com',
+2,
+180,
+2,
+'3 SAAT',
+3.4,
+'https://test.com',
+4.8,
+8
+),
+
+(
+'Gece Mardin Deneyimi',
+'Akşam saatlerinde ışıklandırılmış tarihi sokakları keşfedin.',
+'https://test.com',
+3,
+150,
+3,
+'2.5 SAAT',
+2.7,
+'https://test.com',
+4.8,
+6
+),
+
+(
+'Mardin''in En İyileri',
+'Şehrin mutlaka görülmesi gereken en popüler noktalarını kapsayan başlangıç rotası.',
+'https://test.com',
+1,
+540,
+1,
+'9 SAAT',
+9.8,
+'https://test.com',
+5.0,
+18
+);
+
+-----------------------------------------------------------------------------------------------------------------
+
+INSERT INTO Routes
+(
+    Name,
+    Description,
+    CoverImageUrl,
+    RouteType,
+    EstimatedDurationMinutes,
+    Category,
+    DurationLabel,
+    DistanceKm,
+    MapUrl,
+    Rating,
+    StopCountLabelOverride
+)
+VALUES
+
+(
+'Dara Antik Kenti Keşif Rotası',
+'Dara Antik Kenti''nin sarnıçları, nekropol alanı ve kaya yapıları arasında tarih dolu bir keşif rotası.',
+'https://test.com',
+1,
+180,
+1,
+'3 SAAT',
+2.8,
+'https://test.com',
+4.9,
+8
+),
+
+(
+'Deyrulzafaran - Dara Kültür Rotası',
+'Deyrulzafaran Manastırı ile Dara Antik Kenti''ni aynı gün keşfetmek isteyenler için hazırlanmıştır.',
+'https://test.com',
+1,
+360,
+1,
+'6 SAAT',
+38.0,
+'https://test.com',
+5.0,
+6
+),
+
+(
+'Midyat Taş Evler Rotası',
+'Midyat Konuk Evi, tarihi sokaklar, gümüşçüler çarşısı ve taş konakları kapsayan yürüyüş rotası.',
+'https://test.com',
+1,
+210,
+1,
+'3.5 SAAT',
+3.6,
+'https://test.com',
+4.9,
+9
+),
+
+(
+'Beyazsu Doğa ve Lezzet Rotası',
+'Beyazsu Deresi boyunca yürüyüş yapıp alabalık restoranlarında mola verebileceğiniz doğa rotası.',
+'https://test.com',
+2,
+240,
+2,
+'4 SAAT',
+5.1,
+'https://test.com',
+4.9,
+7
+),
+
+(
+'Tur Abdin İnanç Rotası',
+'Mor Gabriel Manastırı, Deyrulzafaran ve çevredeki Süryani mirasını kapsayan rota.',
+'https://test.com',
+1,
+480,
+1,
+'8 SAAT',
+62.0,
+'https://test.com',
+5.0,
+8
+),
+
+(
+'Eski Çarşılar Rotası',
+'Revaklı Çarşı, Bakırcılar Çarşısı, Tellallar Çarşısı ve tarihi bedesteni kapsayan alışveriş rotası.',
+'https://test.com',
+1,
+150,
+1,
+'2.5 SAAT',
+1.8,
+'https://test.com',
+4.8,
+11
+),
+
+(
+'Mezopotamya Seyir Noktaları',
+'Mezopotamya Ovası''nı izleyebileceğiniz en güzel seyir teraslarını bir araya getirir.',
+'https://test.com',
+3,
+180,
+3,
+'3 SAAT',
+4.0,
+'https://test.com',
+4.9,
+6
+),
+
+(
+'Artuklu Mimari Rotası',
+'Artuklu döneminden günümüze ulaşan medrese, cami ve tarihi yapıları kapsayan kültür rotası.',
+'https://test.com',
+1,
+300,
+1,
+'5 SAAT',
+4.7,
+'https://test.com',
+4.9,
+10
+),
+
+(
+'Süryani Kültür Rotası',
+'Süryani kiliseleri, manastırları ve kültürel miras noktalarını keşfetmeye yönelik rota.',
+'https://test.com',
+1,
+420,
+1,
+'7 SAAT',
+48.0,
+'https://test.com',
+5.0,
+9
+),
+
+(
+'Kaburga Dolması Rotası',
+'Mardin''de kaburga dolması, sembusek ve yöresel tatlıları deneyimleyebileceğiniz gastronomi rotası.',
+'https://test.com',
+2,
+240,
+2,
+'4 SAAT',
+5.2,
+'https://test.com',
+4.9,
+8
+),
+
+(
+'Süryani Şarabı Deneyim Rotası',
+'Midyat ve Mardin''de geleneksel Süryani şarabı üreticilerini ziyaret etmeye yönelik rota.',
+'https://test.com',
+2,
+300,
+2,
+'5 SAAT',
+27.5,
+'https://test.com',
+4.8,
+5
+),
+
+(
+'Mardin 48 Saat Rotası',
+'İki gün içinde Mardin''in en önemli tarihi ve kültürel duraklarını kapsayan önerilen gezi planı.',
+'https://test.com',
+1,
+960,
+1,
+'2 GÜN',
+82.0,
+'https://test.com',
+5.0,
+18
+),
+
+(
+'Dara - Nusaybin Tarih Rotası',
+'Dara Antik Kenti ile Nusaybin''in tarihi yapıları arasında uzanan kültürel gezi rotası.',
+'https://test.com',
+1,
+300,
+1,
+'5 SAAT',
+34.0,
+'https://test.com',
+4.8,
+7
+),
+
+(
+'Fotoğraf Tutkunları İçin Mardin',
+'Taş evler, dar sokaklar, kubbeler ve Mezopotamya manzarasını kapsayan fotoğraf rotası.',
+'https://test.com',
+3,
+240,
+3,
+'4 SAAT',
+4.3,
+'https://test.com',
+5.0,
+12
+),
+
+(
+'Mardin''de İlk Gün',
+'Şehri ilk kez ziyaret edenler için en önemli noktaları içeren başlangıç rotası.',
+'https://test.com',
+1,
+420,
+1,
+'7 SAAT',
+7.4,
+'https://test.com',
+5.0,
+14
+);

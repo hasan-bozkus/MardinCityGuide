@@ -6,16 +6,19 @@ namespace MardinCityGuide.Mobile.Views.Home;
 
 public partial class HomePage : ContentPage
 {
-    private readonly ICategoryService _categoryService;
+    private readonly IHighlightService _highlightService;
 
     public HomePage()
     {
         InitializeComponent();
-        _categoryService = ServiceHelper.GetService<ICategoryService>();
+        _highlightService = ServiceHelper.GetService<IHighlightService>();
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        var highlightList = await _highlightService.TGetHighlightListBySortOrderAsync();
+        HighlightListCollection.ItemsSource = highlightList.Take(8).ToList();
     }
 }

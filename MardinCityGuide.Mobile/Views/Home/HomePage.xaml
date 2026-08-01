@@ -108,73 +108,48 @@
                         <Label Grid.Column="1" Text="Tümünü Gör" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
                     </Grid>
 
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <HorizontalStackLayout Spacing="16">
+                    <!-- CollectionView Tek Başına Yeterlidir -->
+                    <CollectionView x:Name="HighlightListCollection" HeightRequest="410" HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="16" />
+                        </CollectionView.ItemsLayout>
 
-                            <!-- Card 1: Deyrulzafaran -->
-                            <VerticalStackLayout Spacing="8" WidthRequest="260">
-                                <Grid HeightRequest="320">
-                                    <Border StrokeThickness="0">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="16" />
-                                        </Border.StrokeShape>
-                                        <Image Source="deyrulzafaran.jpg" Aspect="AspectFill" />
-                                    </Border>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout Spacing="8" WidthRequest="260">
+                                    <Grid HeightRequest="300">
+                                        <Border StrokeThickness="0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="16" />
+                                            </Border.StrokeShape>
+                                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
+                                        </Border>
 
-                                    <!-- Tag -->
-                                    <Border BackgroundColor="#33FFFFFF" 
-                                            Stroke="#33FFFFFF" 
-                                            StrokeThickness="1" 
-                                            HorizontalOptions="End" 
-                                            VerticalOptions="Start" 
-                                            Margin="12" 
-                                            Padding="10,4">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="12" />
-                                        </Border.StrokeShape>
-                                        <Label Text="Must Visit" FontSize="11" FontAttributes="Bold" TextColor="White" />
-                                    </Border>
-                                </Grid>
-                                <Label Text="Deyrulzafaran" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
-                                <HorizontalStackLayout Spacing="4">
-                                    <Label Text="&#xe56f;" FontFamily="MaterialSymbols" FontSize="16" TextColor="#C5A880" VerticalOptions="Center" />
-                                    <Label Text="Ancient Saffron Monastery" FontSize="14" TextColor="#4D463C" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
+                                        <!-- Tag -->
+                                        <Border BackgroundColor="#33FFFFFF" 
+                                Stroke="#33FFFFFF" 
+                                StrokeThickness="1" 
+                                HorizontalOptions="End" 
+                                VerticalOptions="Start" 
+                                Margin="12" 
+                                Padding="10,4">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="12" />
+                                            </Border.StrokeShape>
+                                            <Label Text="{Binding BadgeLabel}" FontSize="11" FontAttributes="Bold" TextColor="White" />
+                                        </Border>
+                                    </Grid>
 
-                            <!-- Card 2: Zinciriye Medresesi -->
-                            <VerticalStackLayout Spacing="8" WidthRequest="260">
-                                <Grid HeightRequest="320">
-                                    <Border StrokeThickness="0">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="16" />
-                                        </Border.StrokeShape>
-                                        <Image Source="zinciriye_medrese.jpg" Aspect="AspectFill" />
-                                    </Border>
+                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" MaxLines="1" LineBreakMode="TailTruncation" />
 
-                                    <!-- Tag -->
-                                    <Border BackgroundColor="#33FFFFFF" 
-                                            Stroke="#33FFFFFF" 
-                                            StrokeThickness="1" 
-                                            HorizontalOptions="End" 
-                                            VerticalOptions="Start" 
-                                            Margin="12" 
-                                            Padding="10,4">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="12" />
-                                        </Border.StrokeShape>
-                                        <Label Text="Historic" FontSize="11" FontAttributes="Bold" TextColor="White" />
-                                    </Border>
-                                </Grid>
-                                <Label Text="Zinciriye Medresesi" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
-                                <HorizontalStackLayout Spacing="4">
-                                    <Label Text="&#xe56f;" FontFamily="MaterialSymbols" FontSize="16" TextColor="#C5A880" VerticalOptions="Center" />
-                                    <Label Text="14th Century Artistry" FontSize="14" TextColor="#4D463C" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-
-                        </HorizontalStackLayout>
-                    </ScrollView>
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Label Text="&#xe56f;" FontFamily="MaterialSymbols" FontSize="16" TextColor="#C5A880" VerticalOptions="Center" />
+                                        <Label Text="{Binding Subtitle}" FontSize="14" TextColor="#4D463C" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
 
                 <!-- BENTO GRID: EXPLORE BY SOUL -->

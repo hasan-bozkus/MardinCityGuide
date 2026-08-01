@@ -18,7 +18,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [NotNull]
         public string ShortDescription { get; set; } = default!;
 
-        public ReligiousSiteType SiteType { get; set; }        // rozet: MEDRESE / MONASTERY / MOSQUE
+        public ReligiousSiteType SiteType { get; set; }        // rozet: MEDRESE = 1 / MONASTERY = 2 / MOSQUE = 3
 
         [NotNull]
         public string ImageUrl { get; set; } = default!;

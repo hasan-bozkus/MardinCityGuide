@@ -41,6 +41,10 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<AppDatabase>();
             builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
             builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
+
+            builder.Services.AddScoped<IHighlightDal, SLiteHighlightRepository>();
+            builder.Services.AddScoped<IHighlightService, HighlightManager>();
+
             builder.Services.AddScoped<ICategoryDal, SLiteCategoryRepository>();
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
 

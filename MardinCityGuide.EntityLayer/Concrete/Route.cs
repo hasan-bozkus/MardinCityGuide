@@ -23,7 +23,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public RouteType RouteType { get; set; }
         public int? EstimatedDurationMinutes { get; set; }
 
-        public RouteCategory? Category { get; set; }           // YENİ: filtre chip'leri için
+        public RouteCategory? Category { get; set; }           // YENİ: Historical = 1, Culinary = 2, Photography = 3
 
         [NotNull]
         public string DurationLabel { get; set; } = string.Empty;             // YENİ: "8 HOURS"
@@ -39,6 +39,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public bool IsActive { get; set; } = true;
 
         [Ignore]
-        public ICollection<RouteStop>? Stops { get; set; }
+        public ICollection<RouteStop>? Stops { get; set; } // Restaurant = 1, ReligiousSite = 2, Route = 3
+
     }
 }

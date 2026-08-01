@@ -31,7 +31,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public bool IsActive { get; set; } = true;
 
         // Hangi entity'e yönlendirdiği
-        public FavoriteType TargetType { get; set; }
+        public FavoriteType TargetType { get; set; } // Restaurant = 1 (Place ), ReligiousSite = 2 (Museum / ReligiousSite / HistoricalSite), Route = 3 (Route)
         public int TargetId { get; set; }
     }
 }
