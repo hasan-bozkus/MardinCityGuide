@@ -197,8 +197,8 @@
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
                             <VerticalStackLayout Grid.Column="0" Spacing="2">
-                                <Label Text="Curated Itineraries" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
-                                <Label Text="Hand-picked routes by locals" FontSize="12" TextColor="#4D463C" />
+                                <Label Text="Özenle Hazırlanmış Seyahat Programları" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
+                                <Label Text="Yerel halk tarafından özenle seçilmiş rotalar" FontSize="12" TextColor="#4D463C" />
                             </VerticalStackLayout>
                             <Label Grid.Column="1" Text="&#xe55b;" FontFamily="MaterialSymbols" FontSize="28" TextColor="#008080" VerticalOptions="Center" />
                         </Grid>
