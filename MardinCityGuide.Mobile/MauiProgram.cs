@@ -45,6 +45,9 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<IHighlightDal, SLiteHighlightRepository>();
             builder.Services.AddScoped<IHighlightService, HighlightManager>();
 
+            builder.Services.AddScoped<IHomeNavTileDal, SLiteHomeNavTileRepository>();
+            builder.Services.AddScoped<IHomeNavTileService, HomeNavTileManager>();
+
             builder.Services.AddScoped<ICategoryDal, SLiteCategoryRepository>();
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
 

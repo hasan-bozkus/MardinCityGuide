@@ -154,67 +154,55 @@
 
                 <!-- BENTO GRID: EXPLORE BY SOUL -->
                 <VerticalStackLayout Spacing="16">
-                    <Label Text="Explore by Soul" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" />
+                    <Label Text="Ruhunla Keşfet" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" />
 
-                    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
-                        <!-- Gastronomy -->
-                        <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16" />
-                            </Border.StrokeShape>
-                            <Grid RowDefinitions="Auto, *">
-                                <Label Grid.Row="0" Text="&#xe56c;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
-                                <Label Grid.Row="1" Text="Gastronomy" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                            </Grid>
-                        </Border>
+                    <FlexLayout BindableLayout.ItemsSource="{Binding ResultHomeNawTileDtos}"
+                Wrap="Wrap"
+                Direction="Row"
+                JustifyContent="SpaceBetween"
+                AlignItems="Stretch">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border FlexLayout.Basis="48%"
+                        BackgroundColor="#EFEEEB"
+                        StrokeThickness="0"
+                        HeightRequest="120"
+                        Margin="0,0,0,12"
+                        Padding="16">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16" />
+                                    </Border.StrokeShape>
+                                    <Grid RowDefinitions="Auto, *">
+                                        <Label Grid.Row="0"
+                               Text="{Binding IconKey}"
+                               FontFamily="MaterialSymbols"
+                               FontSize="32"
+                               TextColor="#725B38" />
+                                        <Label Grid.Row="1"
+                               Text="{Binding Title}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#1B1C1A"
+                               VerticalOptions="End" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
 
-                        <!-- Spirituality -->
-                        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16" />
-                            </Border.StrokeShape>
-                            <Grid RowDefinitions="Auto, *">
-                                <Label Grid.Row="0" Text="&#xeab2;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
-                                <Label Grid.Row="1" Text="Spirituality" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                            </Grid>
-                        </Border>
-
-                        <!-- Bazaars -->
-                        <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16" />
-                            </Border.StrokeShape>
-                            <Grid RowDefinitions="Auto, *">
-                                <Label Grid.Row="0" Text="&#xe569;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
-                                <Label Grid.Row="1" Text="Bazaars" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                            </Grid>
-                        </Border>
-
-                        <!-- Events -->
-                        <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#EFEEEB" StrokeThickness="0" HeightRequest="130" Padding="16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16" />
-                            </Border.StrokeShape>
-                            <Grid RowDefinitions="Auto, *">
-                                <Label Grid.Row="0" Text="&#xe878;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" />
-                                <Label Grid.Row="1" Text="Events" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                            </Grid>
-                        </Border>
-
-                        <!-- Curated Itineraries (Full Width Banner) -->
-                        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#1A008080" Stroke="#33008080" StrokeThickness="1" Padding="16">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16" />
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
-                                <VerticalStackLayout Grid.Column="0" Spacing="2">
-                                    <Label Text="Curated Itineraries" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
-                                    <Label Text="Hand-picked routes by locals" FontSize="12" TextColor="#4D463C" />
-                                </VerticalStackLayout>
-                                <Label Grid.Column="1" Text="&#xe55b;" FontFamily="MaterialSymbols" FontSize="28" TextColor="#008080" VerticalOptions="Center" />
-                            </Grid>
-                        </Border>
-                    </Grid>
+                    <!-- Curated Itineraries (Full Width Banner) -->
+                    <Border BackgroundColor="#1A008080" Stroke="#33008080" StrokeThickness="1" Padding="16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                            <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                <Label Text="Curated Itineraries" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
+                                <Label Text="Hand-picked routes by locals" FontSize="12" TextColor="#4D463C" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="&#xe55b;" FontFamily="MaterialSymbols" FontSize="28" TextColor="#008080" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
                 </VerticalStackLayout>
 
                 <!-- POPULAR NOW SECTION -->
