@@ -7,5 +7,6 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
 {
     public interface IPlaceDal : IGenericDal<Place>
     {
+        Task<List<Place>> GetPlaceListWithSortOrderAsync();
     }
 }

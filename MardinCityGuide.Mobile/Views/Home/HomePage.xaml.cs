@@ -10,6 +10,7 @@ public partial class HomePage : ContentPage
 {
     private readonly IHighlightService _highlightService;
     private readonly IHomeNavTileService _homeNavTileService;
+    private readonly IPlaceService _placeService;
 
     public List<ResultHomeNawTileDto> ResultHomeNawTileDtos { get; set; }
 
@@ -18,6 +19,7 @@ public partial class HomePage : ContentPage
         InitializeComponent();
         _highlightService = ServiceHelper.GetService<IHighlightService>();
         _homeNavTileService = ServiceHelper.GetService<IHomeNavTileService>();
+        _placeService = ServiceHelper.GetService<IPlaceService>();
     }
 
     protected override async void OnAppearing()
@@ -36,6 +38,9 @@ public partial class HomePage : ContentPage
         }).Take(4).ToList();
 
         BindingContext = this;
+
+        var placeList = await _placeService.TGetPlaceListWithSortOrderAsync();
+        PlaceListCollection.ItemsSource = placeList.Take(2).ToList();
     }
 
     // Yardımcı Metod:

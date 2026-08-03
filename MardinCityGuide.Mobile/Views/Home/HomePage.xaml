@@ -190,7 +190,7 @@
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
 
-                    <!-- Curated Itineraries (Full Width Banner) -->
+                    <!-- Curated Itineraries (Full Width Banner) //eklendiğinde routes sayfasına yönlendirme yapılacak -->
                     <Border BackgroundColor="#1A008080" Stroke="#33008080" StrokeThickness="1" Padding="16">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
@@ -208,52 +208,52 @@
                 <!-- POPULAR NOW SECTION -->
                 <VerticalStackLayout Spacing="16">
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" Text="Popular Now" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                        <Label Grid.Column="1" Text="See All" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
+                        <Label Grid.Column="0" Text="Popüler" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
+                        <Label Grid.Column="1" Text="Tümünü Gör" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
                     </Grid>
 
                     <VerticalStackLayout Spacing="16">
-                        <!-- Entry 1 -->
-                        <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
-                            <Border Grid.Column="0" HeightRequest="80" WidthRequest="80" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="12" />
-                                </Border.StrokeShape>
-                                <Image Source="cercis_murat.jpg" Aspect="AspectFill" />
-                            </Border>
 
-                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                <HorizontalStackLayout Spacing="4">
-                                    <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="14" TextColor="#D35400" VerticalOptions="Center" />
-                                    <Label Text="4.9 (1.2k reviews)" FontSize="12" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
-                                <Label Text="Cercis Murat Paşa" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" />
-                                <Label Text="Traditional Gastronomy" FontSize="12" TextColor="#4D463C" />
-                            </VerticalStackLayout>
+                        <CollectionView x:Name="PlaceListCollection">
 
-                            <Label Grid.Column="2" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#7F766A" VerticalOptions="Center" />
-                        </Grid>
+                            <CollectionView.ItemTemplate>
 
-                        <!-- Entry 2 -->
-                        <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
-                            <Border Grid.Column="0" HeightRequest="80" WidthRequest="80" StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="12" />
-                                </Border.StrokeShape>
-                                <Image Source="bakircilar_carsisi.jpg" Aspect="AspectFill" />
-                            </Border>
+                                <DataTemplate>
 
-                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                <HorizontalStackLayout Spacing="4">
-                                    <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="14" TextColor="#D35400" VerticalOptions="Center" />
-                                    <Label Text="4.7 (850 reviews)" FontSize="12" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center" />
-                                </HorizontalStackLayout>
-                                <Label Text="Bakırcılar Çarşısı" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" />
-                                <Label Text="Coppersmiths Bazaar" FontSize="12" TextColor="#4D463C" />
-                            </VerticalStackLayout>
+                                    <!-- Entry 1 -->
+                                    <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                                        <Border Grid.Column="0" HeightRequest="80" WidthRequest="80" StrokeThickness="0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="12" />
+                                            </Border.StrokeShape>
+                                            <Image Source="{Binding CoverImageUrl}" Aspect="AspectFill" />
+                                        </Border>
 
-                            <Label Grid.Column="2" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#7F766A" VerticalOptions="Center" />
-                        </Grid>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="14" TextColor="#D35400" VerticalOptions="Center" />
+                                                <Label FontSize="12" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center">
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{}{0} ({1} İnceleme)">
+                                                            <Binding Path="Rating" />
+                                                            <Binding Path="ReviewCount" />
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                            <Label Text="{Binding TypeLabel}" FontSize="12" TextColor="#4D463C" />
+                                        </VerticalStackLayout>
+
+                                        <Label Grid.Column="2" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#7F766A" VerticalOptions="Center" />
+                                    </Grid>
+
+                                </DataTemplate>
+                                
+                            </CollectionView.ItemTemplate>
+                            
+                        </CollectionView>
+                                               
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
