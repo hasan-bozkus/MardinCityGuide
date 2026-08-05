@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.PlaceDetail.PlaceDetailPage"
+             Title="PlaceDetailPage"
+             BackgroundColor="#FBF9F6"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- ================= 1. TOP APP BAR (SABİT ÜST BAR) ================= -->
+        <Border Grid.Row="0" 
+                BackgroundColor="#CCFDFCFB" 
+                StrokeThickness="0" 
+                HeightRequest="64" 
+                Padding="20,0"
+                ZIndex="50">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <!-- Back Button -->
+                <Border Grid.Column="0" 
+                        BackgroundColor="Transparent" 
+                        StrokeThickness="0" 
+                        WidthRequest="40" 
+                        HeightRequest="40">
+                    <Label Text="&#xe5c4;" 
+                           FontFamily="MaterialSymbols" 
+                           FontSize="24" 
+                           TextColor="#725B38" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </Border>
+
+                <!-- Right Action Buttons (Share & Favorite) -->
+                <HorizontalStackLayout Grid.Column="2" Spacing="8" VerticalOptions="Center">
+                    <Border BackgroundColor="Transparent" 
+                            StrokeThickness="0" 
+                            WidthRequest="40" 
+                            HeightRequest="40">
+                        <Label Text="&#xe80d;" 
+                               FontFamily="MaterialSymbols" 
+                               FontSize="22" 
+                               TextColor="#725B38" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+                    </Border>
+                    <Border BackgroundColor="Transparent" 
+                            StrokeThickness="0" 
+                            WidthRequest="40" 
+                            HeightRequest="40">
+                        <Label Text="&#xe87e;" 
+                               FontFamily="MaterialSymbols" 
+                               FontSize="22" 
+                               TextColor="#725B38" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ================= 2. MAIN SCROLLABLE CONTENT ================= -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- HERO IMAGE GALLERY WITH INDICATOR -->
+                <Grid HeightRequest="380">
+                    <CarouselView x:Name="ImageGallery" 
+                                  IndicatorView="GalleryIndicator" 
+                                  Loop="False">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding .}" Aspect="AspectFill" />                                
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <!-- Gradient Overlay -->
+                    <BoxView VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <BoxView.Color>Transparent</BoxView.Color>
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#40000000" Offset="0.0" />
+                                <GradientStop Color="#00000000" Offset="0.3" />
+                                <GradientStop Color="#00000000" Offset="0.7" />
+                                <GradientStop Color="#FBF9F6" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <!-- Indicator Dots -->
+                    <IndicatorView x:Name="GalleryIndicator" 
+                                   IndicatorColor="#66FDFCFB" 
+                                   SelectedIndicatorColor="#FDFCFB" 
+                                   IndicatorSize="8" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="End" 
+                                   Margin="0,0,0,36" />
+                </Grid>
+
+                <!-- CONTENT AREA -->
+                <VerticalStackLayout Spacing="24" Padding="20,0,20,32" Margin="0,-30,0,0">
+
+                    <!-- HEADER CARD -->
+                    <Border BackgroundColor="#FDFCFB" 
+                            StrokeThickness="0" 
+                            Padding="24">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <!-- Category Tag -->
+                                <Border Grid.Column="0" 
+                                        BackgroundColor="#4DFEDEB2" 
+                                        StrokeThickness="0" 
+                                        HorizontalOptions="Start" 
+                                        Padding="12,4">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <Label Text="HISTORIC SITE" 
+                                           FontSize="11" 
+                                           FontAttributes="Bold" 
+                                           TextColor="#725B38" 
+                                           CharacterSpacing="1" />
+                                </Border>
+
+                                <!-- Rating -->
+                                <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="&#xe838;" 
+                                           FontFamily="MaterialSymbols" 
+                                           FontSize="18" 
+                                           TextColor="#FF8E58" 
+                                           VerticalOptions="Center" />
+                                    <Label Text="4.9" 
+                                           FontSize="14" 
+                                           FontAttributes="Bold" 
+                                           TextColor="#1B1C1A" 
+                                           VerticalOptions="Center" />
+                                    <Label Text="(124)" 
+                                           FontSize="12" 
+                                           TextColor="#4D463C" 
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Grid>
+
+                            <!-- Title -->
+                            <Label Text="The Great Mosque of Mardin" 
+                                   FontSize="26" 
+                                   FontAttributes="Bold" 
+                                   TextColor="#1B1C1A" />
+
+                            <!-- Location Subtitle -->
+                            <HorizontalStackLayout Spacing="4">
+                                <Label Text="&#xe55f;" 
+                                       FontFamily="MaterialSymbols" 
+                                       FontSize="18" 
+                                       TextColor="#4D463C" 
+                                       VerticalOptions="Center" />
+                                <Label Text="Old Mardin Center, 47100" 
+                                       FontSize="14" 
+                                       TextColor="#4D463C" 
+                                       VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- QUICK INFO GRID (3 COLUMNS) -->
+                    <Grid ColumnDefinitions="*, *, *" ColumnSpacing="12">
+                        <!-- Duration -->
+                        <Border Grid.Column="0" BackgroundColor="#F5F3F0" StrokeThickness="0" Padding="12,16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="&#xe8b5;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
+                                <Label Text="Duration" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label Text="1.5 - 2h" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Price -->
+                        <Border Grid.Column="1" BackgroundColor="#F5F3F0" StrokeThickness="0" Padding="12,16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="&#xe8b1;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
+                                <Label Text="Price" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label Text="Free" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Era -->
+                        <Border Grid.Column="2" BackgroundColor="#F5F3F0" StrokeThickness="0" Padding="12,16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="&#xea65;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
+                                <Label Text="Era" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label Text="12th Century" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- ABOUT SECTION -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="About" FontSize="20" FontAttributes="Bold" TextColor="#1B1C1A" />
+                        <Label Text="The Great Mosque, or Ulu Cami, is the architectural soul of Mardin. Its iconic fluted minaret, built in 1176 during the Artuqid period, dominates the city's skyline. The mosque's expansive courtyard and serene prayer hall offer a sanctuary of silence amidst the bustling narrow streets of the old town. The stonework is a masterpiece of Islamic geometry, reflecting the sun's golden hues throughout the day." 
+                               FontSize="14" 
+                               TextColor="#4D463C" 
+                               LineHeight="1.4" />
+                    </VerticalStackLayout>
+
+                    <!-- VISITOR GUIDE SECTION -->
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Visitor Guide" FontSize="20" FontAttributes="Bold" TextColor="#1B1C1A" />
+
+                        <!-- Card 1: Dress Code -->
+                        <Border BackgroundColor="#80EFEEEB" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12">
+                                <Label Grid.Column="0" Text="&#xe88e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#725B38" VerticalOptions="Start" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label Text="Dress Code" FontSize="14" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                    <Label Text="Modest clothing required. Headscarves are provided at the entrance for visitors." FontSize="13" TextColor="#4D463C" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <!-- Card 2: Best Time to Visit -->
+                        <Border BackgroundColor="#80EFEEEB" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12">
+                                <Label Grid.Column="0" Text="&#xeb8b;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#725B38" VerticalOptions="Start" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label Text="Best Time to Visit" FontSize="14" FontAttributes="Bold" TextColor="#1B1C1A" />
+                                    <Label Text="Early morning for photography or late afternoon for the sunset glow on the minaret." FontSize="13" TextColor="#4D463C" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- LOCATION MAP SECTION -->
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Grid.Column="0" Text="Konum" FontSize="20" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Hartiada Aç" FontSize="20" FontAttributes="Bold" TextColor="#008080" VerticalOptions="Center" />
+                        </Grid>
+
+                        <Grid HeightRequest="180">
+                            <Border StrokeThickness="1" Stroke="#D1C5B8">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <Image Source="mardin_map_preview.jpg" Aspect="AspectFill" />
+                            </Border>
+
+                            <!-- Map Pin Overlay -->
+                            <Border BackgroundColor="#725B38" 
+                                    StrokeThickness="0" 
+                                    WidthRequest="44" 
+                                    HeightRequest="44" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="22" />
+                                </Border.StrokeShape>
+                                <Border.Shadow>
+                                    <Shadow Brush="#000000" Offset="0,4" Radius="8" Opacity="0.25" />
+                                </Border.Shadow>
+                                <Label Text="&#xe55f;" FontFamily="MaterialSymbols" FontSize="24" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ================= 3. FIXED ACTION FOOTER ================= -->
+        <Border Grid.Row="2" 
+                BackgroundColor="#E6FDFCFB" 
+                StrokeThickness="1" 
+                Stroke="#33D1C5B8" 
+                HeightRequest="80" 
+                Padding="20,12"
+                ZIndex="50">
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
+                <!-- Open in Maps Main Button -->
+                <Button Grid.Column="0" 
+                        Text="&#xe52e; HARİTA OLARAK AÇ" 
+                        FontFamily="MaterialSymbols" 
+                        BackgroundColor="#C5A880" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        CornerRadius="16" 
+                        HeightRequest="54" />
+
+                <!-- Bookmark Button -->
+                <Button Grid.Column="1" 
+                        Text="&#xe8e7;" 
+                        FontFamily="MaterialSymbols" 
+                        BackgroundColor="Transparent" 
+                        BorderColor="#C5A880" 
+                        BorderWidth="1.5" 
+                        TextColor="#725B38" 
+                        FontSize="22" 
+                        CornerRadius="16" 
+                        WidthRequest="54" 
+                        HeightRequest="54" 
+                        Padding="0" />
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

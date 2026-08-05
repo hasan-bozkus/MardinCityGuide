@@ -1,4 +1,5 @@
 ﻿using MardinCityGuide.Mobile.Views.Home;
+using MardinCityGuide.Mobile.Views.PlaceDetail;
 using MardinCityGuide.Mobile.Views.Welcome;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +21,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new HomePage();
+                initialPage = new PlaceDetailPage();
             }
             else
             {

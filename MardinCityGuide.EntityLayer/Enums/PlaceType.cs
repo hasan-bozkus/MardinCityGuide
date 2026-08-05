@@ -6,9 +6,9 @@ namespace MardinCityGuide.EntityLayer.Enums
 {
     public enum PlaceType
     {
-        Restaurant = 1,
-        Cafe = 2,
-        Winery = 3,
-        Traditional = 4
+        Restoran = 1,
+        Kafe = 2,
+        Zıkkım = 3,
+        Geleneksel = 4
     }
 }

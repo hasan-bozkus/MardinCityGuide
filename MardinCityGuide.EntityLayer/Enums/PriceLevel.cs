@@ -6,8 +6,8 @@ namespace MardinCityGuide.EntityLayer.Enums
 {
     public enum PriceLevel
     {
-        Cheap = 1,      // ₺
-        Moderate = 2,   // ₺₺
-        Expensive = 3   // ₺₺₺
+        Uygun = 1,      // ₺
+        Orta = 2,   // ₺₺
+        Pahalı = 3   // ₺₺₺
     }
 }
