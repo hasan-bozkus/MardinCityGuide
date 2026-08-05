@@ -5,10 +5,8 @@ using System.Text;
 
 namespace MardinCityGuide.DataAccessLayer.Abstract
 {
-    public interface IPlaceDal : IGenericDal<Place>
+    public interface IEditorialHighlightDal : IGenericDal<EditorialHighlight>
     {
-        Task<List<Place>> GetPlaceListWithSortOrderAsync();
-
-        Task<Place> GetRandomPlaceAsync();
+        Task<EditorialHighlight> GetRandomEditoralHighlightAsync();
     }
 }

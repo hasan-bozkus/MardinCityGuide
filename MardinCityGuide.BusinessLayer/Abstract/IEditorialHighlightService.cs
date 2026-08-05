@@ -5,10 +5,9 @@ using System.Text;
 
 namespace MardinCityGuide.BusinessLayer.Abstract
 {
-    public interface IPlaceService : IGenericService<Place>
+    public interface IEditorialHighlightService : IGenericService<EditorialHighlight>
     {
-        Task<List<Place>> TGetPlaceListWithSortOrderAsync();
-        Task<Place> TGetRandomPlaceAsync();
+        Task<EditorialHighlight> TGetRandomEditoralHighlightAsync();
 
     }
 }

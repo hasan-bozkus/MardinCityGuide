@@ -54,6 +54,9 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<IPlaceDal, SLitePlaceRepository>();
             builder.Services.AddScoped<IPlaceService, PlaceManager>();
 
+            builder.Services.AddScoped<IEditorialHighlightDal, SLiteEditorialHighlightRepository>();
+            builder.Services.AddScoped<IEditorialHighlightService, EditorialHighlightManager>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

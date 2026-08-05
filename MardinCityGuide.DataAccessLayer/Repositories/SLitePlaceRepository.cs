@@ -25,5 +25,13 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             var values = await _connection.Table<Place>().Where(x => x.IsFeatured == true).OrderByDescending(y => y.PlaceId).ToListAsync();
             return values;
         }
+
+        public async Task<Place> GetRandomPlaceAsync()
+        {
+            var placeCount = await _connection.Table<Place>().CountAsync();
+            var random = new Random().Next(0, placeCount);
+            var value = await _connection.Table<Place>().Skip(random).FirstOrDefaultAsync();
+            return value;
+        }
     }
 }

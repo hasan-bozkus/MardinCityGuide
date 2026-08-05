@@ -268,12 +268,11 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="10" />
                                 </Border.StrokeShape>
-                                <Label Text="AUTHENTIC CHOICE" FontSize="10" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
+                                <Label Text="{Binding ResultGetRandomEditorialHighlightDto.BadgeLabel}" FontSize="10" FontAttributes="Bold" TextColor="White" CharacterSpacing="1" />
                             </Border>
 
-                            <Label Text="Sunset Tea at the Great Mosque" FontSize="18" FontAttributes="Bold" TextColor="#584323" />
-                            <Label Text="Experience the call to prayer as the sun dips below the Mesopotamian horizon." FontSize="13" TextColor="#584323" Opacity="0.9" />
-
+                            <Label Text="{Binding ResultGetRandomEditorialHighlightDto.Title}" FontSize="18" FontAttributes="Bold" TextColor="#584323" />
+                            <Label Text="{Binding ResultGetRandomEditorialHighlightDto.Description}" FontSize="13" TextColor="#584323" Opacity="0.9" />
                             <Button Text="Explore Details &#xe5c8;" 
                                     FontFamily="MaterialSymbols" 
                                     BackgroundColor="#725B38" 

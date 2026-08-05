@@ -1,8 +1,8 @@
+
 using MardinCityGuide.BusinessLayer.Abstract;
-using MardinCityGuide.EntityLayer.Concrete;
+using MardinCityGuide.Mobile.Dtos.EditorialHighlightDtos;
 using MardinCityGuide.Mobile.Dtos.HomeNevTileDtos;
 using MardinCityGuide.Mobile.Helpers;
-using System.Collections.ObjectModel;
 
 namespace MardinCityGuide.Mobile.Views.Home;
 
@@ -11,8 +11,10 @@ public partial class HomePage : ContentPage
     private readonly IHighlightService _highlightService;
     private readonly IHomeNavTileService _homeNavTileService;
     private readonly IPlaceService _placeService;
+    private readonly IEditorialHighlightService _editoralHighlightService;
 
     public List<ResultHomeNawTileDto> ResultHomeNawTileDtos { get; set; }
+    public ResultGetRandomEditorialHighlightDto ResultGetRandomEditorialHighlightDto { get; set; }
 
     public HomePage()
     {
@@ -20,6 +22,7 @@ public partial class HomePage : ContentPage
         _highlightService = ServiceHelper.GetService<IHighlightService>();
         _homeNavTileService = ServiceHelper.GetService<IHomeNavTileService>();
         _placeService = ServiceHelper.GetService<IPlaceService>();
+        _editoralHighlightService = ServiceHelper.GetService<IEditorialHighlightService>();
     }
 
     protected override async void OnAppearing()
@@ -37,10 +40,22 @@ public partial class HomePage : ContentPage
             IconKey = ParseUnicodeIcon(x.IconKey)
         }).Take(4).ToList();
 
-        BindingContext = this;
+
 
         var placeList = await _placeService.TGetPlaceListWithSortOrderAsync();
         PlaceListCollection.ItemsSource = placeList.Take(2).ToList();
+
+        var randomEditoralHighlight = await _editoralHighlightService.TGetRandomEditoralHighlightAsync();
+
+        ResultGetRandomEditorialHighlightDto = new ResultGetRandomEditorialHighlightDto
+        {
+            BadgeLabel = randomEditoralHighlight.BadgeLabel,
+            Description = randomEditoralHighlight.Description,
+            IllustrationUrl = ParseUnicodeIcon(randomEditoralHighlight.IllustrationUrl),
+            Title = randomEditoralHighlight.Title
+        };
+
+        BindingContext = this;
     }
 
     // Yardımcı Metod:

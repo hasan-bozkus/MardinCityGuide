@@ -20,5 +20,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             return await _placeDal.GetPlaceListWithSortOrderAsync();
         }
+
+        public async Task<Place> TGetRandomPlaceAsync()
+        {
+            return await _placeDal.GetRandomPlaceAsync();
+        }
     }
 }
