@@ -122,7 +122,7 @@
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
-                                    <Label Text="HISTORIC SITE" 
+                                    <Label x:Name="Tag" 
                                            FontSize="11" 
                                            FontAttributes="Bold" 
                                            TextColor="#725B38" 
@@ -136,12 +136,12 @@
                                            FontSize="18" 
                                            TextColor="#FF8E58" 
                                            VerticalOptions="Center" />
-                                    <Label Text="4.9" 
+                                    <Label x:Name="Rating"
                                            FontSize="14" 
                                            FontAttributes="Bold" 
                                            TextColor="#1B1C1A" 
                                            VerticalOptions="Center" />
-                                    <Label Text="(124)" 
+                                    <Label x:Name="ReviewCount" 
                                            FontSize="12" 
                                            TextColor="#4D463C" 
                                            VerticalOptions="Center" />
@@ -149,7 +149,7 @@
                             </Grid>
 
                             <!-- Title -->
-                            <Label Text="The Great Mosque of Mardin" 
+                            <Label x:Name="Title"
                                    FontSize="26" 
                                    FontAttributes="Bold" 
                                    TextColor="#1B1C1A" />
@@ -161,7 +161,7 @@
                                        FontSize="18" 
                                        TextColor="#4D463C" 
                                        VerticalOptions="Center" />
-                                <Label Text="Old Mardin Center, 47100" 
+                                <Label x:Name="District"
                                        FontSize="14" 
                                        TextColor="#4D463C" 
                                        VerticalOptions="Center" />
@@ -178,8 +178,8 @@
                             </Border.StrokeShape>
                             <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                 <Label Text="&#xe8b5;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
-                                <Label Text="Duration" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                                <Label Text="1.5 - 2h" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                                <Label Text="Açık Olduğu Saatler" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label x:Name="OpeningTime" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
                             </VerticalStackLayout>
                         </Border>
 
@@ -190,8 +190,8 @@
                             </Border.StrokeShape>
                             <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                 <Label Text="&#xe8b1;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
-                                <Label Text="Price" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                                <Label Text="Free" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                                <Label Text="Fiyat Değeri" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label x:Name="PriceLevel" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
                             </VerticalStackLayout>
                         </Border>
 
@@ -202,16 +202,17 @@
                             </Border.StrokeShape>
                             <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
                                 <Label Text="&#xea65;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#008080" HorizontalOptions="Center" />
-                                <Label Text="Era" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                                <Label Text="12th Century" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
+                                <Label Text="Mekan Türü" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                <Label x:Name="PlaceType" FontSize="13" FontAttributes="Bold" TextColor="#1B1C1A" HorizontalOptions="Center" />
                             </VerticalStackLayout>
                         </Border>
                     </Grid>
 
                     <!-- ABOUT SECTION -->
                     <VerticalStackLayout Spacing="10">
-                        <Label Text="About" FontSize="20" FontAttributes="Bold" TextColor="#1B1C1A" />
-                        <Label Text="The Great Mosque, or Ulu Cami, is the architectural soul of Mardin. Its iconic fluted minaret, built in 1176 during the Artuqid period, dominates the city's skyline. The mosque's expansive courtyard and serene prayer hall offer a sanctuary of silence amidst the bustling narrow streets of the old town. The stonework is a masterpiece of Islamic geometry, reflecting the sun's golden hues throughout the day." 
+                        <Label Text="Hakkında" FontSize="20" FontAttributes="Bold" TextColor="#1B1C1A" />
+                        <Label x:Name="Description"
+                               TextType="Html"
                                FontSize="14" 
                                TextColor="#4D463C" 
                                LineHeight="1.4" />
@@ -258,11 +259,12 @@
                         </Grid>
 
                         <Grid HeightRequest="180">
-                            <Border StrokeThickness="1" Stroke="#D1C5B8">
+                            <Border StrokeThickness="1" Stroke="#D1C5B8" HeightRequest="300">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
-                                <Image Source="mardin_map_preview.jpg" Aspect="AspectFill" />
+
+                                <WebView x:Name="AddressText" HorizontalOptions="Fill" VerticalOptions="Fill" />
                             </Border>
 
                             <!-- Map Pin Overlay -->

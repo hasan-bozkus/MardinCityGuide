@@ -9,6 +9,7 @@
     xmlns:register="clr-namespace:MardinCityGuide.Mobile.Views.Register"
     xmlns:login="clr-namespace:MardinCityGuide.Mobile.Views.Login"
     xmlns:home="clr-namespace:MardinCityGuide.Mobile.Views.Home"
+    xmlns:placedetail="clr-namespace:MardinCityGuide.Mobile.Views.PlaceDetail"
     Title="MardinCityGuide.Mobile">
 
     <!--<ShellContent

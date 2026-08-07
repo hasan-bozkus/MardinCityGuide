@@ -10,5 +10,7 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
         Task<List<Place>> GetPlaceListWithSortOrderAsync();
 
         Task<Place> GetRandomPlaceAsync();
+
+        Task<Place> GetPlaceWithLocationAndCategoryAsync(int id);
     }
 }

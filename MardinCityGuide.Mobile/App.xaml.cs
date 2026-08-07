@@ -21,7 +21,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new PlaceDetailPage();
+                initialPage =new AppShell();
             }
             else
             {

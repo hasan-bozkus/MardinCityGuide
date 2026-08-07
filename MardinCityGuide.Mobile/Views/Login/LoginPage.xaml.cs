@@ -48,7 +48,7 @@ public partial class LoginPage : ContentPage
     {
         // Başarılı giriş simülasyonu
         Preferences.Default.Set("HasSeenWelcome", true);
-        Application.Current.MainPage = new AppShell();
+        await Shell.Current.GoToAsync("//home");
     }
 
     private async void OnRegisterTapped(object sender, EventArgs e)

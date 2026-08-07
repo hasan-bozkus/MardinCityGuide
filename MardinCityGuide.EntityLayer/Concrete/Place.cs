@@ -20,10 +20,16 @@ namespace MardinCityGuide.EntityLayer.Concrete
 
         [NotNull]
         public string TypeLabel { get; set; } = string.Empty;          // "Geleneksel Mardin Mutfağı", "Teraslı Kafe"
+
+        [NotNull]
+        public string Description { get; set; } = string.Empty;
         public PlaceType PlaceType { get; set; }
         public PriceLevel PriceLevel { get; set; }
         public decimal? Rating { get; set; }             // 4.9 / 4.7 ...
         public bool IsFeatured { get; set; }             // en üstteki büyük kart
+
+        public TimeSpan? OpeningTimeStart { get; set; }         // 09:00
+        public TimeSpan? OpeningTimeEnd { get; set; }           // 18:00
 
         [NotNull]
         public string TastingMenuUrl { get; set; } = string.Empty;      // "Tadım Menüsünü Görüntüle"

@@ -55,7 +55,7 @@ public partial class WelcomePage : ContentPage
         Preferences.Default.Set("HasSeenWelcome", true);
 
         // Ana Sayfaya (MainPage / Dashboard) yönlendir
-        await Navigation.PushAsync(new MainPage());
+        await Navigation.PushAsync(new WelcomePage());
     }
 
     private async void OnCreateAccountClicked(object sender, EventArgs e)

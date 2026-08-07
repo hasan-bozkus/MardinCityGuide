@@ -1,8 +1,10 @@
 
 using MardinCityGuide.BusinessLayer.Abstract;
+using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.Mobile.Dtos.EditorialHighlightDtos;
 using MardinCityGuide.Mobile.Dtos.HomeNevTileDtos;
 using MardinCityGuide.Mobile.Helpers;
+using MardinCityGuide.Mobile.Views.PlaceDetail;
 
 namespace MardinCityGuide.Mobile.Views.Home;
 
@@ -72,5 +74,13 @@ public partial class HomePage : ContentPage
         }
 
         return iconKey;
+    }
+
+    private async void OnPlaceTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Element element) return;
+        if (element.BindingContext is not Place place) return;
+
+        await Shell.Current.GoToAsync($"placedetail?id={place.PlaceId}");
     }
 }
