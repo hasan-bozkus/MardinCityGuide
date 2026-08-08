@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.BazaarsCrafts.BazaarsCraftsPage"
+             Title="BazaarsCraftsPage"
+             BackgroundColor="#FDFCFB"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Renk Paleti (HTML Tailwind Config'den) -->
+            <Color x:Key="SurfaceIvory">#FDFCFB</Color>
+            <Color x:Key="Primary">#725B38</Color>
+            <Color x:Key="MardinSand">#C5A880</Color>
+            <Color x:Key="Terracotta">#A23F00</Color>
+            <Color x:Key="MesopotamianBlue">#008080</Color>
+            <Color x:Key="OnSurfaceVariant">#4D463C</Color>
+            <Color x:Key="SurfaceContainerLow">#F5F3F0</Color>
+            <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
+            <Color x:Key="PrimaryFixedDim">#E0C298</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- 1. TOP APP BAR -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="Auto, *, Auto" 
+              Padding="20, 12" 
+              BackgroundColor="{StaticResource SurfaceIvory}"
+              HeightRequest="60">
+
+            <ImageButton Grid.Column="0" 
+                         Source="arrow_back.png" 
+                         BackgroundColor="Transparent" 
+                         HeightRequest="24" 
+                         WidthRequest="24"
+                         VerticalOptions="Center" />
+
+            <Label Grid.Column="1" 
+                   Text="Mardin Guide" 
+                   TextColor="{StaticResource Primary}" 
+                   FontAttributes="Bold" 
+                   FontSize="22" 
+                   VerticalOptions="Center" 
+                   Margin="12,0,0,0" />
+
+            <ImageButton Grid.Column="2" 
+                         Source="search.png" 
+                         BackgroundColor="Transparent" 
+                         HeightRequest="24" 
+                         WidthRequest="24"
+                         VerticalOptions="Center" />
+        </Grid>
+
+        <!-- 2. ANA İÇERİK (SCROLLVIEW) -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="24" Padding="0,0,0,20">
+
+                <!-- Hero Section -->
+                <VerticalStackLayout Padding="20,12,20,0" Spacing="16">
+                    <Border StrokeShape="RoundRectangle 12" 
+                            HeightRequest="200" 
+                            StrokeThickness="0">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.2" />
+                        </Border.Shadow>
+                        <Grid>
+                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAMjMwXHctXZ7u8F9GcmXqJqU2mQJnw9m-LvJ_xGZA6_JJSXOC6FGI7HxCIzGYa1ldeSx1_zOk765lhM3doYJcT283u9Wn41eRXAL_zjGjKX-Qz-NC4_Fdbbp0Z0__Sbm3b_rY69XNhh9DHgjJgqhbZH3FRbiBcAIiw-zMCJSUS6Hrat84TEmxjiH0zgqp8PNtmn5fW3R-1zC2qfxq0C4YsT7Dd2T_reSsr8rO95NUwI9sFZDre3Cl3og" 
+                                   Aspect="AspectFill" />
+                            <BoxView Color="Black" Opacity="0.35" />
+
+                            <VerticalStackLayout VerticalOptions="End" Padding="16" Spacing="6">
+                                <Border StrokeShape="RoundRectangle 16" 
+                                        BackgroundColor="#4DFFFFFF" 
+                                        HorizontalOptions="Start" 
+                                        Padding="10,4" 
+                                        StrokeThickness="0">
+                                    <Label Text="HERITAGE GUIDE" 
+                                           TextColor="White" 
+                                           FontSize="11" 
+                                           FontAttributes="Bold" />
+                                </Border>
+                                <Label Text="Ancient Bazaars &amp; Crafts" 
+                                       TextColor="White" 
+                                       FontSize="24" 
+                                       FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+
+                    <Label Text="Step back in time as you wander through the labyrinthine streets of Old Mardin. From the rhythmic clinking of coppersmiths to the fragrant scent of handmade soaps, the city's craft heritage is alive in every corner." 
+                           TextColor="{StaticResource OnSurfaceVariant}" 
+                           FontSize="15" 
+                           LineHeight="1.3" />
+                </VerticalStackLayout>
+
+                <!-- Categories / Chips (Horizontal Scroll) -->
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="All Bazaars" BackgroundColor="{StaticResource MardinSand}" TextColor="White" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12" FontAttributes="Bold"/>
+                        <Button Text="Telkari Silver" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
+                        <Button Text="Copper Art" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
+                        <Button Text="Soap &amp; Spices" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <!-- Historical Bazaars Section (Bento Grid) -->
+                <VerticalStackLayout Padding="20,0" Spacing="12">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0" Text="Iconic Bazaars" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
+                        <Button Grid.Column="1" Text="See Map" TextColor="{StaticResource MesopotamianBlue}" BackgroundColor="Transparent" FontSize="14" Padding="0" />
+                    </Grid>
+
+                    <Grid RowDefinitions="200, 160" ColumnDefinitions="*, *" RowSpacing="12" ColumnSpacing="12">
+                        <!-- Large Card -->
+                        <Border Grid.Row="0" Grid.ColumnSpan="2" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                            <Grid>
+                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Jo3ByKQ95rJHlDvlvx7-E94D4mfoFuJ-FfEiYm8yfo7oP4ZLc3Dh3ocydAOlVSHuH0SZbRaSf7ykRj4V10nrbGJQUzgBCXXDxRDSDEeY09JMAj8oTTRTe-sYDDBQmTEBU-vi15-CaRuNMhzaT0ss8sOhK5Mt-XOQe1faICCRxwW7lGupGfYkeZnhQ3V0D1wCBppJtQgV_ib5YPOk-fGN4zJb5JM1jrGT9ecokcrx7adKV8Tiar9RVA" Aspect="AspectFill"/>
+                                <BoxView Color="Black" Opacity="0.25" />
+                                <VerticalStackLayout VerticalOptions="End" Padding="16">
+                                    <Label Text="Bakırcılar Çarşısı" TextColor="White" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="The Coppersmith's Guild" TextColor="#E0E0E0" FontSize="12" />
+                                </VerticalStackLayout>
+                                <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="32" HeightRequest="32" StrokeShape="RoundRectangle 16" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
+                                    <Image Source="location_on.png" Margin="6"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <!-- Side Card 1 -->
+                        <Border Grid.Row="1" Grid.Column="0" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                            <Grid>
+                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAC9kRtS1jhlsj4skvY_vOHHu6jOeZhIsasWXUjTyobbuPLimn_VC3ZaUx-dhlJ8UFCVLQx9ZE3PU0bnoJPEZwZVzGgTnNCgyRFgLMLiu_qW8ph7BSuUcBGUDDYfjrSMsSBTYw_Qjr2FEqNWELBwoeXac4Wj9tPTQiXYvk6RWZObN1itDqo3U_9lGxPM2ijlYw_9uWvQ8uOBLuqBaXJeKe9C-PGhnw49hD7N7FnI2-FxBmZj8i0dcjTlg" Aspect="AspectFill"/>
+                                <BoxView Color="Black" Opacity="0.2" />
+                                <Label Text="Tellallar Bazaar" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Side Card 2 -->
+                        <Border Grid.Row="1" Grid.Column="1" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                            <Grid>
+                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuCNQNTDzdImGzrN1EWHFH_jyWxYv6fyC-ShTdyAZ89Pgl4pMtLDjAixxIQpsrB-Zpsh_i5VGsg1U8vBB5kfdzfNi8jwjo7uJ2g2FJ3yYQ9cCyomij_upy5434EQ3UTWfLLoO8sqNIgMVGEHbrt7gMGQsVnFrCIrl-scTz7nNoJXw01gc9oLYjIQc0x410vKNgRnbxj8Pqcga0VTuQknvvsWb8FLHcqcZ8eNITmewgBNKyu73BxgtGVQdQ" Aspect="AspectFill"/>
+                                <BoxView Color="Black" Opacity="0.2" />
+                                <Label Text="Kayseriyye" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Master Crafts Section -->
+                <Grid BackgroundColor="{StaticResource SurfaceContainerLow}" Padding="20,32" RowSpacing="20" RowDefinitions="Auto, Auto, Auto">
+                    <Label Grid.Row="0" Text="Artisanal Mastery" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
+
+                    <!-- Telkari Craft -->
+                    <Grid Grid.Row="1" ColumnDefinitions="110, *" ColumnSpacing="16" VerticalOptions="Center">
+                        <Border Grid.Column="0" WidthRequest="110" HeightRequest="110" StrokeShape="RoundRectangle 55" Stroke="White" StrokeThickness="2">
+                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuCDAK-lSUz9OKZWF-9XCBVxdPegsXgXahWCIYStxii9zwmm2xUhVumbihAdDcXpXbQpwqJJ9GuaRRKUiEwvJlMVKD4k65MwKHxx0h_lxmoBREoLaTiUdH13k9eFfm00mbd7HhIDWnQPkTrRXVOnP69YuPZinpqW89xQbuEsM8mjAthBY_s_EZ2OFdWN3EfauYlmCxeLP0qhzweyE3zy3pPnsT9onJUBH9TCe-lUNqkknck5XCsqJUdu9w" Aspect="AspectFill" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                            <Label Text="Telkari Silver" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="Fine silver wire twisted into breathtaking lace patterns. A 3,000-year-old Artuklu legacy." TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" LineBreakMode="TailTruncation" MaxLines="2" />
+                            <HorizontalStackLayout Spacing="4" Margin="0,4,0,0">
+                                <Label Text="Discover Process" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Image Source="arrow_forward.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- Bıttım Soap Craft -->
+                    <Grid Grid.Row="2" ColumnDefinitions="*, 110" ColumnSpacing="16" VerticalOptions="Center">
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="4" HorizontalOptions="End">
+                            <Label Text="Bıttım Soap" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                            <Label Text="Hand-pressed pistachio oil soap known for its healing properties and distinct emerald hue." TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" HorizontalTextAlignment="End" LineBreakMode="TailTruncation" MaxLines="2" />
+                            <HorizontalStackLayout Spacing="4" HorizontalOptions="End" Margin="0,4,0,0">
+                                <Label Text="Where to Buy" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Image Source="arrow_forward.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <Border Grid.Column="1" WidthRequest="110" HeightRequest="110" StrokeShape="RoundRectangle 55" Stroke="White" StrokeThickness="2">
+                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuBJMGdmSXuDN1kzJqRnYc0ATMMgynrphg1X_5PTYE3KmDLVlR7zvQQVKtSE0-fAm8dXfDNkxGfugnAatJ-zU5WaLHby-JLHRGUAey2DNHRIc03PoxK6_fkoO7FqeY6nqeEyWZTED8EkrtTdtmqqBCWoZQwiQv91hWJjRaWqk8wtO3dAAXSUjytuvJ9GShfP-k5ybVuYpGCMR1YKWrwFxApO4BGV_hHNKaf7gWiECWEB7NdqRwuInA6DBw" Aspect="AspectFill" />
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <!-- Shop Recommendations (Horizontal Carousel) -->
+                <VerticalStackLayout Spacing="12">
+                    <Grid Padding="20,0" ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0" Text="Curated Shops" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Text="4 RECOMMENDED" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                    </Grid>
+
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
+                        <HorizontalStackLayout Spacing="16">
+                            <!-- Shop Card 1 -->
+                            <VerticalStackLayout WidthRequest="240" Spacing="8">
+                                <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                    <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6HgD3M5qE49pGM55jZsLgn55JIGFalLPkDtf360TAsKKcFXUxx9_S4yaQ4SnkB8NBtHeF13CKQidFjvCR8InV4_4lwzvxZkhEEY0J6iODEpiD5REjxZqo9WaaUQjEu7BrGqRyYJefuLVJda-CfTXtvpLKMKz885hMErJ5NB6kbDgEJbnK6L3Gg0uO8XLX-L3pDA6LEEcPLx5bvKbWr_gDbunvJ-x6onL8mQI-pENRBetAW6qRCOURQ" Aspect="AspectFill" />
+                                </Border>
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <VerticalStackLayout Grid.Column="0">
+                                        <Label Text="Artuklu Gümüş" FontSize="16" FontAttributes="Bold" />
+                                        <HorizontalStackLayout Spacing="4">
+                                            <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
+                                            <Label Text="Old Town Main St." FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                    <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
+                                        <Label Text="4.9" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+
+                            <!-- Shop Card 2 -->
+                            <VerticalStackLayout WidthRequest="240" Spacing="8">
+                                <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                    <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_SS1tL0N68YWMI3muAnaKTXKfX9RhsAL_5SvReY-Z-Hyx4op72NNaSFejqsUL46RoATIK-D9XtsYylxSm8L0iwXPNVkv09LzvfZ1oxHkp4Tn35x5qeGmU0AWMSvk2MY75d19sX-_8AA9ZdlYi9Gqnk99Q9vvA56fOzBR4XJQ52aGH554KsFhi0befhoEApPAXfk2omU9e0yCs1WjyQ8rQTTqFzne4_gzj1nNXx2dTHTo9lV8yqdHpA" Aspect="AspectFill" />
+                                </Border>
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <VerticalStackLayout Grid.Column="0">
+                                        <Label Text="Mardin Sabun Evi" FontSize="16" FontAttributes="Bold" />
+                                        <HorizontalStackLayout Spacing="4">
+                                            <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
+                                            <Label Text="Near Ulu Mosque" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                    <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
+                                        <Label Text="4.8" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+
+                <!-- Location Map Hint -->
+                <Border Margin="20,0" Padding="20" BackgroundColor="{StaticResource SurfaceContainerHigh}" StrokeShape="RoundRectangle 20" StrokeThickness="0">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                        <Image Source="map.png" HeightRequest="36" WidthRequest="36" HorizontalOptions="Center"/>
+                        <Label Text="Interactive Shopping Map" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Text="Find all artisan studios near your location" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}" HorizontalTextAlignment="Center"/>
+                        <Button Text="Open Map" BackgroundColor="{StaticResource Primary}" TextColor="White" CornerRadius="20" Margin="0,8,0,0" Padding="24,0" HeightRequest="40" FontSize="13"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- 3. BOTTOM NAVIGATION BAR -->
+        <Border Grid.Row="2" 
+                BackgroundColor="{StaticResource SurfaceIvory}" 
+                StrokeShape="RoundRectangle 16,16,0,0" 
+                Padding="0,8" 
+                StrokeThickness="0">
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.2" />
+            </Border.Shadow>
+            <Grid ColumnDefinitions="*,*,*,*">
+                <!-- Home -->
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="home.png" HeightRequest="20" WidthRequest="20"/>
+                    <Label Text="Home" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
+                </VerticalStackLayout>
+
+                <!-- Discover (Active) -->
+                <Border Grid.Column="1" BackgroundColor="#33C5A880" StrokeShape="RoundRectangle 16" Padding="12,4" StrokeThickness="0" HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="2">
+                        <Image Source="explore.png" HeightRequest="20" WidthRequest="20"/>
+                        <Label Text="Discover" FontSize="11" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Favorites -->
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="favorite.png" HeightRequest="20" WidthRequest="20"/>
+                    <Label Text="Favorites" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
+                </VerticalStackLayout>
+
+                <!-- Profile -->
+                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="person.png" HeightRequest="20" WidthRequest="20"/>
+                    <Label Text="Profile" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>
