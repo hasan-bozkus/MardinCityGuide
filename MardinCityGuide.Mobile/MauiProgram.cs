@@ -57,6 +57,12 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<IEditorialHighlightDal, SLiteEditorialHighlightRepository>();
             builder.Services.AddScoped<IEditorialHighlightService, EditorialHighlightManager>();
 
+            builder.Services.AddScoped<IBazaarDal, SLiteBazaarRepository>();
+            builder.Services.AddScoped<IBazaarService, BazaarManager>();
+
+            builder.Services.AddScoped<IArtisanCraftDal, SLiteArtisanCraftRepository>();
+            builder.Services.AddScoped<IArtisanCraftService, ArtisanCraftManager>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
