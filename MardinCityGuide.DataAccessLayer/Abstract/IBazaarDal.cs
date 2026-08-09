@@ -7,5 +7,6 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
 {
     public interface IBazaarDal : IGenericDal<Bazaar>
     {
+        Task<List<Bazaar>> GetBazaarsWithCategoryAsync();
     }
 }

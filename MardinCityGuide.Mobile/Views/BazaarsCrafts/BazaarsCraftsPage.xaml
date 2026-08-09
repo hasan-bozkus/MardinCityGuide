@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.BazaarsCrafts.BazaarsCraftsPage"
-             Title="BazaarsCraftsPage"
              BackgroundColor="#FDFCFB"
              NavigationPage.HasNavigationBar="False">
 
@@ -38,7 +37,7 @@
                          VerticalOptions="Center" />
 
             <Label Grid.Column="1" 
-                   Text="Mardin Guide" 
+                   Text="Mardin Şehir Rehberi" 
                    TextColor="{StaticResource Primary}" 
                    FontAttributes="Bold" 
                    FontSize="22" 
@@ -76,12 +75,12 @@
                                         HorizontalOptions="Start" 
                                         Padding="10,4" 
                                         StrokeThickness="0">
-                                    <Label Text="HERITAGE GUIDE" 
+                                    <Label Text="Nesiller Mirası" 
                                            TextColor="White" 
                                            FontSize="11" 
                                            FontAttributes="Bold" />
                                 </Border>
-                                <Label Text="Ancient Bazaars &amp; Crafts" 
+                                <Label Text="Tarihi Çarşılar &amp; El Sanatları" 
                                        TextColor="White" 
                                        FontSize="24" 
                                        FontAttributes="Bold" />
@@ -89,21 +88,61 @@
                         </Grid>
                     </Border>
 
-                    <Label Text="Step back in time as you wander through the labyrinthine streets of Old Mardin. From the rhythmic clinking of coppersmiths to the fragrant scent of handmade soaps, the city's craft heritage is alive in every corner." 
+                    <Label Text="Eski Mardin'in labirent misali sokaklarında dolaşırken zamanda geriye doğru bir yolculuğa çıkın. Bakırcıların çıkardığı ritmik çekiç seslerinden el yapımı sabunların mis kokusuna kadar, şehrin zanaat mirası her köşede hayat buluyor." 
                            TextColor="{StaticResource OnSurfaceVariant}" 
                            FontSize="15" 
                            LineHeight="1.3" />
                 </VerticalStackLayout>
 
                 <!-- Categories / Chips (Horizontal Scroll) -->
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
+                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
                     <HorizontalStackLayout Spacing="8">
                         <Button Text="All Bazaars" BackgroundColor="{StaticResource MardinSand}" TextColor="White" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12" FontAttributes="Bold"/>
                         <Button Text="Telkari Silver" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
                         <Button Text="Copper Art" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
                         <Button Text="Soap &amp; Spices" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
                     </HorizontalStackLayout>
-                </ScrollView>
+                </ScrollView>-->
+
+                <!-- Categories / Chips (Horizontal Scroll) -->
+                <CollectionView x:Name="SelectedCategoryListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="Single" SelectionChanged="OnCategorySelectionChanged">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CommonStates">
+
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource SurfaceContainerHigh}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.TextColor" Value="{StaticResource OnSurfaceVariant}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource MardinSand}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.TextColor" Value="White" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label x:Name="CategoryLabel" Text="{Binding CategoryName}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
                 <!-- Historical Bazaars Section (Bento Grid) -->
                 <VerticalStackLayout Padding="20,0" Spacing="12">

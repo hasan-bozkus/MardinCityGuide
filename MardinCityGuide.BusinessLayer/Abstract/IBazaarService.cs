@@ -7,5 +7,7 @@ namespace MardinCityGuide.BusinessLayer.Abstract
 {
     public interface IBazaarService : IGenericService<Bazaar>
     {
+        Task<List<Bazaar>> TGetBazaarsWithCategoryAsync();
+
     }
 }
