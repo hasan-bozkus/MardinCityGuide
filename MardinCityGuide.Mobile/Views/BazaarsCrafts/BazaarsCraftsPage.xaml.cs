@@ -8,9 +8,10 @@ public partial class BazaarsCraftsPage : ContentPage
 {
 	private readonly IBazaarService _bazaarService;
 	private readonly ICategoryService _categoryService;
-    public List<Bazaar> _allBazaars = new List<Bazaar>();
+    private List<Bazaar> _allBazaars = new List<Bazaar>();
+    private Border? _previouslySelectedBorder;
 
-	public BazaarsCraftsPage()
+    public BazaarsCraftsPage()
 	{
 		InitializeComponent();
 		_bazaarService = ServiceHelper.GetService<IBazaarService>();
@@ -33,25 +34,20 @@ public partial class BazaarsCraftsPage : ContentPage
 
     }
 
-    private static async void OnCategorySelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void OnCategorySelectionChanged(object sender, TappedEventArgs e)
 	{
-        // Seçili öğeyi al
-        if (e.CurrentSelection.FirstOrDefault() is not Category category)
-            return;
+        if (sender is not Border tappedBorder) return;
+        if (e.Parameter is not Category category) return;
 
-        if (category.CategoryId == 0)
-        {
-            // "Tümü" -> hepsini göster
-            //BazaarCollection.ItemsSource = _allBazaars;
-        }
-        else
-        {
-            // Seçilen kategoriye ait etkinlikleri süz
-            //var filtered = _allEvents
-            //    .Where(ev => ev.CategoryId == category.CategoryId)
-            //    .ToList();
+        if (_previouslySelectedBorder != null)
+            VisualStateManager.GoToState(_previouslySelectedBorder, "Normal");
 
-            //EventsCollection.ItemsSource = filtered;
-        }
+        VisualStateManager.GoToState(tappedBorder, "Selected");
+        _previouslySelectedBorder = tappedBorder;
+
+        //if (category.CategoryId == 0)
+        //    BazaarCollection.ItemsSource = _allBazaars;
+        //else
+        //    BazaarCollection.ItemsSource = _allBazaars.Where(b => b.CategoryId == category.CategoryId).ToList();
     }
 }

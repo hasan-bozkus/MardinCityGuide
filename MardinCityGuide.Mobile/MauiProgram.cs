@@ -6,6 +6,7 @@ using MardinCityGuide.DataAccessLayer.Repositories;
 using MardinCityGuide.Mobile.Helpers;
 using MardinCityGuide.Mobile.Views.Home;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Handlers.Items;
 using Microsoft.Maui.Storage;
 using SQLite;
 using System;

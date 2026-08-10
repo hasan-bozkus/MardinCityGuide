@@ -105,7 +105,7 @@
                 </ScrollView>-->
 
                 <!-- Categories / Chips (Horizontal Scroll) -->
-                <CollectionView x:Name="SelectedCategoryListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="Single" SelectionChanged="OnCategorySelectionChanged">
+                <CollectionView x:Name="SelectedCategoryListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
                     </CollectionView.ItemsLayout>
@@ -114,10 +114,15 @@
                         <DataTemplate>
 
                             <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCategorySelectionChanged" CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroupList>
                                         <VisualStateGroup x:Name="CommonStates">
 
+                                            <!-- normal durum -->
                                             <VisualState x:Name="Normal">
                                                 <VisualState.Setters>
                                                     <Setter Property="BackgroundColor" Value="{StaticResource SurfaceContainerHigh}" />
@@ -126,6 +131,7 @@
                                                 </VisualState.Setters>
                                             </VisualState>
 
+                                            <!-- seçili durum -->
                                             <VisualState x:Name="Selected">
                                                 <VisualState.Setters>
                                                     <Setter Property="BackgroundColor" Value="{StaticResource MardinSand}" />
