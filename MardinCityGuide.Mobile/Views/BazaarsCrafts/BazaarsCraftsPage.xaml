@@ -95,16 +95,6 @@
                 </VerticalStackLayout>
 
                 <!-- Categories / Chips (Horizontal Scroll) -->
-                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
-                    <HorizontalStackLayout Spacing="8">
-                        <Button Text="All Bazaars" BackgroundColor="{StaticResource MardinSand}" TextColor="White" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12" FontAttributes="Bold"/>
-                        <Button Text="Telkari Silver" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
-                        <Button Text="Copper Art" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
-                        <Button Text="Soap &amp; Spices" BackgroundColor="{StaticResource SurfaceContainerHigh}" TextColor="{StaticResource OnSurfaceVariant}" CornerRadius="20" Padding="16,0" HeightRequest="36" FontSize="12"/>
-                    </HorizontalStackLayout>
-                </ScrollView>-->
-
-                <!-- Categories / Chips (Horizontal Scroll) -->
                 <CollectionView x:Name="SelectedCategoryListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
@@ -151,24 +141,24 @@
                 </CollectionView>
 
                 <!-- Historical Bazaars Section (Bento Grid) -->
-                <VerticalStackLayout Padding="20,0" Spacing="12">
+                <VerticalStackLayout Padding="20,0" Spacing="12" x:Name="BazaarCollection">
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" Text="Iconic Bazaars" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
-                        <Button Grid.Column="1" Text="See Map" TextColor="{StaticResource MesopotamianBlue}" BackgroundColor="Transparent" FontSize="14" Padding="0" />
+                        <Label Grid.Column="0" Text="İkonik Pazarlar" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
+                        <Button Grid.Column="1" Text="Haritaya Bakın" TextColor="{StaticResource MesopotamianBlue}" BackgroundColor="Transparent" FontSize="14" Padding="0" />
                     </Grid>
 
                     <Grid RowDefinitions="200, 160" ColumnDefinitions="*, *" RowSpacing="12" ColumnSpacing="12">
                         <!-- Large Card -->
                         <Border Grid.Row="0" Grid.ColumnSpan="2" StrokeShape="RoundRectangle 12" StrokeThickness="0">
                             <Grid>
-                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Jo3ByKQ95rJHlDvlvx7-E94D4mfoFuJ-FfEiYm8yfo7oP4ZLc3Dh3ocydAOlVSHuH0SZbRaSf7ykRj4V10nrbGJQUzgBCXXDxRDSDEeY09JMAj8oTTRTe-sYDDBQmTEBU-vi15-CaRuNMhzaT0ss8sOhK5Mt-XOQe1faICCRxwW7lGupGfYkeZnhQ3V0D1wCBppJtQgV_ib5YPOk-fGN4zJb5JM1jrGT9ecokcrx7adKV8Tiar9RVA" Aspect="AspectFill"/>
+                                <Image Source="{Binding [0].CoverImageUrl}" Aspect="AspectFill"/>
                                 <BoxView Color="Black" Opacity="0.25" />
                                 <VerticalStackLayout VerticalOptions="End" Padding="16">
-                                    <Label Text="Bakırcılar Çarşısı" TextColor="White" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="The Coppersmith's Guild" TextColor="#E0E0E0" FontSize="12" />
+                                    <Label Text="{Binding [0].Name}" TextColor="White" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding [0].Subtitle}" TextColor="#E0E0E0" FontSize="12" />
                                 </VerticalStackLayout>
                                 <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="32" HeightRequest="32" StrokeShape="RoundRectangle 16" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
-                                    <Image Source="location_on.png" Margin="6"/>
+                                    <Label Text="&#xE0C8;" FontFamily="MaterialSymbols" FontSize="18" TextColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="Center" />
                                 </Border>
                             </Grid>
                         </Border>
@@ -176,18 +166,18 @@
                         <!-- Side Card 1 -->
                         <Border Grid.Row="1" Grid.Column="0" StrokeShape="RoundRectangle 12" StrokeThickness="0">
                             <Grid>
-                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAC9kRtS1jhlsj4skvY_vOHHu6jOeZhIsasWXUjTyobbuPLimn_VC3ZaUx-dhlJ8UFCVLQx9ZE3PU0bnoJPEZwZVzGgTnNCgyRFgLMLiu_qW8ph7BSuUcBGUDDYfjrSMsSBTYw_Qjr2FEqNWELBwoeXac4Wj9tPTQiXYvk6RWZObN1itDqo3U_9lGxPM2ijlYw_9uWvQ8uOBLuqBaXJeKe9C-PGhnw49hD7N7FnI2-FxBmZj8i0dcjTlg" Aspect="AspectFill"/>
+                                <Image Source="{Binding [1].CoverImageUrl}" Aspect="AspectFill"/>
                                 <BoxView Color="Black" Opacity="0.2" />
-                                <Label Text="Tellallar Bazaar" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
+                                <Label Text="{Binding [1].Name}" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
                             </Grid>
                         </Border>
 
                         <!-- Side Card 2 -->
                         <Border Grid.Row="1" Grid.Column="1" StrokeShape="RoundRectangle 12" StrokeThickness="0">
                             <Grid>
-                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuCNQNTDzdImGzrN1EWHFH_jyWxYv6fyC-ShTdyAZ89Pgl4pMtLDjAixxIQpsrB-Zpsh_i5VGsg1U8vBB5kfdzfNi8jwjo7uJ2g2FJ3yYQ9cCyomij_upy5434EQ3UTWfLLoO8sqNIgMVGEHbrt7gMGQsVnFrCIrl-scTz7nNoJXw01gc9oLYjIQc0x410vKNgRnbxj8Pqcga0VTuQknvvsWb8FLHcqcZ8eNITmewgBNKyu73BxgtGVQdQ" Aspect="AspectFill"/>
+                                <Image Source="{Binding [2].CoverImageUrl}" Aspect="AspectFill"/>
                                 <BoxView Color="Black" Opacity="0.2" />
-                                <Label Text="Kayseriyye" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
+                                <Label Text="{Binding [2].Name}" TextColor="White" FontAttributes="Bold" VerticalOptions="End" Padding="12" FontSize="14" />
                             </Grid>
                         </Border>
                     </Grid>

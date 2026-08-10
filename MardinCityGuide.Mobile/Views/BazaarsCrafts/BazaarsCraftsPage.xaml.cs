@@ -29,6 +29,8 @@ public partial class BazaarsCraftsPage : ContentPage
 
         _allBazaars = await _bazaarService.TGetBazaarsWithCategoryAsync();
 
+        BazaarCollection.BindingContext = _allBazaars.Where(x => x.IsFeatured == true).Take(3).ToList();
+
         SelectedCategoryListCollection.SelectedItem = categories[0];
 
 
@@ -45,9 +47,9 @@ public partial class BazaarsCraftsPage : ContentPage
         VisualStateManager.GoToState(tappedBorder, "Selected");
         _previouslySelectedBorder = tappedBorder;
 
-        //if (category.CategoryId == 0)
-        //    BazaarCollection.ItemsSource = _allBazaars;
-        //else
-        //    BazaarCollection.ItemsSource = _allBazaars.Where(b => b.CategoryId == category.CategoryId).ToList();
+        if (category.CategoryId == 0)
+            BazaarCollection.BindingContext = _allBazaars.Where(x => x.IsFeatured == true).Take(3).ToList();
+        else
+          BazaarCollection.BindingContext = _allBazaars.Where(b => b.CategoryId == category.CategoryId && b.IsFeatured == true).Take(3).ToList();
     }
 }

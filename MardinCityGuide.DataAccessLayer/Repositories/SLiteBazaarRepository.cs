@@ -32,7 +32,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                 var matchingCategory = categories.FirstOrDefault(c => c.CategoryId == item.CategoryId);
                 if (matchingCategory is not null)
                 {
-                    item.Category.CategoryName = matchingCategory.CategoryName;
+                    item.Category = matchingCategory;
                 }
                 else
                 {
