@@ -7,5 +7,8 @@ namespace MardinCityGuide.BusinessLayer.Abstract
 {
     public interface IArtisanCraftService : IGenericService<ArtisanCraft>
     {
+        Task<List<ArtisanCraft>> TGetRandom2ArtisanCraftWithCategoryAsycn();
+        Task<List<ArtisanCraft>> TGetIsActiveArtisanCraftListAsync();
+
     }
 }

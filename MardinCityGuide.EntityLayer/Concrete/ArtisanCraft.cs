@@ -29,5 +29,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
+
+        [Ignore]
+        public string ActionTypeText => (int)ActionType == 1 ? "Ürünü Keşfet" : "Satın Al";
     }
 }

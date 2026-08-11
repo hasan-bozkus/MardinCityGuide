@@ -9,8 +9,21 @@ namespace MardinCityGuide.BusinessLayer.Concrete
 {
     public class ArtisanCraftManager : GenericManager<ArtisanCraft>, IArtisanCraftService
     {
-        public ArtisanCraftManager(IGenericDal<ArtisanCraft> genericDal) : base(genericDal)
+        private readonly IArtisanCraftDal _artisanCraftDal;
+
+        public ArtisanCraftManager(IGenericDal<ArtisanCraft> genericDal, IArtisanCraftDal artisanCraftDal) : base(genericDal)
         {
+            _artisanCraftDal = artisanCraftDal;
+        }
+
+        public async Task<List<ArtisanCraft>> TGetIsActiveArtisanCraftListAsync()
+        {
+            return await _artisanCraftDal.GetIsActiveArtisanCraftListAsync();
+        }
+
+        public async Task<List<ArtisanCraft>> TGetRandom2ArtisanCraftWithCategoryAsycn()
+        {
+            return await _artisanCraftDal.GetRandom2ArtisanCraftWithCategoryAsycn();
         }
     }
 }

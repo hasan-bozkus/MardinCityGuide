@@ -184,19 +184,19 @@
                 </VerticalStackLayout>
 
                 <!-- Master Crafts Section -->
-                <Grid BackgroundColor="{StaticResource SurfaceContainerLow}" Padding="20,32" RowSpacing="20" RowDefinitions="Auto, Auto, Auto">
-                    <Label Grid.Row="0" Text="Artisanal Mastery" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
+                <Grid BackgroundColor="{StaticResource SurfaceContainerLow}" Padding="20,32" RowSpacing="20" RowDefinitions="Auto, Auto, Auto" x:Name="RandomArtisanCraftListCollection">
+                    <Label Grid.Row="0" Text="Zanaatkarlık Ustalığı" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold" />
 
                     <!-- Telkari Craft -->
                     <Grid Grid.Row="1" ColumnDefinitions="110, *" ColumnSpacing="16" VerticalOptions="Center">
                         <Border Grid.Column="0" WidthRequest="110" HeightRequest="110" StrokeShape="RoundRectangle 55" Stroke="White" StrokeThickness="2">
-                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuCDAK-lSUz9OKZWF-9XCBVxdPegsXgXahWCIYStxii9zwmm2xUhVumbihAdDcXpXbQpwqJJ9GuaRRKUiEwvJlMVKD4k65MwKHxx0h_lxmoBREoLaTiUdH13k9eFfm00mbd7HhIDWnQPkTrRXVOnP69YuPZinpqW89xQbuEsM8mjAthBY_s_EZ2OFdWN3EfauYlmCxeLP0qhzweyE3zy3pPnsT9onJUBH9TCe-lUNqkknck5XCsqJUdu9w" Aspect="AspectFill" />
+                            <Image Source="{Binding [0].ImageUrl}" Aspect="AspectFill" />
                         </Border>
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
-                            <Label Text="Telkari Silver" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" />
-                            <Label Text="Fine silver wire twisted into breathtaking lace patterns. A 3,000-year-old Artuklu legacy." TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" LineBreakMode="TailTruncation" MaxLines="2" />
+                            <Label Text="{Binding [0].Name}" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding [0].Description}" TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" LineBreakMode="TailTruncation" MaxLines="2" />
                             <HorizontalStackLayout Spacing="4" Margin="0,4,0,0">
-                                <Label Text="Discover Process" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="{Binding [0].ActionTypeText}" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Image Source="arrow_forward.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
@@ -205,15 +205,15 @@
                     <!-- Bıttım Soap Craft -->
                     <Grid Grid.Row="2" ColumnDefinitions="*, 110" ColumnSpacing="16" VerticalOptions="Center">
                         <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="4" HorizontalOptions="End">
-                            <Label Text="Bıttım Soap" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="End" />
-                            <Label Text="Hand-pressed pistachio oil soap known for its healing properties and distinct emerald hue." TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" HorizontalTextAlignment="End" LineBreakMode="TailTruncation" MaxLines="2" />
+                            <Label Text="{Binding [1].Name}" TextColor="{StaticResource Terracotta}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                            <Label Text="{Binding [1].Description}" TextColor="{StaticResource OnSurfaceVariant}" FontSize="13" HorizontalTextAlignment="End" LineBreakMode="TailTruncation" MaxLines="2" />
                             <HorizontalStackLayout Spacing="4" HorizontalOptions="End" Margin="0,4,0,0">
-                                <Label Text="Where to Buy" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="{Binding [1].ActionTypeText}" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Image Source="arrow_forward.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                         <Border Grid.Column="1" WidthRequest="110" HeightRequest="110" StrokeShape="RoundRectangle 55" Stroke="White" StrokeThickness="2">
-                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuBJMGdmSXuDN1kzJqRnYc0ATMMgynrphg1X_5PTYE3KmDLVlR7zvQQVKtSE0-fAm8dXfDNkxGfugnAatJ-zU5WaLHby-JLHRGUAey2DNHRIc03PoxK6_fkoO7FqeY6nqeEyWZTED8EkrtTdtmqqBCWoZQwiQv91hWJjRaWqk8wtO3dAAXSUjytuvJ9GShfP-k5ybVuYpGCMR1YKWrwFxApO4BGV_hHNKaf7gWiECWEB7NdqRwuInA6DBw" Aspect="AspectFill" />
+                            <Image Source="{Binding [1].ImageUrl}" Aspect="AspectFill" />
                         </Border>
                     </Grid>
                 </Grid>
@@ -221,60 +221,53 @@
                 <!-- Shop Recommendations (Horizontal Carousel) -->
                 <VerticalStackLayout Spacing="12">
                     <Grid Padding="20,0" ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" Text="Curated Shops" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold"/>
-                        <Label Grid.Column="1" Text="4 RECOMMENDED" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Label Grid.Column="0" Text="Öne Çıkan Sanatlar" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Text="Tavsiye Edilenler" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
                     </Grid>
 
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
-                        <HorizontalStackLayout Spacing="16">
-                            <!-- Shop Card 1 -->
-                            <VerticalStackLayout WidthRequest="240" Spacing="8">
-                                <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
-                                    <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6HgD3M5qE49pGM55jZsLgn55JIGFalLPkDtf360TAsKKcFXUxx9_S4yaQ4SnkB8NBtHeF13CKQidFjvCR8InV4_4lwzvxZkhEEY0J6iODEpiD5REjxZqo9WaaUQjEu7BrGqRyYJefuLVJda-CfTXtvpLKMKz885hMErJ5NB6kbDgEJbnK6L3Gg0uO8XLX-L3pDA6LEEcPLx5bvKbWr_gDbunvJ-x6onL8mQI-pENRBetAW6qRCOURQ" Aspect="AspectFill" />
-                                </Border>
-                                <Grid ColumnDefinitions="*, Auto">
-                                    <VerticalStackLayout Grid.Column="0">
-                                        <Label Text="Artuklu Gümüş" FontSize="16" FontAttributes="Bold" />
-                                        <HorizontalStackLayout Spacing="4">
-                                            <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
-                                            <Label Text="Old Town Main St." FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                    <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
-                                        <Label Text="4.9" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>
-                                    </Border>
-                                </Grid>
-                            </VerticalStackLayout>
+                    <CollectionView x:Name="IsActiveArtisanCraftListCollection" HorizontalScrollBarVisibility="Never">
 
-                            <!-- Shop Card 2 -->
-                            <VerticalStackLayout WidthRequest="240" Spacing="8">
-                                <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
-                                    <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_SS1tL0N68YWMI3muAnaKTXKfX9RhsAL_5SvReY-Z-Hyx4op72NNaSFejqsUL46RoATIK-D9XtsYylxSm8L0iwXPNVkv09LzvfZ1oxHkp4Tn35x5qeGmU0AWMSvk2MY75d19sX-_8AA9ZdlYi9Gqnk99Q9vvA56fOzBR4XJQ52aGH554KsFhi0befhoEApPAXfk2omU9e0yCs1WjyQ8rQTTqFzne4_gzj1nNXx2dTHTo9lV8yqdHpA" Aspect="AspectFill" />
-                                </Border>
-                                <Grid ColumnDefinitions="*, Auto">
-                                    <VerticalStackLayout Grid.Column="0">
-                                        <Label Text="Mardin Sabun Evi" FontSize="16" FontAttributes="Bold" />
-                                        <HorizontalStackLayout Spacing="4">
-                                            <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
-                                            <Label Text="Near Ulu Mosque" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                    <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
-                                        <Label Text="4.8" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="16" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <!-- Shop Card 1 -->
+                                <VerticalStackLayout WidthRequest="240" Spacing="8">
+                                    <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
                                     </Border>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
-                    </ScrollView>
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <VerticalStackLayout Grid.Column="0">
+                                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
+                                                <!--<Label Text="Old Town Main St." FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>-->
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                        <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
+                                            <!--<Label Text="4.9" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>-->
+                                        </Border>
+                                    </Grid>
+                                </VerticalStackLayout>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                    </CollectionView>
+
+                    
                 </VerticalStackLayout>
 
                 <!-- Location Map Hint -->
                 <Border Margin="20,0" Padding="20" BackgroundColor="{StaticResource SurfaceContainerHigh}" StrokeShape="RoundRectangle 20" StrokeThickness="0">
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
                         <Image Source="map.png" HeightRequest="36" WidthRequest="36" HorizontalOptions="Center"/>
-                        <Label Text="Interactive Shopping Map" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                        <Label Text="Find all artisan studios near your location" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}" HorizontalTextAlignment="Center"/>
-                        <Button Text="Open Map" BackgroundColor="{StaticResource Primary}" TextColor="White" CornerRadius="20" Margin="0,8,0,0" Padding="24,0" HeightRequest="40" FontSize="13"/>
+                        <Label Text="Etkileşimli Alışveriş Haritası" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Text="Konumunuza yakın tüm zanaat atölyelerini bulun" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}" HorizontalTextAlignment="Center"/>
+                        <Button Text="Haritayı Aç" BackgroundColor="{StaticResource Primary}" TextColor="White" CornerRadius="20" Margin="0,8,0,0" Padding="24,0" HeightRequest="40" FontSize="13" Clicked="OnOpenMapClicked" />
                     </VerticalStackLayout>
                 </Border>
 

@@ -11,6 +11,7 @@
             Routing.RegisterRoute("login", typeof(Views.Login.LoginPage));
             Routing.RegisterRoute("home", typeof(Views.Home.HomePage));
             Routing.RegisterRoute("placedetail", typeof(Views.PlaceDetail.PlaceDetailPage));
+            Routing.RegisterRoute("map", typeof(Views.Map.MapPage));
         }
     }
 }

@@ -28,5 +28,8 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Haritada size yakın olan çarşıları görebilmek için konum izni gereklidir.</string>
 </dict>
 </plist>
