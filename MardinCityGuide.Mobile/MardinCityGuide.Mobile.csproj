@@ -81,6 +81,9 @@
 	  <MauiXaml Update="Views\BazaarsCrafts\BazaarsCraftsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CultureHistory\CultureHistoryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

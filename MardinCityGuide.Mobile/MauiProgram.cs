@@ -4,7 +4,6 @@ using MardinCityGuide.DataAccessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.DataAccessLayer.Repositories;
 using MardinCityGuide.Mobile.Helpers;
-using MardinCityGuide.Mobile.Views.Home;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Handlers.Items;
 using Microsoft.Maui.Storage;
@@ -64,6 +63,9 @@ namespace MardinCityGuide.Mobile
 
             builder.Services.AddScoped<IArtisanCraftDal, SLiteArtisanCraftRepository>();
             builder.Services.AddScoped<IArtisanCraftService, ArtisanCraftManager>();
+
+            builder.Services.AddScoped<IMuseumDal, SLiteMuseumRepository>();
+            builder.Services.AddScoped<IMuseumService, MuseumManager>();
 
 #if DEBUG
             builder.Logging.AddDebug();
