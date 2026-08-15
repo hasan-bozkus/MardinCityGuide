@@ -67,6 +67,12 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<IMuseumDal, SLiteMuseumRepository>();
             builder.Services.AddScoped<IMuseumService, MuseumManager>();
 
+            builder.Services.AddScoped<IReligiousSiteDal, SLiteReligiousSiteRepository>();
+            builder.Services.AddScoped<IReligiousSiteService, ReligiousSiteManager>();
+
+            builder.Services.AddScoped<IHistoricalSiteDal, SLiteHistoricalSiteRepository>();
+            builder.Services.AddScoped<IHistoricalSiteService, HistoricalSiteManager>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

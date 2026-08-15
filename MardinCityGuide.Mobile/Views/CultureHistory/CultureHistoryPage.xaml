@@ -116,77 +116,75 @@
                 <Grid BackgroundColor="#F5F3F0" Padding="0,24">
                     <VerticalStackLayout Spacing="16">
                         <VerticalStackLayout Padding="20,0">
-                            <Label Text="Sacred Madrasas" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
-                            <Label Text="Architectural wonders of theological learning" FontSize="14" TextColor="#4D463C"/>
+                            <Label Text="Önemli Medreseler" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                            <Label Text="İlahiyat eğitiminin mimari harikaları" FontSize="14" TextColor="#4D463C"/>
                         </VerticalStackLayout>
 
-                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
-                            <HorizontalStackLayout Spacing="16">
-                                <!-- Madrasa 1 -->
-                                <VerticalStackLayout WidthRequest="240" Spacing="6">
-                                    <Border StrokeShape="RoundRectangle 16" HeightRequest="300" StrokeThickness="0">
-                                        <Grid>
-                                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAt8LiJqzIMkARqNqxutpMSH0ONwEIs3wDwtf8MK2l5CuLdbycF8147pZrsrz1Jylaqn-n-gk4TgZU5pV5C1zP3BTbq-Bdyu8HdhwYFNuz9-h65Jaw2fM47L9bTdEDjdXTm55o-S_pfR0o1xwqqMxThO_mpxR3ehaeLILt2n1-XBQhvXrEC3WrrqHK5O2OyXJD4zMtNMvFHcYZlqMC4eels_hyslML5W6RZEgn87_n8oG0Hrvv9C77Y9g" Aspect="AspectFill"/>
-                                            <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="36" HeightRequest="36" StrokeShape="RoundRectangle 18" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
-                                                <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </Border>
-                                    <Label Text="Zinciriye Madrasa" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A"/>
-                                    <Label Text="Artuqid Era, 1385" FontSize="13" TextColor="#4D463C"/>
-                                </VerticalStackLayout>
+                        <CollectionView HorizontalScrollBarVisibility="Never" x:Name="FeaturedReligiousSiteListCollection">
 
-                                <!-- Madrasa 2 -->
-                                <VerticalStackLayout WidthRequest="240" Spacing="6">
-                                    <Border StrokeShape="RoundRectangle 16" HeightRequest="300" StrokeThickness="0">
-                                        <Grid>
-                                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ50zhSi_lt6FRSRJ-ByzPR0PIsPU-TOPkQCy6fDj79brNJgBrMU7bz21dHuTrHYNHfLxCLAWMbO6nIUpi-u20S4oDamsdQ73tHhqGSw5F4xQVaWvFwLslpXL8u4OwPAcnhAwEAagVaeMT-gIhcAG87oPxBWNz6dbsmwTsCAJu--nwpKKLbSGTmATR-Qg8InhM5bBMag9TMvZS5YEcUv7YEq-aG0ObwTqL-teXMOYtzsWlh4nG5IHrSg" Aspect="AspectFill"/>
-                                            <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="36" HeightRequest="36" StrokeShape="RoundRectangle 18" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
-                                                <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </Border>
-                                    <Label Text="Kasımiye Madrasa" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A"/>
-                                    <Label Text="Artuqid-Akkoyunlu Style" FontSize="13" TextColor="#4D463C"/>
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-                        </ScrollView>
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="16" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <!-- Madrasa 1 -->
+                                    <VerticalStackLayout WidthRequest="240" Spacing="6">
+                                        <Border StrokeShape="RoundRectangle 16" HeightRequest="300" StrokeThickness="0">
+                                            <Grid>
+                                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill"/>
+                                                <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="36" HeightRequest="36" StrokeShape="RoundRectangle 18" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
+                                                    <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                                        <Label Text="{Binding Era}" FontSize="13" TextColor="#4D463C"/>
+                                    </VerticalStackLayout>
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                        
                     </VerticalStackLayout>
                 </Grid>
 
                 <!-- 6. ANCIENT DARA (BENTO LAYOUT) -->
-                <VerticalStackLayout Padding="20,0" Spacing="12">
+                <VerticalStackLayout Padding="20,0" Spacing="12" x:Name="HistoricalSiteColleciton">
                     <VerticalStackLayout>
-                        <Label Text="Ancient Dara" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
-                        <Label Text="The Mesopotamia's Ephesus" FontSize="14" TextColor="#4D463C"/>
+                        <Label Text="{Binding Name}" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                        <Label Text="{Binding Subtitle}" FontSize="14" TextColor="#4D463C"/>
                     </VerticalStackLayout>
 
                     <Grid HeightRequest="360" ColumnDefinitions="2*, *" RowDefinitions="*, *" ColumnSpacing="10" RowSpacing="10">
                         <!-- Left Main Image -->
                         <Border Grid.Column="0" Grid.RowSpan="2" StrokeShape="RoundRectangle 16" StrokeThickness="0">
                             <Grid>
-                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuBKBdbU4A9QyBxaf7RpcnMs6eF3kUmzk_aJW40UYh1oh4nkl-rdbi5NYCaVimUUu1sxw-ap43Gcp7tY0cOmI-IawUfr7XenPuqBBueGGfyn_ON1HFYIhS7BPMFeuDNNKtXrHM4iJJ1LZ48nGeHDp2KAjYeZxuulEhCcb4npLS8psMsBaOywgPSkUReawOeq-yRp9jdAXwGMzLefzJKMCJdoHwIFepRDpsNq4BNf7AvNT9cyXHdbI0JEJQ" Aspect="AspectFill"/>
+                                <Image Source="{Binding CoverImageUrl}" Aspect="AspectFill"/>
                                 <BoxView Color="#33000000"/>
                                 <VerticalStackLayout VerticalOptions="End" Margin="12" Spacing="4">
                                     <Border HorizontalOptions="Start" BackgroundColor="#008080" Padding="8,2" StrokeShape="RoundRectangle 8" StrokeThickness="0">
-                                        <Label Text="SIGNATURE EXPERIENCE" TextColor="White" FontSize="8" FontAttributes="Bold"/>
+                                        <Label x:Name="IsSignatureExperience" TextColor="White" FontSize="8" FontAttributes="Bold"/>
                                     </Border>
-                                    <Label Text="Great Necropolis" TextColor="White" FontSize="18" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Name}" TextColor="White" FontSize="18" FontAttributes="Bold"/>
                                 </VerticalStackLayout>
                             </Grid>
                         </Border>
 
                         <!-- Right Top Image -->
                         <Border Grid.Column="1" Grid.Row="0" StrokeShape="RoundRectangle 16" StrokeThickness="0">
-                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuCWvfOwbcC-dayHEF2urtLa1XurMMK9IUfi13w6GhKyd0QbhOdMkpgixYzIb6WmoNAtPJR-zn_fbbi6dj0hbUEcl804iotCuYj6L5b-3zqXLV2H8lxu7CpWUtetrT5TS82Y28N7XKhbdlwsVzOqdMnLpo7G825VLfAPKyYzMCz-ccAS0kucah7dbuo186R78MQMua5kq-UBNEFnVbQyZhNrj957cDTPoc0yTsiQLHDKMPABQ-arSbZN4Q" Aspect="AspectFill"/>
+                            <Image Source="{Binding Images[0].ImageUrl}" Aspect="AspectFill"/>
                         </Border>
 
                         <!-- Right Bottom Info Box -->
                         <Border Grid.Column="1" Grid.Row="1" BackgroundColor="#C5A880" StrokeShape="RoundRectangle 16" StrokeThickness="0">
                             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="4">
                                 <Image Source="icon_map.png" WidthRequest="28" HeightRequest="28"/>
-                                <Label Text="30km from City" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                <Label Text="Book Tour" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" TextDecorations="Underline" HorizontalTextAlignment="Center" Margin="0,4,0,0"/>
+                                <Label Text="Şehirden 30 Km Uzaklıkta" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <Label Text="Tur Rezervasyonu Yap" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" TextDecorations="Underline" HorizontalTextAlignment="Center" Margin="0,4,0,0"/>
                             </VerticalStackLayout>
                         </Border>
                     </Grid>
