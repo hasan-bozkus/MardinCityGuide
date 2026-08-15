@@ -191,9 +191,9 @@
                 </VerticalStackLayout>
 
                 <!-- 7. CULTURAL CALENDAR -->
-                <VerticalStackLayout Padding="20,0,20,24" Spacing="16">
+                <VerticalStackLayout Padding="20,0,20,24" Spacing="16" x:Name="Upcoming2EventsCollection">
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" Text="Cultural Calendar" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                        <Label Grid.Column="0" Text="Kültürel Etkinlikler" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
                         <Image Grid.Column="1" Source="icon_calendar.png" WidthRequest="22" HeightRequest="22" VerticalOptions="Center"/>
                     </Grid>
 
@@ -202,16 +202,16 @@
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="12">
                             <Border Grid.Column="0" BackgroundColor="#EFEEEB" WidthRequest="50" HeightRequest="50" StrokeShape="RoundRectangle 12" StrokeThickness="0">
                                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="-2">
-                                    <Label Text="14" FontSize="16" FontAttributes="Bold" TextColor="#725B38" HorizontalTextAlignment="Center"/>
-                                    <Label Text="OCT" FontSize="10" TextColor="#725B38" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding [0].StartDay}" FontSize="16" FontAttributes="Bold" TextColor="#725B38" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding [0].StartMonth}" FontSize="10" TextColor="#725B38" HorizontalTextAlignment="Center"/>
                                 </VerticalStackLayout>
                             </Border>
 
                             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                                <Label Text="International Biennial" FontSize="15" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                                <Label Text="{Binding [0].Title}" FontSize="15" FontAttributes="Bold" TextColor="#1B1C1A"/>
                                 <HorizontalStackLayout Spacing="4">
                                     <Image Source="icon_pin.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                    <Label Text="Old Market District" FontSize="12" TextColor="#4D463C"/>
+                                    <Label Text="{Binding [0].LocationName}" FontSize="12" TextColor="#4D463C"/>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
@@ -224,16 +224,16 @@
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="12">
                             <Border Grid.Column="0" BackgroundColor="#EFEEEB" WidthRequest="50" HeightRequest="50" StrokeShape="RoundRectangle 12" StrokeThickness="0">
                                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="-2">
-                                    <Label Text="22" FontSize="16" FontAttributes="Bold" TextColor="#725B38" HorizontalTextAlignment="Center"/>
-                                    <Label Text="OCT" FontSize="10" TextColor="#725B38" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding [1].StartDay}" FontSize="16" FontAttributes="Bold" TextColor="#725B38" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding [1].StartMonth}" FontSize="10" TextColor="#725B38" HorizontalTextAlignment="Center"/>
                                 </VerticalStackLayout>
                             </Border>
 
                             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                                <Label Text="Sufi Music Night" FontSize="15" FontAttributes="Bold" TextColor="#1B1C1A"/>
+                                <Label Text="{Binding [1].Title}" FontSize="15" FontAttributes="Bold" TextColor="#1B1C1A"/>
                                 <HorizontalStackLayout Spacing="4">
                                     <Image Source="icon_pin.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                    <Label Text="Kasımiye Courtyard" FontSize="12" TextColor="#4D463C"/>
+                                    <Label Text="{Binding [1].LocationName}" FontSize="12" TextColor="#4D463C"/>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 

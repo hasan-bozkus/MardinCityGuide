@@ -9,6 +9,7 @@ public partial class CultureHistoryPage : ContentPage
     private readonly IMuseumService _museumService;
     private readonly IReligiousSiteService _religiousSiteService;
     private readonly IHistoricalSiteService _historicalSiteService;
+    private readonly ICulturalEventService _culturalEventService;
 
 
     public CultureHistoryPage()
@@ -17,6 +18,7 @@ public partial class CultureHistoryPage : ContentPage
         _museumService = ServiceHelper.GetService<IMuseumService>();
         _religiousSiteService = ServiceHelper.GetService<IReligiousSiteService>();
         _historicalSiteService = ServiceHelper.GetService<IHistoricalSiteService>();
+        _culturalEventService = ServiceHelper.GetService<ICulturalEventService>();
     }
 
     protected override async void OnAppearing()
@@ -51,5 +53,15 @@ public partial class CultureHistoryPage : ContentPage
         }
 
         HistoricalSiteColleciton.BindingContext = firstHistoricalSite;
+
+        var upcoming2Events = await _culturalEventService.TGetUpcoming2EventsAsync();
+
+        Upcoming2EventsCollection.BindingContext = upcoming2Events.Select(x => new
+        {
+            x.Title,
+            x.LocationName,
+            StartDay = x.EventDate.ToString("dd"),
+            StartMonth = x.EventDate.ToString("MMM")
+        }).ToList();
     }
 }
