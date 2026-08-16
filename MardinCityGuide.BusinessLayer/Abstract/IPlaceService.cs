@@ -9,8 +9,9 @@ namespace MardinCityGuide.BusinessLayer.Abstract
     {
         Task<List<Place>> TGetPlaceListWithSortOrderAsync();
         Task<Place> TGetRandomPlaceAsync();
-
         Task<Place> TGetPlaceWithLocationAndCategoryAsync(int id);
         Task<Place> TGetHighestStarredPlaceWithLocationAsync();
+        Task<List<Place>> TGetPlaceListWithLocationByIsActiveAndIsFeatuderAsync();
+
     }
 }

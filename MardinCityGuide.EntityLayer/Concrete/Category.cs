@@ -23,5 +23,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
 
         [Ignore]
         public ICollection<Place>? Places { get; set; }
+
+        [Ignore]
+        public bool IsSelected { get; set; }
     }
 }

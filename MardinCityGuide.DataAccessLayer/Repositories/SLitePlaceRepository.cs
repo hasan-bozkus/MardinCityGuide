@@ -31,6 +31,20 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             return getHighsetStarredPlace;
         }
 
+        public async Task<List<Place>> GetPlaceListWithLocationByIsActiveAndIsFeatuderAsync()
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.IsActive == true && x.IsFeatured == true).ToListAsync();
+
+            foreach (var place in values)
+            {
+                var location = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == place.LocationId).FirstOrDefaultAsync();
+                place.Location = location;
+            }
+            return values;
+        }
+
         public async Task<List<Place>> GetPlaceListWithSortOrderAsync()
         {
             await _appDatabase.InitAsync();
