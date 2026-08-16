@@ -1,4 +1,4 @@
-﻿using MardinCityGuide.Mobile.Views.CultureHistory;
+﻿using MardinCityGuide.Mobile.Views.GastronomyGuide;
 using MardinCityGuide.Mobile.Views.Welcome;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +20,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new CultureHistoryPage();
+                initialPage = new GastronomyGuidePage();
             }
             else
             {
