@@ -11,5 +11,6 @@ namespace MardinCityGuide.BusinessLayer.Abstract
         Task<Place> TGetRandomPlaceAsync();
 
         Task<Place> TGetPlaceWithLocationAndCategoryAsync(int id);
+        Task<Place> TGetHighestStarredPlaceWithLocationAsync();
     }
 }

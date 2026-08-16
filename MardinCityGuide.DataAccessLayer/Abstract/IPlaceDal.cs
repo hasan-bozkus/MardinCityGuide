@@ -12,5 +12,7 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
         Task<Place> GetRandomPlaceAsync();
 
         Task<Place> GetPlaceWithLocationAndCategoryAsync(int id);
+
+        Task<Place> GetHighestStarredPlaceWithLocationAsync();
     }
 }

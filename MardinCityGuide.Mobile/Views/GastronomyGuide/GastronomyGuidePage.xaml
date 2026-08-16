@@ -141,10 +141,10 @@
                             <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
                         </Border.Shadow>
 
-                        <VerticalStackLayout>
+                        <VerticalStackLayout x:Name="GetHighsetStarredPlaceColleciton">
                             <!-- Main Image Container -->
                             <Grid HeightRequest="380">
-                                <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAeZzv8ubJmN8DtKe9Tzx2WH2TDmy2O5p6b4S9wq0o8XQ8szyoH4-W-aOobBNmVU74CgjlFZ42Vu3AVHoAm2lm-jRorkfLrdMCDffooUzRlS8yuL1t4sOSx9VaVzeH1jHg0ux8qCATEV4nZD2Vl16olcmfZBD6Symdn-vLjN_C2WNxJjAdqAP2JbLlM-vom-JvU6Km3xvV596OA-CHX8ZgzTPg26VcaLOUtovPOSb86gmh7CQHw8KynlA"
+                                <Image Source="{Binding CoverImageUrl}"
                                        Aspect="AspectFill" />
 
                                 <!-- Rating Badge -->
@@ -157,7 +157,7 @@
                                         Stroke="Transparent">
                                     <HorizontalStackLayout Spacing="4">
                                         <Image Source="ic_star_filled.png" WidthRequest="18" HeightRequest="18" />
-                                        <Label Text="4.9"
+                                        <Label Text="{Binding Rating}"
                                                FontSize="12"
                                                FontAttributes="Bold"
                                                TextColor="{StaticResource PrimaryText}"
@@ -170,19 +170,19 @@
                             <VerticalStackLayout Padding="20" Spacing="12">
                                 <Grid ColumnDefinitions="*,Auto">
                                     <VerticalStackLayout Grid.Column="0">
-                                        <Label Text="Cercis Murat Konağı"
+                                        <Label Text="{Binding Name}"
                                                FontSize="20"
                                                FontAttributes="Bold"
                                                FontFamily="Manrope"
                                                TextColor="{StaticResource PrimaryText}" />
-                                        <Label Text="Traditional Mardin Cuisine"
+                                        <Label Text="{Binding Description}"
                                                FontSize="14"
                                                FontFamily="BeVietnamPro"
                                                TextColor="{StaticResource SecondaryText}" />
                                     </VerticalStackLayout>
 
                                     <Label Grid.Column="1"
-                                           Text="$$$"
+                                           Text="{Binding PriceLevel}"
                                            FontSize="20"
                                            FontAttributes="Bold"
                                            FontFamily="Manrope"
@@ -193,7 +193,7 @@
                                 <!-- Location -->
                                 <HorizontalStackLayout Spacing="6">
                                     <Image Source="ic_location_on.png" WidthRequest="18" HeightRequest="18" />
-                                    <Label Text="Eski Mardin, Artuklu"
+                                    <Label Text="{Binding Location.AddressText}"
                                            FontSize="12"
                                            FontFamily="BeVietnamPro"
                                            TextColor="{StaticResource SecondaryText}"
@@ -201,7 +201,7 @@
                                 </HorizontalStackLayout>
 
                                 <!-- View Menu Button -->
-                                <Button Text="View Tasting Menu"
+                                <Button Text="Menüyü Görüntüle"
                                         BackgroundColor="{StaticResource MardinSand}"
                                         TextColor="{StaticResource SurfaceContainerLowest}"
                                         FontFamily="Manrope"
