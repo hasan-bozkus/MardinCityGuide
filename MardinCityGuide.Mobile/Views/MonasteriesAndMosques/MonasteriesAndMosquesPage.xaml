@@ -81,9 +81,55 @@
                 </VerticalStackLayout>
 
                 <!-- 3. CATEGORY FILTER CHIPS -->
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="-20,0">
+                <!-- Categories / Chips (Horizontal Scroll) -->
+                <CollectionView x:Name="SelectedSiteTypeListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnSiteTypeSelectionChanged" CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CommonStates">
+
+                                            <!-- normal durum -->
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource SurfaceContainerHigh}" />
+                                                    <Setter TargetName="SiteTypeLabel" Property="Label.TextColor" Value="{StaticResource OnSurfaceVariant}" />
+                                                    <Setter TargetName="SiteTypeLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                            <!-- seçili durum -->
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource MardinSand}" />
+                                                    <Setter TargetName="SiteTypeLabel" Property="Label.TextColor" Value="White" />
+                                                    <Setter TargetName="SiteTypeLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label x:Name="SiteTypeLabel" Text="{Binding Text}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="-20,0">
                     <HorizontalStackLayout Padding="20,0" Spacing="8">
-                        <!-- Active Chip -->
+                        --><!-- Active Chip --><!--
                         <Border BackgroundColor="{StaticResource PrimaryColor}"
                                 StrokeShape="RoundRectangle 20"
                                 StrokeThickness="0"
@@ -94,7 +140,7 @@
                                    TextColor="White" />
                         </Border>
 
-                        <!-- Inactive Chips -->
+                        --><!-- Inactive Chips --><!--
                         <Border BackgroundColor="{StaticResource SurfaceContainerHigh}"
                                 StrokeShape="RoundRectangle 20"
                                 StrokeThickness="0"
@@ -125,288 +171,113 @@
                                    TextColor="{StaticResource OnSurfaceVariant}" />
                         </Border>
                     </HorizontalStackLayout>
-                </ScrollView>
+                </ScrollView>-->
 
                 <!-- 4. CARDS CONTAINER -->
-                <VerticalStackLayout Spacing="24">
 
-                    <!-- CARD 1: Zinciriye Medresesi -->
-                    <Border BackgroundColor="{StaticResource SurfaceContainerLowest}"
-                            StrokeShape="RoundRectangle 16"
-                            StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
-                        </Border.Shadow>
+                <CollectionView x:Name="MosquesAndMonasteriesAndMedresesColleciton" VerticalScrollBarVisibility="Never">
 
-                        <VerticalStackLayout>
-                            <!-- Image Header -->
-                            <Grid HeightRequest="320">
-                                <Image Source="zinciriye_medresesi.jpg"
-                                       Aspect="AspectFill" />
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="24" />
+                        </CollectionView.ItemsLayout>
 
-                                <!-- Favorite Button -->
-                                <Border HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                        Margin="16"
-                                        HeightRequest="40"
-                                        WidthRequest="40"
-                                        BackgroundColor="#33FFFFFF"
-                                        StrokeShape="RoundRectangle 20"
-                                        StrokeThickness="0">
-                                    <Image Source="ic_favorite_border.png"
-                                           HeightRequest="20"
-                                           WidthRequest="20"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
-                                </Border>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- CARD 1: Zinciriye Medresesi -->
+                            <Border BackgroundColor="{StaticResource SurfaceContainerLowest}" StrokeShape="RoundRectangle 16" StrokeThickness="0">
+                                <Border.Shadow>
+                                    <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                                </Border.Shadow>
 
-                                <!-- Badge Category -->
-                                <Border HorizontalOptions="Start"
-                                        VerticalOptions="End"
-                                        Margin="16"
-                                        BackgroundColor="{StaticResource MardinSand}"
-                                        StrokeShape="RoundRectangle 12"
-                                        StrokeThickness="0"
-                                        Padding="12,4">
-                                    <Label Text="MEDRESE"
-                                           FontFamily="BeVietnamProSemiBold"
-                                           FontSize="10"
-                                           TextColor="White" />
-                                </Border>
-                            </Grid>
+                                <VerticalStackLayout>
+                                    <!-- Image Header -->
+                                    <Grid HeightRequest="320">
+                                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
 
-                            <!-- Card Body -->
-                            <VerticalStackLayout Padding="20" Spacing="12">
-                                <Grid ColumnDefinitions="*,Auto">
-                                    <Label Grid.Column="0"
-                                           Text="Zinciriye Medresesi"
-                                           FontFamily="ManropeSemiBold"
-                                           FontSize="20"
-                                           TextColor="{StaticResource OnSurface}" />
+                                        <!-- Favorite Button -->
+                                        <Border HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    Margin="16"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    BackgroundColor="#33FFFFFF"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="0">
+                                            <Image Source="ic_favorite_border.png"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                                        </Border>
 
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Image Source="ic_star.png" HeightRequest="14" WidthRequest="14" />
-                                        <Label Text="4.9"
-                                               FontFamily="BeVietnamProSemiBold"
-                                               FontSize="14"
-                                               TextColor="{StaticResource TerracottaSunset}" />
-                                    </HorizontalStackLayout>
-                                </Grid>
+                                        <!-- Badge Category -->
+                                        <Border HorizontalOptions="Start"
+                    VerticalOptions="End"
+                    Margin="16"
+                    BackgroundColor="{Binding SiteTypeTextColor}"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="0"
+                    Padding="12,4">
+                                            <Label Text="{Binding SiteType}"
+                       FontFamily="BeVietnamProSemiBold"
+                       FontSize="10"
+                       TextColor="White" />
+                                        </Border>
+                                    </Grid>
 
-                                <Label Text="Built in 1385 by Sultan Isa, this architectural marvel is famous for its intricate portal and its commanding view over the Mesopotamian plains."
-                                       FontFamily="BeVietnamProRegular"
-                                       FontSize="14"
-                                       LineBreakMode="TailTruncation"
-                                       MaxLines="2"
-                                       TextColor="{StaticResource OnSurfaceVariant}" />
+                                    <!-- Card Body -->
+                                    <VerticalStackLayout Padding="20" Spacing="12">
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <Label Grid.Column="0"
+                       Text="{Binding Name}"
+                       FontFamily="ManropeSemiBold"
+                       FontSize="20"
+                       TextColor="{StaticResource OnSurface}" />
 
-                                <BoxView HeightRequest="1" Color="#D1C5B8" Margin="0,4" />
+                                            <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                                <Image Source="ic_star.png" HeightRequest="14" WidthRequest="14" />
+                                                <Label Text="{Binding Rating}"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="14"
+                           TextColor="{StaticResource TerracottaSunset}" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
 
-                                <!-- Bottom Info (Hours & Entry) -->
-                                <Grid ColumnDefinitions="*,*">
-                                    <HorizontalStackLayout Grid.Column="0" Spacing="8">
-                                        <Image Source="ic_schedule.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="HOURS" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="09:00 - 18:00" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
+                                        <Label Text="{Binding ShortDescription}"
+                   FontFamily="BeVietnamProRegular"
+                   FontSize="14"
+                   LineBreakMode="TailTruncation"
+                   MaxLines="2"
+                   TextColor="{StaticResource OnSurfaceVariant}" />
 
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="8">
-                                        <Image Source="ic_payments.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="ENTRY" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="25 TRY" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </VerticalStackLayout>
-                    </Border>
+                                        <BoxView HeightRequest="1" Color="#D1C5B8" Margin="0,4" />
 
-                    <!-- CARD 2: Deyrulzafaran Monastery -->
-                    <Border BackgroundColor="{StaticResource SurfaceContainerLowest}"
-                            StrokeShape="RoundRectangle 16"
-                            StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
-                        </Border.Shadow>
+                                        <!-- Bottom Info (Hours & Entry) -->
+                                        <Grid ColumnDefinitions="*,*">
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="8">
+                                                <Image Source="ic_schedule.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                                                <VerticalStackLayout VerticalOptions="Center">
+                                                    <Label Text="Saat" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
+                                                    <Label Text="{Binding OpeningTimeStartAndEimeEnd}" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
 
-                        <VerticalStackLayout>
-                            <!-- Image Header -->
-                            <Grid HeightRequest="320">
-                                <Image Source="deyrulzafaran_monastery.jpg"
-                                       Aspect="AspectFill" />
-
-                                <Border HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                        Margin="16"
-                                        HeightRequest="40"
-                                        WidthRequest="40"
-                                        BackgroundColor="#33FFFFFF"
-                                        StrokeShape="RoundRectangle 20"
-                                        StrokeThickness="0">
-                                    <Image Source="ic_favorite_border.png"
-                                           HeightRequest="20"
-                                           WidthRequest="20"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
-                                </Border>
-
-                                <Border HorizontalOptions="Start"
-                                        VerticalOptions="End"
-                                        Margin="16"
-                                        BackgroundColor="{StaticResource MesopotamianBlue}"
-                                        StrokeShape="RoundRectangle 12"
-                                        StrokeThickness="0"
-                                        Padding="12,4">
-                                    <Label Text="MONASTERY"
-                                           FontFamily="BeVietnamProSemiBold"
-                                           FontSize="10"
-                                           TextColor="White" />
-                                </Border>
-                            </Grid>
-
-                            <!-- Card Body -->
-                            <VerticalStackLayout Padding="20" Spacing="12">
-                                <Grid ColumnDefinitions="*,Auto">
-                                    <Label Grid.Column="0"
-                                           Text="Deyrulzafaran Monastery"
-                                           FontFamily="ManropeSemiBold"
-                                           FontSize="20"
-                                           TextColor="{StaticResource OnSurface}" />
-
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Image Source="ic_star.png" HeightRequest="14" WidthRequest="14" />
-                                        <Label Text="4.8"
-                                               FontFamily="BeVietnamProSemiBold"
-                                               FontSize="14"
-                                               TextColor="{StaticResource TerracottaSunset}" />
-                                    </HorizontalStackLayout>
-                                </Grid>
-
-                                <Label Text="One of the oldest Syriac Orthodox monasteries in the world, once the seat of the Patriarchate. Founded in 493 AD over a 4000-year-old Sun Temple."
-                                       FontFamily="BeVietnamProRegular"
-                                       FontSize="14"
-                                       LineBreakMode="TailTruncation"
-                                       MaxLines="2"
-                                       TextColor="{StaticResource OnSurfaceVariant}" />
-
-                                <BoxView HeightRequest="1" Color="#D1C5B8" Margin="0,4" />
-
-                                <Grid ColumnDefinitions="*,*">
-                                    <HorizontalStackLayout Grid.Column="0" Spacing="8">
-                                        <Image Source="ic_schedule.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="HOURS" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="08:30 - 17:30" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="8">
-                                        <Image Source="ic_payments.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="ENTRY" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="40 TRY" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <!-- CARD 3: Grand Mosque (Ulu Cami) -->
-                    <Border BackgroundColor="{StaticResource SurfaceContainerLowest}"
-                            StrokeShape="RoundRectangle 16"
-                            StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
-                        </Border.Shadow>
-
-                        <VerticalStackLayout>
-                            <!-- Image Header -->
-                            <Grid HeightRequest="320">
-                                <Image Source="ulu_cami.jpg"
-                                       Aspect="AspectFill" />
-
-                                <Border HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                        Margin="16"
-                                        HeightRequest="40"
-                                        WidthRequest="40"
-                                        BackgroundColor="#33FFFFFF"
-                                        StrokeShape="RoundRectangle 20"
-                                        StrokeThickness="0">
-                                    <Image Source="ic_favorite_border.png"
-                                           HeightRequest="20"
-                                           WidthRequest="20"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
-                                </Border>
-
-                                <Border HorizontalOptions="Start"
-                                        VerticalOptions="End"
-                                        Margin="16"
-                                        BackgroundColor="{StaticResource TerracottaSunset}"
-                                        StrokeShape="RoundRectangle 12"
-                                        StrokeThickness="0"
-                                        Padding="12,4">
-                                    <Label Text="MOSQUE"
-                                           FontFamily="BeVietnamProSemiBold"
-                                           FontSize="10"
-                                           TextColor="White" />
-                                </Border>
-                            </Grid>
-
-                            <!-- Card Body -->
-                            <VerticalStackLayout Padding="20" Spacing="12">
-                                <Grid ColumnDefinitions="*,Auto">
-                                    <Label Grid.Column="0"
-                                           Text="Grand Mosque (Ulu Cami)"
-                                           FontFamily="ManropeSemiBold"
-                                           FontSize="20"
-                                           TextColor="{StaticResource OnSurface}" />
-
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Image Source="ic_star.png" HeightRequest="14" WidthRequest="14" />
-                                        <Label Text="5.0"
-                                               FontFamily="BeVietnamProSemiBold"
-                                               FontSize="14"
-                                               TextColor="{StaticResource TerracottaSunset}" />
-                                    </HorizontalStackLayout>
-                                </Grid>
-
-                                <Label Text="The symbol of Mardin, this Artuqid masterpiece from the 12th century features a ribbed dome and a minaret that defines the city's silhouette."
-                                       FontFamily="BeVietnamProRegular"
-                                       FontSize="14"
-                                       LineBreakMode="TailTruncation"
-                                       MaxLines="2"
-                                       TextColor="{StaticResource OnSurfaceVariant}" />
-
-                                <BoxView HeightRequest="1" Color="#D1C5B8" Margin="0,4" />
-
-                                <Grid ColumnDefinitions="*,*">
-                                    <HorizontalStackLayout Grid.Column="0" Spacing="8">
-                                        <Image Source="ic_schedule.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="HOURS" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="Open Daily" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout Grid.Column="1" Spacing="8">
-                                        <Image Source="ic_payments.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
-                                        <VerticalStackLayout VerticalOptions="Center">
-                                            <Label Text="ENTRY" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
-                                            <Label Text="Free" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                </Grid>
-                            </VerticalStackLayout>
-                        </VerticalStackLayout>
-                    </Border>
-
-                </VerticalStackLayout>
+                                            <HorizontalStackLayout Grid.Column="1" Spacing="8">
+                                                <Image Source="ic_payments.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                                                <VerticalStackLayout VerticalOptions="Center">
+                                                    <Label Text="Ücret" FontSize="10" FontFamily="BeVietnamProSemiBold" TextColor="#7F766A" />
+                                                    <Label Text="{Binding EntryFeeAmount}" FontSize="13" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurface}" />
+                                                </VerticalStackLayout>
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+                
 
                 <!-- 5. ATMOSPHERIC SHADER / BANNER -->
                 <Border HeightRequest="180"

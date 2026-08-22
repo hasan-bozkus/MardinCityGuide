@@ -15,5 +15,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             _religiousSiteDal = religiousSiteDal;
         }
+
+        public async Task<List<ReligiousSite>> TGetMosquesAndMonasteriesListAsync()
+        {
+            return await _religiousSiteDal.GetMosquesAndMonasteriesListAsync();
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace MardinCityGuide.EntityLayer.Enums
     public enum ReligiousSiteType
     {
         Medrese = 1,
-        Monastery = 2,
-        Mosque = 3
+        Manastır = 2,
+        Cami = 3
     }
 }
