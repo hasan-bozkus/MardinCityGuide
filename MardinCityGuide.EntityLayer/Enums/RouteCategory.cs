@@ -6,8 +6,8 @@ namespace MardinCityGuide.EntityLayer.Enums
 {
     public enum RouteCategory
     {
-        Historical = 1,
-        Culinary = 2,
-        Photography = 3
+        Tarihi = 1,
+        Mutfak = 2,
+        Fotoğrafçılık = 3
     }
 }
