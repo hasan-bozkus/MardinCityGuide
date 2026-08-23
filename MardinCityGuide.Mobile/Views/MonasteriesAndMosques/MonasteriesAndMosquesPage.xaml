@@ -92,7 +92,7 @@
 
                             <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
                                 <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnSiteTypeSelectionChanged" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Tapped="OnSiteTypeSelectionChanged" CommandParameter="{Binding Value}" />
                                 </Border.GestureRecognizers>
 
                                 <VisualStateManager.VisualStateGroups>
@@ -127,52 +127,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="-20,0">
-                    <HorizontalStackLayout Padding="20,0" Spacing="8">
-                        --><!-- Active Chip --><!--
-                        <Border BackgroundColor="{StaticResource PrimaryColor}"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="0"
-                                Padding="20,10">
-                            <Label Text="All Sites"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="13"
-                                   TextColor="White" />
-                        </Border>
-
-                        --><!-- Inactive Chips --><!--
-                        <Border BackgroundColor="{StaticResource SurfaceContainerHigh}"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="0"
-                                Padding="20,10">
-                            <Label Text="Monasteries"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="13"
-                                   TextColor="{StaticResource OnSurfaceVariant}" />
-                        </Border>
-
-                        <Border BackgroundColor="{StaticResource SurfaceContainerHigh}"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="0"
-                                Padding="20,10">
-                            <Label Text="Mosques"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="13"
-                                   TextColor="{StaticResource OnSurfaceVariant}" />
-                        </Border>
-
-                        <Border BackgroundColor="{StaticResource SurfaceContainerHigh}"
-                                StrokeShape="RoundRectangle 20"
-                                StrokeThickness="0"
-                                Padding="20,10">
-                            <Label Text="Medreses"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="13"
-                                   TextColor="{StaticResource OnSurfaceVariant}" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </ScrollView>-->
-
+               
                 <!-- 4. CARDS CONTAINER -->
 
                 <CollectionView x:Name="MosquesAndMonasteriesAndMedresesColleciton" VerticalScrollBarVisibility="Never">
@@ -277,31 +232,154 @@
                     </CollectionView.ItemTemplate>
                     
                 </CollectionView>
-                
+
+
+                <!-- VISITOR ETIQUETTE & CULTURE CARD -->
+                <Border StrokeShape="RoundRectangle 16"
+        StrokeThickness="0"
+        BackgroundColor="#F5F2EC"
+        Margin="0,8,0,0">
+                    <Border.Shadow>
+                        <Shadow Brush="#725B38" Offset="0,4" Radius="10" Opacity="0.1" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Padding="20" Spacing="16">
+
+                        <!-- 1. Başlık ve Rozet -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <HorizontalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
+                                <Label Text="🕊️" FontSize="18" VerticalOptions="Center" />
+                                <Label Text="Kutsal Mekan Rehberi"
+                       FontFamily="ManropeBold"
+                       FontSize="18"
+                       TextColor="#725B38"
+                       VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+
+                            <Border Grid.Column="1"
+                    BackgroundColor="#EAE3D2"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="0"
+                    Padding="10,4">
+                                <Label Text="EDEP &amp; KÜLTÜR"
+                       FontFamily="BeVietnamProSemiBold"
+                       FontSize="9"
+                       CharacterSpacing="0.8"
+                       TextColor="#725B38" />
+                            </Border>
+                        </Grid>
+
+                        <!-- Açıklama -->
+                        <Label Text="Mardin'deki manastır ve camiler aktif ibadethanelerdir. Ziyaretiniz sırasında dikkat etmeniz gereken temel kurallar:"
+               FontFamily="BeVietnamProRegular"
+               FontSize="13"
+               TextColor="#4D463C"
+               LineHeight="1.2" />
+
+                        <!-- 2. Temel Kurallar Listesi (Maddeler) -->
+                        <VerticalStackLayout Spacing="10">
+
+                            <!-- Kural 1: Kıyafet -->
+                            <Grid ColumnDefinitions="24,*" ColumnSpacing="10">
+                                <Label Grid.Column="0" Text="👔" FontSize="14" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="Uygun Kıyafet Düzeni"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="12"
+                           TextColor="#1B1C1A" />
+                                    <Label Text="Omuz ve dizleri kapatan kıyafetler tercih edilmeli; cami girişlerinde ayakkabılar çıkarılmalıdır."
+                           FontFamily="BeVietnamProRegular"
+                           FontSize="11"
+                           TextColor="#6B6255" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" Color="#E5DDD0" />
+
+                            <!-- Kural 2: Sessizlik & Fotoğraf -->
+                            <Grid ColumnDefinitions="24,*" ColumnSpacing="10">
+                                <Label Grid.Column="0" Text="🔇" FontSize="14" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="Sessizlik ve Flaşsız Çekim"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="12"
+                           TextColor="#1B1C1A" />
+                                    <Label Text="İç mekânlarda alçak sesle konuşulmalı, ibadet edenler veya din adamları izin almadan çekilmemelidir."
+                           FontFamily="BeVietnamProRegular"
+                           FontSize="11"
+                           TextColor="#6B6255" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" Color="#E5DDD0" />
+
+                            <!-- Kural 3: İbadet Saatleri -->
+                            <Grid ColumnDefinitions="24,*" ColumnSpacing="10">
+                                <Label Grid.Column="0" Text="🕯️" FontSize="14" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="İbadet Saatlerine Saygı"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="12"
+                           TextColor="#1B1C1A" />
+                                    <Label Text="Manastır pazar ayinleri ve cami namaz vakitlerinde turistik ziyaretler kısıtlanabilir."
+                           FontFamily="BeVietnamProRegular"
+                           FontSize="11"
+                           TextColor="#6B6255" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                        </VerticalStackLayout>
+
+                        <!-- 3. Detaylı Rehber Butonu -->
+                        <Button Text="Tüm Ziyaret Detaylarını Oku"
+                FontFamily="BeVietnamProSemiBold"
+                FontSize="13"
+                TextColor="White"
+                BackgroundColor="#725B38"
+                CornerRadius="20"
+                HeightRequest="40"
+                Margin="0,4,0,0"
+                Command="{Binding OpenEtiquetteGuideCommand}"
+                                Clicked="OnOpenEtiquetteGuideClicked"/>
+
+                    </VerticalStackLayout>
+                </Border>
 
                 <!-- 5. ATMOSPHERIC SHADER / BANNER -->
-                <Border HeightRequest="180"
+                <!--<Border HeightRequest="180"
                         StrokeShape="RoundRectangle 16"
                         StrokeThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#D35400" Offset="0.0" />
+                            --><!-- Terracotta Sunset --><!--
+                            <GradientStop Color="#725B38" Offset="1.0" />
+                            --><!-- Mardin Sand / Earth --><!--
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow Brush="#D35400" Offset="0,6" Radius="12" Opacity="0.25" />
+                    </Border.Shadow>
+
                     <Grid>
-                        <!-- Background Image / Overlay -->
+                        --><!-- Background Image / Overlay --><!--
                         <Image Source="golden_hour_banner.jpg" Aspect="AspectFill" />
                         <BoxView Color="#80725B38" />
 
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8" Padding="20">
-                            <Label Text="The Golden Hour Tour"
+                            <Label Text="🌇 Kutsal Mekan Rehberi"
                                    FontFamily="ManropeBold"
                                    FontSize="22"
                                    TextColor="White"
                                    HorizontalTextAlignment="Center" />
 
-                            <Label Text="Experience these sites under the magic of Mesopotamian light."
+                            <Label Text="Bin yıllık duaların yankılandığı manastır ve camilerde kıyafet ve çekim kurallarını keşfedin."
                                    FontFamily="BeVietnamProRegular"
                                    FontSize="13"
                                    TextColor="#E0EEEE"
                                    HorizontalTextAlignment="Center" />
 
-                            <Button Text="Book Private Concierge"
+                            <Button Text="Ziyaret Kuralları"
                                     FontFamily="BeVietnamProSemiBold"
                                     FontSize="13"
                                     TextColor="{StaticResource PrimaryColor}"
@@ -312,7 +390,7 @@
                                     Padding="20,0" />
                         </VerticalStackLayout>
                     </Grid>
-                </Border>
+                </Border>-->
 
             </VerticalStackLayout>
         </ScrollView>
