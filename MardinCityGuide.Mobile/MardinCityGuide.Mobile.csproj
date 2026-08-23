@@ -84,6 +84,9 @@
 	  <MauiXaml Update="Views\CultureHistory\CultureHistoryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Favorites\FavoritesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\GastronomyGuide\GastronomyGuidePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -111,6 +114,10 @@
 	  <MauiXaml Update="Views\Welcome\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Dtos\FavoritesDtos\" />
 	</ItemGroup>
 
 </Project>

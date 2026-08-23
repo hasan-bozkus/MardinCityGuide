@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Favorites.FavoritesPage"
+             BackgroundColor="#FDFCFB"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- 1. TOP APP BAR -->
+        <Grid Grid.Row="0"
+              HeightRequest="64"
+              Padding="20,0"
+              ColumnDefinitions="Auto,*,Auto"
+              BackgroundColor="#CCFDFCFB">
+
+            <HorizontalStackLayout Grid.Column="0" Spacing="16" VerticalOptions="Center">
+                <ImageButton Source="ic_arrow_back.png"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             BackgroundColor="Transparent" />
+                <Label Text="Favorites"
+                       FontFamily="ManropeBold"
+                       FontSize="20"
+                       TextColor="#725B38"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <ImageButton Grid.Column="2"
+                         Source="ic_search.png"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="Center" />
+        </Grid>
+
+        <!-- 2. MAIN SCROLL CONTENT -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Padding="20,0,20,24" Spacing="16">
+
+                <!-- TAB CHIPS -->
+                <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                    <HorizontalStackLayout Spacing="8" Padding="0,8">
+                        <Button Text="Restaurants"
+                                FontFamily="BeVietnamProMedium"
+                                FontSize="14"
+                                TextColor="#513D1D"
+                                BackgroundColor="#C5A880"
+                                CornerRadius="20"
+                                HeightRequest="38"
+                                Padding="20,0" />
+
+                        <Button Text="Sites"
+                                FontFamily="BeVietnamProMedium"
+                                FontSize="14"
+                                TextColor="#4D463C"
+                                BackgroundColor="#F5F3F0"
+                                CornerRadius="20"
+                                HeightRequest="38"
+                                Padding="20,0" />
+
+                        <Button Text="Routes"
+                                FontFamily="BeVietnamProMedium"
+                                FontSize="14"
+                                TextColor="#4D463C"
+                                BackgroundColor="#F5F3F0"
+                                CornerRadius="20"
+                                HeightRequest="38"
+                                Padding="20,0" />
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <!-- STATS HEADER -->
+                <Label Text="You have 4 places saved in Mardin." 
+                       FontFamily="BeVietnamProRegular" 
+                       FontSize="16" 
+                       TextColor="#4D463C" 
+                       Margin="0,4,0,8" />
+
+                <!-- FAVORITES LIST (XAML DAHİLİ ÖRNEK VERİLER) -->
+                <CollectionView SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="16" />
+                    </CollectionView.ItemsLayout>
+
+                    <!-- XAML İÇİNDE TANIMLANAN ÖRNEK VERİ LİSTESİ -->
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <!-- Item 1 -->
+                            <x:String>Cercis Murat Konağı|Old City, Mardin|FINE DINING|4.9|cercis_konagi.jpg</x:String>
+                            <!-- Item 2 -->
+                            <x:String>Bağdadi Restaurant|Near Great Mosque|AUTHENTIC|4.7|bagdadi.jpg</x:String>
+                            <!-- Item 3 -->
+                            <x:String>Seyr-i Merdin|Rooftop, Old City|TERRACE VIEW|4.8|seyr_i_merdin.jpg</x:String>
+                            <!-- Item 4 -->
+                            <x:String>Kebapçı Rıdo|Bazaar District|LOCAL FAVORITE|4.6|kebapci_rido.jpg</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- XAML static mockup representation -->
+                            <Border StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    BackgroundColor="#FFFFFF"
+                                    HeightRequest="128">
+                                <Border.Shadow>
+                                    <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                                </Border.Shadow>
+
+                                <Grid ColumnDefinitions="128,*">
+                                    <Grid Grid.Column="0">
+                                        <Image Source="cercis_konagi.jpg" Aspect="AspectFill" />
+                                        <Border HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                Margin="8"
+                                                BackgroundColor="#CCFFFFFF"
+                                                StrokeShape="RoundRectangle 10"
+                                                StrokeThickness="0"
+                                                Padding="6,2">
+                                            <HorizontalStackLayout Spacing="2">
+                                                <Label Text="★" TextColor="#D35400" FontSize="10" VerticalOptions="Center" />
+                                                <Label Text="4.9"
+                                                       FontFamily="BeVietnamProBold"
+                                                       FontSize="10"
+                                                       TextColor="#D35400"
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1" Padding="16,12" RowDefinitions="*,Auto">
+                                        <VerticalStackLayout Grid.Row="0" Spacing="2">
+                                            <Label Text="Cercis Murat Konağı"
+                                                   FontFamily="ManropeSemiBold"
+                                                   FontSize="18"
+                                                   TextColor="#1B1C1A"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                                <Label Text="Old City, Mardin"
+                                                       FontFamily="BeVietnamProSemiBold"
+                                                       FontSize="12"
+                                                       TextColor="#4D463C"
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+
+                                        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" VerticalOptions="End">
+                                            <Border Grid.Column="0"
+                                                    HorizontalOptions="Start"
+                                                    BackgroundColor="#EAE8E5"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    StrokeThickness="0"
+                                                    Padding="8,2">
+                                                <Label Text="FINE DINING"
+                                                       FontFamily="BeVietnamProSemiBold"
+                                                       FontSize="10"
+                                                       TextColor="#4D463C" />
+                                            </Border>
+
+                                            <ImageButton Grid.Column="1"
+                                                         Source="ic_heart_filled.png"
+                                                         HeightRequest="32"
+                                                         WidthRequest="32"
+                                                         CornerRadius="16"
+                                                         BackgroundColor="#1AD35400" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- 3. RECOMMENDED SECTION HEADER -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,16,0,0">
+                    <Label Grid.Column="0"
+                           Text="Recommended for you"
+                           FontFamily="ManropeSemiBold"
+                           FontSize="20"
+                           TextColor="#1B1C1A" />
+                    <Button Grid.Column="1"
+                            Text="See All"
+                            FontFamily="BeVietnamProMedium"
+                            FontSize="14"
+                            TextColor="#008080"
+                            BackgroundColor="Transparent"
+                            Padding="0" />
+                </Grid>
+
+                <!-- RECOMMENDED ITEMS (XAML İÇİNDE HARDCODED) -->
+                <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                    <HorizontalStackLayout Spacing="16">
+                        <!-- Rec Item 1 -->
+                        <VerticalStackLayout WidthRequest="180" Spacing="6">
+                            <Grid HeightRequest="225">
+                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                    <Image Source="deyrulzafaran.jpg" Aspect="AspectFill" />
+                                </Border>
+                                <ImageButton Source="ic_add.png"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Start"
+                                             Margin="8"
+                                             HeightRequest="28"
+                                             WidthRequest="28"
+                                             CornerRadius="14"
+                                             BackgroundColor="#E6FFFFFF" />
+                            </Grid>
+                            <Label Text="Deyrulzafaran Monastery"
+                                   FontFamily="ManropeSemiBold"
+                                   FontSize="15"
+                                   TextColor="#1B1C1A"
+                                   LineBreakMode="TailTruncation" />
+                            <Label Text="Historical Site"
+                                   FontFamily="BeVietnamProSemiBold"
+                                   FontSize="12"
+                                   TextColor="#4D463C" />
+                        </VerticalStackLayout>
+
+                        <!-- Rec Item 2 -->
+                        <VerticalStackLayout WidthRequest="180" Spacing="6">
+                            <Grid HeightRequest="225">
+                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                    <Image Source="old_city_route.jpg" Aspect="AspectFill" />
+                                </Border>
+                                <ImageButton Source="ic_add.png"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Start"
+                                             Margin="8"
+                                             HeightRequest="28"
+                                             WidthRequest="28"
+                                             CornerRadius="14"
+                                             BackgroundColor="#E6FFFFFF" />
+                            </Grid>
+                            <Label Text="Old City Walking Route"
+                                   FontFamily="ManropeSemiBold"
+                                   FontSize="15"
+                                   TextColor="#1B1C1A"
+                                   LineBreakMode="TailTruncation" />
+                            <Label Text="Route"
+                                   FontFamily="BeVietnamProSemiBold"
+                                   FontSize="12"
+                                   TextColor="#4D463C" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- 4. BOTTOM NAVIGATION BAR -->
+        <Border Grid.Row="2"
+                HeightRequest="64"
+                StrokeShape="RoundRectangle 16,16,0,0"
+                StrokeThickness="0"
+                BackgroundColor="#E6FDFCFB">
+            <Border.Shadow>
+                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*,*">
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_home.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Home" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_explore.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Discover" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2"
+                        BackgroundColor="#4DFEDB12"
+                        StrokeShape="RoundRectangle 16"
+                        StrokeThickness="0"
+                        Padding="12,4"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                        <Image Source="ic_heart_active.png" HeightRequest="24" WidthRequest="24" />
+                        <Label Text="Favorites" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#725B38" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_profile.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Profile" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>
