@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.SeazonalEvents.SeazonalEventsPage"
+             BackgroundColor="#FDFCFB"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- 1. TOP APP BAR -->
+        <Grid Grid.Row="0"
+              HeightRequest="64"
+              Padding="20,0"
+              ColumnDefinitions="Auto,*,Auto"
+              BackgroundColor="#CCFDFCFB">
+
+            <HorizontalStackLayout Grid.Column="0" Spacing="16" VerticalOptions="Center">
+                <ImageButton Source="ic_arrow_back.png"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             BackgroundColor="Transparent" />
+                <Label Text="Seasonal Events"
+                       FontFamily="ManropeBold"
+                       FontSize="20"
+                       TextColor="#725B38"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <ImageButton Grid.Column="2"
+                         Source="ic_search.png"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="Center" />
+        </Grid>
+
+        <!-- 2. MAIN CONTENT (SCROLLABLE) -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Padding="20,0,20,32" Spacing="24">
+
+                <!-- HERO SECTION: FEATURED EVENT (MARDIN BIENNIAL) -->
+                <Border StrokeShape="RoundRectangle 32"
+                        StrokeThickness="0"
+                        HeightRequest="420"
+                        Margin="0,8,0,0">
+                    <Border.Shadow>
+                        <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                    </Border.Shadow>
+
+                    <Grid>
+                        <!-- Arka Plan Görseli -->
+                        <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuC-peqqd__wTKCs3GooAYgmgS34TtCrdXL1SzNvaZOEhb12ZnZcSE5xDFde49G02xUDmtQCqs0uudiX6SsMv1c87ZLgqBXdf0yTDfMPgykaMFtLHNBwIxlFchy6gxPEqtD6lp3NdzXOKZgZ2MXBgmZwbkcvjfO-NoefGWPg1TjS6G-w7d5KYUT6-GyYpTxnmJeciwLaDlYxAUMWrK6229HpLCmgYxjzDjxj8RtwbN_VEoT5PMozmxUqng" Aspect="AspectFill" />
+
+                        <!-- Dark Overlay Gradient -->
+                        <BoxView VerticalOptions="End" HeightRequest="250">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="Transparent" Offset="0.0" />
+                                    <GradientStop Color="#D9000000" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+
+                        <!-- Hero İçerik -->
+                        <VerticalStackLayout VerticalOptions="End" Padding="24" Spacing="8">
+                            <Border HorizontalOptions="Start"
+                                    BackgroundColor="#C5A880"
+                                    StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0"
+                                    Padding="10,4">
+                                <Label Text="ÖNE ÇIKANLAR"
+                                       FontFamily="BeVietnamProBold"
+                                       FontSize="11"
+                                       TextColor="#FFFFFF"
+                                       CharacterSpacing="1.5" />
+                            </Border>
+
+                            <Label Text="Mardin Biennial"
+                                   FontFamily="ManropeBold"
+                                   FontSize="26"
+                                   TextColor="#FFFFFF" />
+
+                            <Label Text="Eski şehrin kalbinde, çağdaş sanatla dolu kültürlerarası bir yolculuk."
+                                   FontFamily="BeVietnamProRegular"
+                                   FontSize="14"
+                                   TextColor="#E0E0E0"
+                                   Margin="0,0,0,8" />
+
+                            <Button Text="Programları Keşfet"
+                                    FontFamily="BeVietnamProMedium"
+                                    FontSize="14"
+                                    TextColor="#725B38"
+                                    BackgroundColor="#FDFCFB"
+                                    CornerRadius="24"
+                                    HeightRequest="46"
+                                    HorizontalOptions="Start"
+                                    Padding="24,0" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- SKY GAZING SECTION (BENTO GRID) -->
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="End">
+                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                            <Label Text="Sky Gazing"
+                                   FontFamily="ManropeSemiBold"
+                                   FontSize="20"
+                                   TextColor="#725B38" />
+                            <Label Text="Best sunset viewing times this month"
+                                   FontFamily="BeVietnamProRegular"
+                                   FontSize="13"
+                                   TextColor="#4D463C" />
+                        </VerticalStackLayout>
+                        <Button Grid.Column="1"
+                                Text="View Forecast"
+                                FontFamily="BeVietnamProMedium"
+                                FontSize="13"
+                                TextColor="#008080"
+                                BackgroundColor="Transparent"
+                                Padding="0"
+                                VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Bento Grid Kartları -->
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="12">
+                        <!-- Üst Geniş Kart (Golden Hour) -->
+                        <Border Grid.Row="0" Grid.ColumnSpan="2"
+                                StrokeShape="RoundRectangle 24"
+                                StrokeThickness="1"
+                                Stroke="#EAE8E5"
+                                BackgroundColor="#B3FFFFFF"
+                                Padding="20">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <HorizontalStackLayout Grid.Column="0" Spacing="12" VerticalOptions="Center">
+                                    <Border WidthRequest="48" HeightRequest="48"
+                                            StrokeShape="RoundRectangle 24"
+                                            StrokeThickness="0"
+                                            BackgroundColor="#F3EAD8">
+                                        <Image Source="ic_twilight.png"
+                                               HeightRequest="24" WidthRequest="24"
+                                               HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+                                    <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                                        <Label Text="PEAK GOLDEN HOUR"
+                                               FontFamily="BeVietnamProBold"
+                                               FontSize="11"
+                                               TextColor="#4D463C"
+                                               CharacterSpacing="1" />
+                                        <Label Text="18:42 — 19:15"
+                                               FontFamily="ManropeBold"
+                                               FontSize="18"
+                                               TextColor="#725B38" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+
+                                <Border Grid.Column="2"
+                                        BackgroundColor="#725B38"
+                                        StrokeShape="RoundRectangle 16"
+                                        StrokeThickness="0"
+                                        Padding="12,6"
+                                        VerticalOptions="Center">
+                                    <Label Text="Perfect Visibility"
+                                           FontFamily="BeVietnamProMedium"
+                                           FontSize="11"
+                                           TextColor="#FFFFFF" />
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <!-- Sol Alt Kart (Zinciriye) -->
+                        <Border Grid.Row="1" Grid.Column="0"
+                                StrokeShape="RoundRectangle 24"
+                                StrokeThickness="1"
+                                Stroke="#1A000000"
+                                BackgroundColor="#F5F3F0"
+                                Padding="16">
+                            <VerticalStackLayout Spacing="6">
+                                <Image Source="ic_location_pin.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
+                                <Label Text="Zinciriye"
+                                       FontFamily="ManropeBold"
+                                       FontSize="18"
+                                       TextColor="#725B38" />
+                                <Label Text="BEST TERRACE VIEW"
+                                       FontFamily="BeVietnamProBold"
+                                       FontSize="10"
+                                       TextColor="#4D463C"
+                                       CharacterSpacing="0.8" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Sağ Alt Kart (Kasimiye) -->
+                        <Border Grid.Row="1" Grid.Column="1"
+                                StrokeShape="RoundRectangle 24"
+                                StrokeThickness="1"
+                                Stroke="#1A000000"
+                                BackgroundColor="#F5F3F0"
+                                Padding="16">
+                            <VerticalStackLayout Spacing="6">
+                                <Image Source="ic_camera.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
+                                <Label Text="Kasimiye"
+                                       FontFamily="ManropeBold"
+                                       FontSize="18"
+                                       TextColor="#725B38" />
+                                <Label Text="BEST PHOTOGRAPHY"
+                                       FontFamily="BeVietnamProBold"
+                                       FontSize="10"
+                                       TextColor="#4D463C"
+                                       CharacterSpacing="0.8" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- SEASONAL HIGHLIGHTS (HORIZONTAL SCROLL WITH SPACING) -->
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Seasonal Highlights"
+                               FontFamily="ManropeSemiBold"
+                               FontSize="20"
+                               TextColor="#725B38" />
+                        <ImageButton Grid.Column="1"
+                                     Source="ic_tune.png"
+                                     HeightRequest="24" WidthRequest="24"
+                                     BackgroundColor="Transparent" />
+                    </Grid>
+
+                    <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                        <!-- Spacing="16" ile görsellerin arasına mesafe eklendi -->
+                        <HorizontalStackLayout Spacing="16">
+
+                            <!-- Highlight Kart 1 -->
+                            <VerticalStackLayout WidthRequest="260" Spacing="8">
+                                <Grid HeightRequest="260">
+                                    <Border StrokeShape="RoundRectangle 24" StrokeThickness="0">
+                                        <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuDfcZ2nP8uIzrYBQ8apIHJ8nLj2rhIBQ9_WbRZKGmpmFlquLA_aSb-IBhhHjnUnmhdfKefnaRSYKz9CVHgh_H-84DgqiSa0cSWTjiM7zlo_TVOFVuCNMKeV5OeIpXU1NZXW0SLjZzrKPRNcDV3ygiKCtqdUbyYWbVD12fCxWlrGWBJ9aPwceHMYKh4YfHhvsYZIBt-90ZZdaAKbkzigEonA3X3jNukqrUYc-31536KamFrPK4jdCVtzBA" Aspect="AspectFill" />
+                                    </Border>
+
+                                    <!-- Tarih Chip -->
+                                    <Border HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="12"
+                                            BackgroundColor="#CCFFFFFF"
+                                            StrokeShape="RoundRectangle 16"
+                                            StrokeThickness="0"
+                                            Padding="12,6">
+                                        <Label Text="June 12-15"
+                                               FontFamily="BeVietnamProMedium"
+                                               FontSize="12"
+                                               TextColor="#725B38" />
+                                    </Border>
+                                </Grid>
+
+                                <Label Text="Cherry Festival"
+                                       FontFamily="ManropeBold"
+                                       FontSize="18"
+                                       TextColor="#725B38" />
+                                <Label Text="Yeşilli Harvest Celebrations"
+                                       FontFamily="BeVietnamProRegular"
+                                       FontSize="13"
+                                       TextColor="#4D463C" />
+                            </VerticalStackLayout>
+
+                            <!-- Highlight Kart 2 -->
+                            <VerticalStackLayout WidthRequest="260" Spacing="8">
+                                <Grid HeightRequest="260">
+                                    <Border StrokeShape="RoundRectangle 24" StrokeThickness="0">
+                                        <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuDYiC1KuFWjB1LSSQ6tzG-69qLktEnHyQtWUjEzdgMKqhnlAXlqOlrTiiCyTmTR_HpuWqkPl6SqOSAmhflfNylfmgyYTKV57fMk45YgE9Bx8RrTJEhpB794vW4lVfrUAF8tP0kvBU0XBUdx3jU36u00Suw5zAPVV-5M5on8pe-XJCINrFZuELXhX-pmlhfc_quXn2mxsHoobdwEdI_LQVSewHlLtIJ1LGaDVPmsqcjjz0cctqY5AkdEKQ" Aspect="AspectFill" />
+                                    </Border>
+
+                                    <Border HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="12"
+                                            BackgroundColor="#CCFFFFFF"
+                                            StrokeShape="RoundRectangle 16"
+                                            StrokeThickness="0"
+                                            Padding="12,6">
+                                        <Label Text="Weekly (Fri/Sat)"
+                                               FontFamily="BeVietnamProMedium"
+                                               FontSize="12"
+                                               TextColor="#725B38" />
+                                    </Border>
+                                </Grid>
+
+                                <Label Text="Mansion Concerts"
+                                       FontFamily="ManropeBold"
+                                       FontSize="18"
+                                       TextColor="#725B38" />
+                                <Label Text="Acoustic Maqam Sessions"
+                                       FontFamily="BeVietnamProRegular"
+                                       FontSize="13"
+                                       TextColor="#4D463C" />
+                            </VerticalStackLayout>
+
+                            <!-- Highlight Kart 3 -->
+                            <VerticalStackLayout WidthRequest="260" Spacing="8">
+                                <Grid HeightRequest="260">
+                                    <Border StrokeShape="RoundRectangle 24" StrokeThickness="0">
+                                        <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuAQhOm5D-zK9Ts0n_N445mj5MCmAX3iYVog7umd8709kZlf0nn2kQvoWGM1VcZzrxxvM3QRKs7khM5JwKPblN2c-rvIrxXHX4evpnzfKCgoZQs1SCNd986bktcAcbdX-fi3Io30PbZQpkqrRxrR0F5sOdcv2YrfBXPxPRdUnDz2h2CyNroPwXJUaBaaqCewmJV0uZhrdfqdqRKlCh_3_bch_Nyq3kdTdqOvVr8O-ltp4LiG4ck2s4U__w" Aspect="AspectFill" />
+                                    </Border>
+
+                                    <Border HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="12"
+                                            BackgroundColor="#CCFFFFFF"
+                                            StrokeShape="RoundRectangle 16"
+                                            StrokeThickness="0"
+                                            Padding="12,6">
+                                        <Label Text="July 05"
+                                               FontFamily="BeVietnamProMedium"
+                                               FontSize="12"
+                                               TextColor="#725B38" />
+                                    </Border>
+                                </Grid>
+
+                                <Label Text="The Stone Table"
+                                       FontFamily="ManropeBold"
+                                       FontSize="18"
+                                       TextColor="#725B38" />
+                                <Label Text="Fine Dining Experience"
+                                       FontFamily="BeVietnamProRegular"
+                                       FontSize="13"
+                                       TextColor="#4D463C" />
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+
+                <!-- FULL CALENDAR SECTION -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Full Calendar"
+                           FontFamily="ManropeSemiBold"
+                           FontSize="20"
+                           TextColor="#725B38" />
+
+                    <!-- Takvim Öğeleri Liste Düzeni -->
+                    <VerticalStackLayout Spacing="12">
+
+                        <!-- Calendar Item 1 -->
+                        <Border StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                Stroke="#1A000000"
+                                BackgroundColor="#FFFFFF"
+                                Padding="12">
+                            <Border.Shadow>
+                                <Shadow Brush="#C5A880" Offset="0,2" Radius="8" Opacity="0.1" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="16">
+                                <Border Grid.Column="0"
+                                        WidthRequest="60" HeightRequest="70"
+                                        StrokeShape="RoundRectangle 12"
+                                        StrokeThickness="0"
+                                        BackgroundColor="#4DC5A880">
+                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                                        <Label Text="OCT" FontFamily="BeVietnamProBold" FontSize="11" TextColor="#725B38" HorizontalOptions="Center" />
+                                        <Label Text="14" FontFamily="ManropeBold" FontSize="20" TextColor="#725B38" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                    <Label Text="International Photography Festival"
+                                           FontFamily="ManropeBold"
+                                           FontSize="15"
+                                           TextColor="#1B1C1A"
+                                           LineBreakMode="TailTruncation" />
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                        <Label Text="Old Town Square"
+                                               FontFamily="BeVietnamProRegular"
+                                               FontSize="12"
+                                               TextColor="#4D463C" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Calendar Item 2 -->
+                        <Border StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                Stroke="#1A000000"
+                                BackgroundColor="#FFFFFF"
+                                Padding="12">
+                            <Border.Shadow>
+                                <Shadow Brush="#C5A880" Offset="0,2" Radius="8" Opacity="0.1" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="16">
+                                <Border Grid.Column="0"
+                                        WidthRequest="60" HeightRequest="70"
+                                        StrokeShape="RoundRectangle 12"
+                                        StrokeThickness="0"
+                                        BackgroundColor="#F5F3F0">
+                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                                        <Label Text="OCT" FontFamily="BeVietnamProBold" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                        <Label Text="21" FontFamily="ManropeBold" FontSize="20" TextColor="#4D463C" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                    <Label Text="Harire Gastronomy Workshop"
+                                           FontFamily="ManropeBold"
+                                           FontSize="15"
+                                           TextColor="#1B1C1A"
+                                           LineBreakMode="TailTruncation" />
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                        <Label Text="Artuklu Culinary Art Center"
+                                               FontFamily="BeVietnamProRegular"
+                                               FontSize="12"
+                                               TextColor="#4D463C" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Calendar Item 3 -->
+                        <Border StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                Stroke="#1A000000"
+                                BackgroundColor="#FFFFFF"
+                                Padding="12">
+                            <Border.Shadow>
+                                <Shadow Brush="#C5A880" Offset="0,2" Radius="8" Opacity="0.1" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="16">
+                                <Border Grid.Column="0"
+                                        WidthRequest="60" HeightRequest="70"
+                                        StrokeShape="RoundRectangle 12"
+                                        StrokeThickness="0"
+                                        BackgroundColor="#F5F3F0">
+                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                                        <Label Text="NOV" FontFamily="BeVietnamProBold" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+                                        <Label Text="02" FontFamily="ManropeBold" FontSize="20" TextColor="#4D463C" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                                    <Label Text="Stone Masonry Workshop"
+                                           FontFamily="ManropeBold"
+                                           FontSize="15"
+                                           TextColor="#1B1C1A"
+                                           LineBreakMode="TailTruncation" />
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                        <Label Text="Mardin Museum"
+                                               FontFamily="BeVietnamProRegular"
+                                               FontSize="12"
+                                               TextColor="#4D463C" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- 3. BOTTOM NAVIGATION BAR -->
+        <Border Grid.Row="2"
+                HeightRequest="64"
+                StrokeShape="RoundRectangle 16,16,0,0"
+                StrokeThickness="0"
+                BackgroundColor="#E6FDFCFB">
+            <Border.Shadow>
+                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*,*">
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_home.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Home" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+
+                <!-- Active Tab: Discover -->
+                <Border Grid.Column="1"
+                        BackgroundColor="#4DFEDB12"
+                        StrokeShape="RoundRectangle 16"
+                        StrokeThickness="0"
+                        Padding="12,4"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                        <Image Source="ic_explore_active.png" HeightRequest="24" WidthRequest="24" />
+                        <Label Text="Discover" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#725B38" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_heart.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Favorites" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_profile.png" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="Profile" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

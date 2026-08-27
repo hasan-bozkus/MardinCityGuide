@@ -35,7 +35,7 @@ namespace MardinCityGuide.Mobile
             //// Android / iOS cihazlarda ve canlı ortamda (Release) cihazın güvenli klasörüne yazar
             //dbPath = Path.Combine(FileSystem.AppDataDirectory, "MardinCityGuide.db");
 
-            var connectionStrings = new SQLiteConnectionString(dbPath, storeDateTimeAsTicks: false);
+            var connectionStrings = new SQLiteConnectionString(dbPath, storeDateTimeAsTicks: true);
 
             // 2. SQLite Bağlantısını DI Container'a Singleton Olarak Kaydetme
             builder.Services.AddSingleton(s => new SQLiteAsyncConnection(connectionStrings));
@@ -77,6 +77,9 @@ namespace MardinCityGuide.Mobile
 
             builder.Services.AddScoped<ICulturalEventDal, SLiteCulturalEventRepository>();
             builder.Services.AddScoped<ICulturalEventService, CulturalEventManager>();
+
+            builder.Services.AddScoped<IFavoriteDal, SLiteFavoriteRepository>();
+            builder.Services.AddScoped<IFavoriteService, FavoriteManager>();
 
 #if DEBUG
             builder.Logging.AddDebug();

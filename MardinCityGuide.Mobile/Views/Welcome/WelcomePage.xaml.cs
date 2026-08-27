@@ -1,5 +1,6 @@
 using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.EntityLayer.Concrete;
+using MardinCityGuide.Mobile.Helpers;
 
 namespace MardinCityGuide.Mobile.Views.Welcome;
 
@@ -7,18 +8,12 @@ public partial class WelcomePage : ContentPage
 {
     private readonly ICategoryService _categoryService;
 
-   
-
     private bool _isAnimating = false;
-    public WelcomePage()
-	{
-		InitializeComponent();
-	}
 
-    public WelcomePage(ICategoryService categoryService)
+    public WelcomePage()
     {
         InitializeComponent();
-        _categoryService = categoryService;
+        _categoryService = ServiceHelper.GetService<ICategoryService>();
     }
 
     protected override async void OnAppearing()

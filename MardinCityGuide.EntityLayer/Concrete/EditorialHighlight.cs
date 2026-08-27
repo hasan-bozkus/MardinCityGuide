@@ -29,7 +29,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [NotNull]
         public string CtaUrl { get; set; } = string.Empty;
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
     }

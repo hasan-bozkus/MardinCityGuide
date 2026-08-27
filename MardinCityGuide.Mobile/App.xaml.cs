@@ -1,4 +1,7 @@
 ﻿using MardinCityGuide.Mobile.Views.Favorites;
+using MardinCityGuide.Mobile.Views.PlaceDetail;
+using MardinCityGuide.Mobile.Views.SeazonalEvents;
+using MardinCityGuide.Mobile.Views.Splash;
 using MardinCityGuide.Mobile.Views.Welcome;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +23,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new FavoritesPage();
+                initialPage = new Window(new SeazonalEventsPage()).Page;
             }
             else
             {
@@ -29,7 +32,7 @@ namespace MardinCityGuide.Mobile
             }
 
             // Seçilen başlangıç sayfası ile Window nesnesini oluşturup döndürüyoruz
-            return new Window(initialPage);
+            return initialPage.Window;
         }
     }
 }
