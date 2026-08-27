@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Handlers.Items;
 using Microsoft.Maui.Storage;
 using SQLite;
+using System.Net.Http.Json;
 using System;
 using System.IO;
 namespace MardinCityGuide.Mobile
@@ -28,6 +29,7 @@ namespace MardinCityGuide.Mobile
                     fonts.AddFont("material-symbols-outlined-latin-400-normal.ttf", "MaterialSymbols");
 
                 });
+
 
             // 1. Veritabanı Yolu Belirleme (Geliştirme Ortamı ve Canlı Ayrımı)
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "MardinCityGuide.db");
@@ -80,6 +82,9 @@ namespace MardinCityGuide.Mobile
 
             builder.Services.AddScoped<IFavoriteDal, SLiteFavoriteRepository>();
             builder.Services.AddScoped<IFavoriteService, FavoriteManager>();
+
+            builder.Services.AddScoped<ISkyGazingInfoDal, SLiteSkyGazingInfoRepository>();
+            builder.Services.AddScoped<ISkyGazingInfoService, SkyGazingInfoManager>();
 
 #if DEBUG
             builder.Logging.AddDebug();

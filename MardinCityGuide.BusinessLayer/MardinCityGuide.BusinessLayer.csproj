@@ -27,6 +27,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="SunCalcNet" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
