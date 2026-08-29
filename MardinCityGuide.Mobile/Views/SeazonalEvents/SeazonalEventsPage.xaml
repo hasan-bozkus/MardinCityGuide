@@ -101,13 +101,13 @@
 
                 <!-- SKY GAZING SECTION (BENTO GRID) -->
                 <VerticalStackLayout Spacing="12">
-                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="End">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="End" >
                         <VerticalStackLayout Grid.Column="0" Spacing="2">
-                            <Label Text="Sky Gazing"
+                            <Label Text="Gökyüzü Seyredin"
                                    FontFamily="ManropeSemiBold"
                                    FontSize="20"
                                    TextColor="#725B38" />
-                            <Label Text="Best sunset viewing times this month"
+                            <Label Text="Hergün, gün batımını izlemek için en iyi zamanlar."
                                    FontFamily="BeVietnamProRegular"
                                    FontSize="13"
                                    TextColor="#4D463C" />
@@ -131,7 +131,7 @@
                                 Stroke="#EAE8E5"
                                 BackgroundColor="#B3FFFFFF"
                                 Padding="20">
-                            <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Grid ColumnDefinitions="Auto,*,Auto" x:Name="SkyGazingInfoForToday">
                                 <HorizontalStackLayout Grid.Column="0" Spacing="12" VerticalOptions="Center">
                                     <Border WidthRequest="48" HeightRequest="48"
                                             StrokeShape="RoundRectangle 24"
@@ -142,15 +142,21 @@
                                                HorizontalOptions="Center" VerticalOptions="Center" />
                                     </Border>
                                     <VerticalStackLayout VerticalOptions="Center" Spacing="2">
-                                        <Label Text="PEAK GOLDEN HOUR"
+                                        <Label Text="Güneşin Batış Saati"
                                                FontFamily="BeVietnamProBold"
                                                FontSize="11"
                                                TextColor="#4D463C"
                                                CharacterSpacing="1" />
-                                        <Label Text="18:42 — 19:15"
-                                               FontFamily="ManropeBold"
+                                        <Label FontFamily="ManropeBold"
                                                FontSize="18"
-                                               TextColor="#725B38" />
+                                               TextColor="#725B38">
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0:HH:mm} - {1:HH:mm}">
+                                                    <Binding Path="PeakStart"></Binding>
+                                                    <Binding Path="PeakEnd"></Binding>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
 
@@ -160,7 +166,7 @@
                                         StrokeThickness="0"
                                         Padding="12,6"
                                         VerticalOptions="Center">
-                                    <Label Text="Perfect Visibility"
+                                    <Label Text="{Binding VisibilityLabel}"
                                            FontFamily="BeVietnamProMedium"
                                            FontSize="11"
                                            TextColor="#FFFFFF" />

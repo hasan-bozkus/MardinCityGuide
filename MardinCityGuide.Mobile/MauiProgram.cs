@@ -86,6 +86,9 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<ISkyGazingInfoDal, SLiteSkyGazingInfoRepository>();
             builder.Services.AddScoped<ISkyGazingInfoService, SkyGazingInfoManager>();
 
+            builder.Services.AddScoped<ISeasonalSpotDal, SLiteSeasonalSpotRepository>();
+            builder.Services.AddScoped<ISeasonalSpotService, SeasonalSpotManager>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

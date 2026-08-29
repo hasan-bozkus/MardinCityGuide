@@ -12,8 +12,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         public int SkyGazingInfoId { get; set; }
 
         public DateTime ForMonth { get; set; }              // hangi ay için geçerli
-        public TimeSpan PeakStart { get; set; }               // 18:42
-        public TimeSpan PeakEnd { get; set; }                  // 19:15
+        public DateTime PeakStart { get; set; }               // 18:42
+        public DateTime PeakEnd { get; set; }                  // 19:15
 
         [NotNull]
         public string VisibilityLabel { get; set; } = default!; // "Perfect Visibility"

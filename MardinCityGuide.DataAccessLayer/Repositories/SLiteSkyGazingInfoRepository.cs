@@ -38,14 +38,11 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                 var goldenHourPhase = sunPhases.FirstOrDefault(x => x.Name.Value == SunPhaseName.GoldenHour.Value);
                 var sunsetPhase = sunPhases.FirstOrDefault(x => x.Name.Value == SunPhaseName.Sunset.Value);
 
-                // UTC gelen zamanı yerel saate çeviriyoruz
-                TimeSpan peakStart = goldenHourPhase != null
-                    ? goldenHourPhase.PhaseTime.ToLocalTime().TimeOfDay
-                    : new TimeSpan(18, 42, 0);
+                DateTime peakStart = goldenHourPhase != null ? goldenHourPhase.PhaseTime.ToLocalTime() : DateTime.Today.Add(new TimeSpan(18, 42, 0));
 
-                TimeSpan peakEnd = sunsetPhase != null
-                    ? sunsetPhase.PhaseTime.ToLocalTime().TimeOfDay
-                    : new TimeSpan(19, 15, 0);
+                DateTime peakEnd = sunsetPhase != null
+                    ? sunsetPhase.PhaseTime.ToLocalTime()
+                    : DateTime.Today.Add(new TimeSpan(19, 15, 0));
 
                 return new SkyGazingInfo()
                 {
