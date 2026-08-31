@@ -14,7 +14,7 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [NotNull]
         public string Title { get; set; } = default!;
         public DateTime EventDate { get; set; }         // gün/ay ayrı da gösterilebilir (14 / OCT)
-        public DateTime? EventEndDate { get; set; }        // YENİ: "June 12-15" aralığı için
+        public DateTime EventEndDate { get; set; }        // YENİ: "June 12-15" aralığı için
 
 
         [NotNull]

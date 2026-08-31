@@ -20,5 +20,15 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             return await _culturalEventDal.GetUpcoming2EventsAsync();
         }
+
+        public async Task<List<CulturalEvent>> TGetUpcoming4EventsWithAsync()
+        {
+            return await _culturalEventDal.GetUpcoming4EventsWithAsync();
+        }
+
+        public async Task<List<CulturalEvent>> TGetUpcoming4EventsWithImageAsync()
+        {
+            return await _culturalEventDal.GetUpcoming4EventsWithImageAsync();
+        }
     }
 }

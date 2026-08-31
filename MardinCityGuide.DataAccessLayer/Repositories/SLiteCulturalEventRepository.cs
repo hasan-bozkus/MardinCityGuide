@@ -34,5 +34,44 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
 
             return values;
         }
+
+        public async Task<List<CulturalEvent>> GetUpcoming4EventsWithAsync()
+        {
+            await _appDatabase.InitAsync();
+
+            var today = DateTime.Today;
+
+            var values = await _connection.Table<CulturalEvent>().Where(x => x.EventDate >= today).Take(4).ToListAsync();
+
+            values.Select(x => new
+            {
+                EventDate = DateTime.Parse(x.EventDate.ToShortDateString()),
+                EventEndDate = DateTime.Parse(x.EventEndDate.ToShortDateString()),
+                Title = x.Title,
+                LocationName = x.LocationName
+            }).ToList();
+
+            return values;
+        }
+
+        public async Task<List<CulturalEvent>> GetUpcoming4EventsWithImageAsync()
+        {
+            await _appDatabase.InitAsync();
+
+            var today = DateTime.Today;
+
+            var values = await _connection.Table<CulturalEvent>().Where(x => x.IsFeatured == true).Take(6).ToListAsync();
+
+            values.Select(x => new
+            {
+                EventDate = DateTime.Parse(x.EventDate.ToString()),
+                EventEndDate = DateTime.Parse(x.EventEndDate.ToString()),
+                Title = x.Title,
+                LocationName = x.LocationName,
+                CoverImageUrl = x.CoverImageUrl
+            }).ToList();
+
+            return values;
+        }
     }
 }
