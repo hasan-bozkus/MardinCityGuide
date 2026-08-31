@@ -2,6 +2,7 @@
 using MardinCityGuide.Mobile.Views.PlaceDetail;
 using MardinCityGuide.Mobile.Views.SeazonalEvents;
 using MardinCityGuide.Mobile.Views.Splash;
+using MardinCityGuide.Mobile.Views.TravelRoutes;
 using MardinCityGuide.Mobile.Views.Welcome;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,7 +24,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new Window(new SeazonalEventsPage()).Page;
+                initialPage = new Window(new TravelRoutesPage()).Page;
             }
             else
             {
