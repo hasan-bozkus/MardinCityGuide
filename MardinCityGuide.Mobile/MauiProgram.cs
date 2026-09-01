@@ -89,6 +89,12 @@ namespace MardinCityGuide.Mobile
             builder.Services.AddScoped<ISeasonalSpotDal, SLiteSeasonalSpotRepository>();
             builder.Services.AddScoped<ISeasonalSpotService, SeasonalSpotManager>();
 
+            builder.Services.AddScoped<IRouteDal, SLiteRouteRepository>();
+            builder.Services.AddScoped<IRouteService, RouteManager>();
+
+            builder.Services.AddScoped<IRouteStopDal, SLiteRouteStopRepository>();
+            builder.Services.AddScoped<IRouteStopService, RouteStopManager>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

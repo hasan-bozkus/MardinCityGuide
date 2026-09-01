@@ -15,6 +15,7 @@
             <Color x:Key="PrimaryFixed">#FEDEB2</Color>
             <Color x:Key="OnPrimaryFixed">#584323</Color>
             <Color x:Key="SurfaceContainer">#EFEEEB</Color>
+            <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
             <Color x:Key="OnSurfaceVariant">#4D463C</Color>
             <Color x:Key="GlassBorder">#33C5A880</Color>
         </ResourceDictionary>
@@ -57,66 +58,85 @@
 
                 <!-- Header Section -->
                 <VerticalStackLayout Spacing="6">
-                    <Label Text="Curated Routes"
+                    <Label Text="Özenle Seçilmiş Rotalar"
                            TextColor="{StaticResource PrimaryBrown}"
                            FontSize="28"
                            FontAttributes="Bold" />
-                    <Label Text="Discover the soul of the ancient city through expertly crafted journeys."
+                    <Label Text="Ustalıkla planlanmış yolculuklarla antik kentin ruhunu keşfedin."
                            TextColor="{StaticResource OnSurfaceVariant}"
                            FontSize="15"
                            LineBreakMode="WordWrap" />
                 </VerticalStackLayout>
 
-                <!-- Route Selector Chips (Horizontal Scroll) -->
-                <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
-                    <HorizontalStackLayout Spacing="10">
-                        <!-- Active Chip -->
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource PrimaryBrown}"
-                                StrokeThickness="0"
-                                Padding="18,8">
-                            <Label Text="All Routes" TextColor="White" FontSize="14" FontAttributes="Bold" />
-                        </Border>
+                <!-- Categories / Chips (Horizontal Scroll) -->
+                <CollectionView x:Name="SelectedCategoryListCollection" HorizontalScrollBarVisibility="Never" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
 
-                        <!-- Inactive Chips -->
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainer}"
-                                StrokeThickness="0"
-                                Padding="18,8">
-                            <Label Text="Historical" TextColor="{StaticResource OnSurfaceVariant}" FontSize="14" />
-                        </Border>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainer}"
-                                StrokeThickness="0"
-                                Padding="18,8">
-                            <Label Text="Culinary" TextColor="{StaticResource OnSurfaceVariant}" FontSize="14" />
-                        </Border>
+                            <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCategorySelectionChanged" CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
 
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainer}"
-                                StrokeThickness="0"
-                                Padding="18,8">
-                            <Label Text="Visual Art" TextColor="{StaticResource OnSurfaceVariant}" FontSize="14" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </ScrollView>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CommonStates">
+
+                                            <!-- normal durum -->
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource SurfaceContainerHigh}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.TextColor" Value="{StaticResource OnSurfaceVariant}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                            <!-- seçili durum -->
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource MardinSand}" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.TextColor" Value="White" />
+                                                    <Setter TargetName="CategoryLabel" Property="Label.FontAttributes" Value="None" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label x:Name="CategoryLabel" Text="{Binding CategoryName}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
                 <!-- SECTION 1: 1 Day in Old Mardin Route -->
-                <VerticalStackLayout Spacing="16">
+                <VerticalStackLayout Spacing="16" x:Name="GetOneRandomRoute">
                     <!-- Title & Duration Header -->
                     <Grid ColumnDefinitions="*, Auto">
                         <Label Grid.Column="0" 
-                               Text="1 Day in Old Mardin"
+                               Text="{Binding Name}"
                                TextColor="{StaticResource PrimaryBrown}"
                                FontSize="20"
                                FontAttributes="Bold" />
                         <Label Grid.Column="1" 
-                               Text="8 HOURS • 2.4KM"
                                TextColor="{StaticResource MesopotamianBlue}"
                                FontSize="12"
                                FontAttributes="Bold"
-                               VerticalOptions="End" />
+                               VerticalOptions="End">
+
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0} • Merkeze Uzaklık {1} Km">
+                                    <Binding Path="DurationLabel"></Binding>
+                                    <Binding Path="DistanceKm"></Binding>
+                                </MultiBinding>
+                            </Label.Text>
+                            
+                        </Label>
                     </Grid>
 
                     <!-- Route Hero Image Box -->
@@ -124,7 +144,7 @@
                             HeightRequest="190"
                             StrokeThickness="0">
                         <Grid>
-                            <Image Source="mardin_panorama.jpg" Aspect="AspectFill" />
+                            <Image Source="{Binding CoverImageUrl}" Aspect="AspectFill" />
                             <BoxView Color="#55000000" />
 
                             <Grid ColumnDefinitions="*, Auto" 
@@ -132,145 +152,73 @@
                                   Padding="16">
                                 <HorizontalStackLayout Grid.Column="0" Spacing="6" VerticalOptions="Center">
                                     <Image Source="icon_explore_white.png" WidthRequest="16" HeightRequest="16" />
-                                    <Label Text="Essential Landmarks" TextColor="White" FontSize="13" FontAttributes="Bold" />
+                                    <Label Text="{Binding Description}" TextColor="White" FontSize="13" FontAttributes="Bold" />
                                 </HorizontalStackLayout>
 
                                 <Border Grid.Column="1"
                                         StrokeShape="RoundRectangle 14"
                                         BackgroundColor="#44FFFFFF"
                                         StrokeThickness="0"
-                                        Padding="12,6">
-                                    <Label Text="View Map" TextColor="White" FontSize="12" FontAttributes="Bold" />
+                                        Padding="12,6"
+                                        >
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnViewMapTapped" CommandParameter="{Binding MapUrl}" />
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Haritayı Görüntüle" TextColor="White" FontSize="12" FontAttributes="Bold" />
                                 </Border>
                             </Grid>
                         </Grid>
                     </Border>
 
                     <!-- Step-by-Step Timeline Container -->
-                    <Grid RowDefinitions="Auto, Auto, Auto" Margin="0,8,0,0">
+                    <CollectionView x:Name="RouteStopListByRouteIdCollection"
+                SelectionMode="None"
+                Margin="0,8,0,0">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="0" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="32, *" Margin="0,0,0,16">
+                                    <!-- Timeline Çizgisi ve Adım Numarası -->
+                                    <Grid Grid.Column="0">
+                                        <BoxView Color="{StaticResource MardinSand}" WidthRequest="2" HorizontalOptions="Center" Margin="0,12,0,-16" />
+                                        <Border StrokeShape="RoundRectangle 12" BackgroundColor="{StaticResource PrimaryFixed}" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" VerticalOptions="Start" Stroke="White" StrokeThickness="2">
+                                            <Label Text="{Binding SortOrder}" TextColor="{StaticResource OnPrimaryFixed}" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Border>
+                                    </Grid>
 
-                        <!-- STEP 1 -->
-                        <Grid Grid.Row="0" ColumnDefinitions="32, *" Margin="0,0,0,16">
-                            <!-- Timeline Indicator & Line -->
-                            <Grid Grid.Column="0">
-                                <BoxView Color="{StaticResource MardinSand}" 
-                                         WidthRequest="2" 
-                                         HorizontalOptions="Center" 
-                                         Margin="0,12,0,-16" />
-                                <Border StrokeShape="RoundRectangle 12"
-                                        BackgroundColor="{StaticResource PrimaryFixed}"
-                                        WidthRequest="24" HeightRequest="24"
-                                        HorizontalOptions="Center" VerticalOptions="Start"
-                                        Stroke="White" StrokeThickness="2">
-                                    <Label Text="1" TextColor="{StaticResource OnPrimaryFixed}" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-                                </Border>
-                            </Grid>
+                                    <!-- Durak Kartı İçeriği -->
+                                    <Border Grid.Column="1" StrokeShape="RoundRectangle 12" BackgroundColor="#B5FFFFFF" Stroke="{StaticResource GlassBorder}" StrokeThickness="1" Padding="12">
+                                        <Grid ColumnDefinitions="64, *" ColumnSpacing="12">
+                                            <!-- Görsel -->
+                                            <Border Grid.Column="0" StrokeShape="RoundRectangle 8" HeightRequest="64" StrokeThickness="0">
+                                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
+                                            </Border>
 
-                            <!-- Glass Card Content -->
-                            <Border Grid.Column="1"
-                                    StrokeShape="RoundRectangle 12"
-                                    BackgroundColor="#B5FFFFFF"
-                                    Stroke="{StaticResource GlassBorder}"
-                                    StrokeThickness="1"
-                                    Padding="12">
-                                <Grid ColumnDefinitions="64, *" ColumnSpacing="12">
-                                    <Border Grid.Column="0" StrokeShape="RoundRectangle 8" HeightRequest="64" StrokeThickness="0">
-                                        <Image Source="zinciriye_medrese.jpg" Aspect="AspectFill" />
+                                            <!-- Başlık, Açıklama ve Saat Bilgisi -->
+                                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                                <Label Text="{Binding StopName}" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
+
+                                                <Label Text="{Binding Description}" TextColor="{StaticResource OnSurfaceVariant}" FontSize="12" MaxLines="2" LineBreakMode="TailTruncation" />
+
+                                                <HorizontalStackLayout Spacing="4" Margin="0,2,0,0">
+                                                    <Image Source="icon_clock.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                                                    <!-- Saat formatı / BestTimeLabel -->
+                                                    <Label Text="{Binding BestTimeLabel}" TextColor="{StaticResource OnSurfaceVariant}" FontSize="10" VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+                                        </Grid>
                                     </Border>
-                                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Label Text="Zinciriye Medresesi" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                        <Label Text="Start your morning with architectural marvels and panoramic views." TextColor="{StaticResource OnSurfaceVariant}" FontSize="12" MaxLines="2" LineBreakMode="TailTruncation" />
-                                        <HorizontalStackLayout Spacing="4" Margin="0,2,0,0">
-                                            <Image Source="icon_clock.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                            <Label Text="09:00 AM - 10:30 AM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="10" VerticalOptions="Center"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
                                 </Grid>
-                            </Border>
-                        </Grid>
-
-                        <!-- STEP 2 -->
-                        <Grid Grid.Row="1" ColumnDefinitions="32, *" Margin="0,0,0,16">
-                            <!-- Timeline Indicator & Line -->
-                            <Grid Grid.Column="0">
-                                <BoxView Color="{StaticResource MardinSand}" 
-                                         WidthRequest="2" 
-                                         HorizontalOptions="Center" 
-                                         Margin="0,12,0,-16" />
-                                <Border StrokeShape="RoundRectangle 12"
-                                        BackgroundColor="{StaticResource PrimaryFixed}"
-                                        WidthRequest="24" HeightRequest="24"
-                                        HorizontalOptions="Center" VerticalOptions="Start"
-                                        Stroke="White" StrokeThickness="2">
-                                    <Label Text="2" TextColor="{StaticResource OnPrimaryFixed}" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-                                </Border>
-                            </Grid>
-
-                            <!-- Glass Card Content -->
-                            <Border Grid.Column="1"
-                                    StrokeShape="RoundRectangle 12"
-                                    BackgroundColor="#B5FFFFFF"
-                                    Stroke="{StaticResource GlassBorder}"
-                                    StrokeThickness="1"
-                                    Padding="12">
-                                <Grid ColumnDefinitions="64, *" ColumnSpacing="12">
-                                    <Border Grid.Column="0" StrokeShape="RoundRectangle 8" HeightRequest="64" StrokeThickness="0">
-                                        <Image Source="grand_mosque.jpg" Aspect="AspectFill" />
-                                    </Border>
-                                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Label Text="The Grand Mosque" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                        <Label Text="Visit the iconic 12th-century Artuqid mosque with its unique fluted minaret." TextColor="{StaticResource OnSurfaceVariant}" FontSize="12" MaxLines="2" LineBreakMode="TailTruncation" />
-                                        <HorizontalStackLayout Spacing="4" Margin="0,2,0,0">
-                                            <Image Source="icon_clock.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                            <Label Text="11:00 AM - 12:00 PM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="10" VerticalOptions="Center"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Border>
-                        </Grid>
-
-                        <!-- STEP 3 -->
-                        <Grid Grid.Row="2" ColumnDefinitions="32, *">
-                            <!-- Timeline Indicator (End Step, No Line) -->
-                            <Grid Grid.Column="0">
-                                <Border StrokeShape="RoundRectangle 12"
-                                        BackgroundColor="{StaticResource PrimaryFixed}"
-                                        WidthRequest="24" HeightRequest="24"
-                                        HorizontalOptions="Center" VerticalOptions="Start"
-                                        Stroke="White" StrokeThickness="2">
-                                    <Label Text="3" TextColor="{StaticResource OnPrimaryFixed}" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-                                </Border>
-                            </Grid>
-
-                            <!-- Glass Card Content -->
-                            <Border Grid.Column="1"
-                                    StrokeShape="RoundRectangle 12"
-                                    BackgroundColor="#B5FFFFFF"
-                                    Stroke="{StaticResource GlassBorder}"
-                                    StrokeThickness="1"
-                                    Padding="12">
-                                <Grid ColumnDefinitions="64, *" ColumnSpacing="12">
-                                    <Border Grid.Column="0" StrokeShape="RoundRectangle 8" HeightRequest="64" StrokeThickness="0">
-                                        <Image Source="copper_bazaar.jpg" Aspect="AspectFill" />
-                                    </Border>
-                                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                        <Label Text="Lunch &amp; Bazaar Stroll" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                        <Label Text="Savor local Sembusek followed by artisanal copper shopping." TextColor="{StaticResource OnSurfaceVariant}" FontSize="12" MaxLines="2" LineBreakMode="TailTruncation" />
-                                        <HorizontalStackLayout Spacing="4" Margin="0,2,0,0">
-                                            <Image Source="icon_clock.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                            <Label Text="12:30 PM - 02:30 PM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="10" VerticalOptions="Center"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Border>
-                        </Grid>
-
-                    </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
 
-                <!-- SECTION 2: Gastronomy & Wine Route -->
+                <!-- SECTION 2: Gastronomy & Wine Route henüz yapılmadı -->
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Gastronomy &amp; Wine Route"
+                    <Label Text="Gastronomi &amp; Bağ Rotaları"
                            TextColor="{StaticResource PrimaryBrown}"
                            FontSize="20"
                            FontAttributes="Bold" />
@@ -317,7 +265,8 @@
                 <VerticalStackLayout Spacing="12">
                     <Grid ColumnDefinitions="*, Auto">
                         <Label Grid.Column="0"
-                               Text="Photography Route"
+                               Text="Fotoğrafçılık Rotaları
+"
                                TextColor="{StaticResource PrimaryBrown}"
                                FontSize="20"
                                FontAttributes="Bold" />
