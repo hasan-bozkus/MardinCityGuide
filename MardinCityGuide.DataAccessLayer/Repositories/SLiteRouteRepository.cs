@@ -1,6 +1,7 @@
 ﻿using MardinCityGuide.DataAccessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.EntityLayer.Concrete;
+using MardinCityGuide.EntityLayer.Enums;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -27,9 +28,40 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             var random = new Random().Next(0, routecount);
 
             var value = await _connection.Table<Route>().Where(x => x.IsActive == true).Skip(random - 1).Take(1).FirstOrDefaultAsync();
-
-
             return value;
+        }
+
+        public async Task<List<Route>> GetRouteListWithCategoryIsGastronomyAsync()
+        {
+            await _appDatabase.InitAsync();
+            var routeCountWithCategoryGastronomy = await _connection.Table<Route>().Where(x => x.IsActive == true && x.Category == RouteCategory.Mutfak).CountAsync();
+            var random = new Random().Next(0, routeCountWithCategoryGastronomy);
+
+            var values = await _connection.Table<Route>().Where(x => x.IsActive == true && x.Category == RouteCategory.Mutfak).Skip(random - 1).Take(2).ToListAsync();
+            return values;
+        }
+
+        public async Task<List<Route>> GetRouteListWithCategoryIsPhotographyAsync()
+        {
+            await _appDatabase.InitAsync();
+            var routeCountWithCategoryPhotography = await _connection.Table<Route>().Where(x => x.IsActive == true && x.Category == RouteCategory.Fotoğrafçılık).CountAsync();
+            var random = new Random().Next(0, routeCountWithCategoryPhotography);
+
+            var values = await _connection.Table<Route>().Where(x => x.IsActive == true && x.Category == RouteCategory.Fotoğrafçılık).Skip(random - 1).Take(2).ToListAsync();
+
+            var routeIds = values.Select(x => x.RouteId).ToList();
+            var startedRouteStop = await _connection.Table<RouteStop>().Where(x => x.IsActive == true && routeIds.Contains(x.RouteId)).ToListAsync();
+
+            foreach (var route in values)
+            {
+                var firstStop = startedRouteStop.FirstOrDefault(x => x.RouteId == route.RouteId);
+                if (firstStop != null)
+                {
+                    route.BestTimeLabel = firstStop.BestTimeLabel;
+                }
+            }
+
+            return values;
         }
     }
 }

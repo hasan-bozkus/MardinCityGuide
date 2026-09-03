@@ -41,5 +41,8 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [Ignore]
         public ICollection<RouteStop>? Stops { get; set; } // Restaurant = 1, ReligiousSite = 2, Route = 3
 
+        [Ignore]
+        public string BestTimeLabel { get; set; } = string.Empty;
+
     }
 }

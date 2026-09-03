@@ -8,5 +8,8 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
     public interface IRouteDal : IGenericDal<Route>
     {
         Task<Route> GetOneRandomRouteAsync();
+        Task<List<Route>> GetRouteListWithCategoryIsGastronomyAsync();
+        Task<List<Route>> GetRouteListWithCategoryIsPhotographyAsync();
+
     }
 }

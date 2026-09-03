@@ -79,7 +79,7 @@
 
                             <Border StrokeShape="20" Padding="16,0" HeightRequest="36" StrokeThickness="0">
                                 <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnCategorySelectionChanged" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Tapped="OnCategorySelectionChanged" CommandParameter="{Binding Value}" />
                                 </Border.GestureRecognizers>
 
                                 <VisualStateManager.VisualStateGroups>
@@ -108,7 +108,7 @@
                                     </VisualStateGroupList>
                                 </VisualStateManager.VisualStateGroups>
 
-                                <Label x:Name="CategoryLabel" Text="{Binding CategoryName}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <Label x:Name="CategoryLabel" Text="{Binding Text}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -223,15 +223,15 @@
                            FontSize="20"
                            FontAttributes="Bold" />
 
-                    <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HeightRequest="240">
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HeightRequest="240" x:Name="RouteCountWithCategoryGastronomyCollection">
                         <!-- Left Big Card -->
                         <Border Grid.Column="0" StrokeShape="RoundRectangle 16" StrokeThickness="0">
                             <Grid>
-                                <Image Source="assyrian_wine.jpg" Aspect="AspectFill" />
+                                <Image Source="{Binding [0].CoverImageUrl}" Aspect="AspectFill" />
                                 <BoxView Color="#66000000" />
                                 <VerticalStackLayout VerticalOptions="End" Padding="12" Spacing="2">
-                                    <Label Text="Assyrian Wine Tasting" TextColor="White" FontSize="14" FontAttributes="Bold" />
-                                    <Label Text="TRADITIONAL CELLARS" TextColor="#DDFFFFFF" FontSize="10" FontAttributes="Bold" />
+                                    <Label Text="{Binding [0].Name}" TextColor="White" FontSize="14" FontAttributes="Bold" />
+                                    <Label Text="{Binding [0].Description}" TextColor="#DDFFFFFF" FontSize="10" FontAttributes="Bold" />
                                 </VerticalStackLayout>
                             </Grid>
                         </Border>
@@ -240,7 +240,7 @@
                         <Grid Grid.Column="1" RowDefinitions="*, *" RowSpacing="12">
                             <!-- Top Image -->
                             <Border Grid.Row="0" StrokeShape="RoundRectangle 16" StrokeThickness="0">
-                                <Image Source="mardin_kebab.jpg" Aspect="AspectFill" />
+                                <Image Source="{Binding [1].CoverImageUrl}" Aspect="AspectFill" />
                             </Border>
 
                             <!-- Bottom Info Box -->
@@ -250,7 +250,7 @@
                                     StrokeThickness="0"
                                     Padding="14">
                                 <VerticalStackLayout VerticalOptions="Center" Spacing="4">
-                                    <Label Text="6 Expert Culinary Stops" TextColor="{StaticResource OnPrimaryFixed}" FontAttributes="Bold" FontSize="14" LineBreakMode="WordWrap" />
+                                    <Label Text="Uzmanlar Tarafından Seçlin Rotalar" TextColor="{StaticResource OnPrimaryFixed}" FontAttributes="Bold" FontSize="14" LineBreakMode="WordWrap" />
                                     <HorizontalStackLayout Spacing="4">
                                         <Image Source="icon_star.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" />
                                         <Label Text="4.9" TextColor="{StaticResource OnPrimaryFixed}" FontAttributes="Bold" FontSize="12" VerticalOptions="Center" />
@@ -277,38 +277,34 @@
                     </Grid>
 
                     <!-- Horizontal Spots Carousel -->
-                    <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal" Margin="-20,0">
-                        <HorizontalStackLayout Spacing="14" Padding="20,0">
+                    <CollectionView x:Name="RouteCountWithCategoryPhotographyCollection" HorizontalScrollBarVisibility="Never" Margin="-20,0" >
+                        <CollectionView.ItemsLayout Padding="20,0">
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                        </CollectionView.ItemsLayout>
 
-                            <!-- Spot 1 -->
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                
+                                <!-- Spot 1 -->
                             <VerticalStackLayout WidthRequest="180" Spacing="6">
                                 <Border StrokeShape="RoundRectangle 12" HeightRequest="225" StrokeThickness="0">
-                                    <Image Source="blue_doors.jpg" Aspect="AspectFill" />
+                                    <Image Source="{Binding CoverImageUrl}" Aspect="AspectFill" />
                                 </Border>
-                                <Label Text="The Blue Doors" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="Best at 10:00 AM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" />
+                                <Label Text="{Binding Name}" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
+                                    <Label TextColor="{StaticResource OnSurfaceVariant}" FontSize="11">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{} Başlangıç Saati: {0}">
+                                                <Binding Path="BestTimeLabel"></Binding>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
                             </VerticalStackLayout>
-
-                            <!-- Spot 2 -->
-                            <VerticalStackLayout WidthRequest="180" Spacing="6">
-                                <Border StrokeShape="RoundRectangle 12" HeightRequest="225" StrokeThickness="0">
-                                    <Image Source="abbara_shadows.jpg" Aspect="AspectFill" />
-                                </Border>
-                                <Label Text="Abbara Shadows" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="Best at 03:00 PM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" />
-                            </VerticalStackLayout>
-
-                            <!-- Spot 3 -->
-                            <VerticalStackLayout WidthRequest="180" Spacing="6">
-                                <Border StrokeShape="RoundRectangle 12" HeightRequest="225" StrokeThickness="0">
-                                    <Image Source="minaret_sunset.jpg" Aspect="AspectFill" />
-                                </Border>
-                                <Label Text="Minaret Sunset" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="Best at 07:30 PM" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" />
-                            </VerticalStackLayout>
-
-                        </HorizontalStackLayout>
-                    </ScrollView>
+                                
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                    </CollectionView>
+                   
                 </VerticalStackLayout>
 
             </VerticalStackLayout>

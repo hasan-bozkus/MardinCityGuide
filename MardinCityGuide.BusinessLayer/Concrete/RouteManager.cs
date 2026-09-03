@@ -20,5 +20,15 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             return await _routeDal.GetOneRandomRouteAsync();
         }
+
+        public async Task<List<Route>> TGetRouteListWithCategoryIsGastronomyAsync()
+        {
+            return await _routeDal.GetRouteListWithCategoryIsGastronomyAsync();
+        }
+
+        public async Task<List<Route>> TGetRouteListWithCategoryIsPhotographyAsync()
+        {
+            return await _routeDal.GetRouteListWithCategoryIsPhotographyAsync();
+        }
     }
 }
