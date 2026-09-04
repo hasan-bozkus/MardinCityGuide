@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Register.RegisterPage"
-             Title="RegisterPage"
              BackgroundColor="#FBF9F6"
              NavigationPage.HasNavigationBar="False">
 
@@ -77,7 +76,7 @@
 
                         <!-- Başlık & Alt Metin -->
                         <VerticalStackLayout Spacing="4" Margin="0,0,0,8">
-                            <Label Text="Create Account"
+                            <Label Text="Kayıt ol"
                                    FontSize="26"
                                    FontAttributes="Bold"
                                    TextColor="#1B1C1A" />
@@ -86,9 +85,37 @@
                                    TextColor="#4D463C" />
                         </VerticalStackLayout>
 
+                        <!-- Profil Image -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Profil Resmi" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *, Auto" Padding="0,0,12,0">
+                                    <!-- İkon -->
+                                    <Label Grid.Column="0" Text="&#xe412;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
+
+                                    <!-- Yazı / Dosya Adı -->
+                                    <Label x:Name="SelectedImageLabel" Grid.Column="1" Text="Fotoğraf Seçin (Opsiyonel)" TextColor="#D1C5B8" VerticalOptions="Center" FontSize="14" />
+
+                                    <!-- Yükle Butonu -->
+                                    <Border Grid.Column="2" BackgroundColor="#725b38" StrokeThickness="0" Padding="12,6">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="6" />
+                                        </Border.StrokeShape>
+                                        <Label Text="Gözat" TextColor="#FFFFFF" FontSize="12" FontAttributes="Bold" />
+                                    </Border>
+                                </Grid>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnSelectProfileImageTapped" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </VerticalStackLayout>
+
                         <!-- Full Name -->
                         <VerticalStackLayout Spacing="6">
-                            <Label Text="Full Name" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Label Text="Ad Soyad" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                             <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8" />
@@ -96,121 +123,93 @@
                                 <Grid ColumnDefinitions="48, *">
                                     <!-- Sol İkon (Person / Ad Soyad) -->
                                     <Label Grid.Column="0" Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
-                                    <Entry Grid.Column="1" Placeholder="John Doe" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                    <Entry x:Name="NameSurnameEntry" Grid.Column="1" Placeholder="Ayhan Kahya" PlaceholderColor="#D1C5B8" BackgroundColor="Transparent" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- User Name -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Kullanıcı Adı" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="48, *">
+                                    <!-- Sol İkon (Person / Ad Soyad) -->
+                                    <Label Grid.Column="0" Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Entry x:Name="UserNameEntry" Grid.Column="1" Placeholder="AyhanKahya" PlaceholderColor="#D1C5B8" BackgroundColor="Transparent" TextColor="#1B1C1A" VerticalOptions="Center" />
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
 
                         <!-- Email Address -->
                         <VerticalStackLayout Spacing="6">
-                            <Label Text="Email Address" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Label Text="E-Posta Adresi" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                             <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="48, *">
                                     <Label Grid.Column="0" Text="&#xe0be;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
-                                    <Entry Grid.Column="1" Placeholder="email@example.com" Keyboard="Email" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
+                                    <Entry x:Name="EmailEntry" Grid.Column="1" Placeholder="kayha.ayhan@ornek.com" Keyboard="Email" PlaceholderColor="#D1C5B8" BackgroundColor="Transparent" TextColor="#1B1C1A" VerticalOptions="Center" />
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
 
                         <!-- Password -->
                         <VerticalStackLayout Spacing="6">
-                            <Label Text="Password" FontSize="13" FontFamily="MaterialSymbols" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Label Text="Parola" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                             <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="48, *, 48">
-                                    <Label Grid.Column="0" 
-           Text="&#xe897;" 
-           FontFamily="MaterialSymbols" 
-           FontSize="18" 
-           TextColor="#7F766A" 
-           HorizontalOptions="Center" 
-           VerticalOptions="Center" />
+                                    <Label Grid.Column="0" Text="&#xe897;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
 
-                                    <Entry x:Name="PasswordEntry" 
-           Grid.Column="1" 
-           IsPassword="True" 
-           Placeholder="••••••••" 
-           PlaceholderColor="#D1C5B8" 
-           TextColor="#1B1C1A" 
-           VerticalOptions="Center" />
+                                    <Entry x:Name="PasswordHashEntry" Grid.Column="1" IsPassword="True" Placeholder="••••••••" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
 
                                     <!-- Göz Butonu (Text Unicode) -->
-                                    <Button x:Name="TogglePasswordBtn"
-            Grid.Column="2"
-            Text="&#xe8f4;"
-            FontFamily="MaterialSymbols"
-            FontSize="20"
-            TextColor="#7F766A"
-            BackgroundColor="Transparent"
-            Padding="0"
-            HeightRequest="40"
-            WidthRequest="40"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Clicked="OnTogglePasswordClicked" />
+                                    <Button x:Name="TogglePasswordBtn" Grid.Column="2" Text="&#xe8f4;" FontFamily="MaterialSymbols" FontSize="20" TextColor="#7F766A" BackgroundColor="Transparent" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTogglePasswordClicked" />
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
 
                         <!-- Confirm Password -->
                         <VerticalStackLayout Spacing="6">
-                            <Label Text="Confirm Password" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                            <Label Text="Parola Tekrar" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                             <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8" />
                                 </Border.StrokeShape>
                                 <Grid ColumnDefinitions="48, *, 48">
                                     <!-- Sol İkon (Lock Reset) -->
-                                    <Label Grid.Column="0"
-                   Text="&#xe889;"
-                   FontFamily="MaterialSymbols"
-                   FontSize="18"
-                   TextColor="#7F766A"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                                    <Label Grid.Column="0" Text="&#xe889;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
 
                                     <!-- Giriş Alanı -->
-                                    <Entry x:Name="ConfirmPasswordEntry"
-                   Grid.Column="1"
-                   IsPassword="True"
-                   Placeholder="••••••••"
-                   PlaceholderColor="#D1C5B8"
-                   TextColor="#1B1C1A"
-                   VerticalOptions="Center" />
+                                    <Entry x:Name="ConfirmPasswordEntry" Grid.Column="1" IsPassword="True" Placeholder="••••••••" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
 
                                     <!-- Göz Butonu (Sağ İkon - 1. Yöntem) -->
-                                    <Button x:Name="ToggleConfirmPasswordBtn"
-                    Grid.Column="2"
-                    Text="&#xe8f4;"
-                    FontFamily="MaterialSymbols"
-                    FontSize="20"
-                    TextColor="#7F766A"
-                    BackgroundColor="Transparent"
-                    Padding="0"
-                    HeightRequest="40"
-                    WidthRequest="40"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Clicked="OnToggleConfirmPasswordClicked" />
+                                    <Button x:Name="ToggleConfirmPasswordBtn" Grid.Column="2" Text="&#xe8f4;" FontFamily="MaterialSymbols" FontSize="20" TextColor="#7F766A" BackgroundColor="Transparent" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnToggleConfirmPasswordClicked" />
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
 
                         <!-- Terms & Conditions Checkbox -->
                         <HorizontalStackLayout Spacing="10" Margin="0,4,0,0" VerticalOptions="Center">
-                            <CheckBox Color="#C5A880" VerticalOptions="Center" />
+                            <CheckBox Color="#C5A880" x:Name="TermsCheckBox" VerticalOptions="Center" />
                             <Label FontSize="13" TextColor="#4D463C" VerticalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="I agree to the " />
-                                        <Span Text="Terms &amp; Conditions" FontAttributes="Bold" TextColor="#725B38" />
-                                        <Span Text=" and " />
-                                        <Span Text="Privacy Policy" FontAttributes="Bold" TextColor="#725B38" />
+
+                                        <Span Text="Şartlar &amp; Koşullar " FontAttributes="Bold" TextColor="#725B38">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnTermsTapped" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                        <Span Text="ile " />
+                                        <Span Text="Gililik Politikasını " FontAttributes="Bold" TextColor="#725B38" />
+                                        <Span Text="kabul ediyorum" />                                        
                                         <Span Text="." />
                                     </FormattedString>
                                 </Label.FormattedText>

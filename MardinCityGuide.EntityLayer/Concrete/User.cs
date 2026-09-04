@@ -26,10 +26,9 @@ namespace MardinCityGuide.EntityLayer.Concrete
         [NotNull]
         public string AvatarUrl { get; set; } = string.Empty;
 
-        [NotNull]
-        public string DisplayName { get; set; } = default!;
+        public string? DisplayName { get; set; } = "DisplayName";
 
-        public string? PreferredLanguage { get; set; } = "English (US)";  // YENİ
+        public string? PreferredLanguage { get; set; } = "Türkçe (TR)";  // YENİ
         public string? MembershipTier { get; set; }                          // YENİ: "Mardin Guide Premium"
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

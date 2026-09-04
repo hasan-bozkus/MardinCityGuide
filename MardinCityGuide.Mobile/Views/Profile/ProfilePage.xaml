@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Profile.ProfilePage"
+             BackgroundColor="#FDFCFB"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- Top App Bar -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="Auto, *, Auto" 
+              Padding="20,12" 
+              BackgroundColor="#FDFCFB" 
+              HeightRequest="56">
+            <ImageButton Grid.Column="0" 
+                         Source="ic_arrow_back.png" 
+                         HeightRequest="24" 
+                         WidthRequest="24" 
+                         VerticalOptions="Center" />
+            <Label Grid.Column="1" 
+                   Text="Profile" 
+                   TextColor="#725b38" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" 
+                   Margin="16,0,0,0" />
+            <ImageButton Grid.Column="2" 
+                         Source="ic_search.png" 
+                         HeightRequest="24" 
+                         WidthRequest="24" 
+                         VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1" Padding="20,16,20,24">
+            <VerticalStackLayout Spacing="24">
+
+                <!-- User Identity Section -->
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                    <!-- Profile Image with Edit Badge -->
+                    <Grid WidthRequest="112" HeightRequest="112" HorizontalOptions="Center" Margin="0,0,0,8">
+                        <Border WidthRequest="112" 
+                                HeightRequest="112" 
+                                StrokeShape="RoundRectangle 56" 
+                                StrokeThickness="4" 
+                                Stroke="#EFEEEB">
+                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuB-kZrGXHqEkz6Hp7GgGpbtKz12Q7PQno5-gm2O1sPoDR3tBR1Q0aT_UU1tydSISqKRZVcM8G_7aFUytZ935oZHKz8n2ug5wJHNdkJF6FJhEV7Lk-naY7-eYnVFFnWYv99z-KcfFBfMT-CyX-AOL24stSGjJz2QMhV9_6znI8_xaW-p6eEbgq3rR5zGr5XzmO2EXdtO0r6aDKW_MMjUpz6GM2ltKLpE8qfpMp5qB6q9ZyVgtuS9T4wl5g" 
+                                   Aspect="AspectFill" />
+                        </Border>
+
+                        <!-- Edit Button Badge -->
+                        <Border WidthRequest="32" 
+                                HeightRequest="32" 
+                                StrokeShape="RoundRectangle 16" 
+                                BackgroundColor="#725b38" 
+                                Stroke="#FDFCFB" 
+                                StrokeThickness="2" 
+                                HorizontalOptions="End" 
+                                VerticalOptions="End">
+                            <Image Source="ic_edit.png" 
+                                   HeightRequest="16" 
+                                   WidthRequest="16" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" />
+                        </Border>
+                    </Grid>
+
+                    <Label Text="Alexandro Vance" 
+                           TextColor="#1B1C1A" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Text="alexandro.vance@traveler.com" 
+                           TextColor="#4D463C" 
+                           FontSize="14" 
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Stats Bento Grid -->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="16">
+                    <!-- Favorites Card -->
+                    <Border Grid.Column="0" 
+                            BackgroundColor="#F5F3F0" 
+                            StrokeShape="RoundRectangle 16" 
+                            StrokeThickness="1" 
+                            Stroke="#1AD1C5B8" 
+                            Padding="16,20">
+                        <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Image Source="ic_favorite_filled.png" HeightRequest="24" WidthRequest="24" />
+                            <Label Text="24" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            <Label Text="FAVORITES" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Routes Card -->
+                    <Border Grid.Column="1" 
+                            BackgroundColor="#F5F3F0" 
+                            StrokeShape="RoundRectangle 16" 
+                            StrokeThickness="1" 
+                            Stroke="#1AD1C5B8" 
+                            Padding="16,20">
+                        <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Image Source="ic_map_filled.png" HeightRequest="24" WidthRequest="24" />
+                            <Label Text="12" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            <Label Text="ROUTES" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Settings List -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="SETTINGS" TextColor="#7F766A" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.5" Margin="4,0,0,4" />
+
+                    <!-- Account Information -->
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
+                                <Image Source="ic_person.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Account Information" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
+                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Notifications -->
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
+                                <Image Source="ic_notifications.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Notifications" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
+                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Language -->
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
+                                <Image Source="ic_language.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Language" TextColor="#1B1C1A" FontSize="16" />
+                                <Label Text="English (US)" TextColor="#4D463C" FontSize="12" />
+                            </VerticalStackLayout>
+                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Help & Support -->
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
+                                <Image Source="ic_help.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Grid.Column="1" Text="Help &amp; Support" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
+                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Logout & Footer Section -->
+                <VerticalStackLayout Spacing="20" Margin="0,8,0,12">
+                    <Button Text="Logout" 
+                            ImageSource="ic_logout.png" 
+                            TextColor="#725b38" 
+                            BackgroundColor="Transparent" 
+                            BorderColor="#725b38" 
+                            BorderWidth="2" 
+                            CornerRadius="25" 
+                            HeightRequest="52" 
+                            FontSize="16" 
+                            FontAttributes="Bold" />
+
+                    <Label Text="Version 2.4.0 • Mardin Guide Premium" 
+                           TextColor="#7F766A" 
+                           FontSize="12" 
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation Bar -->
+        <Border Grid.Row="2" 
+                BackgroundColor="#EFFDFCFB" 
+                StrokeShape="RoundRectangle 16,16,0,0" 
+                StrokeThickness="0" 
+                Padding="8,8,8,12" 
+                HeightRequest="68">
+            <Grid ColumnDefinitions="*, *, *, *">
+
+                <!-- Home Tab -->
+                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_home.png" HeightRequest="22" WidthRequest="22" />
+                    <Label Text="Home" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Discover Tab -->
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_explore.png" HeightRequest="22" WidthRequest="22" />
+                    <Label Text="Discover" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Favorites Tab -->
+                <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Image Source="ic_favorite.png" HeightRequest="22" WidthRequest="22" />
+                    <Label Text="Favorites" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Active Profile Tab -->
+                <Border Grid.Column="3" 
+                        BackgroundColor="#4DFEDEB2" 
+                        StrokeShape="RoundRectangle 20" 
+                        StrokeThickness="0" 
+                        Padding="12,6" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                        <Image Source="ic_person_filled.png" HeightRequest="20" WidthRequest="20" />
+                        <Label Text="Profile" TextColor="#725b38" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

@@ -11,6 +11,7 @@ using SQLite;
 using System.Net.Http.Json;
 using System;
 using System.IO;
+using MardinCityGuide.Mobile.AuthServices;
 namespace MardinCityGuide.Mobile
 {
     public static class MauiProgram
@@ -94,6 +95,11 @@ namespace MardinCityGuide.Mobile
 
             builder.Services.AddScoped<IRouteStopDal, SLiteRouteStopRepository>();
             builder.Services.AddScoped<IRouteStopService, RouteStopManager>();
+
+            builder.Services.AddScoped<IUserDal, SLiteUserRepository>();
+            builder.Services.AddScoped<IUserService, UserManager>();
+
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
