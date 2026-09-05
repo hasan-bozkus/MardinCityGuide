@@ -51,7 +51,7 @@
                                FontAttributes="Bold" 
                                TextColor="#725B38" 
                                CharacterSpacing="2" />
-                        <Label Text="Merhaba, Gezgin" 
+                        <Label x:Name="CurrentUserNameLabel" 
                                FontSize="32" 
                                FontAttributes="Bold" 
                                TextColor="#1B1C1A" />

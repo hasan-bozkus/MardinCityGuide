@@ -7,5 +7,6 @@ namespace MardinCityGuide.BusinessLayer.Abstract
 {
     public interface IUserService : IGenericService<User>
     {
+        Task<User> TGetUserByNameAsync(string userName);
     }
 }

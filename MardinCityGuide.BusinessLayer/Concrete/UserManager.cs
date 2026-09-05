@@ -15,5 +15,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             _userDal = userDal;
         }
+
+        public async Task<User> TGetUserByNameAsync(string userName)
+        {
+            return await _userDal.GetUserByNameAsync(userName);
+        }
     }
 }

@@ -87,7 +87,7 @@
 
                             <!-- Email Field -->
                             <VerticalStackLayout Spacing="6">
-                                <Label Text="Email Address" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                                <Label Text="Kullanıcı Adı" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                                 <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="12" />
@@ -100,9 +100,9 @@
                                            TextColor="#7F766A" 
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Center" />
-                                        <Entry Grid.Column="1" 
-                                           Placeholder="your@email.com" 
-                                           Keyboard="Email" 
+                                        <Entry x:Name="UserNameEntry" Grid.Column="1" 
+                                           Placeholder="Kullanıcı Adınız" 
+                                           Keyboard="Text" 
                                            PlaceholderColor="#D1C5B8" 
                                            TextColor="#1B1C1A" 
                                            VerticalOptions="Center" />
@@ -112,7 +112,7 @@
 
                             <!-- Password Field -->
                             <VerticalStackLayout Spacing="6">
-                                <Label Text="Password" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
+                                <Label Text="Parola" FontSize="13" TextColor="#4D463C" FontAttributes="Bold" />
                                 <Border BackgroundColor="#F5F3F0" StrokeThickness="0" HeightRequest="50">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="12" />
@@ -126,7 +126,7 @@
                                            HorizontalOptions="Center" 
                                            VerticalOptions="Center" />
 
-                                        <Entry x:Name="PasswordEntry" 
+                                        <Entry x:Name="PasswordHashEntry" 
                                            Grid.Column="1" 
                                            IsPassword="True" 
                                            Placeholder="••••••••" 
@@ -151,11 +151,11 @@
                             <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
                                 <HorizontalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
                                     <CheckBox Color="#C5A880" VerticalOptions="Center" />
-                                    <Label Text="Remember me" FontSize="13" TextColor="#4D463C" VerticalOptions="Center" />
+                                    <Label Text="Beni Hatırla " FontSize="13" TextColor="#4D463C" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
 
                                 <Label Grid.Column="1" 
-                                   Text=" Forgot password?" 
+                                   Text=" Şifrenizi mi unuttunuz?" 
                                    FontSize="13" 
                                    TextColor="#725B38" 
                                    FontAttributes="Bold" 
@@ -167,7 +167,7 @@
                             </Grid>
 
                             <!-- Sign In Button -->
-                            <Button Text="Sign In"
+                            <Button Text="Giriş Yap"
                                 BackgroundColor="#C5A880"
                                 TextColor="White"
                                 FontAttributes="Bold"

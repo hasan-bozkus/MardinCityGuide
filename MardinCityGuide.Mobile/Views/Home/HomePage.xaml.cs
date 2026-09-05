@@ -4,6 +4,7 @@ using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.Mobile.Dtos.EditorialHighlightDtos;
 using MardinCityGuide.Mobile.Dtos.HomeNevTileDtos;
 using MardinCityGuide.Mobile.Helpers;
+using MardinCityGuide.Mobile.Models;
 using MardinCityGuide.Mobile.Views.PlaceDetail;
 
 namespace MardinCityGuide.Mobile.Views.Home;
@@ -14,6 +15,7 @@ public partial class HomePage : ContentPage
     private readonly IHomeNavTileService _homeNavTileService;
     private readonly IPlaceService _placeService;
     private readonly IEditorialHighlightService _editoralHighlightService;
+    private string CurrentUserName => CurrentSession.UserName;
 
     public List<ResultHomeNawTileDto> ResultHomeNawTileDtos { get; set; }
     public ResultGetRandomEditorialHighlightDto ResultGetRandomEditorialHighlightDto { get; set; }
@@ -30,6 +32,8 @@ public partial class HomePage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        CurrentUserNameLabel.Text = "Merhaba, " + CurrentUserName;
 
         var highlightList = await _highlightService.TGetHighlightListBySortOrderAsync();
         HighlightListCollection.ItemsSource = highlightList.Take(8).ToList();

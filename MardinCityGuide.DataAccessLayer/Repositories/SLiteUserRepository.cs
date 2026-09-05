@@ -10,8 +10,21 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
 {
     public class SLiteUserRepository : GenericRepository<User>, IUserDal
     {
+        private readonly AppDatabase _appDatabase;
+        private readonly SQLiteAsyncConnection _connection;
+
         public SLiteUserRepository(AppDatabase appDatabase, SQLiteAsyncConnection connection) : base(appDatabase, connection)
         {
+            _appDatabase = appDatabase;
+            _connection = connection;
+        }
+
+        public async Task<User> GetUserByNameAsync(string userName)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<User>().Where(u => u.UserName == userName).FirstOrDefaultAsync();
+            return values;
         }
     }
 }

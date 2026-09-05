@@ -7,5 +7,6 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
 {
     public interface IUserDal : IGenericDal<User>
     {
+        Task<User> GetUserByNameAsync(string userName);
     }
 }
