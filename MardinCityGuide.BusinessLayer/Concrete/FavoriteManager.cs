@@ -17,6 +17,11 @@ namespace MardinCityGuide.BusinessLayer.Concrete
             _favoriteDal = favoriteDal;
         }
 
+        public async Task<Favorite> TGetFavoritePlaceByTargetIdRestaurantAsync(int id)
+        {
+            return await _favoriteDal.GetFavoritePlaceByTargetIdRestaurantAsync(id);
+        }
+
         public async Task<List<object>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null)
         {
             return await _favoriteDal.GetUserFavoritesAsync(id, filterType);

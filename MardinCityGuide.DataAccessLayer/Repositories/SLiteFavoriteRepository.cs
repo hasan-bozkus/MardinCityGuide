@@ -20,6 +20,12 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             _connection = connection;
         }
 
+        public async Task<Favorite> GetFavoritePlaceByTargetIdRestaurantAsync(int id)
+        {
+            var value = await _connection.Table<Favorite>().Where(x => x.TargetId == id && x.FavoriteType == FavoriteType.Restaurant).FirstOrDefaultAsync();
+            return value;
+        }
+
         public async Task<List<object>> GetUserFavoritesAsync(int id, FavoriteType? filterType = null)
         {
             await _appDatabase.InitAsync();
@@ -97,10 +103,27 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                             });
                         }
                         break;
+                        default:
+                        var targetid = await _connection.Table<ReligiousSite>().FirstOrDefaultAsync();
+                        var targetLocation = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == targetid.LocationId).FirstOrDefaultAsync();
+                        resultList.Add(new
+                        {
+                            FavoriteId = item.FavoriteId,
+                            TargetId = item.TargetId,
+                            FavoriteType = item.FavoriteType,
+                            Title = targetid.Name,
+                            Location = targetLocation.AddressText,
+                            CategoryTag = targetid.Dynasty,
+                            Rating = targetid.Rating,
+                            ImageUrl = targetid.ImageUrl,
+                            CreatedAt = item.CreatedAt
+                        });
+                        break;
+
                 }
             }
 
-            return resultList.ToList(); //content page alanıda orderbydescending ile CreatedAt baz alınarak listeleme yapılacak
+            return resultList.Cast<dynamic>().OrderByDescending(f=> f.CreatedAt).ToList();
         }
 
         public Task<bool> RemoveFavoriteAsync(int id)

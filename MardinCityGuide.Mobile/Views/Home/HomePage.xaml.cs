@@ -1,11 +1,12 @@
 
 using MardinCityGuide.BusinessLayer.Abstract;
+using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.EntityLayer.Concrete;
+using MardinCityGuide.EntityLayer.Enums;
 using MardinCityGuide.Mobile.Dtos.EditorialHighlightDtos;
 using MardinCityGuide.Mobile.Dtos.HomeNevTileDtos;
 using MardinCityGuide.Mobile.Helpers;
 using MardinCityGuide.Mobile.Models;
-using MardinCityGuide.Mobile.Views.PlaceDetail;
 
 namespace MardinCityGuide.Mobile.Views.Home;
 
@@ -15,7 +16,9 @@ public partial class HomePage : ContentPage
     private readonly IHomeNavTileService _homeNavTileService;
     private readonly IPlaceService _placeService;
     private readonly IEditorialHighlightService _editoralHighlightService;
+    private readonly IFavoriteService _favoriteService;
     private string CurrentUserName => CurrentSession.UserName;
+    private int CurrentUserId => CurrentSession.UserId;
 
     public List<ResultHomeNawTileDto> ResultHomeNawTileDtos { get; set; }
     public ResultGetRandomEditorialHighlightDto ResultGetRandomEditorialHighlightDto { get; set; }
@@ -27,6 +30,7 @@ public partial class HomePage : ContentPage
         _homeNavTileService = ServiceHelper.GetService<IHomeNavTileService>();
         _placeService = ServiceHelper.GetService<IPlaceService>();
         _editoralHighlightService = ServiceHelper.GetService<IEditorialHighlightService>();
+        _favoriteService = ServiceHelper.GetService<IFavoriteService>();
     }
 
     protected override async void OnAppearing()
@@ -86,5 +90,33 @@ public partial class HomePage : ContentPage
         if (element.BindingContext is not Place place) return;
 
         await Shell.Current.GoToAsync($"placedetail?id={place.PlaceId}");
+    }
+
+    private async void OnFavoritesTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("favorites");
+    }
+
+    private async void OnAddFavoriteTapped(object sender, EventArgs e)
+    {
+        if (sender is not Button button) return;
+        if (button.BindingContext is not Place place) return;
+
+        var isFavorite = await _favoriteService.TGetFavoritePlaceByTargetIdRestaurantAsync(place.PlaceId);
+        if(isFavorite != null)
+        {
+            await _favoriteService.TDeleteAsync(isFavorite);
+            await Shell.Current.GoToAsync("//home");
+        }
+        if (isFavorite is null)
+        {
+            await _favoriteService.TCreateAsync(new Favorite
+            {
+                UserId = CurrentUserId,
+                TargetId = place.PlaceId,
+                FavoriteType = FavoriteType.Restaurant
+            });     
+            await Shell.Current.GoToAsync("favorites");
+        }
     }
 }

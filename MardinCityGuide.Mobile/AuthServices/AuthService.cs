@@ -15,7 +15,7 @@ namespace MardinCityGuide.Mobile.AuthServices
         {
             _httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("https://localhost/api/"),
+                BaseAddress = new Uri("https://hasanbozkus.tr/api/"),
                 Timeout = TimeSpan.FromSeconds(60)
             };
         }
@@ -33,7 +33,7 @@ namespace MardinCityGuide.Mobile.AuthServices
                 var json = JsonSerializer.Serialize(dto);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                using var response = await _httpClient.PostAsync("User/Login", content).ConfigureAwait(false);
+                using var response = await _httpClient.PostAsync("User/LoginUser", content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -65,7 +65,7 @@ namespace MardinCityGuide.Mobile.AuthServices
                 var json = JsonSerializer.Serialize(registerUserDtos);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                using var response = await _httpClient.PostAsync("User/Register", content).ConfigureAwait(false);
+                using var response = await _httpClient.PostAsync("User/RegisterUser", content).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
 

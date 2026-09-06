@@ -83,9 +83,97 @@
                     </Label.FormattedText>
                 </Label>
 
-                <!--<Label FormattedText="{StaticResource SavedCountString}" Margin="0,4,0,8" />-->
+                <Label FormattedText="{StaticResource SavedCountString}" Margin="0,4,0,8" />
 
                 <!-- FAVORITES LIST (STATİK KARTLAR) -->
+                <CollectionView x:Name="FavoritesCollection">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="16"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <!-- FAVORİ KART 1 -->
+                            <Border StrokeShape="RoundRectangle 12"
+        StrokeThickness="0"
+        BackgroundColor="#FFFFFF"
+        HeightRequest="128">
+                                <Border.Shadow>
+                                    <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                                </Border.Shadow>
+
+                                <Grid ColumnDefinitions="128,*">
+                                    <!-- Sol Görsel & Rating -->
+                                    <Grid Grid.Column="0">
+                                        <Image Source="cercis_konagi.jpg" Aspect="AspectFill" />
+
+                                        <Border HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="8"
+                    BackgroundColor="#CCFFFFFF"
+                    StrokeShape="RoundRectangle 10"
+                    StrokeThickness="0"
+                    Padding="6,2">
+                                            <HorizontalStackLayout Spacing="2">
+                                                <Label Text="★" TextColor="#D35400" FontSize="10" VerticalOptions="Center" />
+                                                <Label Text="4.9"
+                           FontFamily="BeVietnamProBold"
+                           FontSize="10"
+                           TextColor="#D35400"
+                           VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Sağ Bilgi Alanı -->
+                                    <Grid Grid.Column="1" Padding="16,12" RowDefinitions="*,Auto">
+                                        <VerticalStackLayout Grid.Row="0" Spacing="2">
+                                            <Label Text="Cercis Murat Konağı"
+                       FontFamily="ManropeSemiBold"
+                       FontSize="18"
+                       TextColor="#1B1C1A"
+                       LineBreakMode="TailTruncation" />
+
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                                <Label Text="Old City, Mardin"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="12"
+                           TextColor="#4D463C"
+                           VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+
+                                        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" VerticalOptions="End">
+                                            <Border Grid.Column="0"
+                        HorizontalOptions="Start"
+                        BackgroundColor="#EAE8E5"
+                        StrokeShape="RoundRectangle 6"
+                        StrokeThickness="0"
+                        Padding="8,2">
+                                                <Label Text="FINE DINING"
+                           FontFamily="BeVietnamProSemiBold"
+                           FontSize="10"
+                           TextColor="#4D463C" />
+                                            </Border>
+
+                                            <ImageButton Grid.Column="1"
+                             Source="ic_heart_filled.png"
+                             HeightRequest="32"
+                             WidthRequest="32"
+                             CornerRadius="16"
+                             BackgroundColor="#1AD35400" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+                
                 <VerticalStackLayout Spacing="16">
 
                     <!-- FAVORİ KART 1 -->
