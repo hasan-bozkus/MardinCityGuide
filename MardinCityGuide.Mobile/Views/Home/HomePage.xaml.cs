@@ -1,4 +1,3 @@
-
 using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.EntityLayer.Concrete;
@@ -53,7 +52,18 @@ public partial class HomePage : ContentPage
 
 
         var placeList = await _placeService.TGetPlaceListWithSortOrderAsync();
-        PlaceListCollection.ItemsSource = placeList.Take(2).ToList();
+
+        PlaceListCollection.ItemsSource = placeList.Take(2).Select(x => new
+        {
+            x.PlaceId,
+            x.Name,
+            x.Description,
+            x.CoverImageUrl,
+            x.Rating,
+            x.ReviewCount,
+            x.TypeLabel,
+            IsFavoriteColor = x.IsFavorite ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A")
+        }).ToList();
 
         var randomEditoralHighlight = await _editoralHighlightService.TGetRandomEditoralHighlightAsync();
 
@@ -100,23 +110,28 @@ public partial class HomePage : ContentPage
     private async void OnAddFavoriteTapped(object sender, EventArgs e)
     {
         if (sender is not Button button) return;
-        if (button.BindingContext is not Place place) return;
-
-        var isFavorite = await _favoriteService.TGetFavoritePlaceByTargetIdRestaurantAsync(place.PlaceId);
-        if(isFavorite != null)
-        {
-            await _favoriteService.TDeleteAsync(isFavorite);
-            await Shell.Current.GoToAsync("//home");
-        }
-        if (isFavorite is null)
-        {
-            await _favoriteService.TCreateAsync(new Favorite
+        if (button.CommandParameter is int placeId)
+        { 
+            
+            var isFavorite = await _favoriteService.TGetFavoritePlaceByTargetIdRestaurantAsync(placeId);
+            if (isFavorite != null)
             {
-                UserId = CurrentUserId,
-                TargetId = place.PlaceId,
-                FavoriteType = FavoriteType.Restaurant
-            });     
-            await Shell.Current.GoToAsync("favorites");
+                await _favoriteService.TDeleteAsync(isFavorite);
+                await _placeService.TGetChangeIsFavoriteStatusFalseAsync(placeId);
+                OnAppearing();
+            }
+            if (isFavorite is null)
+            {
+                await _favoriteService.TCreateAsync(new Favorite
+                {
+                    UserId = CurrentUserId,
+                    TargetId = placeId,
+                    FavoriteType = FavoriteType.Restaurant
+                });
+                await _placeService.TGetChangeIsFavoriteStatusTrueAsync(placeId);
+                OnAppearing();
+            }
         }
+        if (button.CommandParameter is not Place places) return;
     }
 }

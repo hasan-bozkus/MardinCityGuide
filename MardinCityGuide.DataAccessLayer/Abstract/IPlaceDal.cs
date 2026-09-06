@@ -16,5 +16,8 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
         Task<Place> GetHighestStarredPlaceWithLocationAsync();
 
         Task<List<Place>> GetPlaceListWithLocationByIsActiveAndIsFeatuderAsync();
+
+        Task GetChangeIsFavoriteStatusTrueAsync(int id);
+        Task GetChangeIsFavoriteStatusFalseAsync(int id);
     }
 }

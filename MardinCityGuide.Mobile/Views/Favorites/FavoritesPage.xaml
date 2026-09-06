@@ -86,9 +86,10 @@
                 <Label FormattedText="{StaticResource SavedCountString}" Margin="0,4,0,8" />
 
                 <!-- FAVORITES LIST (STATİK KARTLAR) -->
-                <CollectionView x:Name="FavoritesCollection">
+                <VerticalStackLayout Spacing="16">
+                <CollectionView x:Name="FavoritesCollection" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="16"></LinearItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="16"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
@@ -173,7 +174,7 @@
                     </CollectionView.ItemTemplate>
                     
                 </CollectionView>
-                
+                </VerticalStackLayout>
                 <VerticalStackLayout Spacing="16">
 
                     <!-- FAVORİ KART 1 -->

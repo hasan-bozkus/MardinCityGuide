@@ -16,6 +16,16 @@ namespace MardinCityGuide.BusinessLayer.Concrete
             _placeDal = placeDal;
         }
 
+        public async Task TGetChangeIsFavoriteStatusFalseAsync(int id)
+        {
+            await _placeDal.GetChangeIsFavoriteStatusFalseAsync(id);
+        }
+
+        public async Task TGetChangeIsFavoriteStatusTrueAsync(int id)
+        {
+            await _placeDal.GetChangeIsFavoriteStatusTrueAsync(id);
+        }
+
         public async Task<Place> TGetHighestStarredPlaceWithLocationAsync()
         {
             return await _placeDal.GetHighestStarredPlaceWithLocationAsync();

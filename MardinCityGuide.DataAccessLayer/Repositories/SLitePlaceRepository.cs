@@ -19,6 +19,45 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             _connection = connection;
         }
 
+        public async Task GetChangeIsFavoriteStatusAsync(int id)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.PlaceId == id).FirstOrDefaultAsync();
+
+            if (values != null)
+            {
+                values.IsFavorite = !values.IsFavorite;
+                await _connection.UpdateAsync(values);
+            }
+        }
+
+        public async Task GetChangeIsFavoriteStatusFalseAsync(int id)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.PlaceId == id).FirstOrDefaultAsync();
+
+            if (values != null)
+            {
+                values.IsFavorite = false;
+                await _connection.UpdateAsync(values);
+            }
+        }
+
+        public async Task GetChangeIsFavoriteStatusTrueAsync(int id)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.PlaceId == id).FirstOrDefaultAsync();
+
+            if (values != null)
+            {
+                values.IsFavorite = true;
+                await _connection.UpdateAsync(values);
+            }
+        }
+
         public async Task<Place> GetHighestStarredPlaceWithLocationAsync()
         {
             await _appDatabase.InitAsync();
