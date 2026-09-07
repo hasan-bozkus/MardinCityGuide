@@ -8,5 +8,7 @@ namespace MardinCityGuide.BusinessLayer.Abstract
     public interface IReligiousSiteService : IGenericService<ReligiousSite>
     {
         Task<List<ReligiousSite>> TGetMosquesAndMonasteriesListAsync();
+        Task TGetChangeIsFavoriteStatusTrueAsync(int id);
+        Task TGetChangeIsFavoriteStatusFalseAsync(int id);
     }
 }

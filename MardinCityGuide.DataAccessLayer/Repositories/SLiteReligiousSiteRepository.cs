@@ -27,5 +27,30 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             var values = await _connection.Table<ReligiousSite>().Where(x => x.IsActive == true).OrderBy(y => y.Rating).ToListAsync();
             return values;
         }
+        public async Task GetChangeIsFavoriteStatusFalseAsync(int id)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.PlaceId == id).FirstOrDefaultAsync();
+
+            if (values != null)
+            {
+                values.IsFavorite = false;
+                await _connection.UpdateAsync(values);
+            }
+        }
+
+        public async Task GetChangeIsFavoriteStatusTrueAsync(int id)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<Place>().Where(x => x.PlaceId == id).FirstOrDefaultAsync();
+
+            if (values != null)
+            {
+                values.IsFavorite = true;
+                await _connection.UpdateAsync(values);
+            }
+        }
     }
 }

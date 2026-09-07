@@ -8,5 +8,7 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
     public interface IReligiousSiteDal : IGenericDal<ReligiousSite>
     {
         Task<List<ReligiousSite>> GetMosquesAndMonasteriesListAsync();
+        Task GetChangeIsFavoriteStatusTrueAsync(int id);
+        Task GetChangeIsFavoriteStatusFalseAsync(int id);
     }
 }
