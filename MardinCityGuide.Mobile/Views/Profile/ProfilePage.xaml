@@ -40,87 +40,66 @@
                 <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
                     <!-- Profile Image with Edit Badge -->
                     <Grid WidthRequest="112" HeightRequest="112" HorizontalOptions="Center" Margin="0,0,0,8">
-                        <Border WidthRequest="112" 
-                                HeightRequest="112" 
-                                StrokeShape="RoundRectangle 56" 
-                                StrokeThickness="4" 
-                                Stroke="#EFEEEB">
-                            <Image Source="https://lh3.googleusercontent.com/aida-public/AB6AXuB-kZrGXHqEkz6Hp7GgGpbtKz12Q7PQno5-gm2O1sPoDR3tBR1Q0aT_UU1tydSISqKRZVcM8G_7aFUytZ935oZHKz8n2ug5wJHNdkJF6FJhEV7Lk-naY7-eYnVFFnWYv99z-KcfFBfMT-CyX-AOL24stSGjJz2QMhV9_6znI8_xaW-p6eEbgq3rR5zGr5XzmO2EXdtO0r6aDKW_MMjUpz6GM2ltKLpE8qfpMp5qB6q9ZyVgtuS9T4wl5g" 
-                                   Aspect="AspectFill" />
+                        <Border WidthRequest="112" HeightRequest="112" StrokeShape="RoundRectangle 56" StrokeThickness="4" Stroke="#EFEEEB">
+                            <Grid>
+                                <!-- Kullanıcının gerçek profil fotoğrafı varsa bu çalışır -->
+                                <Image x:Name="ImageAvatarUrl" Aspect="AspectFill" IsVisible="False" />
+
+                                <!-- Resim yoksa doğrudan bu Vektörel Label çalışır (Sıfır Bulanıklık) -->
+                                <Label x:Name="LabelAvatarIcon" Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="56" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Grid>
                         </Border>
 
                         <!-- Edit Button Badge -->
-                        <Border WidthRequest="32" 
-                                HeightRequest="32" 
-                                StrokeShape="RoundRectangle 16" 
-                                BackgroundColor="#725b38" 
-                                Stroke="#FDFCFB" 
-                                StrokeThickness="2" 
-                                HorizontalOptions="End" 
-                                VerticalOptions="End">
-                            <Image Source="ic_edit.png" 
-                                   HeightRequest="16" 
-                                   WidthRequest="16" 
-                                   HorizontalOptions="Center" 
-                                   VerticalOptions="Center" />
+                        <Border WidthRequest="32" HeightRequest="32" BackgroundColor="#725b38" Stroke="#FDFCFB" StrokeThickness="2" HorizontalOptions="End" VerticalOptions="End">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Label Text="&#xe3c9;" FontFamily="MaterialSymbols" HeightRequest="20" WidthRequest="20" HorizontalOptions="End" TextColor="White" VerticalOptions="Center" />
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSelectProfileImageTapped" />
+                            </Border.GestureRecognizers>
                         </Border>
                     </Grid>
 
-                    <Label Text="Alexandro Vance" 
-                           TextColor="#1B1C1A" 
-                           FontSize="24" 
-                           FontAttributes="Bold" 
-                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="LabelName" TextColor="#1B1C1A" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
 
-                    <Label Text="alexandro.vance@traveler.com" 
-                           TextColor="#4D463C" 
-                           FontSize="14" 
-                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="LabelEmail" TextColor="#4D463C" FontSize="14" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
 
                 <!-- Stats Bento Grid -->
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="16">
                     <!-- Favorites Card -->
-                    <Border Grid.Column="0" 
-                            BackgroundColor="#F5F3F0" 
-                            StrokeShape="RoundRectangle 16" 
-                            StrokeThickness="1" 
-                            Stroke="#1AD1C5B8" 
-                            Padding="16,20">
+                    <Border Grid.Column="0" BackgroundColor="#F5F3F0" StrokeShape="RoundRectangle 16" StrokeThickness="1" Stroke="#1AD1C5B8" Padding="16,20">
                         <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
-                            <Image Source="ic_favorite_filled.png" HeightRequest="24" WidthRequest="24" />
-                            <Label Text="24" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                            <Label Text="FAVORITES" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
+                            <Label Text="&#xe87d;" TextColor="#725b38" FontSize="24" FontFamily="MaterialSymbols" HeightRequest="24" WidthRequest="24" />
+                            <Label x:Name="FavoriteCount" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            <Label Text="Favoriler" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </Border>
 
                     <!-- Routes Card -->
-                    <Border Grid.Column="1" 
-                            BackgroundColor="#F5F3F0" 
-                            StrokeShape="RoundRectangle 16" 
-                            StrokeThickness="1" 
-                            Stroke="#1AD1C5B8" 
-                            Padding="16,20">
+                    <Border Grid.Column="1" BackgroundColor="#F5F3F0" StrokeShape="RoundRectangle 16" StrokeThickness="1" Stroke="#1AD1C5B8" Padding="16,20">
                         <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
-                            <Image Source="ic_map_filled.png" HeightRequest="24" WidthRequest="24" />
-                            <Label Text="12" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                            <Label Text="ROUTES" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
+                            <Label Text="&#xe55b;" TextColor="#725b38" FontSize="24" FontFamily="MaterialSymbols" HeightRequest="24" WidthRequest="24" />
+                            <Label x:Name="MyRoutes" TextColor="#725b38" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            <Label Text="Rotalarım" TextColor="#4D463C" FontSize="11" FontAttributes="Bold" CharacterSpacing="1" HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </Border>
                 </Grid>
 
                 <!-- Settings List -->
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="SETTINGS" TextColor="#7F766A" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.5" Margin="4,0,0,4" />
+                    <Label Text="Ayarlar" TextColor="#7F766A" FontSize="12" FontAttributes="Bold" CharacterSpacing="1.5" Margin="4,0,0,4" />
 
                     <!-- Account Information -->
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
-                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
-                                <Image Source="ic_person.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 40" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
+                                <Label Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="25" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
-                            <Label Grid.Column="1" Text="Account Information" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
-                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Hesabım" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
@@ -128,10 +107,10 @@
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
-                                <Image Source="ic_notifications.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="&#xe7f4;" FontFamily="MaterialSymbols" HeightRequest="25" FontSize="20"  WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                             <Label Grid.Column="1" Text="Notifications" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
-                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
@@ -139,13 +118,13 @@
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
-                                <Image Source="ic_language.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="&#xe894;" HeightRequest="25" FontFamily="MaterialSymbols" FontSize="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                                <Label Text="Language" TextColor="#1B1C1A" FontSize="16" />
-                                <Label Text="English (US)" TextColor="#4D463C" FontSize="12" />
+                                <Label Text="Dil" TextColor="#1B1C1A" FontSize="16" />
+                                <Label Text="Türkçe (TR)" TextColor="#4D463C" FontSize="12" />
                             </VerticalStackLayout>
-                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
@@ -153,28 +132,26 @@
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
-                                <Image Source="ic_help.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="&#xe887;" FontFamily="MaterialSymbols" HeightRequest="20" WidthRequest="20" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
-                            <Label Grid.Column="1" Text="Help &amp; Support" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
-                            <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Yardım &amp; Destek" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
+                            <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
                         </Grid>
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- Logout & Footer Section -->
+                <!-- Logout & Footer Section  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=logout" /> -->
                 <VerticalStackLayout Spacing="20" Margin="0,8,0,12">
-                    <Button Text="Logout" 
-                            ImageSource="ic_logout.png" 
-                            TextColor="#725b38" 
-                            BackgroundColor="Transparent" 
-                            BorderColor="#725b38" 
-                            BorderWidth="2" 
-                            CornerRadius="25" 
-                            HeightRequest="52" 
-                            FontSize="16" 
-                            FontAttributes="Bold" />
+                    <Button Text="Çıkış Yap" TextColor="#725b38" BackgroundColor="Transparent" BorderColor="#725b38" BorderWidth="2" CornerRadius="25" HeightRequest="52" FontSize="16" FontAttributes="Bold" Clicked="OnLogoutCilcked">
+                        <Button.ImageSource>
+                            <FontImageSource Glyph="&#xe9ba;" 
+                         FontFamily="MaterialSymbols" 
+                         Color="#725b38" 
+                         Size="20" />
+                        </Button.ImageSource>
+                    </Button>
 
-                    <Label Text="Version 2.4.0 • Mardin Guide Premium" 
+                    <Label Text="Mardin Şehir Rehberi" 
                            TextColor="#7F766A" 
                            FontSize="12" 
                            HorizontalTextAlignment="Center" />

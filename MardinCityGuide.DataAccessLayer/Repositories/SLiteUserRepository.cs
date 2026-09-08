@@ -26,5 +26,17 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             var values = await _connection.Table<User>().Where(u => u.UserName == userName).FirstOrDefaultAsync();
             return values;
         }
+
+        public async Task UpdateUserAvatarUrlAsync(int userId, string avatarUrl)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<User>().Where(u => u.UserId == userId).FirstOrDefaultAsync();
+            if (values != null)
+            {
+                values.AvatarUrl = avatarUrl;
+                await _connection.UpdateAsync(values);
+            }
+        }
     }
 }

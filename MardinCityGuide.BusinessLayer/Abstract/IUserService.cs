@@ -8,5 +8,6 @@ namespace MardinCityGuide.BusinessLayer.Abstract
     public interface IUserService : IGenericService<User>
     {
         Task<User> TGetUserByNameAsync(string userName);
+        Task TUpdateUserAvatarUrlAsync(int userId, string avatarUrl);
     }
 }

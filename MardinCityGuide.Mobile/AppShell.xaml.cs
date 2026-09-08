@@ -13,6 +13,7 @@
             Routing.RegisterRoute("placedetail", typeof(Views.PlaceDetail.PlaceDetailPage));
             Routing.RegisterRoute("map", typeof(Views.Map.MapPage));
             Routing.RegisterRoute("favorites", typeof(Views.Favorites.FavoritesPage));
+            Routing.RegisterRoute("profile", typeof(Views.Profile.ProfilePage));
         }
     }
 }

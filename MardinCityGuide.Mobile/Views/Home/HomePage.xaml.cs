@@ -107,6 +107,11 @@ public partial class HomePage : ContentPage
         await Shell.Current.GoToAsync("favorites");
     }
 
+    private async void OnProfileTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("profile");
+    }
+
     private async void OnAddFavoriteTapped(object sender, EventArgs e)
     {
         if (sender is not Button button) return;

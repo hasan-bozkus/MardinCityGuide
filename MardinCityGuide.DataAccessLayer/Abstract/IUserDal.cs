@@ -8,5 +8,6 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
     public interface IUserDal : IGenericDal<User>
     {
         Task<User> GetUserByNameAsync(string userName);
+        Task UpdateUserAvatarUrlAsync(int userId, string avatarUrl);
     }
 }

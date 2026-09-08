@@ -346,6 +346,9 @@
 
                 <!-- Tab 4: Profile -->
                 <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnProfileTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
                     <Label Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
                     <Label Text="Profile" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
                 </VerticalStackLayout>

@@ -65,7 +65,7 @@ public partial class RegisterPage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Hata", $"Fotoğraf seçilemedi: {ex.Message}", "Tamam");
+            await DisplayAlertAsync("Hata", $"Fotoğraf seçilemedi: {ex.Message}", "Tamam");
         }
     }
 
