@@ -160,7 +160,15 @@
                                                 <Label Text="{Binding CategoryTag}" FontFamily="BeVietnamProSemiBold" FontSize="10" TextColor="#4D463C" />
                                             </Border>
 
-                                            <ImageButton Grid.Column="1" Source="ic_heart_filled.png" HeightRequest="32" WidthRequest="32" CornerRadius="16" BackgroundColor="#1AD35400" /> <!--buraya clicked özelliği gelecek-->
+                                                <ImageButton Grid.Column="1" Source="ic_heart_filled.png" HeightRequest="32" Clicked="OnAddFavoriteWithTargetClicked" CommandParameter="{Binding .}" WidthRequest="32" CornerRadius="16" BackgroundColor="#1AD35400">
+                                                    <ImageButton.CommandParameter>
+                                                        <MultiBinding StringFormat="{}{0}:{1}">
+                                                            <Binding Path="TargetId" />
+                                                            <Binding Path="FavoriteType" />
+                                                        </MultiBinding>
+                                                    </ImageButton.CommandParameter>
+                                                </ImageButton>
+                                                <!--buraya clicked özelliği gelecek-->
                                         </Grid>
                                     </Grid>
                                 </Grid>

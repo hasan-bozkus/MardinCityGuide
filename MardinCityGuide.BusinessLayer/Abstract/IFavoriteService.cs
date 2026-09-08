@@ -9,8 +9,9 @@ namespace MardinCityGuide.BusinessLayer.Abstract
     public interface IFavoriteService : IGenericService<Favorite>
     {
         Task<List<object>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null);
-        Task<bool> TRemoveFavoriteAsync(int id);
+        Task<bool> TRemoveFavoriteAsync(int targetId, string favoriteType);
         Task<Favorite> TGetFavoritePlaceByTargetIdRestaurantAsync(int id);
+        Task<bool> TAddFavoriteAsync(int targetId, string favoriteType);
 
     }
 }

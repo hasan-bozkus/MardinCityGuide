@@ -20,6 +20,36 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             _connection = connection;
         }
 
+        public async Task<bool> AddFavoriteAsync(int targetId, string favoriteType)
+        {
+            await _appDatabase.InitAsync();
+
+            var favoriteTypeValue = await _connection.Table<Favorite>().Where(x => x.TargetId == targetId && x.FavoriteType == (FavoriteType)Enum.Parse(typeof(FavoriteType), favoriteType)).FirstOrDefaultAsync();
+
+            if (favoriteTypeValue.FavoriteType == FavoriteType.Site)
+            {
+                var site = await _connection.Table<ReligiousSite>().Where(s => s.ReligiousSiteId == targetId).FirstOrDefaultAsync();
+                site.IsFavorite = true;
+                await _connection.UpdateAsync(site);
+            }
+
+            if (favoriteTypeValue.FavoriteType == FavoriteType.Restaurant)
+            {
+                var site = await _connection.Table<Place>().Where(s => s.PlaceId == targetId).FirstOrDefaultAsync();
+                site.IsFavorite = true;
+                await _connection.UpdateAsync(site);
+            }
+
+            if (favoriteTypeValue.FavoriteType == FavoriteType.Route)
+            {
+                var site = await _connection.Table<Route>().Where(s => s.RouteId == targetId).FirstOrDefaultAsync();
+                site.IsActive = true;
+                await _connection.UpdateAsync(site);
+            }
+
+            return true;
+        }
+
         public async Task<Favorite> GetFavoritePlaceByTargetIdRestaurantAsync(int id)
         {
             var value = await _connection.Table<Favorite>().Where(x => x.TargetId == id && x.FavoriteType == FavoriteType.Restaurant).FirstOrDefaultAsync();
@@ -32,7 +62,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
 
             var query = _connection.Table<Favorite>().Where(f => f.UserId == id && f.IsActive == true);
 
-            if(filterType.HasValue)
+            if (filterType.HasValue)
             {
                 query = query.Where(f => f.FavoriteType == filterType.Value);
             }
@@ -40,15 +70,15 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             var favorites = await query.ToListAsync();
             var resultList = new List<object>();
 
-            foreach(var item in favorites)
+            foreach (var item in favorites)
             {
-                switch(item.FavoriteType)
+                switch (item.FavoriteType)
                 {
                     case FavoriteType.Restaurant:
                         var rest = await _connection.Table<Place>().FirstOrDefaultAsync(r => r.PlaceId == item.TargetId);
                         var location = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == rest.LocationId).FirstOrDefaultAsync();
 
-                        if(rest != null)
+                        if (rest != null)
                         {
                             resultList.Add(new
                             {
@@ -89,7 +119,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                         var route = await _connection.Table<Route>().FirstOrDefaultAsync(r => r.RouteId == item.TargetId);
                         if (route != null)
                         {
-                            resultList.Add(new 
+                            resultList.Add(new
                             {
                                 FavoriteId = item.FavoriteId,
                                 TargetId = item.TargetId,
@@ -103,7 +133,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                             });
                         }
                         break;
-                        default:
+                    default:
                         var targetid = await _connection.Table<ReligiousSite>().FirstOrDefaultAsync();
                         var targetLocation = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == targetid.LocationId).FirstOrDefaultAsync();
                         resultList.Add(new
@@ -123,12 +153,43 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                 }
             }
 
-            return resultList.Cast<dynamic>().OrderByDescending(f=> f.CreatedAt).ToList();
+            return resultList.Cast<dynamic>().OrderByDescending(f => f.CreatedAt).ToList();
         }
 
-        public Task<bool> RemoveFavoriteAsync(int id)
+        public async Task<bool> RemoveFavoriteAsync(int targetId, string favoriteType)
         {
-            throw new NotImplementedException();
+            await _appDatabase.InitAsync();
+            var favorite = await _connection.Table<Favorite>().Where(f => f.TargetId == targetId).FirstOrDefaultAsync();
+
+            if (favoriteType == FavoriteType.Restaurant.ToString())
+            {
+                var restaurant = await _connection.Table<Place>().Where(s => s.PlaceId == favorite.TargetId).FirstOrDefaultAsync();
+                if (restaurant != null)
+                {
+                    restaurant.IsFavorite = false;
+                    await _connection.UpdateAsync(restaurant);
+                }
+            }
+            if (favoriteType == FavoriteType.Site.ToString())
+            {
+                var site = await _connection.Table<ReligiousSite>().Where(s => s.ReligiousSiteId == favorite.TargetId).FirstOrDefaultAsync();
+                if (site != null)
+                {
+                    site.IsFavorite = false;
+                    await _connection.UpdateAsync(site);
+                }
+            }
+            if (favoriteType == FavoriteType.Route.ToString())
+            {
+                var route = await _connection.Table<Route>().Where(s => s.RouteId == favorite.TargetId).FirstOrDefaultAsync();
+                if (route != null)
+                {
+                    route.IsActive = false;
+                    await _connection.UpdateAsync(route);
+                }
+            }
+            await _connection.DeleteAsync(favorite);
+            return true;
         }
     }
 }

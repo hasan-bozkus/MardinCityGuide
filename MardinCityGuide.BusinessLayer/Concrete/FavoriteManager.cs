@@ -17,6 +17,11 @@ namespace MardinCityGuide.BusinessLayer.Concrete
             _favoriteDal = favoriteDal;
         }
 
+        public async Task<bool> TRemoveFavoriteAsync(int targetId, string favoriteType)
+        {
+            return await _favoriteDal.RemoveFavoriteAsync(targetId, favoriteType);
+        }
+
         public async Task<Favorite> TGetFavoritePlaceByTargetIdRestaurantAsync(int id)
         {
             return await _favoriteDal.GetFavoritePlaceByTargetIdRestaurantAsync(id);
@@ -27,9 +32,9 @@ namespace MardinCityGuide.BusinessLayer.Concrete
             return await _favoriteDal.GetUserFavoritesAsync(id, filterType);
         }
 
-        public async Task<bool> TRemoveFavoriteAsync(int id)
+        public async Task<bool> TAddFavoriteAsync(int targetId, string favoriteType)
         {
-            return await _favoriteDal.RemoveFavoriteAsync(id);
+            return await _favoriteDal.AddFavoriteAsync(targetId, favoriteType);
         }
     }
 }

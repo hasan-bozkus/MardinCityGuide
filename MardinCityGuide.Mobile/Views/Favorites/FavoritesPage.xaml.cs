@@ -84,6 +84,40 @@ public partial class FavoritesPage : ContentPage
         }
     }
 
+    private async void OnAddFavoriteWithTargetClicked(object sender, EventArgs e)
+    {
+        if (sender is not ImageButton button) return;
+
+        if (button.CommandParameter is not string rawParameter) return;
+
+        var parts = rawParameter.Split(':');
+        if (parts.Length < 2) return;
+
+        if (!int.TryParse(parts[0], out int targetId)) return;
+
+        string favoriteTypeStr = parts[1];
+        var isFavorite = await _favoriteService.TGetFavoritePlaceByTargetIdRestaurantAsync(targetId);
+
+        if (isFavorite != null)
+        {
+            await _favoriteService.TRemoveFavoriteAsync(targetId, favoriteTypeStr);
+        }
+        else
+        {
+            Enum.TryParse(favoriteTypeStr, out FavoriteType favoriteEnum);
+
+            await _favoriteService.TCreateAsync(new Favorite
+            {
+                UserId = CurrentUserId,
+                TargetId = targetId,
+                FavoriteType = favoriteEnum
+            });
+
+            await _favoriteService.TAddFavoriteAsync(targetId, favoriteTypeStr);
+        }
+
+        OnAppearing();
+    }
     private async void OnAddFavoriteClicked(object sender, EventArgs e)
     {
         if (sender is not Button button) return;
