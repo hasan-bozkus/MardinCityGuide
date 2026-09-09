@@ -25,5 +25,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             await _userDal.UpdateUserAvatarUrlAsync(userId, avatarUrl);
         }
+
+        public async Task TUpdateUserWithNameAndUserNameAndEmailAsync(int userId, string nameSurname, string userName, string email)
+        {
+            await _userDal.UpdateUserWithNameAndUserNameAndEmailAsync(userId, nameSurname, userName, email);
+        }
     }
 }

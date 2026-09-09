@@ -101,14 +101,14 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                
+
                 <!-- STATS HEADER -->
                 <Label Margin="0,4,0,8">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="You have " TextColor="#4D463C" FontFamily="BeVietnamProRegular" FontSize="16" />
-                            <Span Text="4" TextColor="#725B38" FontFamily="BeVietnamProBold" FontSize="16" />
-                            <Span Text=" places saved in Mardin." TextColor="#4D463C" FontFamily="BeVietnamProRegular" FontSize="16" />
+                            <Span Text="Favorilediğin " TextColor="#4D463C" FontFamily="BeVietnamProRegular" FontSize="16" />
+                            <Span x:Name="FavoriteCount" TextColor="#725B38" FontFamily="BeVietnamProBold" FontSize="16" />
+                            <Span Text=" Mekan Bulundu." TextColor="#4D463C" FontFamily="BeVietnamProRegular" FontSize="16" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -117,69 +117,69 @@
 
                 <!-- FAVORITES LIST (STATİK KARTLAR) -->
                 <VerticalStackLayout Spacing="16">
-                <CollectionView x:Name="FavoritesCollection" VerticalScrollBarVisibility="Never">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="16"></LinearItemsLayout>
-                    </CollectionView.ItemsLayout>
+                    <CollectionView x:Name="FavoritesCollection" VerticalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="16"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
 
-                            <!-- FAVORİ KART 1 -->
-                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#FFFFFF" HeightRequest="128">
-                                <Border.Shadow>
-                                    <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
-                                </Border.Shadow>
+                                <!-- FAVORİ KART 1 -->
+                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#FFFFFF" HeightRequest="128">
+                                    <Border.Shadow>
+                                        <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
+                                    </Border.Shadow>
 
-                                <Grid ColumnDefinitions="128,*">
-                                    <!-- Sol Görsel & Rating -->
-                                    <Grid Grid.Column="0">
-                                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
+                                    <Grid ColumnDefinitions="128,*">
+                                        <!-- Sol Görsel & Rating -->
+                                        <Grid Grid.Column="0">
+                                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
 
-                                        <Border HorizontalOptions="Start" VerticalOptions="Start" Margin="8" BackgroundColor="#CCFFFFFF" StrokeShape="RoundRectangle 10" StrokeThickness="0" Padding="6,2">
-                                            <HorizontalStackLayout Spacing="2">
-                                                <Label Text="★" TextColor="#D35400" FontSize="10" VerticalOptions="Center" />
-                                                <Label Text="{Binding Rating}" FontFamily="BeVietnamProBold" FontSize="10" TextColor="#D35400" VerticalOptions="Center" />
-                                            </HorizontalStackLayout>
-                                        </Border>
-                                    </Grid>
-
-                                    <!-- Sağ Bilgi Alanı -->
-                                    <Grid Grid.Column="1" Padding="16,12" RowDefinitions="*,Auto">
-                                        <VerticalStackLayout Grid.Row="0" Spacing="2">
-                                            <Label Text="{Binding Title}" FontFamily="ManropeSemiBold" FontSize="18" TextColor="#1B1C1A" LineBreakMode="TailTruncation" />
-
-                                            <HorizontalStackLayout Spacing="4">
-                                                <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
-                                                <Label Text="{Binding Location}" FontFamily="BeVietnamProSemiBold" FontSize="12" TextColor="#4D463C" VerticalOptions="Center" />
-                                            </HorizontalStackLayout>
-                                        </VerticalStackLayout>
-
-                                        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" VerticalOptions="End">
-                                            <Border Grid.Column="0" HorizontalOptions="Start" BackgroundColor="#EAE8E5" StrokeShape="RoundRectangle 6" StrokeThickness="0" Padding="8,2">
-                                                <Label Text="{Binding CategoryTag}" FontFamily="BeVietnamProSemiBold" FontSize="10" TextColor="#4D463C" />
+                                            <Border HorizontalOptions="Start" VerticalOptions="Start" Margin="8" BackgroundColor="#CCFFFFFF" StrokeShape="RoundRectangle 10" StrokeThickness="0" Padding="6,2">
+                                                <HorizontalStackLayout Spacing="2">
+                                                    <Label Text="★" TextColor="#D35400" FontSize="10" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Rating}" FontFamily="BeVietnamProBold" FontSize="10" TextColor="#D35400" VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
                                             </Border>
+                                        </Grid>
 
-                                                <ImageButton Grid.Column="1" Source="ic_heart_filled.png" HeightRequest="32" Clicked="OnAddFavoriteWithTargetClicked" CommandParameter="{Binding .}" WidthRequest="32" CornerRadius="16" BackgroundColor="#1AD35400">
-                                                    <ImageButton.CommandParameter>
+                                        <!-- Sağ Bilgi Alanı -->
+                                        <Grid Grid.Column="1" Padding="16,12" RowDefinitions="*,Auto">
+                                            <VerticalStackLayout Grid.Row="0" Spacing="2">
+                                                <Label Text="{Binding Title}" FontFamily="ManropeSemiBold" FontSize="18" TextColor="#1B1C1A" LineBreakMode="TailTruncation" />
+
+                                                <HorizontalStackLayout Spacing="4">
+                                                    <Label Text="&#xe0c8;" FontFamily="MaterialSymbols" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Location}" FontFamily="BeVietnamProSemiBold" FontSize="12" TextColor="#4D463C" VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+
+                                            <Grid Grid.Row="1" ColumnDefinitions="*,Auto" VerticalOptions="End">
+                                                <Border Grid.Column="0" HorizontalOptions="Start" BackgroundColor="#EAE8E5" StrokeShape="RoundRectangle 6" StrokeThickness="0" Padding="8,2">
+                                                    <Label Text="{Binding CategoryTag}" FontFamily="BeVietnamProSemiBold" FontSize="10" TextColor="#4D463C" />
+                                                </Border>
+
+                                                <Button Grid.Column="1" Text="&#xe87d;" TextColor="{Binding IsFavoriteColor}" FontFamily="MaterialSymbols" HeightRequest="32" Clicked="OnAddFavoriteWithTargetClicked" WidthRequest="32" CornerRadius="16" BackgroundColor="#1AD35400">
+                                                    <Button.CommandParameter>
                                                         <MultiBinding StringFormat="{}{0}:{1}">
                                                             <Binding Path="TargetId" />
                                                             <Binding Path="FavoriteType" />
                                                         </MultiBinding>
-                                                    </ImageButton.CommandParameter>
-                                                </ImageButton>
+                                                    </Button.CommandParameter>
+                                                </Button>
                                                 <!--buraya clicked özelliği gelecek-->
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                            </Border>
+                                </Border>
 
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    
-                </CollectionView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
                 </VerticalStackLayout>
-               
+
                 <!-- 3. RECOMMENDED SECTION HEADER -->
                 <Grid ColumnDefinitions="*,Auto" Margin="0,16,0,0">
                     <Label Grid.Column="0"
@@ -188,7 +188,7 @@
                            FontSize="20"
                            TextColor="#1B1C1A" />
                     <Button Grid.Column="1"
-                            Text="See All"
+                            Text="Tümünü Gör"
                             FontFamily="BeVietnamProMedium"
                             FontSize="14"
                             TextColor="#008080"
@@ -211,7 +211,7 @@
                                     <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
                                         <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
                                     </Border>
-                                    <ImageButton Source="ic_add.png" Clicked="OnAddFavoriteClicked" CommandParameter="{Binding ReligiousSiteId}" HorizontalOptions="End" VerticalOptions="Start" Margin="8" HeightRequest="28" WidthRequest="28" CornerRadius="14" BackgroundColor="#E6FFFFFF" />
+                                    <Button Text="&#xef3a;" TextColor="{StaticResource MardinSand}" FontFamily="MaterialSymbols" Clicked="OnAddFavoriteClicked" CommandParameter="{Binding ReligiousSiteId}" HorizontalOptions="End" VerticalOptions="Start" Margin="8" HeightRequest="28" WidthRequest="28" CornerRadius="14" BackgroundColor="#E6FFFFFF" />
                                 </Grid>
                                 <Label Text="{Binding Name}" FontFamily="ManropeSemiBold" FontSize="15" TextColor="#1B1C1A" LineBreakMode="TailTruncation" />
                                 <Label Text="{Binding SiteType}" FontFamily="BeVietnamProSemiBold" FontSize="12" TextColor="#4D463C" />
@@ -220,90 +220,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
-                <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
-                    <HorizontalStackLayout Spacing="16">
-
-                        <!-- Öneri 1 -->
-                        <VerticalStackLayout WidthRequest="180" Spacing="6">
-                            <Grid HeightRequest="225">
-                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
-                                    <Image Source="deyrulzafaran.jpg" Aspect="AspectFill" />
-                                </Border>
-                                <ImageButton Source="ic_add.png"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="Start"
-                                             Margin="8"
-                                             HeightRequest="28"
-                                             WidthRequest="28"
-                                             CornerRadius="14"
-                                             BackgroundColor="#E6FFFFFF" />
-                            </Grid>
-                            <Label Text="Deyrulzafaran Monastery"
-                                   FontFamily="ManropeSemiBold"
-                                   FontSize="15"
-                                   TextColor="#1B1C1A"
-                                   LineBreakMode="TailTruncation" />
-                            <Label Text="Historical Site"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="12"
-                                   TextColor="#4D463C" />
-                        </VerticalStackLayout>
-
-                        <!-- Öneri 2 -->
-                        <VerticalStackLayout WidthRequest="180" Spacing="6">
-                            <Grid HeightRequest="225">
-                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
-                                    <Image Source="old_city_route.jpg" Aspect="AspectFill" />
-                                </Border>
-                                <ImageButton Source="ic_add.png"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="Start"
-                                             Margin="8"
-                                             HeightRequest="28"
-                                             WidthRequest="28"
-                                             CornerRadius="14"
-                                             BackgroundColor="#E6FFFFFF" />
-                            </Grid>
-                            <Label Text="Old City Walking Route"
-                                   FontFamily="ManropeSemiBold"
-                                   FontSize="15"
-                                   TextColor="#1B1C1A"
-                                   LineBreakMode="TailTruncation" />
-                            <Label Text="Route"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="12"
-                                   TextColor="#4D463C" />
-                        </VerticalStackLayout>
-
-                        <!-- Öneri 3 -->
-                        <VerticalStackLayout WidthRequest="180" Spacing="6">
-                            <Grid HeightRequest="225">
-                                <Border StrokeShape="RoundRectangle 12" StrokeThickness="0">
-                                    <Image Source="zinciriye.jpg" Aspect="AspectFill" />
-                                </Border>
-                                <ImageButton Source="ic_add.png"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="Start"
-                                             Margin="8"
-                                             HeightRequest="28"
-                                             WidthRequest="28"
-                                             CornerRadius="14"
-                                             BackgroundColor="#E6FFFFFF" />
-                            </Grid>
-                            <Label Text="Zinciriye Medrese"
-                                   FontFamily="ManropeSemiBold"
-                                   FontSize="15"
-                                   TextColor="#1B1C1A"
-                                   LineBreakMode="TailTruncation" />
-                            <Label Text="Historical Site"
-                                   FontFamily="BeVietnamProSemiBold"
-                                   FontSize="12"
-                                   TextColor="#4D463C" />
-                        </VerticalStackLayout>
-
-                    </HorizontalStackLayout>
-                </ScrollView>
 
             </VerticalStackLayout>
         </ScrollView>

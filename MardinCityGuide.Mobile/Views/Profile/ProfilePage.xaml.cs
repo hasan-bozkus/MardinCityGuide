@@ -14,6 +14,7 @@ public partial class ProfilePage : ContentPage
     private string CurrentNameSurname = CurrentSession.NameSurname;
     private string CurrentEmail = CurrentSession.Email;
     private string CurrentImageUrl = (CurrentSession.AvatarUrl.Contains(".png") || CurrentSession.AvatarUrl.Contains(".jpg") || CurrentSession.AvatarUrl.Contains(".jpeg")) ? CurrentSession.AvatarUrl : null;
+    private string CurrentUserName = CurrentSession.UserName;
     private FileResult _selectedPhoto;
 
     public ProfilePage()
@@ -51,7 +52,7 @@ public partial class ProfilePage : ContentPage
 
         var favoriteCount = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId);
         FavoriteCount.Text = favoriteCount.Count().ToString();
-    
+
         var myRoutes = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId);
         MyRoutes.Text = myRoutes.Count(x =>
         {
@@ -127,5 +128,59 @@ public partial class ProfilePage : ContentPage
 
             await Shell.Current.GoToAsync("login");
         }
+    }
+
+    // --- HESABIM MODAL İŞLEMLERİ ---
+    private void OnAccountTapped(object sender, TappedEventArgs e)
+    {
+        EntryName.Text = CurrentNameSurname;
+        EntryEmail.Text = CurrentEmail;
+        EntryUserName.Text = CurrentUserName;
+        AccountModalOverlay.IsVisible = true; // Modalı aynı sayfada aç
+    }
+
+    private void OnCloseAccountModalTapped(object sender, EventArgs e)
+    {
+        AccountModalOverlay.IsVisible = false; // Modalı kapat
+    }
+
+    private async void OnSaveAccountClicked(object sender, EventArgs e)
+    {
+        CurrentNameSurname = EntryName.Text;
+        CurrentEmail = EntryEmail.Text;
+        CurrentUserName = EntryUserName.Text;
+        await _userService.TUpdateUserWithNameAndUserNameAndEmailAsync(CurrentUserId, EntryName.Text, EntryUserName.Text, EntryEmail.Text);
+
+        LabelName.Text = CurrentNameSurname;
+        LabelEmail.Text = CurrentEmail;
+        
+
+        AccountModalOverlay.IsVisible = false;
+        OnAppearing();
+    }
+
+    // --- BİLDİRİM MODAL İŞLEMLERİ ---
+    private void OnNotificationsTapped(object sender, TappedEventArgs e)
+    {
+        SwitchNotifications.IsToggled = Preferences.Default.Get("NotificationsEnabled", true);
+        NotificationModalOverlay.IsVisible = true; // Modalı aynı sayfada aç
+    }
+
+    private void OnCloseNotificationModalTapped(object sender, EventArgs e)
+    {
+        NotificationModalOverlay.IsVisible = false; // Modalı kapat
+    }
+
+    private void OnNotificationToggled(object sender, ToggledEventArgs e)
+    {
+        Preferences.Default.Set("NotificationsEnabled", e.Value);
+    }
+
+    // --- YARDIM & DESTEK ---
+    private async void OnSupportTapped(object sender, TappedEventArgs e)
+    {
+        await DisplayAlertAsync("Yardım & Destek",
+                           "Destek ekibimizle iletişime geçmek için destek@mardincityguide.com adresine e-posta gönderebilirsiniz.",
+                           "Tamam");
     }
 }

@@ -9,5 +9,7 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
     {
         Task<User> GetUserByNameAsync(string userName);
         Task UpdateUserAvatarUrlAsync(int userId, string avatarUrl);
+
+        Task UpdateUserWithNameAndUserNameAndEmailAsync(int userId, string nameSurname, string userName, string email);
     }
 }

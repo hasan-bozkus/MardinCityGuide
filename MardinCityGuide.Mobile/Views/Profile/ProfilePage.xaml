@@ -94,17 +94,24 @@
 
                     <!-- Account Information -->
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAccountTapped" />
+                        </Border.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 40" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
                                 <Label Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="25" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
                             </Border>
                             <Label Grid.Column="1" Text="Hesabım" TextColor="#1B1C1A" FontSize="16" VerticalOptions="Center" />
                             <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+
                         </Grid>
                     </Border>
 
                     <!-- Notifications -->
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnNotificationsTapped" />
+                        </Border.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
                                 <Label Text="&#xe7f4;" FontFamily="MaterialSymbols" HeightRequest="25" FontSize="20"  WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
@@ -124,12 +131,15 @@
                                 <Label Text="Dil" TextColor="#1B1C1A" FontSize="16" />
                                 <Label Text="Türkçe (TR)" TextColor="#4D463C" FontSize="12" />
                             </VerticalStackLayout>
-                            <Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                            <!--<Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />-->
                         </Grid>
                     </Border>
 
                     <!-- Help & Support -->
                     <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSupportTapped" />
+                        </Border.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="16" VerticalOptions="Center">
                             <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#4DFEDEB2" StrokeThickness="0">
                                 <Label Text="&#xe887;" FontFamily="MaterialSymbols" HeightRequest="20" WidthRequest="20" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" />
@@ -140,7 +150,7 @@
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- Logout & Footer Section  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=logout" /> -->
+                <!-- Logout & Footer Section -->
                 <VerticalStackLayout Spacing="20" Margin="0,8,0,12">
                     <Button Text="Çıkış Yap" TextColor="#725b38" BackgroundColor="Transparent" BorderColor="#725b38" BorderWidth="2" CornerRadius="25" HeightRequest="52" FontSize="16" FontAttributes="Bold" Clicked="OnLogoutCilcked">
                         <Button.ImageSource>
@@ -159,6 +169,84 @@
 
             </VerticalStackLayout>
         </ScrollView>
+
+
+        <!-- 2. HESABIM GÜNCELLEME MODAL KATMANI -->
+        <Grid x:Name="AccountModalOverlay" 
+      Grid.Row="0"
+      Grid.RowSpan="2"
+      BackgroundColor="#80000000" 
+      IsVisible="False"
+      HorizontalOptions="Fill" 
+      VerticalOptions="Fill">
+
+            <!-- Yarı şeffaf siyah alana tıklandığında kapatmak için -->
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCloseAccountModalTapped" />
+            </Grid.GestureRecognizers>
+
+            <!-- Kart Kutusu (Margin değerini tamamen kaldırdık) -->
+            <Border VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            WidthRequest="340" 
+            BackgroundColor="#FDFCFB" 
+            Padding="24" 
+            StrokeShape="RoundRectangle 20"
+            StrokeThickness="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Border.GestureRecognizers>
+
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Hesap Bilgileri" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+
+                    <Entry x:Name="EntryName" Placeholder="Ad Soyad" TextColor="#1B1C1A" />
+                    <Entry x:Name="EntryUserName" Placeholder="Kullanıcı Adı" TextColor="#1B1C1A" />
+                    <Entry x:Name="EntryEmail" Placeholder="E-posta" TextColor="#1B1C1A" />
+
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="10" Margin="0,10,0,0">
+                        <Button Grid.Column="0" Text="İptal" BackgroundColor="Transparent" TextColor="#725b38" Clicked="OnCloseAccountModalTapped" />
+                        <Button Grid.Column="1" Text="Kaydet" BackgroundColor="#725b38" TextColor="White" CornerRadius="10" Clicked="OnSaveAccountClicked" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+
+        <!-- 3. BİLDİRİM AYARLARI MODAL KATMANI -->
+        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NotificationModalOverlay" 
+          BackgroundColor="#80000000" 
+          IsVisible="False" 
+          HorizontalOptions="Fill" 
+          VerticalOptions="Fill">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseNotificationModalTapped" />
+                    </Grid.GestureRecognizers>
+
+                    <Border VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                WidthRequest="320" 
+                BackgroundColor="#FDFCFB" 
+                Padding="24" 
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer />
+                        </Border.GestureRecognizers>
+
+                        <VerticalStackLayout Spacing="20">
+                            <Label Text="Bildirim Tercihleri" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Grid.Column="0" Text="Bildirimleri Al" FontSize="15" VerticalOptions="Center" TextColor="#1B1C1A" />
+                                <Switch x:Name="SwitchNotifications" Grid.Column="1" OnColor="#725b38" ThumbColor="White" Toggled="OnNotificationToggled" />
+                            </Grid>
+
+                            <Button Text="Tamam" BackgroundColor="#725b38" TextColor="White" CornerRadius="10" Clicked="OnCloseNotificationModalTapped" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
 
         <!-- Bottom Navigation Bar -->
         <Border Grid.Row="2" 

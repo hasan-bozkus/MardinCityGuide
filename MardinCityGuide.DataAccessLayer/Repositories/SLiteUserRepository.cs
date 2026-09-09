@@ -38,5 +38,19 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                 await _connection.UpdateAsync(values);
             }
         }
+
+        public async Task UpdateUserWithNameAndUserNameAndEmailAsync(int userId, string nameSurname, string userName, string email)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<User>().Where(u => u.UserId == userId).FirstOrDefaultAsync();
+            if (values != null)
+            {
+                values.NameSurname = nameSurname;
+                values.UserName = userName;
+                values.Email = email;
+                await _connection.UpdateAsync(values);
+            }
+        }
     }
 }
