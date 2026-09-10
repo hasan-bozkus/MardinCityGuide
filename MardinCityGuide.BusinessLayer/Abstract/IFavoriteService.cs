@@ -11,6 +11,7 @@ namespace MardinCityGuide.BusinessLayer.Abstract
         Task<List<object>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null);
         Task<bool> TRemoveFavoriteAsync(int targetId, string favoriteType);
         Task<Favorite> TGetFavoritePlaceByTargetIdRestaurantAsync(int id);
+        Task<Favorite> TGetFavoriteReligiousSiteByTargetIdSiteAsync(int id);
         Task<bool> TAddFavoriteAsync(int targetId, string favoriteType);
 
     }

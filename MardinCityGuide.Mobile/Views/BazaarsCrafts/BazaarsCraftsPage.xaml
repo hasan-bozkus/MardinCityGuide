@@ -236,18 +236,19 @@
 
                                 <!-- Shop Card 1 -->
                                 <VerticalStackLayout WidthRequest="240" Spacing="8">
-                                    <Border HeightRequest="240" StrokeShape="RoundRectangle 12" StrokeThickness="0">
+                                    <Border HeightRequest="245" StrokeShape="RoundRectangle 14" StrokeThickness="0">
                                         <Image Source="{Binding ImageUrl}" Aspect="AspectFill" />
                                     </Border>
                                     <Grid ColumnDefinitions="*, Auto">
                                         <VerticalStackLayout Grid.Column="0">
                                             <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
                                             <HorizontalStackLayout Spacing="4">
-                                                <Image Source="location_on.png" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>
-                                                <!--<Label Text="Old Town Main St." FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>-->
+                                                <!--<Label Text="&#xe0c8;" FontFamily="MaterialSymbols" HeightRequest="12" WidthRequest="12" VerticalOptions="Center"/>-->
+                                                <!--<Label Text="{Binding Description}" FontSize="12" TextColor="{StaticResource OnSurfaceVariant}"/>-->
                                             </HorizontalStackLayout>
                                         </VerticalStackLayout>
                                         <Border Grid.Column="1" BackgroundColor="#33C5A880" Padding="8,4" StrokeShape="RoundRectangle 6" StrokeThickness="0">
+                                            <Label Text="&#xe0c8;" FontFamily="MaterialSymbols" HeightRequest="15" WidthRequest="12" VerticalOptions="Center"/>
                                             <!--<Label Text="4.9" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="12"/>-->
                                         </Border>
                                     </Grid>

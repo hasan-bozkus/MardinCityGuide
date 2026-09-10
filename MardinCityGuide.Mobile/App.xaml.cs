@@ -1,4 +1,9 @@
-﻿using MardinCityGuide.Mobile.Views.Welcome;
+﻿using MardinCityGuide.Mobile.Views.MonasteriesAndMosques;
+using MardinCityGuide.Mobile.Views.PlaceDetail;
+using MardinCityGuide.Mobile.Views.Register;
+using MardinCityGuide.Mobile.Views.SeazonalEvents;
+using MardinCityGuide.Mobile.Views.TravelRoutes;
+using MardinCityGuide.Mobile.Views.Welcome;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MardinCityGuide.Mobile
@@ -19,7 +24,7 @@ namespace MardinCityGuide.Mobile
             if (hasSeenWelcome)
             {
                 // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new Window(new AppShell()).Page;
+                initialPage = new Window(new TravelRoutesPage()).Page;
             }
             else
             {

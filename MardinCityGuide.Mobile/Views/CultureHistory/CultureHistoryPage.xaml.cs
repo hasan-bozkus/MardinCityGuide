@@ -1,6 +1,8 @@
 using MardinCityGuide.BusinessLayer.Abstract;
+using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
 using MardinCityGuide.Mobile.Helpers;
+using MardinCityGuide.Mobile.Models;
 
 namespace MardinCityGuide.Mobile.Views.CultureHistory;
 
@@ -10,6 +12,8 @@ public partial class CultureHistoryPage : ContentPage
     private readonly IReligiousSiteService _religiousSiteService;
     private readonly IHistoricalSiteService _historicalSiteService;
     private readonly ICulturalEventService _culturalEventService;
+    private readonly IFavoriteService _favoriteService;
+    private int CurrentUserId = CurrentSession.UserId;
 
 
     public CultureHistoryPage()
@@ -19,6 +23,7 @@ public partial class CultureHistoryPage : ContentPage
         _religiousSiteService = ServiceHelper.GetService<IReligiousSiteService>();
         _historicalSiteService = ServiceHelper.GetService<IHistoricalSiteService>();
         _culturalEventService = ServiceHelper.GetService<ICulturalEventService>();
+        _favoriteService = ServiceHelper.GetService<IFavoriteService>();
     }
 
     protected override async void OnAppearing()
@@ -38,9 +43,11 @@ public partial class CultureHistoryPage : ContentPage
 
         FeaturedReligiousSiteListCollection.ItemsSource = featuredReligiousSiteOfMadrasas.Where(x => x.SiteType == ReligiousSiteType.Medrese).Take(8).Select(x => new
         {
+            x.ReligiousSiteId,
             x.Name,
             x.ImageUrl,
             Era = x.Dynasty + ", " + x.Era,
+            IsFavoriteColor = x.IsFavorite == true ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A")
         }).ToList();
 
         var firstHistoricalSite = await _historicalSiteService.TGetFirstHistoricalSiteWithImageGaleriesAsync();
@@ -63,5 +70,32 @@ public partial class CultureHistoryPage : ContentPage
             StartDay = x.EventDate.ToString("dd"),
             StartMonth = x.EventDate.ToString("MMM")
         }).ToList();
+    }
+
+    private async void OnAddFavoriteTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Border border) return;
+        if (e.Parameter is int religiousSiteId)
+        {
+            var isFavorite = await _favoriteService.TGetFavoriteReligiousSiteByTargetIdSiteAsync(religiousSiteId);
+            if (isFavorite != null)
+            {
+                await _favoriteService.TDeleteAsync(isFavorite);
+                await _religiousSiteService.TGetChangeIsFavoriteStatusFalseAsync(religiousSiteId);
+                OnAppearing();
+            }
+            if (isFavorite is null)
+            {
+                await _favoriteService.TCreateAsync(new Favorite
+                {
+                    UserId = CurrentUserId,
+                    TargetId = religiousSiteId,
+                    FavoriteType = FavoriteType.Site
+                });
+                await _religiousSiteService.TGetChangeIsFavoriteStatusTrueAsync(religiousSiteId);
+                OnAppearing();
+            }
+        }
+        if (e.Parameter is not ReligiousSite religiousSite) return;
     }
 }

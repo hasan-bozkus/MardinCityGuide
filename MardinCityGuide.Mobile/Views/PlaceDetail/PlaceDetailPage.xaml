@@ -300,8 +300,7 @@
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
                 <!-- Open in Maps Main Button -->
                 <Button Grid.Column="0" 
-                        Text="&#xe52e; HARİTA OLARAK AÇ" 
-                        FontFamily="MaterialSymbols" 
+                        Text="HARİTA OLARAK AÇ" 
                         BackgroundColor="#C5A880" 
                         TextColor="White" 
                         FontSize="16" 

@@ -39,10 +39,7 @@
             <VerticalStackLayout Padding="20,0,20,32" Spacing="24">
 
                 <!-- HERO SECTION: FEATURED EVENT (MARDIN BIENNIAL) -->
-                <Border StrokeShape="RoundRectangle 32"
-                        StrokeThickness="0"
-                        HeightRequest="420"
-                        Margin="0,8,0,0">
+                <Border StrokeShape="RoundRectangle 32" StrokeThickness="0" HeightRequest="420" Margin="0,8,0,0">
                     <Border.Shadow>
                         <Shadow Brush="#C5A880" Offset="0,4" Radius="12" Opacity="0.15" />
                     </Border.Shadow>
@@ -63,38 +60,15 @@
 
                         <!-- Hero İçerik -->
                         <VerticalStackLayout VerticalOptions="End" Padding="24" Spacing="8">
-                            <Border HorizontalOptions="Start"
-                                    BackgroundColor="#C5A880"
-                                    StrokeShape="RoundRectangle 12"
-                                    StrokeThickness="0"
-                                    Padding="10,4">
-                                <Label Text="ÖNE ÇIKANLAR"
-                                       FontFamily="BeVietnamProBold"
-                                       FontSize="11"
-                                       TextColor="#FFFFFF"
-                                       CharacterSpacing="1.5" />
+                            <Border HorizontalOptions="Start" BackgroundColor="#C5A880" StrokeShape="RoundRectangle 12" StrokeThickness="0" Padding="10,4">
+                                <Label Text="ÖNE ÇIKANLAR" FontFamily="BeVietnamProBold" FontSize="11" TextColor="#FFFFFF" CharacterSpacing="1.5" />
                             </Border>
 
-                            <Label Text="Mardin Biennial"
-                                   FontFamily="ManropeBold"
-                                   FontSize="26"
-                                   TextColor="#FFFFFF" />
+                            <Label Text="Mardin Biennial" FontFamily="ManropeBold" FontSize="26" TextColor="#FFFFFF" />
 
-                            <Label Text="Eski şehrin kalbinde, çağdaş sanatla dolu kültürlerarası bir yolculuk."
-                                   FontFamily="BeVietnamProRegular"
-                                   FontSize="14"
-                                   TextColor="#E0E0E0"
-                                   Margin="0,0,0,8" />
+                            <Label Text="Eski şehrin kalbinde, çağdaş sanatla dolu kültürlerarası bir yolculuk." FontFamily="BeVietnamProRegular" FontSize="14" TextColor="#E0E0E0" Margin="0,0,0,8" />
 
-                            <Button Text="Programları Keşfet"
-                                    FontFamily="BeVietnamProMedium"
-                                    FontSize="14"
-                                    TextColor="#725B38"
-                                    BackgroundColor="#FDFCFB"
-                                    CornerRadius="24"
-                                    HeightRequest="46"
-                                    HorizontalOptions="Start"
-                                    Padding="24,0" />
+                            <Button Text="Programları Keşfet" FontFamily="BeVietnamProMedium" FontSize="14" TextColor="#725B38" BackgroundColor="#FDFCFB" CornerRadius="24" HeightRequest="46" HorizontalOptions="Start" Padding="24,0" />
                         </VerticalStackLayout>
                     </Grid>
                 </Border>
@@ -103,53 +77,23 @@
                 <VerticalStackLayout Spacing="12">
                     <Grid ColumnDefinitions="*,Auto" VerticalOptions="End" >
                         <VerticalStackLayout Grid.Column="0" Spacing="2">
-                            <Label Text="Gökyüzü Seyredin"
-                                   FontFamily="ManropeSemiBold"
-                                   FontSize="20"
-                                   TextColor="#725B38" />
-                            <Label Text="Hergün, gün batımını izlemek için en iyi zamanlar."
-                                   FontFamily="BeVietnamProRegular"
-                                   FontSize="13"
-                                   TextColor="#4D463C" />
+                            <Label Text="Gökyüzü Seyredin" FontFamily="ManropeSemiBold" FontSize="20" TextColor="#725B38" />
+                            <Label Text="Hergün, gün batımını izlemek için en iyi zamanlar." FontFamily="BeVietnamProRegular" FontSize="13" TextColor="#4D463C" />
                         </VerticalStackLayout>
-                        <Button Grid.Column="1"
-                                Text="View Forecast"
-                                FontFamily="BeVietnamProMedium"
-                                FontSize="13"
-                                TextColor="#008080"
-                                BackgroundColor="Transparent"
-                                Padding="0"
-                                VerticalOptions="Center" />
                     </Grid>
 
                     <!-- Bento Grid Kartları -->
                     <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="12" x:Name="RandomReligiousSiteList">
                         <!-- Üst Geniş Kart (Golden Hour) -->
-                        <Border Grid.Row="0" Grid.ColumnSpan="2"
-                                StrokeShape="RoundRectangle 24"
-                                StrokeThickness="1"
-                                Stroke="#EAE8E5"
-                                BackgroundColor="#B3FFFFFF"
-                                Padding="20">
+                        <Border Grid.Row="0" Grid.ColumnSpan="2" StrokeShape="RoundRectangle 24" StrokeThickness="1" Stroke="#EAE8E5" BackgroundColor="#B3FFFFFF" Padding="20">
                             <Grid ColumnDefinitions="Auto,*,Auto" x:Name="SkyGazingInfoForToday">
                                 <HorizontalStackLayout Grid.Column="0" Spacing="12" VerticalOptions="Center">
-                                    <Border WidthRequest="48" HeightRequest="48"
-                                            StrokeShape="RoundRectangle 24"
-                                            StrokeThickness="0"
-                                            BackgroundColor="#F3EAD8">
-                                        <Image Source="ic_twilight.png"
-                                               HeightRequest="24" WidthRequest="24"
-                                               HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Border WidthRequest="48" HeightRequest="48" StrokeShape="RoundRectangle 24" StrokeThickness="0" BackgroundColor="#F3EAD8">
+                                        <Label Text="&#xe1c6;" FontSize="24" TextColor="#4D463C" FontFamily="MaterialSymbols" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                                     </Border>
                                     <VerticalStackLayout VerticalOptions="Center" Spacing="2">
-                                        <Label Text="Güneşin Batış Saati"
-                                               FontFamily="BeVietnamProBold"
-                                               FontSize="11"
-                                               TextColor="#4D463C"
-                                               CharacterSpacing="1" />
-                                        <Label FontFamily="ManropeBold"
-                                               FontSize="18"
-                                               TextColor="#725B38">
+                                        <Label Text="Güneşin Batış Saati" FontFamily="BeVietnamProBold" FontSize="11" TextColor="#4D463C" CharacterSpacing="1" />
+                                        <Label FontFamily="ManropeBold" FontSize="18" TextColor="#725B38">
                                             <Label.Text>
                                                 <MultiBinding StringFormat="{}{0:HH:mm} - {1:HH:mm}">
                                                     <Binding Path="PeakStart"></Binding>
@@ -160,38 +104,18 @@
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
 
-                                <Border Grid.Column="2"
-                                        BackgroundColor="#725B38"
-                                        StrokeShape="RoundRectangle 16"
-                                        StrokeThickness="0"
-                                        Padding="12,6"
-                                        VerticalOptions="Center">
-                                    <Label Text="{Binding VisibilityLabel}"
-                                           FontFamily="BeVietnamProMedium"
-                                           FontSize="11"
-                                           TextColor="#FFFFFF" />
+                                <Border Grid.Column="2" BackgroundColor="#725B38" StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="12,6" VerticalOptions="Center">
+                                    <Label Text="{Binding VisibilityLabel}" FontFamily="BeVietnamProMedium" FontSize="11" TextColor="#FFFFFF" />
                                 </Border>
                             </Grid>
                         </Border>
 
                         <!-- Sol Alt Kart (Zinciriye) -->
-                        <Border Grid.Row="1" Grid.Column="0"
-                                StrokeShape="RoundRectangle 24"
-                                StrokeThickness="1"
-                                Stroke="#1A000000"
-                                BackgroundColor="#F5F3F0"
-                                Padding="16">
+                        <Border Grid.Row="1" Grid.Column="0" StrokeShape="RoundRectangle 24" StrokeThickness="1" Stroke="#1A000000" BackgroundColor="#F5F3F0" Padding="16">
                             <VerticalStackLayout Spacing="6">
-                                <Image Source="ic_location_pin.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
-                                <Label Text="{Binding [0].TagLabel}"
-                                       FontFamily="ManropeBold"
-                                       FontSize="18"
-                                       TextColor="#725B38" />
-                                <Label Text="{Binding [0].IconKey}"
-                                       FontFamily="BeVietnamProBold"
-                                       FontSize="10"
-                                       TextColor="#4D463C"
-                                       CharacterSpacing="0.8" />
+                                <Label Text="&#xe55e;" FontFamily="MaterialSymbols" FontSize="20" TextColor="#725B38" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
+                                <Label Text="{Binding [0].TagLabel}" FontFamily="ManropeBold" FontSize="18" TextColor="#725B38" />
+                                <Label Text="{Binding [0].IconKey}" FontFamily="BeVietnamProBold" FontSize="10" TextColor="#4D463C" CharacterSpacing="0.8" />
                             </VerticalStackLayout>
                         </Border>
 
@@ -203,16 +127,9 @@
                                 BackgroundColor="#F5F3F0"
                                 Padding="16">
                             <VerticalStackLayout Spacing="6">
-                                <Image Source="ic_camera.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
-                                <Label Text="{Binding [1].TagLabel}"
-                                       FontFamily="ManropeBold"
-                                       FontSize="18"
-                                       TextColor="#725B38" />
-                                <Label Text="{Binding [1].IconKey}"
-                                       FontFamily="BeVietnamProBold"
-                                       FontSize="10"
-                                       TextColor="#4D463C"
-                                       CharacterSpacing="0.8" />
+                                <Label Text="&#xe412;" FontFamily="MaterialSymbols" FontSize="20" TextColor="#725B38" HeightRequest="22" WidthRequest="22" HorizontalOptions="Start" />
+                                <Label Text="{Binding [1].TagLabel}" FontFamily="ManropeBold" FontSize="18" TextColor="#725B38" />
+                                <Label Text="{Binding [1].IconKey}" FontFamily="BeVietnamProBold" FontSize="10" TextColor="#4D463C" CharacterSpacing="0.8" />
                             </VerticalStackLayout>
                         </Border>
                     </Grid>
@@ -226,10 +143,7 @@
                                FontFamily="ManropeSemiBold"
                                FontSize="20"
                                TextColor="#725B38" />
-                        <ImageButton Grid.Column="1"
-                                     Source="ic_tune.png"
-                                     HeightRequest="24" WidthRequest="24"
-                                     BackgroundColor="Transparent" />
+                        <!--<Button Grid.Column="1" Text="&#xe429;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="24" WidthRequest="24" BackgroundColor="Transparent" />-->
                     </Grid>
 
                     <CollectionView x:Name="Upcoming4EventsWithImage" HorizontalScrollBarVisibility="Never">
@@ -252,38 +166,29 @@
                                             <Label FontFamily="BeVietnamProMedium" FontSize="12" TextColor="#725B38">
                                                 <Label.Text>
                                                     <MultiBinding StringFormat="{}{0:MMMM} {1:dd} - {2:dd}">
-                                                    <Binding Path="EventDate"></Binding>
-                                                    <Binding Path="EventDate"></Binding>
-                                                    <Binding Path="EventEndDate"></Binding>
+                                                        <Binding Path="EventDate"></Binding>
+                                                        <Binding Path="EventDate"></Binding>
+                                                        <Binding Path="EventEndDate"></Binding>
                                                     </MultiBinding>
                                                 </Label.Text>
                                             </Label>
                                         </Border>
                                     </Grid>
 
-                                    <Label Text="{Binding Title}"
-            FontFamily="ManropeBold"
-            FontSize="18"
-            TextColor="#725B38" />
-                                    <Label Text="{Binding LocationName}"
-            FontFamily="BeVietnamProRegular"
-            FontSize="13"
-            TextColor="#4D463C" />
+                                    <Label Text="{Binding Title}" FontFamily="ManropeBold" FontSize="18" TextColor="#725B38" />
+                                    <Label Text="{Binding LocationName}" FontFamily="BeVietnamProRegular" FontSize="13" TextColor="#4D463C" />
                                 </VerticalStackLayout>
 
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    
-                   
+
+
                 </VerticalStackLayout>
 
                 <!-- FULL CALENDAR SECTION -->
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Yaklaşan Etkinlikler"
-                           FontFamily="ManropeSemiBold"
-                           FontSize="20"
-                           TextColor="#725B38" />
+                    <Label Text="Yaklaşan Etkinlikler" FontFamily="ManropeSemiBold" FontSize="20" TextColor="#725B38" />
 
                     <!-- Takvim Öğeleri Liste Düzeni -->
 
@@ -312,19 +217,19 @@
                                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
                                             <Label Text="{Binding Title}" FontFamily="ManropeBold" FontSize="15" TextColor="#1B1C1A" LineBreakMode="TailTruncation" />
                                             <HorizontalStackLayout Spacing="4">
-                                                <Image Source="ic_location.png" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                                                <Label Text="&#xe0c8;" FontFamily="MaterialSymbols" FontSize="13" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
                                                 <Label Text="{Binding LocationName}" FontFamily="BeVietnamProRegular" FontSize="12" TextColor="#4D463C" />
                                             </HorizontalStackLayout>
                                         </VerticalStackLayout>
 
-                                        <Image Grid.Column="2" Source="ic_chevron_right.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+                                        <!--<Label Grid.Column="2" Text="&#xe5cc;" FontFamily="MaterialSymbols" FontSize="20" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />-->
                                     </Grid>
                                 </Border>
 
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                                    </VerticalStackLayout>
+                </VerticalStackLayout>
 
             </VerticalStackLayout>
         </ScrollView>

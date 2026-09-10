@@ -62,12 +62,12 @@
 
                 <!-- Hero Header Section -->
                 <VerticalStackLayout Padding="20,0" Spacing="4">
-                    <Label Text="Taste of Mesopotamia"
+                    <Label Text="Mezopotamya Lezzetleri"
                            FontSize="28"
                            FontAttributes="Bold"
                            FontFamily="Manrope"
                            TextColor="{StaticResource PrimaryText}" />
-                    <Label Text="Experience the thousand-year culinary heritage of the golden city."
+                    <Label Text="Altın şehrin bin yıllık mutfak mirasını deneyimleyin."
                            FontSize="16"
                            FontFamily="BeVietnamPro"
                            TextColor="{StaticResource SecondaryText}" />
@@ -122,64 +122,6 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 
-                <!--<ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
-                    <HorizontalStackLayout Padding="20,0" Spacing="8">
-                                             
-                        --><!-- Active Chip: All Places --><!--
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource PrimaryBrand}"
-                                Stroke="{StaticResource MardinSand}"
-                                StrokeThickness="1"
-                                Padding="24,8">
-                            <Label Text="All Places"
-                                   TextColor="#FFFFFF"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   FontFamily="BeVietnamPro" />
-                        </Border>
-
-                        --><!-- Chip: Traditional --><!--
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainerLow}"
-                                Stroke="{StaticResource MardinSand}"
-                                StrokeThickness="1"
-                                Padding="24,8">
-                            <Label Text="Traditional"
-                                   TextColor="{StaticResource SecondaryText}"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   FontFamily="BeVietnamPro" />
-                        </Border>
-
-                        --><!-- Chip: Terraced Cafes --><!--
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainerLow}"
-                                Stroke="{StaticResource MardinSand}"
-                                StrokeThickness="1"
-                                Padding="24,8">
-                            <Label Text="Terraced Cafes"
-                                   TextColor="{StaticResource SecondaryText}"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   FontFamily="BeVietnamPro" />
-                        </Border>
-
-                        --><!-- Chip: Local Wineries --><!--
-                        <Border StrokeShape="RoundRectangle 20"
-                                BackgroundColor="{StaticResource SurfaceContainerLow}"
-                                Stroke="{StaticResource MardinSand}"
-                                StrokeThickness="1"
-                                Padding="24,8">
-                            <Label Text="Local Wineries"
-                                   TextColor="{StaticResource SecondaryText}"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   FontFamily="BeVietnamPro" />
-                        </Border>
-
-                    </HorizontalStackLayout>
-                </ScrollView>-->
-
                 <!-- Featured Gastronomy Card -->
                 <BoxView HeightRequest="1" Color="Transparent" Margin="0,-8,0,0"/>
                 <VerticalStackLayout Padding="20,0">
@@ -206,11 +148,11 @@
                                         BackgroundColor="#CCFDFCFB"
                                         Stroke="Transparent">
                                     <HorizontalStackLayout Spacing="4">
-                                        <Image Source="ic_star_filled.png" WidthRequest="18" HeightRequest="18" />
+                                        <Label Text="&#xe838;" FontFamily="MaterialSymbols" TextColor="{StaticResource MardinSand}" FontSize="15.5" WidthRequest="18" HeightRequest="18" />
                                         <Label Text="{Binding Rating}"
                                                FontSize="12"
                                                FontAttributes="Bold"
-                                               TextColor="{StaticResource PrimaryText}"
+                                               TextColor="{StaticResource MardinSand}"
                                                VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </Border>
@@ -285,7 +227,7 @@
                                         </Border>
 
                                         <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" Padding="10,2" StrokeShape="RoundRectangle 12" BackgroundColor="#E6FFFFFF" Stroke="Transparent">
-                                            <Label Text="{Binding PriceLevel}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource PrimaryText}" />
+                                            <Label Text="{Binding PriceLevel}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource MardinSand}" />
                                         </Border>
                                     </Grid>
 

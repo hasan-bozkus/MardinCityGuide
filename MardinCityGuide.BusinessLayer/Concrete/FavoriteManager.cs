@@ -36,5 +36,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
         {
             return await _favoriteDal.AddFavoriteAsync(targetId, favoriteType);
         }
+
+        public async Task<Favorite> TGetFavoriteReligiousSiteByTargetIdSiteAsync(int id)
+        {
+            return await _favoriteDal.GetFavoriteReligiousSiteByTargetIdSiteAsync(id);
+        }
     }
 }

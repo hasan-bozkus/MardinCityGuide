@@ -44,12 +44,14 @@ public partial class TravelRoutesPage : ContentPage
 
         var routeCountWithCategoryPhotography = await _routeService.TGetRouteListWithCategoryIsPhotographyAsync();
         RouteCountWithCategoryPhotographyCollection.ItemsSource = routeCountWithCategoryPhotography;
+
+        SelectedCategoryListCollection.SelectedItem = siteTypes[0];
     }
 
     private async void OnCategorySelectionChanged(object sender, TappedEventArgs e)
     {
         if (sender is not Border tappedBorder) return;
-        if (e.Parameter is not Route route) return;
+        if (e.Parameter is not int routeCategory) return;
 
         if (_previouslySelectedBorder != null)
             VisualStateManager.GoToState(_previouslySelectedBorder, "Normal");
@@ -57,7 +59,7 @@ public partial class TravelRoutesPage : ContentPage
         VisualStateManager.GoToState(tappedBorder, "Selected");
         _previouslySelectedBorder = tappedBorder;
 
-        if (route.Category == 0)
+        if (routeCategory == 0)
         {
             var routeCountWithCategoryGastronomy = await _routeService.TGetRouteListWithCategoryIsGastronomyAsync();
             RouteCountWithCategoryGastronomyCollection.BindingContext = routeCountWithCategoryGastronomy;
@@ -65,12 +67,12 @@ public partial class TravelRoutesPage : ContentPage
             var routeCountWithCategoryPhotography = await _routeService.TGetRouteListWithCategoryIsPhotographyAsync();
             RouteCountWithCategoryPhotographyCollection.ItemsSource = routeCountWithCategoryPhotography;
         }
-        else if(route.Category == RouteCategory.Mutfak)
+        else if(routeCategory == (int)RouteCategory.Mutfak)
         {
             var routeCountWithCategoryGastronomy = await _routeService.TGetRouteListWithCategoryIsGastronomyAsync();
             RouteCountWithCategoryGastronomyCollection.BindingContext = routeCountWithCategoryGastronomy;
         }
-        else if(route.Category == RouteCategory.Fotoğrafçılık)
+        else if(routeCategory == (int)RouteCategory.Fotoğrafçılık)
         {
             var routeCountWithCategoryPhotography = await _routeService.TGetRouteListWithCategoryIsPhotographyAsync();
             RouteCountWithCategoryPhotographyCollection.ItemsSource = routeCountWithCategoryPhotography;

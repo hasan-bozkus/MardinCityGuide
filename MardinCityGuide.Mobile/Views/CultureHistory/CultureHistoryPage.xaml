@@ -44,16 +44,6 @@
                     </VerticalStackLayout>
                 </Grid>
 
-                 <!--3. CATEGORY CHIPS başka yerde kullanırım --> 
-                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Padding="20,0">
-                    <HorizontalStackLayout Spacing="10">
-                        <Button Text="All History" BackgroundColor="#725B38" TextColor="White" CornerRadius="20" HeightRequest="38" Padding="16,0"/>
-                        <Button Text="Museums" BackgroundColor="#EFEEEB" TextColor="#4D463C" CornerRadius="20" HeightRequest="38" Padding="16,0"/>
-                        <Button Text="Madrasas" BackgroundColor="#EFEEEB" TextColor="#4D463C" CornerRadius="20" HeightRequest="38" Padding="16,0"/>
-                        <Button Text="Ancient Cities" BackgroundColor="#EFEEEB" TextColor="#4D463C" CornerRadius="20" HeightRequest="38" Padding="16,0"/>
-                    </HorizontalStackLayout>
-                </ScrollView>-->
-
                 <!-- 4. GALLERIES & MUSEUMS (ASYMMETRIC BENTO GRID) -->
                 <VerticalStackLayout Padding="20,0" Spacing="12">
                     <Grid ColumnDefinitions="*, Auto">
@@ -61,7 +51,7 @@
                             <Label Text="Müzeler" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
                             <Label Text="Bölgesel hafızanın itinayla derlenmiş arşivleri" FontSize="14" TextColor="#4D463C"/>
                         </VerticalStackLayout>
-                        <Button Grid.Column="1" Text="See All" TextColor="#008080" BackgroundColor="Transparent" VerticalOptions="End"/>
+                        <!--<Button Grid.Column="1" Text="Tümünü Gör" TextColor="#008080" BackgroundColor="Transparent" VerticalOptions="End"/>-->
                     </Grid>
 
                     <Grid RowDefinitions="220, 180" ColumnDefinitions="*, *" RowSpacing="12" ColumnSpacing="12" x:Name="FeaturedMuseumListCollection">
@@ -85,7 +75,7 @@
                                 <VerticalStackLayout VerticalOptions="End" Margin="16" Spacing="2">
                                     <Label Text="{Binding [0].Name}" TextColor="White" FontSize="18" FontAttributes="Bold"/>
                                     <HorizontalStackLayout Spacing="4">
-                                        <Image Source="icon_pin.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                                        <Label Text="&#xf6ea;" TextColor="White" FontFamily="MaterialSymbols" FontSize="12" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
                                         <Label Text="Eski Şehir Merkezi" TextColor="#E0E0E0" FontSize="12"/>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
@@ -135,7 +125,10 @@
                                             <Grid>
                                                 <Image Source="{Binding ImageUrl}" Aspect="AspectFill"/>
                                                 <Border HorizontalOptions="End" VerticalOptions="Start" Margin="12" WidthRequest="36" HeightRequest="36" StrokeShape="RoundRectangle 18" BackgroundColor="#E6FFFFFF" StrokeThickness="0">
-                                                    <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnAddFavoriteTapped" CommandParameter="{Binding ReligiousSiteId}"></TapGestureRecognizer>
+                                                    </Border.GestureRecognizers>
+                                                    <Label Text="&#xe87d;" FontFamily="MaterialSymbols" TextColor="{Binding IsFavoriteColor}" WidthRequest="18" HeightRequest="18" FontSize="17" HorizontalOptions="Center" VerticalOptions="Center"/>
                                                 </Border>
                                             </Grid>
                                         </Border>
@@ -182,7 +175,7 @@
                         <!-- Right Bottom Info Box -->
                         <Border Grid.Column="1" Grid.Row="1" BackgroundColor="#C5A880" StrokeShape="RoundRectangle 16" StrokeThickness="0">
                             <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="4">
-                                <Image Source="icon_map.png" WidthRequest="28" HeightRequest="28"/>
+                                <Label Text="&#xe55b;" FontFamily="MaterialSymbols" FontSize="Title" TextColor="#513D1D" WidthRequest="28" HeightRequest="28"/>
                                 <Label Text="Şehirden 30 Km Uzaklıkta" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                 <Label Text="Tur Rezervasyonu Yap" TextColor="#513D1D" FontSize="12" FontAttributes="Bold" TextDecorations="Underline" HorizontalTextAlignment="Center" Margin="0,4,0,0"/>
                             </VerticalStackLayout>
@@ -194,7 +187,7 @@
                 <VerticalStackLayout Padding="20,0,20,24" Spacing="16" x:Name="Upcoming2EventsCollection">
                     <Grid ColumnDefinitions="*, Auto">
                         <Label Grid.Column="0" Text="Kültürel Etkinlikler" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A"/>
-                        <Image Grid.Column="1" Source="icon_calendar.png" WidthRequest="22" HeightRequest="22" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="&#xe935;" FontFamily="MaterialSymbols" FontSize="Medium" WidthRequest="22" HeightRequest="25" VerticalOptions="Center"/>
                     </Grid>
 
                     <!-- Event Item 1 -->

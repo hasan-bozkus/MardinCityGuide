@@ -58,14 +58,8 @@
 
                 <!-- Header Section -->
                 <VerticalStackLayout Spacing="6">
-                    <Label Text="Özenle Seçilmiş Rotalar"
-                           TextColor="{StaticResource PrimaryBrown}"
-                           FontSize="28"
-                           FontAttributes="Bold" />
-                    <Label Text="Ustalıkla planlanmış yolculuklarla antik kentin ruhunu keşfedin."
-                           TextColor="{StaticResource OnSurfaceVariant}"
-                           FontSize="15"
-                           LineBreakMode="WordWrap" />
+                    <Label Text="Özenle Seçilmiş Rotalar" TextColor="{StaticResource PrimaryBrown}" FontSize="28" FontAttributes="Bold" />
+                    <Label Text="Ustalıkla planlanmış yolculuklarla antik kentin ruhunu keşfedin." TextColor="{StaticResource OnSurfaceVariant}" FontSize="15" LineBreakMode="WordWrap" />
                 </VerticalStackLayout>
 
                 <!-- Categories / Chips (Horizontal Scroll) -->
@@ -118,16 +112,8 @@
                 <VerticalStackLayout Spacing="16" x:Name="GetOneRandomRoute">
                     <!-- Title & Duration Header -->
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0" 
-                               Text="{Binding Name}"
-                               TextColor="{StaticResource PrimaryBrown}"
-                               FontSize="20"
-                               FontAttributes="Bold" />
-                        <Label Grid.Column="1" 
-                               TextColor="{StaticResource MesopotamianBlue}"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               VerticalOptions="End">
+                        <Label Grid.Column="0" Text="{Binding Name}" TextColor="{StaticResource PrimaryBrown}" FontSize="20" FontAttributes="Bold" />
+                        <Label Grid.Column="1" TextColor="{StaticResource MesopotamianBlue}" FontSize="12" FontAttributes="Bold" VerticalOptions="End">
 
                             <Label.Text>
                                 <MultiBinding StringFormat="{}{0} • Merkeze Uzaklık {1} Km">
@@ -218,10 +204,7 @@
 
                 <!-- SECTION 2: Gastronomy & Wine Route henüz yapılmadı -->
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Gastronomi &amp; Bağ Rotaları"
-                           TextColor="{StaticResource PrimaryBrown}"
-                           FontSize="20"
-                           FontAttributes="Bold" />
+                    <Label Text="Gastronomi &amp; Bağ Rotaları" TextColor="{StaticResource PrimaryBrown}" FontSize="20" FontAttributes="Bold" />
 
                     <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HeightRequest="240" x:Name="RouteCountWithCategoryGastronomyCollection">
                         <!-- Left Big Card -->
@@ -244,15 +227,11 @@
                             </Border>
 
                             <!-- Bottom Info Box -->
-                            <Border Grid.Row="1" 
-                                    StrokeShape="RoundRectangle 16" 
-                                    BackgroundColor="#C5A880"
-                                    StrokeThickness="0"
-                                    Padding="14">
+                            <Border Grid.Row="1" StrokeShape="RoundRectangle 16" BackgroundColor="#C5A880" StrokeThickness="0" Padding="14">
                                 <VerticalStackLayout VerticalOptions="Center" Spacing="4">
                                     <Label Text="Uzmanlar Tarafından Seçlin Rotalar" TextColor="{StaticResource OnPrimaryFixed}" FontAttributes="Bold" FontSize="14" LineBreakMode="WordWrap" />
                                     <HorizontalStackLayout Spacing="4">
-                                        <Image Source="icon_star.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" />
+                                        <Label Text="&#xe838;" FontFamily="MaterialSymbols" FontSize="12" TextColor="{StaticResource OnPrimaryFixed}" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" />
                                         <Label Text="4.9" TextColor="{StaticResource OnPrimaryFixed}" FontAttributes="Bold" FontSize="12" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
@@ -264,16 +243,8 @@
                 <!-- SECTION 3: Photography Route -->
                 <VerticalStackLayout Spacing="12">
                     <Grid ColumnDefinitions="*, Auto">
-                        <Label Grid.Column="0"
-                               Text="Fotoğrafçılık Rotaları
-"
-                               TextColor="{StaticResource PrimaryBrown}"
-                               FontSize="20"
-                               FontAttributes="Bold" />
-                        <Image Grid.Column="1"
-                               Source="icon_camera.png"
-                               WidthRequest="22" HeightRequest="22"
-                               VerticalOptions="Center" />
+                        <Label Grid.Column="0" Text="Fotoğrafçılık Rotaları " TextColor="{StaticResource PrimaryBrown}" FontSize="20" FontAttributes="Bold" />
+                        <Label Grid.Column="1" Text="&#xe412;" TextColor="{StaticResource PrimaryBrown}" FontFamily="MaterialSymbols" WidthRequest="22" HeightRequest="22" FontSize="20" VerticalOptions="Center" />
                     </Grid>
 
                     <!-- Horizontal Spots Carousel -->
@@ -311,12 +282,7 @@
         </ScrollView>
 
         <!-- 3. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2"
-                StrokeShape="RoundRectangle 16,16,0,0"
-                BackgroundColor="#E6FDFCFB"
-                StrokeThickness="0"
-                Padding="8,10"
-                Margin="0">
+        <Border Grid.Row="2" StrokeShape="RoundRectangle 16,16,0,0" BackgroundColor="#E6FDFCFB" StrokeThickness="0" Padding="8,10" Margin="0">
             <Grid ColumnDefinitions="*, *, *, *">
 
                 <!-- Home -->

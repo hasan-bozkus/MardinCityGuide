@@ -56,6 +56,12 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             return value;
         }
 
+        public async Task<Favorite> GetFavoriteReligiousSiteByTargetIdSiteAsync(int id)
+        {
+            var value = await _connection.Table<Favorite>().Where(x => x.TargetId == id && x.FavoriteType == FavoriteType.Site).FirstOrDefaultAsync();
+            return value;
+        }
+
         public async Task<List<object>> GetUserFavoritesAsync(int id, FavoriteType? filterType = null)
         {
             await _appDatabase.InitAsync();

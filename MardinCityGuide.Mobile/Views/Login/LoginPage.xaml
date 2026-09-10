@@ -41,40 +41,20 @@
 
                     <!-- Brand Header -->
                     <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
-                        <Border BackgroundColor="#EFEEEB" 
-                            StrokeThickness="1" 
-                            Stroke="#D1C5B8" 
-                            WidthRequest="64" 
-                            HeightRequest="64" 
-                            HorizontalOptions="Center">
+                        <Border BackgroundColor="#EFEEEB" StrokeThickness="1" Stroke="#D1C5B8" WidthRequest="64" HeightRequest="64" HorizontalOptions="Center">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="32" />
                             </Border.StrokeShape>
-                            <Label Text="&#xe88a;" 
-                               FontFamily="MaterialSymbols" 
-                               FontSize="32" 
-                               TextColor="#725B38" 
-                               HorizontalOptions="Center" 
-                               VerticalOptions="Center" />
+                            <Label Text="&#xe88a;" FontFamily="MaterialSymbols" FontSize="32" TextColor="#725B38" HorizontalOptions="Center" VerticalOptions="Center" />
                         </Border>
 
-                        <Label Text="Mardin Guide" 
-                           FontSize="32" 
-                           FontAttributes="Bold" 
-                           TextColor="#725B38" 
-                           HorizontalTextAlignment="Center" />
+                        <Label Text="Mardin Şehir Rehberi" FontSize="32" FontAttributes="Bold" TextColor="#725B38" HorizontalTextAlignment="Center" />
 
-                        <Label Text="Step into the golden city's embrace." 
-                           FontSize="14" 
-                           TextColor="#4D463C" 
-                           HorizontalTextAlignment="Center" />
+                        <Label Text="Altın şehrin kucağına adım atın." FontSize="14" TextColor="#4D463C" HorizontalTextAlignment="Center" />
                     </VerticalStackLayout>
 
                     <!-- Main Login Card -->
-                    <Border BackgroundColor="White" 
-                        Stroke="#D1C5B8" 
-                        StrokeThickness="0.5" 
-                        Padding="24">
+                    <Border BackgroundColor="White" Stroke="#D1C5B8" StrokeThickness="0.5" Padding="24">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
@@ -92,19 +72,9 @@
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
                                     <Grid ColumnDefinitions="48, *">
-                                        <Label Grid.Column="0" 
-                                           Text="&#xe0be;" 
-                                           FontFamily="MaterialSymbols" 
-                                           FontSize="18" 
-                                           TextColor="#7F766A" 
-                                           HorizontalOptions="Center" 
+                                        <Label Grid.Column="0" Text="&#xe0be;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" 
                                            VerticalOptions="Center" />
-                                        <Entry x:Name="UserNameEntry" Grid.Column="1" 
-                                           Placeholder="Kullanıcı Adınız" 
-                                           Keyboard="Text" 
-                                           PlaceholderColor="#D1C5B8" 
-                                           TextColor="#1B1C1A" 
-                                           VerticalOptions="Center" />
+                                        <Entry x:Name="UserNameEntry" Grid.Column="1" Placeholder="Kullanıcı Adınız" Keyboard="Text" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>
@@ -117,31 +87,11 @@
                                         <RoundRectangle CornerRadius="12" />
                                     </Border.StrokeShape>
                                     <Grid ColumnDefinitions="48, *, 48">
-                                        <Label Grid.Column="0" 
-                                           Text="&#xe897;" 
-                                           FontFamily="MaterialSymbols" 
-                                           FontSize="18" 
-                                           TextColor="#7F766A" 
-                                           HorizontalOptions="Center" 
-                                           VerticalOptions="Center" />
+                                        <Label Grid.Column="0" Text="&#xe897;" FontFamily="MaterialSymbols" FontSize="18" TextColor="#7F766A" HorizontalOptions="Center" VerticalOptions="Center" />
 
-                                        <Entry x:Name="PasswordHashEntry" 
-                                           Grid.Column="1" 
-                                           IsPassword="True" 
-                                           Placeholder="••••••••" 
-                                           PlaceholderColor="#D1C5B8" 
-                                           TextColor="#1B1C1A" 
-                                           VerticalOptions="Center" />
+                                        <Entry x:Name="PasswordHashEntry" Grid.Column="1" IsPassword="True" Placeholder="••••••••" PlaceholderColor="#D1C5B8" TextColor="#1B1C1A" VerticalOptions="Center" />
 
-                                        <Button x:Name="TogglePasswordBtn"
-                                            Grid.Column="2"
-                                            Text="&#xe8f4;"
-                                            FontFamily="MaterialSymbols"
-                                            FontSize="20"
-                                            TextColor="#7F766A"
-                                            BackgroundColor="Transparent"
-                                            Padding="0"
-                                            Clicked="OnTogglePasswordClicked" />
+                                        <Button x:Name="TogglePasswordBtn" Grid.Column="2" Text="&#xe8f4;" FontFamily="MaterialSymbols" FontSize="20" TextColor="#7F766A" BackgroundColor="Transparent" Padding="0" Clicked="OnTogglePasswordClicked" />
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>
@@ -153,12 +103,7 @@
                                     <Label Text="Beni Hatırla " FontSize="13" TextColor="#4D463C" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
 
-                                <Label Grid.Column="1" 
-                                   Text=" Şifrenizi mi unuttunuz?" 
-                                   FontSize="13" 
-                                   TextColor="#725B38" 
-                                   FontAttributes="Bold" 
-                                   VerticalOptions="Center">
+                                <Label Grid.Column="1" Text=" Şifrenizi mi unuttunuz?" FontSize="13" TextColor="#725B38" FontAttributes="Bold" VerticalOptions="Center">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnForgotPasswordTapped" />
                                     </Label.GestureRecognizers>
@@ -166,20 +111,12 @@
                             </Grid>
 
                             <!-- Sign In Button -->
-                            <Button Text="Giriş Yap"
-                                BackgroundColor="#C5A880"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                FontSize="16"
-                                CornerRadius="26"
-                                HeightRequest="50"
-                                Margin="0,8,0,0"
-                                Clicked="OnSignInClicked" />
+                            <Button Text="Giriş Yap" BackgroundColor="#C5A880" TextColor="White" FontAttributes="Bold" FontSize="16" CornerRadius="26" HeightRequest="50" Margin="0,8,0,0" Clicked="OnSignInClicked" />
 
                             <!-- Divider -->
                             <Grid ColumnDefinitions="*, Auto, *" Margin="0,12,0,4">
                                 <BoxView Grid.Column="0" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
-                                <Label Grid.Column="1" Text="OR CONTINUE WITH" FontSize="11" TextColor="#7F766A" FontAttributes="Bold" CharacterSpacing="1.2" Margin="12,0" />
+                                <Label Grid.Column="1" Text="VEYA ŞUNUNLA DEVAM ET" FontSize="11" TextColor="#7F766A" FontAttributes="Bold" CharacterSpacing="1.2" Margin="12,0" />
                                 <BoxView Grid.Column="2" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
                             </Grid>
 
@@ -212,8 +149,8 @@
                     <!-- Footer Redirect Link -->
                     <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
                         <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="New to Mardin? " TextColor="#4D463C" FontSize="14" />
-                            <Label Text="Create an account" TextColor="#725B38" FontAttributes="Bold" FontSize="14">
+                            <Label Text="Mardin'de yeni misiniz? " TextColor="#4D463C" FontSize="14" />
+                            <Label Text="Hesap Oluştur" TextColor="#725B38" FontAttributes="Bold" FontSize="14">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnRegisterTapped" />
                                 </Label.GestureRecognizers>
@@ -221,23 +158,15 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout Spacing="16" HorizontalOptions="Center">
-                            <Label Text="Privacy Policy" FontSize="12" TextColor="#7F766A" />
-                            <Label Text="Terms of Service" FontSize="12" TextColor="#7F766A" />
+                            <Label Text="Gizlilik Politikası" FontSize="12" TextColor="#7F766A" />
+                            <Label Text="Hizmet Koşulları" FontSize="12" TextColor="#7F766A" />
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
 
                 </VerticalStackLayout>
 
                 <!-- ================= 2. SPOTLIGHT KARTI (SAĞ KISIM - DİNAMİK) ================= -->
-                <Border x:Name="SpotlightCard"
-                    Grid.Column="1" 
-                    Margin="32,0,0,0" 
-                    BackgroundColor="#FDFCFB" 
-                    Stroke="#D1C5B8" 
-                    StrokeThickness="0.5" 
-                    Padding="16" 
-                    VerticalOptions="Center"
-                    Rotation="2">
+                <Border x:Name="SpotlightCard" Grid.Column="1" Margin="32,0,0,0" BackgroundColor="#FDFCFB" Stroke="#D1C5B8" StrokeThickness="0.5" Padding="16" VerticalOptions="Center" Rotation="2">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
@@ -250,11 +179,11 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Image Source="zinciriye_medrese.jpg" Aspect="AspectFill" />
+                            <Image Source="https://mardin.ktb.gov.tr/Resim/383890,mard-n-z-nc-r-ye-medreses--glcan-acar-1jpg.png?0" Aspect="AspectFill" />
                         </Border>
 
-                        <Label Text="SPOTLIGHT" FontSize="11" FontAttributes="Bold" TextColor="#D35400" CharacterSpacing="1.5" />
-                        <Label Text="The Zinciriye Medrese" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+                        <Label Text="ÖNE ÇIKANLAR" FontSize="11" FontAttributes="Bold" TextColor="#D35400" CharacterSpacing="1.5" />
+                        <Label Text="Zinciriye Medresesi" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
                     </VerticalStackLayout>
                 </Border>
 

@@ -44,7 +44,7 @@ public partial class GastronomyGuidePage : ContentPage
         _allCategories = categories;
         _allCategories[0].IsSelected = true;
 
-        SelectedTypeLabelCollection.ItemsSource = _allCategories;
+        SelectedTypeLabelCollection.ItemsSource = _allCategories.Take(5).ToList();
 
         _allPlaces = await _placeService.TGetPlaceListWithLocationByIsActiveAndIsFeatuderAsync();
 

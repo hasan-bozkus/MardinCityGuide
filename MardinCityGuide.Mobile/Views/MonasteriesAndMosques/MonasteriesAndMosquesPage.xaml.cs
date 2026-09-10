@@ -2,12 +2,15 @@ using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
 using MardinCityGuide.Mobile.Helpers;
+using MardinCityGuide.Mobile.Models;
 
 namespace MardinCityGuide.Mobile.Views.MonasteriesAndMosques;
 
 public partial class MonasteriesAndMosquesPage : ContentPage
 {
     private readonly IReligiousSiteService _religiousSiteService;
+    private readonly IFavoriteService _favoriteService;
+    private int CurrentUserId = CurrentSession.UserId;
 
     private List<ReligiousSite> _allReligiousSites = new List<ReligiousSite>();
     private Border? _previouslySelectedBorder;
@@ -16,6 +19,7 @@ public partial class MonasteriesAndMosquesPage : ContentPage
     {
         InitializeComponent();
         _religiousSiteService = ServiceHelper.GetService<IReligiousSiteService>();
+        _favoriteService = ServiceHelper.GetService<IFavoriteService>();
     }
 
     protected override async void OnAppearing()
@@ -39,6 +43,7 @@ public partial class MonasteriesAndMosquesPage : ContentPage
             var siteType = (ReligiousSiteType)x.SiteType;
             return new
             {
+                x.ReligiousSiteId,
                 x.LocationId,
                 x.Name,
                 x.ShortDescription,
@@ -52,7 +57,8 @@ public partial class MonasteriesAndMosquesPage : ContentPage
                     ReligiousSiteType.Manastır => GetResourceColor(this.Resources, "MesopotamianBlue"),
                     _ => Colors.Transparent
                 },
-                EntryFeeAmount = x.IsFreeEntry == true ? "Ücretsiz" : x.EntryFeeAmount + " ₺"
+                EntryFeeAmount = x.IsFreeEntry == true ? "Ücretsiz" : x.EntryFeeAmount + " ₺",
+                IsFavoriteColor = x.IsFavorite == true ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A")
             };
         }).Take(8).ToList();
 
@@ -98,6 +104,35 @@ public partial class MonasteriesAndMosquesPage : ContentPage
                 };
             }).Take(8).ToList();
         }
+    }
+
+    private async void OnAddFavoriteTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Border border) return;
+        if (e.Parameter is int religiousSiteId)
+        {
+            CurrentUserId = 2;
+
+            var isFavorite = await _favoriteService.TGetFavoriteReligiousSiteByTargetIdSiteAsync(religiousSiteId);
+            if (isFavorite != null)
+            {
+                await _favoriteService.TDeleteAsync(isFavorite);
+                await _religiousSiteService.TGetChangeIsFavoriteStatusFalseAsync(religiousSiteId);
+                OnAppearing();
+            }
+            if (isFavorite is null)
+            {
+                await _favoriteService.TCreateAsync(new Favorite
+                {
+                    UserId = CurrentUserId,
+                    TargetId = religiousSiteId,
+                    FavoriteType = FavoriteType.Site
+                });
+                await _religiousSiteService.TGetChangeIsFavoriteStatusTrueAsync(religiousSiteId);
+                OnAppearing();
+            }
+        }
+        if (e.Parameter is not ReligiousSite religiousSite) return;
     }
 
     private static Color GetResourceColor(ResourceDictionary resources, string key)

@@ -230,7 +230,7 @@
                         <!-- Or Sign Up With Divider -->
                         <Grid ColumnDefinitions="*, Auto, *" Margin="0,16,0,8" VerticalOptions="Center">
                             <BoxView Grid.Column="0" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Text="OR SIGN UP WITH" FontSize="11" TextColor="#7F766A" FontAttributes="Bold" CharacterSpacing="1.5" Margin="12,0" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="YA DA ŞUNUNLA KAYIT OLUN" FontSize="11" TextColor="#7F766A" FontAttributes="Bold" CharacterSpacing="1.5" Margin="12,0" VerticalOptions="Center" />
                             <BoxView Grid.Column="2" HeightRequest="1" Color="#D1C5B8" VerticalOptions="Center" />
                         </Grid>
 
@@ -269,8 +269,8 @@
 
                         <!-- Log In Redirect Link -->
                         <HorizontalStackLayout HorizontalOptions="Center" Margin="0,16,0,0">
-                            <Label Text="Already have an account? " TextColor="#4D463C" FontSize="14" />
-                            <Label Text="Log In" TextColor="#725B38" FontAttributes="Bold" FontSize="14">
+                            <Label Text="Zaten bir hesabım var mı? " TextColor="#4D463C" FontSize="14" />
+                            <Label Text=" Giriş Yap" TextColor="#725B38" FontAttributes="Bold" FontSize="14">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnLoginTapped" />
                                 </Label.GestureRecognizers>
@@ -283,7 +283,7 @@
                 <!-- Footer Component -->
                 <VerticalStackLayout Spacing="8" Margin="0,8,0,32" HorizontalOptions="Center">
                     <BoxView WidthRequest="40" HeightRequest="3" CornerRadius="1.5" Color="#C5A880" Opacity="0.4" HorizontalOptions="Center" />
-                    <Label Text="MARDIN CULTURAL HERITAGE GUIDE" FontSize="11" TextColor="#7F766A" CharacterSpacing="1.5" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,8,0,0" />
+                    <Label Text="Mardin Kültürel Miras Rehberi" FontSize="11" TextColor="#7F766A" CharacterSpacing="1.5" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,8,0,0" />
                     <Label Text="© 2024 Mardin Metropolitan Authority" FontSize="13" TextColor="#4D463C" Opacity="0.6" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
 

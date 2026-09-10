@@ -12,6 +12,7 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
         Task<bool> RemoveFavoriteAsync(int targetId, string favoriteType);
 
         Task<Favorite> GetFavoritePlaceByTargetIdRestaurantAsync(int id);
+        Task<Favorite> GetFavoriteReligiousSiteByTargetIdSiteAsync(int id);
 
         Task<bool> AddFavoriteAsync(int targetId, string favoriteType);
     }
