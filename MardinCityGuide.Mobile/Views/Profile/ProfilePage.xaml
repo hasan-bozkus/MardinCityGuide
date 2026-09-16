@@ -3,37 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Profile.ProfilePage"
              BackgroundColor="#FDFCFB"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <Grid RowDefinitions="Auto, *, Auto">
+    <Grid RowDefinitions="*">
 
-        <!-- Top App Bar -->
-        <Grid Grid.Row="0" 
-              ColumnDefinitions="Auto, *, Auto" 
-              Padding="20,12" 
-              BackgroundColor="#FDFCFB" 
-              HeightRequest="56">
-            <ImageButton Grid.Column="0" 
-                         Source="ic_arrow_back.png" 
-                         HeightRequest="24" 
-                         WidthRequest="24" 
-                         VerticalOptions="Center" />
-            <Label Grid.Column="1" 
-                   Text="Profile" 
-                   TextColor="#725b38" 
-                   FontSize="20" 
-                   FontAttributes="Bold" 
-                   VerticalOptions="Center" 
-                   Margin="16,0,0,0" />
-            <ImageButton Grid.Column="2" 
-                         Source="ic_search.png" 
-                         HeightRequest="24" 
-                         WidthRequest="24" 
-                         VerticalOptions="Center" />
-        </Grid>
 
         <!-- Main Content -->
-        <ScrollView Grid.Row="1" Padding="20,16,20,24">
+        <ScrollView Grid.Row="0" Padding="20,16,20,24">
             <VerticalStackLayout Spacing="24">
 
                 <!-- User Identity Section -->
@@ -214,83 +192,39 @@
 
 
         <!-- 3. BİLDİRİM AYARLARI MODAL KATMANI -->
-        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NotificationModalOverlay" 
+        <Grid Grid.Row="2" Grid.RowSpan="2" x:Name="NotificationModalOverlay" 
           BackgroundColor="#80000000" 
           IsVisible="False" 
           HorizontalOptions="Fill" 
           VerticalOptions="Fill">
 
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnCloseNotificationModalTapped" />
-                    </Grid.GestureRecognizers>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCloseNotificationModalTapped" />
+            </Grid.GestureRecognizers>
 
-                    <Border VerticalOptions="Center" 
+            <Border VerticalOptions="Center" 
                 HorizontalOptions="Center" 
                 WidthRequest="320" 
                 BackgroundColor="#FDFCFB" 
                 Padding="24" 
                 StrokeShape="RoundRectangle 20"
                 StrokeThickness="0">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer />
-                        </Border.GestureRecognizers>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Border.GestureRecognizers>
 
-                        <VerticalStackLayout Spacing="20">
-                            <Label Text="Bildirim Tercihleri" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
+                <VerticalStackLayout Spacing="20">
+                    <Label Text="Bildirim Tercihleri" FontSize="18" FontAttributes="Bold" TextColor="#1B1C1A" />
 
-                            <Grid ColumnDefinitions="*, Auto">
-                                <Label Grid.Column="0" Text="Bildirimleri Al" FontSize="15" VerticalOptions="Center" TextColor="#1B1C1A" />
-                                <Switch x:Name="SwitchNotifications" Grid.Column="1" OnColor="#725b38" ThumbColor="White" Toggled="OnNotificationToggled" />
-                            </Grid>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Grid.Column="0" Text="Bildirimleri Al" FontSize="15" VerticalOptions="Center" TextColor="#1B1C1A" />
+                        <Switch x:Name="SwitchNotifications" Grid.Column="1" OnColor="#725b38" ThumbColor="White" Toggled="OnNotificationToggled" />
+                    </Grid>
 
-                            <Button Text="Tamam" BackgroundColor="#725b38" TextColor="White" CornerRadius="10" Clicked="OnCloseNotificationModalTapped" />
-                        </VerticalStackLayout>
-                    </Border>
-                </Grid>
-
-        <!-- Bottom Navigation Bar -->
-        <Border Grid.Row="2" 
-                BackgroundColor="#EFFDFCFB" 
-                StrokeShape="RoundRectangle 16,16,0,0" 
-                StrokeThickness="0" 
-                Padding="8,8,8,12" 
-                HeightRequest="68">
-            <Grid ColumnDefinitions="*, *, *, *">
-
-                <!-- Home Tab -->
-                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_home.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Home" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
+                    <Button Text="Tamam" BackgroundColor="#725b38" TextColor="White" CornerRadius="10" Clicked="OnCloseNotificationModalTapped" />
                 </VerticalStackLayout>
-
-                <!-- Discover Tab -->
-                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_explore.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Discover" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
-                </VerticalStackLayout>
-
-                <!-- Favorites Tab -->
-                <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_favorite.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Favorites" TextColor="#4D463C" FontSize="11" HorizontalTextAlignment="Center" />
-                </VerticalStackLayout>
-
-                <!-- Active Profile Tab -->
-                <Border Grid.Column="3" 
-                        BackgroundColor="#4DFEDEB2" 
-                        StrokeShape="RoundRectangle 20" 
-                        StrokeThickness="0" 
-                        Padding="12,6" 
-                        HorizontalOptions="Center" 
-                        VerticalOptions="Center">
-                    <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
-                        <Image Source="ic_person_filled.png" HeightRequest="20" WidthRequest="20" />
-                        <Label Text="Profile" TextColor="#725b38" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                    </VerticalStackLayout>
-                </Border>
-
-            </Grid>
-        </Border>
+            </Border>
+        </Grid>
 
     </Grid>
 

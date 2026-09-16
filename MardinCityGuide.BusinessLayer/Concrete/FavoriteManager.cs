@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Abstract;
+using MardinCityGuide.DataAccessLayer.Dtos.FavoritesDtos;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
 
@@ -27,7 +28,7 @@ namespace MardinCityGuide.BusinessLayer.Concrete
             return await _favoriteDal.GetFavoritePlaceByTargetIdRestaurantAsync(id);
         }
 
-        public async Task<List<object>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null)
+        public async Task<List<ResultGetUserFavoritesDto>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null)
         {
             return await _favoriteDal.GetUserFavoritesAsync(id, filterType);
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MardinCityGuide.Mobile.Dtos.UserDtos;
+using MardinCityGuide.DataAccessLayer.Dtos.UserDtos;
 
 namespace MardinCityGuide.Mobile.AuthServices
 {

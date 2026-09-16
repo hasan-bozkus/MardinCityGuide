@@ -3,54 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.BazaarsCrafts.BazaarsCraftsPage"
              BackgroundColor="#FDFCFB"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!-- Renk Paleti (HTML Tailwind Config'den) -->
-            <Color x:Key="SurfaceIvory">#FDFCFB</Color>
-            <Color x:Key="Primary">#725B38</Color>
-            <Color x:Key="MardinSand">#C5A880</Color>
-            <Color x:Key="Terracotta">#A23F00</Color>
-            <Color x:Key="MesopotamianBlue">#008080</Color>
-            <Color x:Key="OnSurfaceVariant">#4D463C</Color>
-            <Color x:Key="SurfaceContainerLow">#F5F3F0</Color>
-            <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
-            <Color x:Key="PrimaryFixedDim">#E0C298</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <Grid RowDefinitions="Auto, *, Auto">
-
-        <!-- 1. TOP APP BAR -->
-        <Grid Grid.Row="0" 
-              ColumnDefinitions="Auto, *, Auto" 
-              Padding="20, 12" 
-              BackgroundColor="{StaticResource SurfaceIvory}"
-              HeightRequest="60">
-
-            <ImageButton Grid.Column="0" 
-                         Source="arrow_back.png" 
-                         BackgroundColor="Transparent" 
-                         HeightRequest="24" 
-                         WidthRequest="24"
-                         VerticalOptions="Center" />
-
-            <Label Grid.Column="1" 
-                   Text="Mardin Şehir Rehberi" 
-                   TextColor="{StaticResource Primary}" 
-                   FontAttributes="Bold" 
-                   FontSize="22" 
-                   VerticalOptions="Center" 
-                   Margin="12,0,0,0" />
-
-            <ImageButton Grid.Column="2" 
-                         Source="search.png" 
-                         BackgroundColor="Transparent" 
-                         HeightRequest="24" 
-                         WidthRequest="24"
-                         VerticalOptions="Center" />
-        </Grid>
+    <Grid RowDefinitions="*">
 
         <!-- 2. ANA İÇERİK (SCROLLVIEW) -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -256,10 +213,10 @@
 
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                        
+
                     </CollectionView>
 
-                    
+
                 </VerticalStackLayout>
 
                 <!-- Location Map Hint -->
@@ -274,44 +231,6 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- 3. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2" 
-                BackgroundColor="{StaticResource SurfaceIvory}" 
-                StrokeShape="RoundRectangle 16,16,0,0" 
-                Padding="0,8" 
-                StrokeThickness="0">
-            <Border.Shadow>
-                <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.2" />
-            </Border.Shadow>
-            <Grid ColumnDefinitions="*,*,*,*">
-                <!-- Home -->
-                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="home.png" HeightRequest="20" WidthRequest="20"/>
-                    <Label Text="Home" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
-                </VerticalStackLayout>
-
-                <!-- Discover (Active) -->
-                <Border Grid.Column="1" BackgroundColor="#33C5A880" StrokeShape="RoundRectangle 16" Padding="12,4" StrokeThickness="0" HorizontalOptions="Center">
-                    <VerticalStackLayout Spacing="2">
-                        <Image Source="explore.png" HeightRequest="20" WidthRequest="20"/>
-                        <Label Text="Discover" FontSize="11" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-                    </VerticalStackLayout>
-                </Border>
-
-                <!-- Favorites -->
-                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="favorite.png" HeightRequest="20" WidthRequest="20"/>
-                    <Label Text="Favorites" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
-                </VerticalStackLayout>
-
-                <!-- Profile -->
-                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="person.png" HeightRequest="20" WidthRequest="20"/>
-                    <Label Text="Profile" FontSize="11" TextColor="{StaticResource OnSurfaceVariant}"/>
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
 
     </Grid>
 

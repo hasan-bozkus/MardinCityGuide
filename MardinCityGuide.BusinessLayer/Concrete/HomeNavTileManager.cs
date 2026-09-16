@@ -21,5 +21,10 @@ namespace MardinCityGuide.BusinessLayer.Concrete
 
             return await _homeNavTileDal.GetHomeNavTileListBySortOrderAndIsActiveAsync();
         }
+
+        public async Task<HomeNavTile> TGetHomeNawTitleByTitleAsync(string title)
+        {
+            return await _homeNavTileDal.GetHomeNawTitleByTitleAsync(title);
+        }
     }
 }

@@ -1,7 +1,7 @@
 using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.Mobile.AuthServices;
-using MardinCityGuide.Mobile.Dtos.UserDtos;
+using MardinCityGuide.DataAccessLayer.Dtos.UserDtos;
 using MardinCityGuide.Mobile.Helpers;
 using MardinCityGuide.Mobile.Models;
 using MardinCityGuide.Mobile.Views.Register;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MardinCityGuide.Mobile.Dtos.FavoritesDtos
+namespace MardinCityGuide.DataAccessLayer.Dtos.FavoritesDtos
 {
     public enum FavoriteTypeEnumDto
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MardinCityGuide.DataAccessLayer.Abstract
 {
-    public interface IGenericDal<T> where T : class
+    public interface IGenericDal<T> where T : class, new()
     {
         Task<List<T>> GetListAllAsync();
         Task CreateAsync(T t);

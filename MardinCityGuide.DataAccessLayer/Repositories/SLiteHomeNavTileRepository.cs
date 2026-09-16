@@ -27,5 +27,13 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
 
             return values;
         }
+
+        public async Task<HomeNavTile> GetHomeNawTitleByTitleAsync(string title)
+        {
+            await _appDatabase.InitAsync();
+
+            var values = await _connection.Table<HomeNavTile>().Where(x => x.Title == title).FirstOrDefaultAsync();
+            return values;
+        }
     }
 }

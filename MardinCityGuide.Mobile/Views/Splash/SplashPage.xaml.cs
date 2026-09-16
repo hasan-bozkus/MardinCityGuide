@@ -1,11 +1,14 @@
+using MardinCityGuide.Mobile.Views.Login;
+using MardinCityGuide.Mobile.Views.Welcome;
+
 namespace MardinCityGuide.Mobile.Views.Splash;
 
 public partial class SplashPage : ContentPage
 {
     private bool _isAnimating = true;
     public SplashPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
     }
 
     protected override async void OnAppearing()
@@ -23,6 +26,7 @@ public partial class SplashPage : ContentPage
 
         // 4. Belli bir süre sonra sonraki ekrana (Welcome/Login) yönlendirme
         await Task.Delay(3000); // 3 saniye bekleme
+
         await Shell.Current.GoToAsync("//welcome");
     }
 

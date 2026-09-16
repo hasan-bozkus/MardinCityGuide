@@ -2,18 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.CultureHistory.CultureHistoryPage"
-             Title="CultureHistoryPage"
              BackgroundColor="#FBF9F6"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <Grid RowDefinitions="Auto, *, Auto">
-
-        <!-- 1. TOP APP BAR -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" HeightRequest="60" Padding="20,0" BackgroundColor="#FDFCFB">
-            <ImageButton Grid.Column="0" Source="icon_back.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="Start"/>
-            <Label Grid.Column="1" Text="Mardin Şehir Rehberi" TextColor="#725B38" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" Margin="12,0,0,0"/>
-            <ImageButton Grid.Column="2" Source="icon_search.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center"/>
-        </Grid>
+    <Grid RowDefinitions="*">
 
         <!-- MAIN SCROLL CONTENT -->
         <ScrollView Grid.Row="1">
@@ -141,7 +135,7 @@
                             </CollectionView.ItemTemplate>
 
                         </CollectionView>
-                        
+
                     </VerticalStackLayout>
                 </Grid>
 
@@ -237,33 +231,6 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- 8. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2" HeightRequest="65" BackgroundColor="#FDFCFB" StrokeShape="RoundRectangle 16,16,0,0" StrokeThickness="0">
-            <Grid ColumnDefinitions="*, *, *, *">
-                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="icon_home.png" WidthRequest="22" HeightRequest="22"/>
-                    <Label Text="Home" FontSize="11" TextColor="#4D463C" HorizontalTextAlignment="Center"/>
-                </VerticalStackLayout>
-
-                <Border Grid.Column="1" BackgroundColor="#40FEDEB2" Padding="12,4" StrokeShape="RoundRectangle 20" StrokeThickness="0" VerticalOptions="Center" HorizontalOptions="Center">
-                    <VerticalStackLayout Spacing="2">
-                        <Image Source="icon_explore.png" WidthRequest="22" HeightRequest="22"/>
-                        <Label Text="Discover" FontSize="11" TextColor="#725B38" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                    </VerticalStackLayout>
-                </Border>
-
-                <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="icon_heart.png" WidthRequest="22" HeightRequest="22"/>
-                    <Label Text="Favorites" FontSize="11" TextColor="#4D463C" HorizontalTextAlignment="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="icon_profile.png" WidthRequest="22" HeightRequest="22"/>
-                    <Label Text="Profile" FontSize="11" TextColor="#4D463C" HorizontalTextAlignment="Center"/>
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
 
     </Grid>
 

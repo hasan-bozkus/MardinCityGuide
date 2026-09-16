@@ -3,58 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.MonasteriesAndMosques.MonasteriesAndMosquesPage"
              BackgroundColor="#FBF9F6"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <!-- Custom Colors -->
-            <Color x:Key="PrimaryColor">#725B38</Color>
+            <!--<Color x:Key="PrimaryColor">#725B38</Color>
             <Color x:Key="MardinSand">#C5A880</Color>
             <Color x:Key="TerracottaSunset">#D35400</Color>
             <Color x:Key="MesopotamianBlue">#008080</Color>
             <Color x:Key="OnSurface">#1B1C1A</Color>
             <Color x:Key="OnSurfaceVariant">#4D463C</Color>
             <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
-            <Color x:Key="SurfaceContainerLowest">#FFFFFF</Color>
+            <Color x:Key="SurfaceContainerLowest">#FFFFFF</Color>-->
 
             <!-- Card Corner Radius -->
             <CornerRadius x:Key="CardCornerRadius">16</CornerRadius>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="Auto,*,Auto">
-
-        <!-- 1. TOP APP BAR -->
-        <Grid Grid.Row="0" 
-              ColumnDefinitions="Auto,*,Auto" 
-              HeightRequest="64" 
-              Padding="20,0" 
-              BackgroundColor="#CCFDFCFB">
-
-            <ImageButton Grid.Column="0"
-                         Source="ic_arrow_back.png"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         BackgroundColor="Transparent"
-                         VerticalOptions="Center"
-                         Clicked="OnBackButtonClicked" />
-
-            <Label Grid.Column="1"
-                   Text="Mardin Guide"
-                   FontFamily="ManropeBold"
-                   FontSize="20"
-                   TextColor="{StaticResource PrimaryColor}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-
-            <ImageButton Grid.Column="2"
-                         Source="ic_search.png"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         BackgroundColor="Transparent"
-                         VerticalOptions="Center"
-                         Clicked="OnSearchButtonClicked" />
-        </Grid>
+    <Grid RowDefinitions="*">
 
         <!-- MAIN SCROLL CONTENT -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -127,14 +96,14 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-               
+
                 <!-- 4. CARDS CONTAINER -->
 
                 <CollectionView x:Name="MosquesAndMonasteriesAndMedresesColleciton" VerticalScrollBarVisibility="Never">
 
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="24" />
-                        </CollectionView.ItemsLayout>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="24" />
+                    </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -222,7 +191,7 @@
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                    
+
                 </CollectionView>
 
 
@@ -344,9 +313,13 @@
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#D35400" Offset="0.0" />
-                            --><!-- Terracotta Sunset --><!--
+                            -->
+                <!-- Terracotta Sunset -->
+                <!--
                             <GradientStop Color="#725B38" Offset="1.0" />
-                            --><!-- Mardin Sand / Earth --><!--
+                            -->
+                <!-- Mardin Sand / Earth -->
+                <!--
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Shadow>
@@ -354,7 +327,9 @@
                     </Border.Shadow>
 
                     <Grid>
-                        --><!-- Background Image / Overlay --><!--
+                        -->
+                <!-- Background Image / Overlay -->
+                <!--
                         <Image Source="golden_hour_banner.jpg" Aspect="AspectFill" />
                         <BoxView Color="#80725B38" />
 
@@ -386,53 +361,7 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- 6. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2"
-                BackgroundColor="#EFFDFCFB"
-                StrokeShape="RoundRectangle 16,16,0,0"
-                StrokeThickness="0"
-                HeightRequest="64"
-                Padding="8,0">
-            <Border.Shadow>
-                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
-            </Border.Shadow>
-
-            <Grid ColumnDefinitions="*,*,*,*">
-                <!-- Home Tab -->
-                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_home.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Home" FontSize="11" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurfaceVariant}" />
-                </VerticalStackLayout>
-
-                <!-- Active Discover Tab -->
-                <Border Grid.Column="1"
-                        BackgroundColor="#4DFEDEB2"
-                        StrokeShape="RoundRectangle 18"
-                        StrokeThickness="0"
-                        Padding="16,6"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                    <VerticalStackLayout Spacing="2">
-                        <Image Source="ic_explore_active.png" HeightRequest="22" WidthRequest="22" />
-                        <Label Text="Discover" FontSize="11" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource PrimaryColor}" />
-                    </VerticalStackLayout>
-                </Border>
-
-                <!-- Favorites Tab -->
-                <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_favorite.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Favorites" FontSize="11" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurfaceVariant}" />
-                </VerticalStackLayout>
-
-                <!-- Profile Tab -->
-                <VerticalStackLayout Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_profile.png" HeightRequest="22" WidthRequest="22" />
-                    <Label Text="Profile" FontSize="11" FontFamily="BeVietnamProSemiBold" TextColor="{StaticResource OnSurfaceVariant}" />
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
-
+        
     </Grid>
 
 </ContentPage>

@@ -61,6 +61,6 @@ public partial class BazaarsCraftsPage : ContentPage
 
     private async void OnOpenMapClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//map");
+        await Shell.Current.GoToAsync("map");
     }
 }

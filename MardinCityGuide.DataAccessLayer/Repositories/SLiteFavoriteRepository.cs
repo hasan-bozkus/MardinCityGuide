@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MardinCityGuide.DataAccessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Concrete;
+using MardinCityGuide.DataAccessLayer.Dtos.FavoritesDtos;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
 using SQLite;
@@ -62,7 +63,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             return value;
         }
 
-        public async Task<List<object>> GetUserFavoritesAsync(int id, FavoriteType? filterType = null)
+        public async Task<List<ResultGetUserFavoritesDto>> GetUserFavoritesAsync(int id, FavoriteType? filterType = null)
         {
             await _appDatabase.InitAsync();
 
@@ -74,7 +75,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
             }
 
             var favorites = await query.ToListAsync();
-            var resultList = new List<object>();
+            var resultList = new List<ResultGetUserFavoritesDto>();
 
             foreach (var item in favorites)
             {
@@ -86,15 +87,15 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
 
                         if (rest != null)
                         {
-                            resultList.Add(new
+                            resultList.Add(new ResultGetUserFavoritesDto()
                             {
                                 FavoriteId = item.FavoriteId,
                                 TargetId = item.TargetId,
-                                FavoriteType = item.FavoriteType,
+                                FavoriteType = (FavoriteTypeEnumDto)(int)item.FavoriteType,
                                 Title = rest.Name,
                                 Location = location.AddressText,
                                 CategoryTag = rest.TypeLabel,
-                                Rating = rest.Rating,
+                                Rating = decimal.Parse(rest.Rating.ToString()),
                                 ImageUrl = rest.CoverImageUrl,
                                 CreatedAt = item.CreatedAt
                             });
@@ -106,15 +107,15 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                         var siteLocation = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == religiousSite.LocationId).FirstOrDefaultAsync();
                         if (religiousSite != null)
                         {
-                            resultList.Add(new
+                            resultList.Add(new ResultGetUserFavoritesDto()
                             {
                                 FavoriteId = item.FavoriteId,
                                 TargetId = item.TargetId,
-                                FavoriteType = item.FavoriteType,
+                                FavoriteType = (FavoriteTypeEnumDto)(int)item.FavoriteType,
                                 Title = religiousSite.Name,
                                 Location = siteLocation.AddressText,
-                                CategoryTag = religiousSite.SiteType,
-                                Rating = religiousSite.Rating,
+                                CategoryTag = religiousSite.SiteType.ToString(),
+                                Rating = decimal.Parse(religiousSite.Rating.ToString()),
                                 ImageUrl = religiousSite.ImageUrl,
                                 CreatedAt = item.CreatedAt
                             });
@@ -125,15 +126,15 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                         var route = await _connection.Table<Route>().FirstOrDefaultAsync(r => r.RouteId == item.TargetId);
                         if (route != null)
                         {
-                            resultList.Add(new
+                            resultList.Add(new ResultGetUserFavoritesDto()
                             {
                                 FavoriteId = item.FavoriteId,
                                 TargetId = item.TargetId,
-                                FavoriteType = item.FavoriteType,
+                                FavoriteType = (FavoriteTypeEnumDto)(int)item.FavoriteType,
                                 Title = route.Name,
-                                Location = route.StopCountLabelOverride,
-                                CategoryTag = route.Category,
-                                Rating = route.Rating,
+                                Location = route.StopCountLabelOverride.ToString(),
+                                CategoryTag = route.Category.ToString(),
+                                Rating = decimal.Parse(route.Rating.ToString()),
                                 ImageUrl = route.CoverImageUrl,
                                 CreatedAt = item.CreatedAt
                             });
@@ -142,15 +143,15 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                     default:
                         var targetid = await _connection.Table<ReligiousSite>().FirstOrDefaultAsync();
                         var targetLocation = await _connection.Table<EntityLayer.Concrete.Location>().Where(x => x.LocationId == targetid.LocationId).FirstOrDefaultAsync();
-                        resultList.Add(new
+                        resultList.Add(new ResultGetUserFavoritesDto()
                         {
                             FavoriteId = item.FavoriteId,
                             TargetId = item.TargetId,
-                            FavoriteType = item.FavoriteType,
+                            FavoriteType = (FavoriteTypeEnumDto)(int)item.FavoriteType,
                             Title = targetid.Name,
                             Location = targetLocation.AddressText,
                             CategoryTag = targetid.Dynasty,
-                            Rating = targetid.Rating,
+                            Rating = decimal.Parse(targetid.Rating.ToString()),
                             ImageUrl = targetid.ImageUrl,
                             CreatedAt = item.CreatedAt
                         });
@@ -159,7 +160,7 @@ namespace MardinCityGuide.DataAccessLayer.Repositories
                 }
             }
 
-            return resultList.Cast<dynamic>().OrderByDescending(f => f.CreatedAt).ToList();
+            return resultList.OrderByDescending(f => f.CreatedAt).ToList();
         }
 
         public async Task<bool> RemoveFavoriteAsync(int targetId, string favoriteType)

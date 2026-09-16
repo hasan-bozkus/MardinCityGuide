@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MardinCityGuide.Mobile.Dtos.HomeNevTileDtos
+namespace MardinCityGuide.DataAccessLayer.Dtos.HomeNevTileDtos
 {
     public class ResultHomeNawTileDto
     {

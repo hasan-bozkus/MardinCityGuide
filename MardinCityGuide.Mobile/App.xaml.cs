@@ -1,10 +1,4 @@
-﻿using MardinCityGuide.Mobile.Views.MonasteriesAndMosques;
-using MardinCityGuide.Mobile.Views.PlaceDetail;
-using MardinCityGuide.Mobile.Views.Register;
-using MardinCityGuide.Mobile.Views.SeazonalEvents;
-using MardinCityGuide.Mobile.Views.TravelRoutes;
-using MardinCityGuide.Mobile.Views.Welcome;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace MardinCityGuide.Mobile
 {
@@ -17,23 +11,9 @@ namespace MardinCityGuide.Mobile
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            bool hasSeenWelcome = Preferences.Default.Get("HasSeenWelcome", false);
 
-            Page initialPage;
-
-            if (hasSeenWelcome)
-            {
-                // Daha önce girmiş -> Doğrudan AppShell (veya MainPage)
-                initialPage = new Window(new TravelRoutesPage()).Page;
-            }
-            else
-            {
-                // İlk defa giriyor -> NavigationPage ile sarmalanmış WelcomePage
-                initialPage = new NavigationPage(new WelcomePage());
-            }
-
-            // Seçilen başlangıç sayfası ile Window nesnesini oluşturup döndürüyoruz
-            return initialPage.Window;
+            Window window = new Window(new AppShell());
+            return window;
         }
     }
 }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Register.RegisterPage"
              BackgroundColor="#FBF9F6"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto, *">
 

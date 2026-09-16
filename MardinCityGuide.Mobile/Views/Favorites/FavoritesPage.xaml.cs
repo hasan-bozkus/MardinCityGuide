@@ -1,7 +1,7 @@
 using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
-using MardinCityGuide.Mobile.Dtos.FavoritesDtos;
+using MardinCityGuide.DataAccessLayer.Dtos.FavoritesDtos;
 using MardinCityGuide.Mobile.Helpers;
 using MardinCityGuide.Mobile.Models;
 
@@ -9,14 +9,13 @@ namespace MardinCityGuide.Mobile.Views.Favorites;
 
 public partial class FavoritesPage : ContentPage
 {
-    //private int CurrentUserId => CurrentSession.UserId;
-
     private readonly IFavoriteService _favoriteService;
     private readonly IReligiousSiteService _religiousSiteService;
+
     private int CurrentUserId => CurrentSession.UserId;
     private Border? _previouslySelectedBorder;
     private FavoriteType? _selectedFilter = null;
-    private List<object> _allFavorites = new List<object>();
+    private List<ResultGetUserFavoritesDto> _allFavorites = new List<ResultGetUserFavoritesDto>();
 
 
     public FavoritesPage()
@@ -43,35 +42,16 @@ public partial class FavoritesPage : ContentPage
         FavoriteCount.Text = favoriteCount.Count().ToString();
 
         _allFavorites = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId, null);
-        FavoritesCollection.ItemsSource = _allFavorites.Select(x =>
+        FavoritesCollection.ItemsSource = _allFavorites.Select(x => new
         {
-            var type = x.GetType();
-
-            // Property değerlerini güvenli okuyan yardımcı lokal fonksiyon
-            T GetValue<T>(string propertyName, T defaultValue = default)
-            {
-                var prop = type.GetProperty(propertyName);
-                if (prop != null)
-                {
-                    var val = prop.GetValue(x);
-                    if (val != null) return (T)Convert.ChangeType(val, typeof(T));
-                }
-                return defaultValue;
-            }
-
-            bool isFav = GetValue<bool>("IsFavorite", true);
-
-            return new
-            {
-                Rating = GetValue<double>("Rating", 0.0), // Rating yoksa patlamaz, 0.0 döner
-                Title = GetValue<string>("Title", string.Empty),
-                Location = GetValue<string>("Location", string.Empty),
-                CategoryTag = GetValue<string>("CategoryTag", string.Empty),
-                IsFavoriteColor = isFav ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
-                TargetId = GetValue<int>("TargetId", 0),
-                FavoriteType = GetValue<int>("FavoriteType", 0),
-                ImageUrl = GetValue<string>("ImageUrl", string.Empty),
-            };
+                x.Rating,
+                x.Title,
+                x.Location,
+                x.CategoryTag,
+                IsFavoriteColor = x.IsFavoriteColor ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
+                x.TargetId,
+                x.FavoriteType,
+                x.ImageUrl,
         }).ToList();
 
 
@@ -99,22 +79,62 @@ public partial class FavoritesPage : ContentPage
         if (favorite == 0)
         {
             _allFavorites = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId, null);
-            FavoritesCollection.ItemsSource = _allFavorites;
+            FavoritesCollection.ItemsSource = _allFavorites.Select(x => new
+            {
+                x.Rating,
+                x.Title,
+                x.Location,
+                x.CategoryTag,
+                IsFavoriteColor = x.IsFavoriteColor ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
+                x.TargetId,
+                x.FavoriteType,
+                x.ImageUrl,
+            }).ToList();
         }
         else if (favorite == (int)FavoriteType.Restaurant)
         {
             _allFavorites = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId, FavoriteType.Restaurant);
-            FavoritesCollection.ItemsSource = _allFavorites;
+            FavoritesCollection.ItemsSource = _allFavorites.Where(x => x.FavoriteType.ToString() == FavoriteType.Restaurant.ToString()).Select(x => new
+            {
+                x.Rating,
+                x.Title,
+                x.Location,
+                x.CategoryTag,
+                IsFavoriteColor = x.IsFavoriteColor ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
+                x.TargetId,
+                x.FavoriteType,
+                x.ImageUrl,
+            });
         }
         else if (favorite == (int)FavoriteType.Site)
         {
             _allFavorites = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId, FavoriteType.Site);
-            FavoritesCollection.ItemsSource = _allFavorites.Where(x => ((object)x).GetType() == typeof(Favorite) && ((Favorite)x).FavoriteType == FavoriteType.Site);
+            FavoritesCollection.ItemsSource = _allFavorites.Where(x => x.FavoriteType.ToString() == FavoriteType.Site.ToString()).Select(x => new
+            {
+                x.Rating,
+                x.Title,
+                x.Location,
+                x.CategoryTag,
+                IsFavoriteColor = x.IsFavoriteColor ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
+                x.TargetId,
+                x.FavoriteType,
+                x.ImageUrl,
+            });
         }
         else
         {
             _allFavorites = await _favoriteService.TGetUserFavoritesAsync(CurrentUserId, FavoriteType.Restaurant);
-            FavoritesCollection.ItemsSource = _allFavorites.Where(x => ((object)x).GetType() == typeof(Favorite) && ((Favorite)x).FavoriteType == FavoriteType.Route);
+            FavoritesCollection.ItemsSource = _allFavorites.Where(x => x.FavoriteType.ToString() == FavoriteType.Route.ToString()).Select(x => new
+            {
+                x.Rating,
+                x.Title,
+                x.Location,
+                x.CategoryTag,
+                IsFavoriteColor = x.IsFavoriteColor ? Color.FromArgb("#D9381E") : Color.FromArgb("#7F766A"),
+                x.TargetId,
+                x.FavoriteType,
+                x.ImageUrl,
+            });
         }
     }
 

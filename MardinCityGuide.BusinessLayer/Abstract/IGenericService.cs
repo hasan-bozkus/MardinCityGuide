@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MardinCityGuide.BusinessLayer.Abstract
 {
-    public interface IGenericService<T>  where T: class
+    public interface IGenericService<T> where T : class, new()
     {
         Task<List<T>> TGetListAllAsync();
         Task TCreateAsync(T t);

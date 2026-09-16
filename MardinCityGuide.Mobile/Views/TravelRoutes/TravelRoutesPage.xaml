@@ -3,54 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.TravelRoutes.TravelRoutesPage"
              BackgroundColor="#FDFCFB"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!-- Custom Palette Colors -->
-            <Color x:Key="SurfaceIvory">#FDFCFB</Color>
-            <Color x:Key="PrimaryBrown">#725B38</Color>
-            <Color x:Key="MesopotamianBlue">#008080</Color>
-            <Color x:Key="MardinSand">#C5A880</Color>
-            <Color x:Key="PrimaryFixed">#FEDEB2</Color>
-            <Color x:Key="OnPrimaryFixed">#584323</Color>
-            <Color x:Key="SurfaceContainer">#EFEEEB</Color>
-            <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
-            <Color x:Key="OnSurfaceVariant">#4D463C</Color>
-            <Color x:Key="GlassBorder">#33C5A880</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <Grid RowDefinitions="Auto, *, Auto">
-
-        <!-- 1. TOP APP BAR -->
-        <Grid Grid.Row="0" 
-              ColumnDefinitions="Auto, *, Auto" 
-              Padding="16,12" 
-              BackgroundColor="#CCFDFCFB" 
-              HeightRequest="56">
-            <ImageButton Grid.Column="0"
-                         Source="icon_arrow_back.png"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         VerticalOptions="Center"
-                         BackgroundColor="Transparent" />
-
-            <Label Grid.Column="1"
-                   Text="Mardin Guide"
-                   TextColor="{StaticResource PrimaryBrown}"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-
-            <ImageButton Grid.Column="2"
-                         Source="icon_search.png"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         VerticalOptions="Center"
-                         BackgroundColor="Transparent" />
-        </Grid>
+    <Grid RowDefinitions="*">
 
         <!-- 2. MAIN SCROLLABLE CONTENT -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -280,44 +237,6 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- 3. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2" StrokeShape="RoundRectangle 16,16,0,0" BackgroundColor="#E6FDFCFB" StrokeThickness="0" Padding="8,10" Margin="0">
-            <Grid ColumnDefinitions="*, *, *, *">
-
-                <!-- Home -->
-                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="nav_home.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Center" />
-                    <Label Text="Home" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <!-- Discover (Active Tab) -->
-                <Border Grid.Column="1" 
-                        StrokeShape="RoundRectangle 16"
-                        BackgroundColor="#33FEDEB2"
-                        StrokeThickness="0"
-                        Padding="14,4"
-                        HorizontalOptions="Center">
-                    <VerticalStackLayout Spacing="2">
-                        <Image Source="nav_discover_active.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Center" />
-                        <Label Text="Discover" TextColor="{StaticResource PrimaryBrown}" FontAttributes="Bold" FontSize="11" HorizontalOptions="Center" />
-                    </VerticalStackLayout>
-                </Border>
-
-                <!-- Favorites -->
-                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="nav_favorites.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Center" />
-                    <Label Text="Favorites" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <!-- Profile -->
-                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="nav_profile.png" HeightRequest="22" WidthRequest="22" HorizontalOptions="Center" />
-                    <Label Text="Profile" TextColor="{StaticResource OnSurfaceVariant}" FontSize="11" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-            </Grid>
-        </Border>
 
     </Grid>
 

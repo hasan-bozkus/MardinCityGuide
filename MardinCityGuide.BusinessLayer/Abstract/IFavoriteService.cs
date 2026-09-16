@@ -1,4 +1,5 @@
-﻿using MardinCityGuide.EntityLayer.Concrete;
+﻿using MardinCityGuide.DataAccessLayer.Dtos.FavoritesDtos;
+using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace MardinCityGuide.BusinessLayer.Abstract
 {
     public interface IFavoriteService : IGenericService<Favorite>
     {
-        Task<List<object>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null);
+        Task<List<ResultGetUserFavoritesDto>> TGetUserFavoritesAsync(int id, FavoriteType? filterType = null);
         Task<bool> TRemoveFavoriteAsync(int targetId, string favoriteType);
         Task<Favorite> TGetFavoritePlaceByTargetIdRestaurantAsync(int id);
         Task<Favorite> TGetFavoriteReligiousSiteByTargetIdSiteAsync(int id);

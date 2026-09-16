@@ -1,4 +1,4 @@
-﻿using MardinCityGuide.Mobile.Dtos.UserDtos;
+﻿using MardinCityGuide.DataAccessLayer.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +15,7 @@ namespace MardinCityGuide.Mobile.AuthServices
         {
             _httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("https://hasanbozkus.tr/api/"),
+                BaseAddress = new Uri("https://localhost/api/"),
                 Timeout = TimeSpan.FromSeconds(60)
             };
         }

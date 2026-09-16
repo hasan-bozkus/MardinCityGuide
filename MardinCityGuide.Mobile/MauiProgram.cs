@@ -32,21 +32,35 @@ namespace MardinCityGuide.Mobile
                 });
 
 
-            // 1. Veritabanı Yolu Belirleme (Geliştirme Ortamı ve Canlı Ayrımı)
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "MardinCityGuide.db");
+            builder.Services.AddAutoMapper(mp => mp.AddMaps(typeof(MauiProgram).Assembly));
 
             //// Android / iOS cihazlarda ve canlı ortamda (Release) cihazın güvenli klasörüne yazar
             //dbPath = Path.Combine(FileSystem.AppDataDirectory, "MardinCityGuide.db");
+            // 1. Veritabanı Yolu Belirleme (Geliştirme Ortamı ve Canlı Ayrımı)
+
+            string dbName = "MardinCityGuide.db";
+
+            string targetPath = Path.Combine(FileSystem.AppDataDirectory, dbName);
+
+            string dbPath = Path.Combine(targetPath);
+
+            if (!File.Exists(dbPath))
+            {
+                using var stream = FileSystem.OpenAppPackageFileAsync(dbName).Result;
+                using var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+                File.WriteAllBytes(dbPath, memoryStream.ToArray());
+            }
 
             var connectionStrings = new SQLiteConnectionString(dbPath, storeDateTimeAsTicks: false);
 
             // 2. SQLite Bağlantısını DI Container'a Singleton Olarak Kaydetme
-            builder.Services.AddSingleton(s => new SQLiteAsyncConnection(connectionStrings));
+            builder.Services.AddScoped(s => new SQLiteAsyncConnection(connectionStrings));
 
             // 3. Generic Repository ve Service Yapılarının DI Container'a Eklenmesi
             builder.Services.AddScoped<AppDatabase>();
-            builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
-            builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
+            builder.Services.AddTransient(typeof(IGenericDal<>), typeof(GenericRepository<>));
+            builder.Services.AddTransient(typeof(IGenericService<>), typeof(GenericManager<>));
 
             builder.Services.AddScoped<IHighlightDal, SLiteHighlightRepository>();
             builder.Services.AddScoped<IHighlightService, HighlightManager>();

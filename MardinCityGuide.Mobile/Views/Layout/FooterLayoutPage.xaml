@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MardinCityGuide.Mobile.Views.Layout.FooterLayoutPage"
+             x:Name="thisBar">
+
+    <!-- ================= 3. BOTTOM NAVIGATION BAR (ALT BAR) ================= -->
+    <Border Grid.Row="2" 
+                BackgroundColor="#E6FDFCFB" 
+                StrokeThickness="0" 
+                HeightRequest="70" 
+                Padding="8,4">
+        <Border.Shadow>
+            <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
+        </Border.Shadow>
+        <Grid ColumnDefinitions="*, *, *, *">
+
+            <!-- Tab 0: Home -->
+            <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+
+                <Border x:Name="HomeBorder" BackgroundColor="Transparent" StrokeThickness="0" Padding="16,4">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Label x:Name="HomeIcon" Text="&#xe88a;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                </Border>
+
+                <Label x:Name="HomeText" Text="Ana Sayfa" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding SelectedTab, Source={x:Reference thisBar}}" Value="0">
+                        <Setter TargetName="HomeBorder" Property="Border.BackgroundColor" Value="#4DFF8E58" />
+                        <Setter TargetName="HomeIcon" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="HomeText" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="HomeText" Property="Label.FontAttributes" Value="Bold" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+
+            <!-- Tab 1: Events -->
+            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSeazonalEventTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+
+                <Border x:Name="EventsBorder" BackgroundColor="Transparent" StrokeThickness="0" Padding="16,4">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Label x:Name="EventsIcon" Text="&#xea35;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                </Border>
+
+                <Label x:Name="EventsText" Text="Etkinlikler" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding SelectedTab, Source={x:Reference thisBar}}" Value="1">
+                        <Setter TargetName="EventsBorder" Property="Border.BackgroundColor" Value="#4DFF8E58" />
+                        <Setter TargetName="EventsIcon" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="EventsText" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="EventsText" Property="Label.FontAttributes" Value="Bold" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+
+            <!-- Tab 2: Favorites -->
+            <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFavoritesTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+
+                <Border x:Name="FavBorder" BackgroundColor="Transparent" StrokeThickness="0" Padding="16,4">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Label x:Name="FavIcon" Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                </Border>
+
+                <Label x:Name="FavText" Text="Favori" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding SelectedTab, Source={x:Reference thisBar}}" Value="2">
+                        <Setter TargetName="FavBorder" Property="Border.BackgroundColor" Value="#4DFF8E58" />
+                        <Setter TargetName="FavIcon" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="FavText" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="FavText" Property="Label.FontAttributes" Value="Bold" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+
+            <!-- Tab 3: Profile -->
+            <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+
+                <Border x:Name="ProfileBorder" BackgroundColor="Transparent" StrokeThickness="0" Padding="16,4">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Label x:Name="ProfileIcon" Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
+                </Border>
+
+                <Label x:Name="ProfileText" Text="Profil" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
+
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding SelectedTab, Source={x:Reference thisBar}}" Value="3">
+                        <Setter TargetName="ProfileBorder" Property="Border.BackgroundColor" Value="#4DFF8E58" />
+                        <Setter TargetName="ProfileIcon" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="ProfileText" Property="Label.TextColor" Value="#725B38" />
+                        <Setter TargetName="ProfileText" Property="Label.FontAttributes" Value="Bold" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Border>
+
+</ContentView>

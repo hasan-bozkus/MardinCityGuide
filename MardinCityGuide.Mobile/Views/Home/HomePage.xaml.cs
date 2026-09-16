@@ -2,8 +2,8 @@ using MardinCityGuide.BusinessLayer.Abstract;
 using MardinCityGuide.DataAccessLayer.Concrete;
 using MardinCityGuide.EntityLayer.Concrete;
 using MardinCityGuide.EntityLayer.Enums;
-using MardinCityGuide.Mobile.Dtos.EditorialHighlightDtos;
-using MardinCityGuide.Mobile.Dtos.HomeNevTileDtos;
+using MardinCityGuide.DataAccessLayer.Dtos.EditorialHighlightDtos;
+using MardinCityGuide.DataAccessLayer.Dtos.HomeNevTileDtos;
 using MardinCityGuide.Mobile.Helpers;
 using MardinCityGuide.Mobile.Models;
 
@@ -72,7 +72,8 @@ public partial class HomePage : ContentPage
             BadgeLabel = randomEditoralHighlight.BadgeLabel,
             Description = randomEditoralHighlight.Description,
             IllustrationUrl = ParseUnicodeIcon(randomEditoralHighlight.IllustrationUrl),
-            Title = randomEditoralHighlight.Title
+            Title = randomEditoralHighlight.Title,
+            CtaUrl = randomEditoralHighlight.CtaUrl
         };
 
         BindingContext = this;
@@ -102,22 +103,29 @@ public partial class HomePage : ContentPage
         await Shell.Current.GoToAsync($"placedetail?id={place.PlaceId}");
     }
 
-    private async void OnFavoritesTapped(object sender, TappedEventArgs e)
+    private async void OnRouteTapped(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync("favorites");
+        await Shell.Current.GoToAsync("travelroutes");
     }
 
-    private async void OnProfileTapped(object sender, TappedEventArgs e)
+    private async void OnRouteTapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("profile");
+        await Shell.Current.GoToAsync("travelroutes");
+    }
+
+    private async void OnRedirectCtaUrlForEditoralHighlightClicked(object sender, EventArgs e)
+    {
+        if (sender is not Button element) return;
+        if (element.CommandParameter is not string ctaUrl) return;
+        await Launcher.Default.OpenAsync(new Uri(ctaUrl));
     }
 
     private async void OnAddFavoriteTapped(object sender, EventArgs e)
     {
         if (sender is not Button button) return;
         if (button.CommandParameter is int placeId)
-        { 
-            
+        {
+
             var isFavorite = await _favoriteService.TGetFavoritePlaceByTargetIdRestaurantAsync(placeId);
             if (isFavorite != null)
             {
@@ -138,5 +146,24 @@ public partial class HomePage : ContentPage
             }
         }
         if (button.CommandParameter is not Place places) return;
+    }
+
+    private async void OnRedirectTapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Border border) return;
+        if (e.Parameter is string title)
+        {
+            var isHomeNavTitleName = await _homeNavTileService.TGetHomeNawTitleByTitleAsync(title);
+            if (isHomeNavTitleName.Title == "Kültür & Etkinlik")
+                await Shell.Current.GoToAsync("culturehistory");
+            if (isHomeNavTitleName.Title == "Tarihi Çarşılar")
+                await Shell.Current.GoToAsync("bazaarscraft");
+            if (isHomeNavTitleName.Title == "İnanç & Maneviyat")
+                await Shell.Current.GoToAsync("monasteriesandmosques");
+            if (isHomeNavTitleName.Title == "Gastronomi")
+                await Shell.Current.GoToAsync("gastronomyguide");
+        }
+
+        if (e.Parameter is not HomeNavTile homeNavTile) return;
     }
 }

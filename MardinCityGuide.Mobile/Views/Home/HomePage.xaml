@@ -2,42 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Home.HomePage"
-             Title="Ana Sayfa"
              BackgroundColor="#FBF9F6"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <Grid RowDefinitions="Auto, *, Auto">
-
-        <!-- ================= 1. TOP APP BAR (SABİT ÜST BAR) ================= -->
-        <Border Grid.Row="0" 
-                BackgroundColor="#CCFDFCFB" 
-                StrokeThickness="0" 
-                HeightRequest="64" 
-                Padding="20,0">
-            <Grid ColumnDefinitions="*, Auto">
-                <!-- Logo / Başlık -->
-                <Label Grid.Column="0" 
-                       Text="Mardin Şehir Rehberi" 
-                       FontSize="22" 
-                       FontAttributes="Bold" 
-                       TextColor="#725B38" 
-                       VerticalOptions="Center" />
-
-                <!-- Sağ İkonlar (Arama & Bildirim) -->
-                <HorizontalStackLayout Grid.Column="1" Spacing="16" VerticalOptions="Center">
-                    <Label Text="&#xe8b6;" 
-                           FontFamily="MaterialSymbols" 
-                           FontSize="24" 
-                           TextColor="#725B38" 
-                           VerticalOptions="Center" />
-                    <Label Text="&#xe7f4;" 
-                           FontFamily="MaterialSymbols" 
-                           FontSize="24" 
-                           TextColor="#725B38" 
-                           VerticalOptions="Center" />
-                </HorizontalStackLayout>
-            </Grid>
-        </Border>
+    <Grid RowDefinitions="*">
 
         <!-- ================= 2. ANA İÇERİK (SCROLLABLE AREA) ================= -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -105,7 +75,7 @@
                 <VerticalStackLayout Spacing="16">
                     <Grid ColumnDefinitions="*, Auto">
                         <Label Grid.Column="0" Text="Öne Çıkanlar" FontSize="22" FontAttributes="Bold" TextColor="#1B1C1A" VerticalOptions="End" />
-                        <Label Grid.Column="1" Text="Tümünü Gör" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
+                        <Button Grid.Column="1" BackgroundColor="Transparent" Text="Tümünü Gör" FontSize="14" FontAttributes="Bold" TextColor="#008080" VerticalOptions="End" />
                     </Grid>
 
                     <!-- CollectionView Tek Başına Yeterlidir -->
@@ -172,6 +142,9 @@
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="16" />
                                     </Border.StrokeShape>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnRedirectTapped" CommandParameter="{Binding Title}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
                                     <Grid RowDefinitions="Auto, *">
                                         <Label Grid.Row="0"
                                Text="{Binding IconKey}"
@@ -197,6 +170,9 @@
                         </Border.StrokeShape>
                         <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
                             <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnRouteTapped"></TapGestureRecognizer>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Label Text="Özenle Hazırlanmış Seyahat Programları" FontSize="16" FontAttributes="Bold" TextColor="#008080" />
                                 <Label Text="Yerel halk tarafından özenle seçilmiş rotalar" FontSize="12" TextColor="#4D463C" />
                             </VerticalStackLayout>
@@ -288,7 +264,9 @@
                                     HeightRequest="42" 
                                     Padding="20,0" 
                                     HorizontalOptions="Start" 
-                                    Margin="0,8,0,0" />
+                                    Margin="0,8,0,0"
+                                    Clicked="OnRedirectCtaUrlForEditoralHighlightClicked" 
+                                    CommandParameter="{Binding ResultGetRandomEditorialHighlightDto.CtaUrl}"/>
                         </VerticalStackLayout>
 
                         <!-- Decorative Icon -->
@@ -306,55 +284,6 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- ================= 3. BOTTOM NAVIGATION BAR (ALT BAR) ================= -->
-        <Border Grid.Row="2" 
-                BackgroundColor="#E6FDFCFB" 
-                StrokeThickness="0" 
-                HeightRequest="70" 
-                Padding="8,4">
-            <Border.Shadow>
-                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
-            </Border.Shadow>
-            <Grid ColumnDefinitions="*, *, *, *">
-
-                <!-- Tab 1: Home (Active) -->
-                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
-                    <Border BackgroundColor="#4DFF8E58" StrokeThickness="0" Padding="16,4">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="16" />
-                        </Border.StrokeShape>
-                        <Label Text="&#xe88a;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#725B38" />
-                    </Border>
-                    <Label Text="Home" FontSize="11" FontAttributes="Bold" TextColor="#725B38" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <!-- Tab 2: Discover -->
-                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
-                    <Label Text="&#xe87a;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
-                    <Label Text="Discover" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <!-- Tab 3: Favorites -->
-                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
-                    <VerticalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnFavoritesTapped" />
-                    </VerticalStackLayout.GestureRecognizers>
-                    <Label Text="&#xe87e;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
-                    <Label Text="Favorites" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <!-- Tab 4: Profile -->
-                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Spacing="2">
-                    <VerticalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnProfileTapped" />
-                    </VerticalStackLayout.GestureRecognizers>
-                    <Label Text="&#xe7fd;" FontFamily="MaterialSymbols" FontSize="22" TextColor="#4D463C" HorizontalOptions="Center" />
-                    <Label Text="Profile" FontSize="11" TextColor="#4D463C" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-            </Grid>
-        </Border>
 
     </Grid>
 

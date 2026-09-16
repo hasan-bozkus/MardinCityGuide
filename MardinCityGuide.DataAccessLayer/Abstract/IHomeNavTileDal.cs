@@ -8,5 +8,6 @@ namespace MardinCityGuide.DataAccessLayer.Abstract
     public interface IHomeNavTileDal : IGenericDal<HomeNavTile>
     {
         Task<List<HomeNavTile>> GetHomeNavTileListBySortOrderAndIsActiveAsync();
+        Task<HomeNavTile> GetHomeNawTitleByTitleAsync(string title);
     }
 }

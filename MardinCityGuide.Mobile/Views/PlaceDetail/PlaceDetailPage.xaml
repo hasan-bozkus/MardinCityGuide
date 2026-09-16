@@ -2,61 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.PlaceDetail.PlaceDetailPage"
-             Title="PlaceDetailPage"
              BackgroundColor="#FBF9F6"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
 
-    <Grid RowDefinitions="Auto, *, Auto">
-
-        <!-- ================= 1. TOP APP BAR (SABİT ÜST BAR) ================= -->
-        <Border Grid.Row="0" 
-                BackgroundColor="#CCFDFCFB" 
-                StrokeThickness="0" 
-                HeightRequest="64" 
-                Padding="20,0"
-                ZIndex="50">
-            <Grid ColumnDefinitions="Auto, *, Auto">
-                <!-- Back Button -->
-                <Border Grid.Column="0" 
-                        BackgroundColor="Transparent" 
-                        StrokeThickness="0" 
-                        WidthRequest="40" 
-                        HeightRequest="40">
-                    <Label Text="&#xe5c4;" 
-                           FontFamily="MaterialSymbols" 
-                           FontSize="24" 
-                           TextColor="#725B38" 
-                           HorizontalOptions="Center" 
-                           VerticalOptions="Center" />
-                </Border>
-
-                <!-- Right Action Buttons (Share & Favorite) -->
-                <HorizontalStackLayout Grid.Column="2" Spacing="8" VerticalOptions="Center">
-                    <Border BackgroundColor="Transparent" 
-                            StrokeThickness="0" 
-                            WidthRequest="40" 
-                            HeightRequest="40">
-                        <Label Text="&#xe80d;" 
-                               FontFamily="MaterialSymbols" 
-                               FontSize="22" 
-                               TextColor="#725B38" 
-                               HorizontalOptions="Center" 
-                               VerticalOptions="Center" />
-                    </Border>
-                    <Border BackgroundColor="Transparent" 
-                            StrokeThickness="0" 
-                            WidthRequest="40" 
-                            HeightRequest="40">
-                        <Label Text="&#xe87e;" 
-                               FontFamily="MaterialSymbols" 
-                               FontSize="22" 
-                               TextColor="#725B38" 
-                               HorizontalOptions="Center" 
-                               VerticalOptions="Center" />
-                    </Border>
-                </HorizontalStackLayout>
-            </Grid>
-        </Border>
+    <Grid RowDefinitions="*">
 
         <!-- ================= 2. MAIN SCROLLABLE CONTENT ================= -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -288,41 +239,6 @@
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- ================= 3. FIXED ACTION FOOTER ================= -->
-        <Border Grid.Row="2" 
-                BackgroundColor="#E6FDFCFB" 
-                StrokeThickness="1" 
-                Stroke="#33D1C5B8" 
-                HeightRequest="80" 
-                Padding="20,12"
-                ZIndex="50">
-            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
-                <!-- Open in Maps Main Button -->
-                <Button Grid.Column="0" 
-                        Text="HARİTA OLARAK AÇ" 
-                        BackgroundColor="#C5A880" 
-                        TextColor="White" 
-                        FontSize="16" 
-                        FontAttributes="Bold" 
-                        CornerRadius="16" 
-                        HeightRequest="54" />
-
-                <!-- Bookmark Button -->
-                <Button Grid.Column="1" 
-                        Text="&#xe8e7;" 
-                        FontFamily="MaterialSymbols" 
-                        BackgroundColor="Transparent" 
-                        BorderColor="#C5A880" 
-                        BorderWidth="1.5" 
-                        TextColor="#725B38" 
-                        FontSize="22" 
-                        CornerRadius="16" 
-                        WidthRequest="54" 
-                        HeightRequest="54" 
-                        Padding="0" />
-            </Grid>
-        </Border>
 
     </Grid>
 

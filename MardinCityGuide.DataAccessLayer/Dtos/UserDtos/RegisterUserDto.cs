@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MardinCityGuide.Mobile.Dtos.UserDtos
+namespace MardinCityGuide.DataAccessLayer.Dtos.UserDtos
 {
     public class RegisterUserDtos
     {

@@ -3,52 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MardinCityGuide.Mobile.Views.Favorites.FavoritesPage"
              BackgroundColor="#FDFCFB"
-             Shell.NavBarIsVisible="False">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!-- Custom Palette Colors -->
-            <Color x:Key="SurfaceIvory">#FDFCFB</Color>
-            <Color x:Key="PrimaryBrown">#725B38</Color>
-            <Color x:Key="MesopotamianBlue">#008080</Color>
-            <Color x:Key="MardinSand">#C5A880</Color>
-            <Color x:Key="PrimaryFixed">#FEDEB2</Color>
-            <Color x:Key="OnPrimaryFixed">#584323</Color>
-            <Color x:Key="SurfaceContainer">#EFEEEB</Color>
-            <Color x:Key="SurfaceContainerHigh">#EAE8E5</Color>
-            <Color x:Key="OnSurfaceVariant">#4D463C</Color>
-            <Color x:Key="GlassBorder">#33C5A880</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <Grid RowDefinitions="Auto,*,Auto">
-
-        <!-- 1. TOP APP BAR -->
-        <Grid Grid.Row="0"
-              HeightRequest="64"
-              Padding="20,0"
-              ColumnDefinitions="Auto,*,Auto"
-              BackgroundColor="#CCFDFCFB">
-
-            <HorizontalStackLayout Grid.Column="0" Spacing="16" VerticalOptions="Center">
-                <ImageButton Source="ic_arrow_back.png"
-                             HeightRequest="24"
-                             WidthRequest="24"
-                             BackgroundColor="Transparent" />
-                <Label Text="Favorites"
-                       FontFamily="ManropeBold"
-                       FontSize="20"
-                       TextColor="#725B38"
-                       VerticalOptions="Center" />
-            </HorizontalStackLayout>
-
-            <ImageButton Grid.Column="2"
-                         Source="ic_search.png"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         BackgroundColor="Transparent"
-                         VerticalOptions="Center" />
-        </Grid>
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             ControlTemplate="{StaticResource MainLayoutTemplate}">
+    
+    <Grid RowDefinitions="*">
 
         <!-- 2. MAIN SCROLL CONTENT -->
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
@@ -112,9 +71,6 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
-                <Label FormattedText="{StaticResource SavedCountString}" Margin="0,4,0,8" />
-
                 <!-- FAVORITES LIST (STATİK KARTLAR) -->
                 <VerticalStackLayout Spacing="16">
                     <CollectionView x:Name="FavoritesCollection" VerticalScrollBarVisibility="Never">
@@ -223,48 +179,6 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- 4. BOTTOM NAVIGATION BAR -->
-        <Border Grid.Row="2"
-                HeightRequest="64"
-                StrokeShape="RoundRectangle 16,16,0,0"
-                StrokeThickness="0"
-                BackgroundColor="#E6FDFCFB">
-            <Border.Shadow>
-                <Shadow Brush="#C5A880" Offset="0,-4" Radius="12" Opacity="0.15" />
-            </Border.Shadow>
-
-            <Grid ColumnDefinitions="*,*,*,*">
-                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_home.png" HeightRequest="24" WidthRequest="24" />
-                    <Label Text="Home" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_explore.png" HeightRequest="24" WidthRequest="24" />
-                    <Label Text="Discover" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
-                </VerticalStackLayout>
-
-                <!-- Active Tab: Favorites -->
-                <Border Grid.Column="2"
-                        BackgroundColor="#4DFEDB12"
-                        StrokeShape="RoundRectangle 16"
-                        StrokeThickness="0"
-                        Padding="12,4"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                        <Image Source="ic_heart_active.png" HeightRequest="24" WidthRequest="24" />
-                        <Label Text="Favorites" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#725B38" />
-                    </VerticalStackLayout>
-                </Border>
-
-                <VerticalStackLayout Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Image Source="ic_profile.png" HeightRequest="24" WidthRequest="24" />
-                    <Label Text="Profile" FontFamily="BeVietnamProSemiBold" FontSize="11" TextColor="#4D463C" />
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
 
     </Grid>
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MardinCityGuide.Mobile.Dtos.PlaceDtos
+namespace MardinCityGuide.DataAccessLayer.Dtos.PlaceDtos
 {
     public class ResultGetPlaceByIdDto
     {
