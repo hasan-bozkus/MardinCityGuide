@@ -4,6 +4,7 @@
              x:Class="MardinCityGuide.Mobile.Views.MonasteriesAndMosques.MonasteriesAndMosquesPage"
              BackgroundColor="#FBF9F6"
              NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
              ControlTemplate="{StaticResource MainLayoutTemplate}">
 
     <ContentPage.Resources>
